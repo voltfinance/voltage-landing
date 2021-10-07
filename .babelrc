@@ -1,0 +1,25 @@
+{
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        'targets': {
+          "esmodules": true
+        }
+      }
+    ],
+    '@babel/preset-react'
+  ],
+  plugins: [
+    '@babel/plugin-proposal-class-properties',
+    'react-hot-loader/babel',
+    [
+      "react-intl",
+      {
+        "extractFromFormatMessageCall": true,
+        "idInterpolationPattern": "[sha512:contenthash:base64:6]",
+        "ast": false
+      }
+    ]
+  ]
+}

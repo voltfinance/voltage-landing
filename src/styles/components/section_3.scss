@@ -1,0 +1,106 @@
+@include block(section_3) {
+  background-image: url('images/section3-bg.png');
+  min-height: 863px;
+  color: white;
+  @include xy-grid-container();
+  @include xy-grid(vertical, false);
+  @include flex-align(top, middle);
+  padding-top: 4.5rem;
+  @include element(title) {
+    font-size: 3.125rem;
+    margin-bottom: 5.125rem;
+    font-weight: 700;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    @include breakpoint(large down) {
+      font-size: 2.5rem;
+    }
+    @include breakpoint(medium down) {
+      font-size: 2rem;
+    }
+  }
+  @include element(cards_container) {
+    @include xy-grid(horizontal, false);
+    @include flex-align(center, center);
+    padding-left: 6.75rem;
+    padding-right: 6rem;
+    gap: 0 2.125rem;
+    & > * {
+      flex: 1;
+    }
+    @include breakpoint(large down) {
+      flex-wrap: wrap;
+      gap: 2.125rem 2.125rem;
+    }
+  }
+  @include block(card) {
+    background: #202230;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 1.9375rem 2.8125rem 1.75rem 2.8125rem;
+    max-width: 334px;
+
+    min-width: 334px;
+    @include xy-grid(vertical, false);
+    @include flex-align(center, middle);
+    @include breakpoint(large down) {
+      flex-wrap: wrap;
+      max-width: 334px;
+    }
+    @include element(title) {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      @include breakpoint(large down) {
+        font-size: 1rem;
+      }
+    }
+    @include element(description) {
+      text-align: center;
+      margin-bottom: 2.125rem;
+      font-weight: 400;
+      @include breakpoint(large down) {
+        font-size: 14px;
+      }
+    }
+    @include element(icon) {
+      margin-bottom: 0.5rem;
+    }
+    @include element(button) {
+      padding: 0.75em 2.1875em;
+      font-weight: 700;
+      font-size: 0.875rem;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      text-align: center;
+      color: white;
+      border-radius: 12px;
+
+      $border: 2px;
+      border: solid $border #b5b9d3;
+
+      position: relative;
+      &:hover {
+        border: solid $border transparent;
+        background: linear-gradient(89.89deg, #c9f6ba 0%, #f1fa9e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      &:hover::before {
+        content: '';
+        position: absolute;
+        top: -$border;
+        left: -$border;
+        right: -$border;
+        bottom: -$border;
+        border-radius: 12px;
+        border: solid $border transparent;
+        background: linear-gradient(89.89deg, #c9f6ba 0%, #f1fa9e 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+      }
+    }
+  }
+}

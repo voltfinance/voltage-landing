@@ -1,0 +1,22 @@
+
+.cache/
+coverage/
+dist/*
+!dist/index.html
+node_modules/
+*.log
+
+# OS generated files
+.DS_Store
+.vscode
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+src/assets/images
+src/assets/img
+src/assets/files
+src/assets/lottie
