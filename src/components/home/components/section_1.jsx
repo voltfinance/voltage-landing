@@ -6,7 +6,7 @@ const SectionOne = () => {
       <div className='section-A__wrapper'>
         <div className='section-A__container'>
           <div className='section-A__main'>
-            <h1 className='main_title'>Consumer friendly DeFi</h1>
+            <h1 className='main_title'>Consumer Friendly DeFi</h1>
             <div className='section-A__text-container'>
               <p className='section-A__text'>
                 <span>fuse.Fi</span> brings unprecedented DeFi capabilities to

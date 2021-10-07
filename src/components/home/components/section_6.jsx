@@ -10,28 +10,10 @@ const SectionFive = () => {
     <section className='communities' id='communities'>
       <div className='communities__content grid-container'>
         <h1 className='communities__title'> Join the Fuse.Fi community</h1>
-        <p className='communities__talk'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
+
         <div className='communities__container'>
           <a
-            href='https://medium.com/fusenet'
-            target='_blank'
-            rel='noreferrer noopener'
-          >
-            <div className='communities__boxInner'>
-              <div className='communities__inner'>
-                <img src={medium} />
-                <span className='communities__spanInner'>Medium</span>
-              </div>
-              <p className='communities__check'>Check the update</p>
-            </div>
-          </a>
-          <a
-            href='https://github.com/fuseio'
+            href=' https://github.com/fuseio/fuseswap-interface'
             target='_blank'
             rel='noreferrer noopener'
           >
@@ -44,7 +26,7 @@ const SectionFive = () => {
             </div>
           </a>
           <a
-            href='https://twitter.com/fuse_network'
+            href='https://twitter.com/Fuse_Fi'
             target='_blank'
             rel='noreferrer noopener'
           >
@@ -57,7 +39,7 @@ const SectionFive = () => {
             </div>
           </a>
           <a
-            href='https://t.me/fuseio'
+            href='https://t.me/fuseswap'
             target='_blank'
             rel='noreferrer noopener'
           >
@@ -67,19 +49,6 @@ const SectionFive = () => {
                 <span className='communities__spanInner'>Telegram</span>
               </div>
               <p className='communities__check'>Join the community</p>
-            </div>
-          </a>
-          <a
-            href='https://discordapp.com/invite/jpPMeSZ'
-            target='_blank'
-            rel='noreferrer noopener'
-          >
-            <div className='communities__boxInner'>
-              <div className='communities__inner'>
-                <img src={discord} />
-                <span className='communities__spanInner'>Discord</span>
-              </div>
-              <p className='communities__check'>Get involved</p>
             </div>
           </a>
         </div>

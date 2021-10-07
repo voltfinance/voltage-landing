@@ -54,9 +54,9 @@ function Header({ history }) {
                 rel='noreferrer noopener'
                 className={classNames('text', { 'text--white': isWhite })}
                 target='_blank'
-                href='https://fuse.cash/'
+                href='https://t.me/fuseswap'
               >
-                <FormattedMessage defaultMessage='Fuse Cash' />
+                <FormattedMessage defaultMessage='Telegram' />
               </a>
             </div>
             <div className='nav__item'>
@@ -64,9 +64,9 @@ function Header({ history }) {
                 rel='noreferrer noopener'
                 className={classNames('text', { 'text--white': isWhite })}
                 target='_blank'
-                href='https://app.fuse.fi/#/home'
+                href='https://twitter.com/Fuse_Fi'
               >
-                <FormattedMessage defaultMessage='FuseFi Dashboard' />
+                <FormattedMessage defaultMessage='Twitter' />
               </a>
             </div>
           </div>
