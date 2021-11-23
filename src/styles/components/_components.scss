@@ -1,20 +1,141 @@
-@import 'header';
-@import 'section_1';
-@import 'section_3';
-@import 'section_7';
-@import 'swiper';
-@import 'communities';
-@import 'footer';
+@import "header";
 
-@import 'homepage/section_2';
-@import 'homepage/section_4';
-@import 'homepage/studio_floor';
-@import 'homepage/wallet_floor';
-@import 'homepage/fuseswap_floor';
-@import 'homepage/fuse_ecosysyem';
-@import 'shared/newsletter_form';
+@include block(homepage) {
+  height: 100%;
+  position: relative;
 
-@import 'navbar/navbar';
+  @include element(container) {
+    @include block(logo) {
+      padding: 2em;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      left: 0;
+      @include xy-grid();
+      @include flex-align(justify, middle);
+      > img {
+        width: 177px;
+        height: 60px;
+      }
+
+      @include block(enter_app) {
+        @include xy-grid();
+        z-index: 100;
+        @include flex-align(center, middle);
+        > span {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1em;
+          line-height: 22px;
+          color: #ffffff;
+        }
+        > img {
+          margin-left: 0.5em;
+        }
+      }
+    }
+    @include block(footer) {
+      padding: 2em;
+      @include xy-grid();
+      @include flex-align(right, middle);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      > a {
+        img {
+          margin: 0.2em;
+          width: 37px;
+          height: 37px;
+        }
+      }
+    }
+    // position: relative;
+    background-image: url("images/background1.jpg");
+    // background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  @include block(stars) {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+  }
+
+  @include block(lighting) {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+  }
+
+  @include block(smoke) {
+    position: absolute;
+    width: 100%;
+  }
+
+  @include element(main) {
+    height: 90%;
+  }
+
+  @include block(headline) {
+    font-family: "Newake";
+    @include xy-grid(vertical);
+    @include flex-align(center, middle);
+    @include element(title) {
+      font-size: 7.5em;
+      font-family: Newake;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0em;
+      line-height: 1.2;
+      text-align: center;
+      background-image: linear-gradient(to right, #00ff80, #f3fc1f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @include element(text) {
+      background-image: linear-gradient(to right, #00ff80, #f3fc1f);
+      background-clip: text;
+      color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2.25em;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 35px;
+      letter-spacing: 0em;
+    }
+  }
+
+  @include block(form) {
+    width: 465px;
+    height: 60px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+
+    @include element(input) {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+    }
+
+    @include element(button) {
+      position: absolute;
+      right: 5px;
+      width: 187px;
+      height: 50px;
+
+      background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
+      border-radius: 10px;
+    }
+  }
+}
 
 .site-wrapper {
   position: relative;
@@ -49,7 +170,7 @@
     display: inline-block;
     padding-left: 8px;
     vertical-align: -20%;
-    content: '';
+    content: "";
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: transform 0.3s ease-out;
     -ms-transition: transform 0.3s ease-out;
