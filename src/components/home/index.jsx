@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react'
 import lottie from 'lottie-web'
 import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
@@ -10,7 +10,7 @@ import fusefi from '@/assets/images/fusefi.png'
 import arrow from '@/assets/images/enter_app.png'
 
 import NewsletterForm from './newsletter_form'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
 const HomePage = () => {
   const starsRef = useRef(null)
@@ -90,7 +90,7 @@ const HomePage = () => {
         </footer>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage
