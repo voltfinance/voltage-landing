@@ -3,10 +3,11 @@ import lottie from 'lottie-web'
 import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
 import smokeAnimationData from '@/assets/lotties/smoke.json'
+import fusefiAnimationData from '@/assets/lotties/fusefi-logo.json'
 import github from '@/assets/images/github.png'
 import telegram from '@/assets/images/telegram.png'
 import twitter from '@/assets/images/twitter.png'
-import fusefi from '@/assets/images/fusefi.png'
+import fusefi from '@/assets/images/fusefi-wordmark.svg'
 import arrow from '@/assets/images/enter_app.png'
 
 import NewsletterForm from './newsletter_form'
@@ -16,7 +17,20 @@ const HomePage = () => {
   const starsRef = useRef(null)
   const lightingRef = useRef(null)
   const smokeRef = useRef(null)
+  const fusefiRef = useRef(null)
   const { animate } = useSelector(state => state.animation)
+
+  useEffect(() => {
+    if (fusefiRef.current) {
+      lottie.loadAnimation({
+        animationData: fusefiAnimationData,
+        container: fusefiRef.current,
+        renderer: 'svg',
+        autoplay: true,
+        loop: true
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (smokeRef.current) {
@@ -24,6 +38,7 @@ const HomePage = () => {
         animationData: smokeAnimationData,
         container: smokeRef.current,
         renderer: 'svg',
+        autoplay: true,
         loop: true
       })
     }
@@ -56,7 +71,10 @@ const HomePage = () => {
     <>
       <section className='homepage__container'>
         <div className='logo'>
-          <img src={fusefi} />
+          <div className='fusefi'>
+            <div ref={fusefiRef} />
+            <img src={fusefi} />
+          </div>
           <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.fuse.fi'>
             <span>Enter App</span>
             <img src={arrow} />

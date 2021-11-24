@@ -140,7 +140,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
@@ -179,8 +179,8 @@ module.exports = {
       logo: path.join(path.resolve(__dirname, './'), '/src/assets/images/favicon.png'),
       prefix: 'images/favicons/',
       favicons: {
-        appName: 'Fuse network',
-        appDescription: 'Fuse network - on-board your users to decentralized finance',
+        appName: 'Fuse.Fi',
+        appDescription: '',
         developerName: null,
         developerURL: null,
         icons: {

@@ -1,10 +1,12 @@
-@import "header";
-
 @include block(homepage) {
   height: 100%;
   position: relative;
 
   @include element(container) {
+    background-image: url("images/background1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
     @include block(logo) {
       padding: 2em;
       position: absolute;
@@ -13,9 +15,18 @@
       left: 0;
       @include xy-grid();
       @include flex-align(justify, middle);
-      > img {
-        width: 177px;
-        height: 60px;
+
+      @include block(fusefi) {
+        @include xy-grid(horizontal, false);
+        @include flex-align(center, middle);
+
+        > div {
+          width: 90px;
+        }
+
+        > img {
+          max-width: 130px;
+        }
       }
 
       @include block(enter_app) {
@@ -50,12 +61,6 @@
         }
       }
     }
-    // position: relative;
-    background-image: url("images/background1.jpg");
-    // background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
   }
 
   @include block(stars) {
@@ -84,12 +89,11 @@
     @include xy-grid(vertical);
     @include flex-align(center, middle);
     @include element(title) {
-      font-size: 7.5em;
-      font-family: Newake;
       font-style: normal;
-      font-weight: 400;
-      letter-spacing: 0em;
-      line-height: 1.2;
+      font-weight: normal;
+      font-size: 7.5em;
+      font-size: 120px;
+      line-height: 116px;
       text-align: center;
       background-image: linear-gradient(to right, #00ff80, #f3fc1f);
       -webkit-background-clip: text;
@@ -104,9 +108,7 @@
       -webkit-text-fill-color: transparent;
       font-size: 2.25em;
       font-style: normal;
-      font-weight: 400;
       line-height: 35px;
-      letter-spacing: 0em;
     }
   }
 
@@ -130,7 +132,9 @@
       right: 5px;
       width: 187px;
       height: 50px;
-
+      font-weight: 500;
+      line-height: 25px;
+      font-style: normal;
       background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
       border-radius: 10px;
     }
