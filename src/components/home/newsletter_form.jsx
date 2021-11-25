@@ -37,25 +37,21 @@ const NewsletterForm = () => {
             body: JSON.stringify(user)
           })
 
-          // TODO - handle errors
           dispatch({ type: 'START_ANIMATION' })
           setTimeout(() => {
             dispatch({ type: 'STOP_ANIMATION' })
           }, 3000)
           setSubmitting(true)
           resetForm({ email: '' })
-
           // if (response.status === 200) {
-          //   setTimeout(() => {
-          //   }, 3000)
-          //   setSubmitting(true)
           // } else if (response.status === 500) {
+          //   dispatch({ type: 'START_ANIMATION' })
           //   setTimeout(() => {
+          //     dispatch({ type: 'STOP_ANIMATION' })
           //   }, 3000)
           //   setSubmitting(true)
           // }
 
-          // resetForm({ email: '' })
         } catch (error) {
           resetForm({ email: '' })
           setTimeout(() => {

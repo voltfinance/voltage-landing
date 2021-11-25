@@ -1,12 +1,25 @@
+@include block(site-wrapper) {
+  position: relative;
+  display: block;
+  min-height: 100vh;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 @include block(homepage) {
   height: 100%;
   position: relative;
 
   @include element(container) {
-    background-image: url("images/background1.jpg");
+    background-image: url("images/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+
+    @include breakpoint(medium down) {
+      background-image: url("images/mobile-bg.jpg");
+    }
     @include block(logo) {
       padding: 2em;
       position: absolute;
@@ -16,16 +29,16 @@
       @include xy-grid();
       @include flex-align(justify, middle);
 
-      @include block(fusefi) {
-        @include xy-grid(horizontal, false);
-        @include flex-align(center, middle);
+      @include breakpoint(medium down) {
+        @include flex-align(right, middle);
+      }
 
-        > div {
-          width: 90px;
-        }
+      > img {
+        width: 177px;
+        height: 60px;
 
-        > img {
-          max-width: 130px;
+        @include breakpoint(medium down) {
+          display: none;
         }
       }
 
@@ -33,11 +46,11 @@
         @include xy-grid();
         z-index: 100;
         @include flex-align(center, middle);
+
         > span {
           font-style: normal;
           font-weight: 500;
           font-size: 1em;
-          line-height: 22px;
           color: #ffffff;
         }
         > img {
@@ -49,9 +62,17 @@
       padding: 2em;
       @include xy-grid();
       @include flex-align(right, middle);
+
       position: absolute;
       bottom: 0;
       right: 0;
+      @include breakpoint(medium down) {
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: max-content;
+      }
 
       > a {
         img {
@@ -67,17 +88,27 @@
     position: absolute;
     width: 100%;
     top: 0px;
+
+    @include breakpoint(medium down) {
+      display: none;
+    }
   }
 
   @include block(lighting) {
     position: absolute;
     width: 100%;
     z-index: 100;
+    @include breakpoint(medium down) {
+      display: none;
+    }
   }
 
   @include block(smoke) {
     position: absolute;
     width: 100%;
+    @include breakpoint(medium down) {
+      display: none;
+    }
   }
 
   @include element(main) {
@@ -93,11 +124,18 @@
       font-weight: normal;
       font-size: 7.5em;
       font-size: 120px;
-      line-height: 116px;
       text-align: center;
       background-image: linear-gradient(to right, #00ff80, #f3fc1f);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+      @include breakpoint(medium down) {
+        font-size: 2.5em;
+      }
+
+      @include breakpoint(small down) {
+        font-size: 1.875em;
+      }
     }
 
     @include element(text) {
@@ -108,7 +146,15 @@
       -webkit-text-fill-color: transparent;
       font-size: 2.25em;
       font-style: normal;
-      line-height: 35px;
+
+      @include breakpoint(medium down) {
+        font-size: 2.5em;
+      }
+
+      @include breakpoint(small down) {
+        font-size: 1.25em;
+        text-align: center;
+      }
     }
   }
 
@@ -133,65 +179,9 @@
       width: 187px;
       height: 50px;
       font-weight: 500;
-      line-height: 25px;
       font-style: normal;
       background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
       border-radius: 10px;
-    }
-  }
-}
-
-.site-wrapper {
-  position: relative;
-  display: block;
-  min-height: 100vh;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-@include block(main_button) {
-  padding: 1.125em 1.75em;
-  font-size: 1em;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.01px;
-  text-align: center;
-  color: #052235;
-  margin: 1em 0;
-  border-radius: 100px;
-  background-image: linear-gradient(124.98deg, #b3ffbb 6.71%, #fffb00 90%);
-
-  &::after {
-    background-image: url(images/arrow.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    margin-left: 0.5em;
-    width: 20px;
-    height: 14px;
-    display: inline-block;
-    padding-left: 8px;
-    vertical-align: -20%;
-    content: "";
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: transform 0.3s ease-out;
-    -ms-transition: transform 0.3s ease-out;
-    -o-transition: transform 0.3s ease-out;
-    transition: transform 0.3s ease-out;
-  }
-
-  &:hover {
-    background-image: unset;
-    background-color: #f8ff00;
-
-    &::after {
-      -webkit-transform: translateX(4px);
-      -moz-transform: translateX(4px);
-      -ms-transform: translateX(4px);
-      -o-transform: translateX(4px);
-      transform: translateX(4px);
     }
   }
 }

@@ -1,36 +1,23 @@
 import React, { useRef, useEffect } from 'react'
 import lottie from 'lottie-web'
+import { useSelector } from 'react-redux'
+import { isMobile } from 'react-device-detect'
+
 import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
 import smokeAnimationData from '@/assets/lotties/smoke.json'
-import fusefiAnimationData from '@/assets/lotties/fusefi-logo.json'
 import github from '@/assets/images/github.png'
 import telegram from '@/assets/images/telegram.png'
 import twitter from '@/assets/images/twitter.png'
-import fusefi from '@/assets/images/fusefi-wordmark.svg'
+import fusefi from '@/assets/images/fusefi.png'
 import arrow from '@/assets/images/enter_app.png'
-
 import NewsletterForm from './newsletter_form'
-import { useSelector } from 'react-redux'
 
 const HomePage = () => {
   const starsRef = useRef(null)
   const lightingRef = useRef(null)
   const smokeRef = useRef(null)
-  const fusefiRef = useRef(null)
   const { animate } = useSelector(state => state.animation)
-
-  useEffect(() => {
-    if (fusefiRef.current) {
-      lottie.loadAnimation({
-        animationData: fusefiAnimationData,
-        container: fusefiRef.current,
-        renderer: 'svg',
-        autoplay: true,
-        loop: true
-      })
-    }
-  }, [])
 
   useEffect(() => {
     if (smokeRef.current) {
@@ -71,19 +58,15 @@ const HomePage = () => {
     <>
       <section className='homepage__container'>
         <div className='logo'>
-          <div className='fusefi'>
-            <div ref={fusefiRef} />
-            <img src={fusefi} />
-          </div>
+          <img src={fusefi} />
           <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.fuse.fi'>
             <span>Enter App</span>
             <img src={arrow} />
           </a>
-
         </div>
         <div className='homepage'>
-          <div className='stars' ref={starsRef} />
-          <div className='smoke' ref={smokeRef} />
+          {!isMobile && <div className='stars' ref={starsRef} />}
+          {!isMobile && <div className='smoke' ref={smokeRef} />}
           {animate && <div className='lighting' ref={lightingRef} />}
           <div className='homepage__main grid-y align-spaced align-middle'>
             <div className='headline cell'>
