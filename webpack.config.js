@@ -70,7 +70,10 @@ module.exports = {
       },
       {
         test: /\.(eot|ttf|woff|woff2)$/,
-        loader: 'file-loader?name=/fonts/[name].[ext]'
+        loader: 'file-loader',
+        options: {
+          name: '/fonts/[name].[ext]'
+        }
       },
       {
         test: /\.(gif|png|jpe?g)$/i,
