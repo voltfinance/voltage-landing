@@ -33,14 +33,14 @@ module.exports = {
         use: [
           !isDev
             ? {
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                  publicPath: '/'
-                }
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '/'
               }
+            }
             : {
-                loader: 'style-loader'
-              },
+              loader: 'style-loader'
+            },
           {
             loader: 'css-loader',
             options: {
@@ -69,14 +69,18 @@ module.exports = {
         ]
       },
       {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=/fonts/[name].[ext]'
+      },
+      {
         test: /\.(gif|png|jpe?g)$/i,
         exclude: [/fonts/],
         use: [
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'images',
               name: '[name].[ext]',
+              outputPath: 'images',
               publicPath: '/images'
             }
           },
@@ -139,19 +143,19 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts',
-              publicPath: './fonts'
-            }
-          }
-        ]
-      }
+      // {
+      //   test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].[ext]',
+      //         outputPath: 'fonts',
+      //         publicPath: './fonts'
+      //       }
+      //     }
+      //   ]
+      // }
     ]
   },
   resolve: {
