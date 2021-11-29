@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Switch, Route } from 'react-router'
 import configureStore from './store/configureStore'
-// import GoogleAnalyticsReporter from '@/components/analytics';
+import GoogleAnalyticsReporter from '@/components/analytics';
 
 import HomePage from '@/components/home'
 import ScrollToTopController from '@/hooks/useScrollToTopController'
@@ -16,7 +16,7 @@ const App = () => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <ScrollToTopController>
-          {/* <Route component={GoogleAnalyticsReporter} /> */}
+          <Route component={GoogleAnalyticsReporter} />
           <Switch>
             <Route path='/'>
               <HomePage />

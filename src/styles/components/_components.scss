@@ -151,10 +151,12 @@
 
   @include block(form) {
     width: 465px;
-    height: 60px;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 5px;
+    // height: 60px;
+    // background: #ffffff;
+    @include xy-grid();
+    @include flex-align(center, middle);
+    // border-radius: 10px;
+    // padding: 5px;
     position: relative;
 
     @include breakpoint(small down) {
@@ -169,8 +171,7 @@
     }
 
     @include element(button) {
-      position: absolute;
-      right: 5px;
+      
       width: 187px;
 
       @include breakpoint(small down) {
