@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
 import { hot } from 'react-hot-loader'
+import { ModalProvider } from 'react-modal-hook'
+import Modal from 'react-modal'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Switch, Route } from 'react-router'
@@ -9,22 +11,28 @@ import GoogleAnalyticsReporter from '@/components/analytics';
 import HomePage from '@/components/home'
 import ScrollToTopController from '@/hooks/useScrollToTopController'
 
+Modal.setAppElement('#root')
+
 const { store, history } = configureStore(window.__INITIAL_STATE__)
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <ScrollToTopController>
-          <Route component={GoogleAnalyticsReporter} />
-          <Switch>
-            <Route path='/'>
-              <HomePage />
-            </Route>
-          </Switch>
-        </ScrollToTopController>
-      </ConnectedRouter>
-    </Provider>
+    <StrictMode>
+      <ModalProvider>
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <ScrollToTopController>
+              <Route component={GoogleAnalyticsReporter} />
+              <Switch>
+                <Route path='/'>
+                  <HomePage />
+                </Route>
+              </Switch>
+            </ScrollToTopController>
+          </ConnectedRouter>
+        </Provider>
+      </ModalProvider>
+    </StrictMode>
   )
 }
 
