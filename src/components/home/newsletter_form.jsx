@@ -76,21 +76,6 @@ const NewsletterForm = () => {
             name='email'
           />
           <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>Sign for updates</button>
-          {/* <Field
-            type='email'
-            className='form__input'
-            placeholder='Enter email'
-            name='email'
-            />
-          */}
-
-
-          {/* <button type='button' disabled={!dirty || isSubmitting} className='form__button'>
-            <a className="e-widget no-button generic-loader" href="https://gleam.io/1l1hH/frictionless-defi-landing-page" rel="nofollow">
-              Join sweepstake $10k
-            </a>
-          </button>
-          <script type="text/javascript" src="https://widget.gleamjs.io/e.js" async={true}></script> */}
         </Form>
       )}
     </Formik>
