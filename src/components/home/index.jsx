@@ -72,20 +72,20 @@ const HomePage = () => {
             <div className='headline cell'>
               <h1 className='headline__title'>Frictionless DEFI is coming</h1>
               <p className='headline__text'>
-                A DAO to bring the next billion users
+                The DAO to bring the next billion
               </p>
             </div>
             <NewsletterForm />
           </div>
         </div>
         <footer className='footer'>
-          <a rel='noreferrer noopener' target='_blank' href='https://t.me/fuseio'>
+          <a rel='noreferrer noopener' target='_blank' href='https://t.me/fuse_fi'>
             <img src={telegram} />
           </a>
           <a rel='noreferrer noopener' target='_blank' href='https://github.com/fuseio'>
             <img src={github} />
           </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/fuse_network'>
+          <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/Fuse_Fi'>
             <img src={twitter} />
           </a>
         </footer>

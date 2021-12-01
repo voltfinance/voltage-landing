@@ -75,7 +75,7 @@ const NewsletterForm = () => {
             placeholder='Enter email'
             name='email'
           />
-          <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>Sign for updates</button>
+          <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>Join Us! $50K Sweepstake</button>
         </Form>
       )}
     </Formik>
