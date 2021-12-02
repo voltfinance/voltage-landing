@@ -33,14 +33,14 @@ module.exports = {
         use: [
           !isDev
             ? {
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                  publicPath: '/'
-                }
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '/'
               }
+            }
             : {
-                loader: 'style-loader'
-              },
+              loader: 'style-loader'
+            },
           {
             loader: 'css-loader',
             options: {
@@ -69,14 +69,21 @@ module.exports = {
         ]
       },
       {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: '/fonts/[name].[ext]'
+        }
+      },
+      {
         test: /\.(gif|png|jpe?g)$/i,
         exclude: [/fonts/],
         use: [
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'images',
               name: '[name].[ext]',
+              outputPath: 'images',
               publicPath: '/images'
             }
           },
@@ -117,7 +124,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              publicPath: '/',
+              publicPath: '/'
             }
           }
         ]
@@ -136,7 +143,7 @@ module.exports = {
               name: '[name].[ext]',
               publicPath: '/files'
             }
-          },
+          }
         ]
       },
     ]
@@ -166,8 +173,8 @@ module.exports = {
       logo: path.join(path.resolve(__dirname, './'), '/src/assets/images/favicon.png'),
       prefix: 'images/favicons/',
       favicons: {
-        appName: 'Fuse network',
-        appDescription: 'Fuse network - on-board your users to decentralized finance',
+        appName: 'fuse.fi',
+        appDescription: '',
         developerName: null,
         developerURL: null,
         icons: {

@@ -1,22 +1,6 @@
-@import 'header';
-@import 'section_1';
-@import 'section_3';
-@import 'section_7';
-@import 'swiper';
-@import 'communities';
-@import 'footer';
+@import "modal";
 
-@import 'homepage/section_2';
-@import 'homepage/section_4';
-@import 'homepage/studio_floor';
-@import 'homepage/wallet_floor';
-@import 'homepage/fuseswap_floor';
-@import 'homepage/fuse_ecosysyem';
-@import 'shared/newsletter_form';
-
-@import 'navbar/navbar';
-
-.site-wrapper {
+@include block(site-wrapper) {
   position: relative;
   display: block;
   min-height: 100vh;
@@ -25,48 +9,218 @@
   overflow: hidden;
 }
 
-@include block(main_button) {
-  padding: 1.125em 1.75em;
-  font-size: 1em;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.01px;
-  text-align: center;
-  color: #052235;
-  margin: 1em 0;
-  border-radius: 100px;
-  background-image: linear-gradient(124.98deg, #b3ffbb 6.71%, #fffb00 90%);
+@include block(homepage) {
+  height: 100%;
+  position: relative;
 
-  &::after {
-    background-image: url(images/arrow.png);
+  @include element(container) {
+    background-image: url("images/background.jpg");
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: left center;
-    margin-left: 0.5em;
-    width: 20px;
-    height: 14px;
-    display: inline-block;
-    padding-left: 8px;
-    vertical-align: -20%;
-    content: '';
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: transform 0.3s ease-out;
-    -ms-transition: transform 0.3s ease-out;
-    -o-transition: transform 0.3s ease-out;
-    transition: transform 0.3s ease-out;
+    height: 100vh;
+
+    @include breakpoint(medium down) {
+      background-image: url("images/mobile-bg.jpg");
+    }
+    @include block(logo) {
+      padding: 2em;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      left: 0;
+      @include xy-grid();
+      @include flex-align(justify, middle);
+
+      @include breakpoint(medium down) {
+        @include flex-align(right, middle);
+      }
+
+      > img {
+        width: 177px;
+        height: 60px;
+
+        @include breakpoint(medium down) {
+          display: none;
+        }
+      }
+
+      @include block(enter_app) {
+        @include xy-grid();
+        z-index: 100;
+        @include flex-align(center, middle);
+
+        > span {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1em;
+          color: #ffffff;
+        }
+        > img {
+          margin-left: 0.5em;
+        }
+      }
+    }
+    @include block(footer) {
+      padding: 2em;
+      @include xy-grid();
+      @include flex-align(right, middle);
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      @include breakpoint(medium down) {
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: max-content;
+      }
+
+      > a {
+        img {
+          margin: 0.2em;
+          width: 37px;
+          height: 37px;
+        }
+      }
+    }
   }
 
-  &:hover {
-    background-image: unset;
-    background-color: #f8ff00;
+  @include block(stars) {
+    position: absolute;
+    width: 100%;
+    top: 0px;
 
-    &::after {
-      -webkit-transform: translateX(4px);
-      -moz-transform: translateX(4px);
-      -ms-transform: translateX(4px);
-      -o-transform: translateX(4px);
-      transform: translateX(4px);
+    @include breakpoint(medium down) {
+      display: none;
     }
+  }
+
+  @include block(lighting) {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    @include breakpoint(medium down) {
+      display: none;
+    }
+  }
+
+  @include block(smoke) {
+    position: absolute;
+    width: 100%;
+    @include breakpoint(medium down) {
+      display: none;
+    }
+  }
+
+  @include element(main) {
+    height: 100%;
+  }
+
+  @include block(headline) {
+    font-family: "Newake";
+    @include xy-grid(vertical);
+    @include flex-align(center, middle);
+    @include element(title) {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 7em;
+      font-size: 120px;
+      text-align: center;
+      background-image: linear-gradient(to right, #00ff80, #f3fc1f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include breakpoint(xlarge down) {
+        font-size: 5em;
+      }
+
+      @include breakpoint(medium down) {
+        font-size: 1.875em;
+      }
+    }
+
+    @include element(text) {
+      background-image: linear-gradient(to right, #00ff80, #f3fc1f);
+      background-clip: text;
+      color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2.25em;
+      font-style: normal;
+
+      @include breakpoint(medium down) {
+        font-size: 1.25em;
+      }
+    }
+  }
+
+  @include block(form) {
+    width: 465px;
+    height: 60px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+
+    @include element(wrapper) {
+      @include xy-grid(vertical);
+      @include flex-align(center, middle);
+
+      @include block(sub) {
+        // background-image: linear-gradient(to right, #00ff80, #f3fc1f);
+        // background-clip: text;
+        color: white;
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+        font-size: 16px;
+        font-style: normal;
+        margin-top: 1em;
+        text-align: center;
+        font-weight: 500;
+
+        @include breakpoint(medium down) {
+          font-size: 1.25em;
+        }
+      }
+    }
+
+    @include breakpoint(small down) {
+      width: 95%;
+    }
+
+    @include element(input) {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+      padding-left: 10px;
+    }
+
+    @include element(button) {
+      position: absolute;
+      right: 5px;
+      width: 200px;
+      padding: 5px;
+
+      @include breakpoint(small down) {
+        width: 155px;
+      }
+      height: 50px;
+      font-size: 1.2em;
+      font-weight: bold;
+      font-style: normal;
+      background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
+      border-radius: 10px;
+    }
+  }
+}
+
+@include block(iframe) {
+  width: 400px;
+  height: 550px;
+  > iframe {
+    width: 100%;
+    height: 100%;
   }
 }
