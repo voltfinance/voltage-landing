@@ -173,7 +173,7 @@ module.exports = {
       logo: path.join(path.resolve(__dirname, './'), '/src/assets/images/favicon.png'),
       prefix: 'images/favicons/',
       favicons: {
-        appName: 'Fuse.Fi',
+        appName: 'fuse.fi',
         appDescription: '',
         developerName: null,
         developerURL: null,
