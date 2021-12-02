@@ -68,15 +68,18 @@ const NewsletterForm = () => {
       }}
     >
       {({ isSubmitting, dirty }) => (
-        <Form className='form cell shrink'>
-          <Field
-            type='email'
-            className='form__input'
-            placeholder='Enter email'
-            name='email'
-          />
-          <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>Join Us! $50K Sweepstake</button>
-        </Form>
+        <div className='form__wrapper'>
+          <Form className='form cell shrink'>
+            <Field
+              type='email'
+              className='form__input'
+              placeholder='Enter email'
+              name='email'
+            />
+            <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>I want In!</button>
+          </Form>
+          <p className='sub'>Join the waiting list for the launch and get <br /> a chance to win 16K$!</p>
+        </div>
       )}
     </Formik>
   )

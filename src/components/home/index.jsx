@@ -82,7 +82,7 @@ const HomePage = () => {
           <a rel='noreferrer noopener' target='_blank' href='https://t.me/fuse_fi'>
             <img src={telegram} />
           </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://github.com/fuseio'>
+          <a rel='noreferrer noopener' target='_blank' href='https://github.com/fuseio/fusefi-interface'>
             <img src={github} />
           </a>
           <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/Fuse_Fi'>
