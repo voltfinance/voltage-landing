@@ -78,7 +78,7 @@ const NewsletterForm = () => {
             />
             <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>I want In!</button>
           </Form>
-          <p className='sub'>Join the waiting list for the launch and get <br /> a chance to win 16K$!</p>
+          <p className='sub'>Join the waiting list for the launch and get <br /> a chance to win up-to 50K$.</p>
         </div>
       )}
     </Formik>

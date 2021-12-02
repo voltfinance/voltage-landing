@@ -114,7 +114,7 @@
   }
 
   @include element(main) {
-    height: 90%;
+    height: 100%;
   }
 
   @include block(headline) {
@@ -124,7 +124,7 @@
     @include element(title) {
       font-style: normal;
       font-weight: normal;
-      font-size: 7.5em;
+      font-size: 7em;
       font-size: 120px;
       text-align: center;
       background-image: linear-gradient(to right, #00ff80, #f3fc1f);
@@ -207,6 +207,7 @@
         width: 155px;
       }
       height: 50px;
+      font-size: 1.2em;
       font-weight: bold;
       font-style: normal;
       background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
