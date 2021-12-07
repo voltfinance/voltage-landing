@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import lottie from 'lottie-web'
 import { useSelector } from 'react-redux'
 import { isMobile } from 'react-device-detect'
@@ -12,12 +12,22 @@ import twitter from '@/assets/images/twitter.png'
 import fusefi from '@/assets/images/fusefi.png'
 import arrow from '@/assets/images/enter_app.png'
 import NewsletterForm from './newsletter_form'
+import useOutsideClick from '@/hooks/useOutsideClick.jsx'
 
 const HomePage = () => {
   const starsRef = useRef(null)
   const lightingRef = useRef(null)
   const smokeRef = useRef(null)
   const { animate } = useSelector(state => state.animation)
+  const [isOpen, setMenuOpen] = useState(false)
+  const hamburgerRef = useRef(null)
+
+  useOutsideClick(hamburgerRef, () => {
+    console.log(`hamburgerRef ${isOpen}`)
+    if (isOpen) {
+      setMenuOpen(false)
+    }
+  })
 
   useEffect(() => {
     if (smokeRef.current) {
@@ -70,12 +80,14 @@ const HomePage = () => {
           {animate && <div className='lighting' ref={lightingRef} />}
           <div className='homepage__main grid-y align-spaced align-middle'>
             <div className='headline cell'>
-              <h1 className='headline__title'>Frictionless DEFI is coming</h1>
+              <h1 className='headline__title'>Frictionless DeFi is coming</h1>
               <p className='headline__text'>
                 The DAO to bring the next billion
               </p>
             </div>
-            <NewsletterForm />
+            <div ref={hamburgerRef}>
+              <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
+            </div>
           </div>
         </div>
         <footer className='footer'>
