@@ -1,26 +1,21 @@
 import React, { useState } from 'react'
 import { object, string } from 'yup'
 import { Formik, Form, Field } from 'formik'
-import { useDispatch } from 'react-redux'
-// import axios from 'axios'
 import { useModal } from 'react-modal-hook'
 import ReactModal from 'react-modal'
 
-const ERROR_MESSAGE = 'Something went wrong &#128078'
-
-const NewsletterForm = () => {
-  const dispatch = useDispatch()
+const NewsletterForm = ({ setMenuOpen, isOpen }) => {
   const [src, setSrc] = useState(null)
 
-  const [showModal, hideModal] = useModal(() => {
+  const [showModal,] = useModal(() => {
     return (
-      <ReactModal isOpen overlayClassName='modal__overlay' className='modal__content'>
+      <ReactModal isOpen={isOpen} overlayClassName='modal__overlay' className='modal__content'>
         <div className='iframe'>
-          <iframe sameSite='none' secure={true} src={`https://gleam.io/1l1hH/frictionless-defi-landing-page?email=${src}`} frameBorder="0" allowFullScreen></iframe>
+          <iframe samesite='none' secure="true" src={`https://gleam.io/1l1hH/frictionless-defi-landing-page?email=${src}`} frameBorder="0" allowFullScreen></iframe>
         </div>
       </ReactModal>
     )
-  }, [src])
+  }, [src, isOpen])
 
   const SignupSchema = object().shape({
     email: string().email().required()
@@ -59,6 +54,7 @@ const NewsletterForm = () => {
           // //   setSubmitting(true)
           // // }
           showModal()
+          setMenuOpen(true)
         } catch (error) {
           resetForm({ email: '' })
           setTimeout(() => {
