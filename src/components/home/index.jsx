@@ -9,7 +9,7 @@ import smokeAnimationData from '@/assets/lotties/smoke.json'
 import github from '@/assets/images/github.png'
 import telegram from '@/assets/images/telegram.png'
 import twitter from '@/assets/images/twitter.png'
-import fusefi from '@/assets/images/fusefi.png'
+import voltage from '@/assets/images/voltage_icon.png'
 import arrow from '@/assets/images/enter_app.png'
 import NewsletterForm from './newsletter_form'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
@@ -67,8 +67,10 @@ const HomePage = () => {
   return (
     <>
       <section className='homepage__container'>
-        <div className='logo'>
-          <img src={fusefi} />
+        <div className='header'>
+          <div className='logo'>
+            <img className='voltage' src={voltage} />
+          </div>
           <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.fuse.fi'>
             <span>Enter App</span>
             <img src={arrow} />
