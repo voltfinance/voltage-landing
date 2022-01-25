@@ -22,7 +22,7 @@
     @include breakpoint(medium down) {
       background-image: url("images/mobile-bg.jpg");
     }
-    @include block(header) {
+    @include block(logo) {
       padding: 2em;
       position: absolute;
       top: 0;
@@ -35,11 +35,12 @@
         @include flex-align(right, middle);
       }
 
-      @include block(logo) {
+      > img {
+        height: 60px;
+
         @include breakpoint(medium down) {
           display: none;
         }
-        width: 180px;
       }
 
       @include block(enter_app) {
@@ -122,7 +123,8 @@
     @include element(title) {
       font-style: normal;
       font-weight: normal;
-      font-size: 6.5em;
+      font-size: 7em;
+      font-size: 120px;
       text-align: center;
       background-image: linear-gradient(to right, #00ff80, #f3fc1f);
       -webkit-background-clip: text;

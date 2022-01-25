@@ -67,10 +67,8 @@ const HomePage = () => {
   return (
     <>
       <section className='homepage__container'>
-        <div className='header'>
-          <div className='logo'>
-            <img className='voltage' src={voltage} />
-          </div>
+        <div className='logo'>
+          <img alt='voltage' src={voltage} />
           <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.fuse.fi'>
             <span>Enter App</span>
             <img src={arrow} />
