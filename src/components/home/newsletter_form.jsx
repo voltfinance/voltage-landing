@@ -32,8 +32,8 @@ const NewsletterForm = ({ setMenuOpen, isOpen }) => {
           email,
           provider: 'HDWallet',
           subscribe: true,
-          source: 'fuse.fi',
-          displayName: 'fuse.fi'
+          source: 'Voltage.finance',
+          displayName: 'Voltage.finance'
         }
 
         try {
