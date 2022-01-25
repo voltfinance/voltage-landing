@@ -69,7 +69,7 @@ const HomePage = () => {
       <section className='homepage__container'>
         <div className='logo'>
           <img alt='voltage' src={voltage} />
-          <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.fuse.fi'>
+          <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.voltage.finance'>
             <span>Enter App</span>
             <img src={arrow} />
           </a>
