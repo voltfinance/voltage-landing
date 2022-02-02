@@ -10,6 +10,7 @@ import github from '@/assets/images/github.png'
 import telegram from '@/assets/images/telegram.png'
 import twitter from '@/assets/images/twitter.png'
 import voltage from '@/assets/images/voltage_icon.png'
+import discord from '@/assets/images/discord.png'
 import arrow from '@/assets/images/enter_app.png'
 import NewsletterForm from './newsletter_form'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
@@ -91,14 +92,17 @@ const HomePage = () => {
           </div>
         </div>
         <footer className='footer'>
-          <a rel='noreferrer noopener' target='_blank' href='https://t.me/fuse_fi'>
+          <a rel='noreferrer noopener' target='_blank' href='https://t.me/voltage_finance'>
             <img src={telegram} />
           </a>
           <a rel='noreferrer noopener' target='_blank' href='https://github.com/fuseio/fusefi-interface'>
             <img src={github} />
           </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/Fuse_Fi'>
+          <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/voltfinance'>
             <img src={twitter} />
+          </a>
+          <a rel='noreferrer noopener' target='_blank' href='https://discord.gg/voltagefinance'>
+            <img src={discord} />
           </a>
         </footer>
       </section>
