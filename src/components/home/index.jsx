@@ -95,7 +95,7 @@ const HomePage = () => {
           <a rel='noreferrer noopener' target='_blank' href='https://t.me/voltage_finance'>
             <img src={telegram} />
           </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://github.com/fuseio/fusefi-interface'>
+          <a rel='noreferrer noopener' target='_blank' href='https://github.com/voltfinance/'>
             <img src={github} />
           </a>
           <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/voltfinance'>
