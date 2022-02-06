@@ -5,5 +5,16 @@
       "testMode": true,
       "debug": true
     }
+  },
+  "web3": {
+    "context": "NETWORK",
+    "networlUrl": "https://rpc.fuse.io",
+    "chainId": 122
+  },
+  "tokenSaleContracts": {
+    "swapA": "0x10582c926B0e28BBA58791A339E96AFBb90fF88F",
+    "swapB": "0xDC1a28E45a283f02d8aB7fc08b9A1cbA1b3a7c9B",
+    "swapC": "0x71a6e2A7bC1038323d90F0f6A5D553Ed0837F6d8",
+    "swapD": "0xbA3B11Aeaa659A671D577829F93357bc336aE303"
   }
 }

@@ -6,10 +6,11 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Switch, Route } from 'react-router'
 import configureStore from './store/configureStore'
-import GoogleAnalyticsReporter from '@/components/analytics';
+import GoogleAnalyticsReporter from '@/components/analytics'
 
 import HomePage from '@/components/home'
 import ScrollToTopController from '@/hooks/useScrollToTopController'
+import { Web3Provider } from './context/web3'
 
 Modal.setAppElement('#root')
 
@@ -19,18 +20,20 @@ const App = () => {
   return (
     <StrictMode>
       <ModalProvider>
-        <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <ScrollToTopController>
-              <Route component={GoogleAnalyticsReporter} />
-              <Switch>
-                <Route path='/'>
-                  <HomePage />
-                </Route>
-              </Switch>
-            </ScrollToTopController>
-          </ConnectedRouter>
-        </Provider>
+        <Web3Provider>
+          <Provider store={store}>
+            <ConnectedRouter history={history}>
+              <ScrollToTopController>
+                <Route component={GoogleAnalyticsReporter} />
+                <Switch>
+                  <Route path='/'>
+                    <HomePage />
+                  </Route>
+                </Switch>
+              </ScrollToTopController>
+            </ConnectedRouter>
+          </Provider>
+        </Web3Provider>
       </ModalProvider>
     </StrictMode>
   )

@@ -7,11 +7,11 @@ import ReactModal from 'react-modal'
 const NewsletterForm = ({ setMenuOpen, isOpen }) => {
   const [src, setSrc] = useState(null)
 
-  const [showModal,] = useModal(() => {
+  const [showModal] = useModal(() => {
     return (
       <ReactModal isOpen={isOpen} overlayClassName='modal__overlay' className='modal__content'>
         <div className='iframe'>
-          <iframe samesite='none' secure="true" src={`https://gleam.io/1l1hH/frictionless-defi-landing-page?email=${src}`} frameBorder="0" allowFullScreen></iframe>
+          <iframe samesite='none' secure='true' src={`https://gleam.io/1l1hH/frictionless-defi-landing-page?email=${src}`} frameBorder='0' allowFullScreen />
         </div>
       </ReactModal>
     )

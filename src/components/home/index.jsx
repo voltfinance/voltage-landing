@@ -14,6 +14,8 @@ import discord from '@/assets/images/discord.png'
 import arrow from '@/assets/images/enter_app.png'
 import NewsletterForm from './newsletter_form'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
+import { useWeb3Context } from '../../context/web3'
+import useDerivedTokenSaleState from '../../hooks/useDerivedTokenSaleState'
 
 const HomePage = () => {
   const starsRef = useRef(null)
@@ -22,6 +24,7 @@ const HomePage = () => {
   const { animate } = useSelector(state => state.animation)
   const [isOpen, setMenuOpen] = useState(false)
   const hamburgerRef = useRef(null)
+  const { toggleWeb3Modal } = useWeb3Context()
 
   useOutsideClick(hamburgerRef, () => {
     console.log(`hamburgerRef ${isOpen}`)
