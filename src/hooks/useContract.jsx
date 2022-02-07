@@ -19,6 +19,6 @@ export function useTokenContract (address) {
   return useContract(address, ERC20_ABI)
 }
 
-export function useTokenSaleContract(address) {
+export function useTokenSaleContract (address) {
   return useContract(address, TOKEN_SALE_ABI)
 }

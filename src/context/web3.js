@@ -27,6 +27,26 @@ export function Web3Provider ({ children }) {
       account,
       chainId
     })
+
+    if (!provider.on) return
+
+    provider.on('close', () => {
+      setWeb3Data(null)
+    })
+
+    provider.on('accountsChanged', (accounts) => {
+      setWeb3Data((state) => ({
+        ...state,
+        account: accounts[0]
+      }))
+    })
+
+    provider.on('chainChanged', (chainId) => {
+      setWeb3Data((state) => ({
+        ...state,
+        chainId: web3.utils.hexToNumber(chainId)
+      }))
+    })
   }, [])
 
   web3Modal.on('connect', (provider) => {

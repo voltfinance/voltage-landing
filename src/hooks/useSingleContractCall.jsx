@@ -1,18 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from 'react'
+import { useWeb3Context } from '../context/web3'
 
 export default function useSingleContractCall (contract, method, args = []) {
-    const [result, setResult] = useState(null)
+  const { chainId } = useWeb3Context()
 
-    const call = async () => {
-        if (!contract || !method) return
+  const [result, setResult] = useState(null)
 
-        const callResult = await contract.methods[method](...args).call()
-        setResult(callResult)
-    }
+  const memoArgs = useMemo(() => args, [args])
 
-    useEffect(() => {
-        call()
-    }, [contract, method])
+  const call = async () => {
+    if (!contract || !method) return
 
-    return result
+    const callResult = await contract.methods[method](...memoArgs).call()
+    setResult(callResult)
+  }
+
+  useEffect(() => {
+    call()
+  }, [contract, method, memoArgs, chainId])
+
+  return result
 }
