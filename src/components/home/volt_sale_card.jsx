@@ -20,8 +20,6 @@ const VoltSaleCard = () => {
 
   const switchNetwork = useSwitchNetwork()
 
-  console.log(typedValueWei)
-
   const tokenSaleContracts = CONFIG?.tokenSaleContracts ?? {}
 
   const options = Object.keys(tokenSaleContracts).map(tokenSaleContract => ({
