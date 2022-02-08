@@ -3,6 +3,7 @@ import { fromWei, toWei } from '../utils/number'
 import { useTokenSaleContract } from './useContract'
 import useFuseBalance from './useFuseBalance'
 import useSingleContractCall from './useSingleContractCall'
+import dayjs from 'dayjs'
 
 export default function useDerivedTokenSaleState (address, typedValue) {
   const { account } = useWeb3Context()
@@ -15,22 +16,32 @@ export default function useDerivedTokenSaleState (address, typedValue) {
   const saleDuration = useSingleContractCall(tokenSaleContract, 'saleDuration')
 
   const fuseBalanceWei = useFuseBalance(account)
-  const fuseBalance = fromWei(fuseBalanceWei, 18)
+  const fuseBalance = fromWei(fuseBalanceWei)
 
   const maxPurchaseWei = useSingleContractCall(tokenSaleContract, 'purchaseLimit')
-  const maxPurchase = fromWei(maxPurchaseWei, 18)
+  const maxPurchase = fromWei(maxPurchaseWei)
 
   const tokenAmountWei = useSingleContractCall(tokenSaleContract, 'calculateTokenAmount', [typedValueWei])
-  const tokenAmount = fromWei(tokenAmountWei, 18)
+  const tokenAmount = fromWei(tokenAmountWei)
+
+  const availableTokensWei = useSingleContractCall(tokenSaleContract, 'availableTokensForSale')
+  const availableTokens = fromWei(availableTokensWei)
+
+  const currentTimestamp = dayjs().unix()
 
   let inputError
-  // TODO: handle case where sale has ended and hasn't started
-  if (!address) {
+  if (currentTimestamp < Number(startTime)) {
+    inputError = 'Sale not started'
+  } else if (currentTimestamp > Number(startTime + saleDuration)) {
+    inputError = 'Sale ended'
+  } else if (!address) {
     inputError = 'Select Price'
-  } else if (Number(typedValue) > Number(maxPurchase)) {
-    inputError = 'Amount greater than max purchase amount'
   } else if (Number(typedValue) > Number(fuseBalance)) {
     inputError = 'Insufficient balance'
+  } else if (Number(typedValue) > Number(maxPurchase)) {
+    inputError = 'Amount greater than max purchase amount'
+  } else if (Number(typedValue) > Number(availableTokens)) {
+    inputError = 'Amount greater than available tokens for sale'
   }
 
   return {
