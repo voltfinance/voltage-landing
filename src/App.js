@@ -11,6 +11,7 @@ import GoogleAnalyticsReporter from '@/components/analytics'
 import HomePage from '@/components/home'
 import ScrollToTopController from '@/hooks/useScrollToTopController'
 import { Web3Provider } from './context/web3'
+import { ToastContainer } from 'react-toastify'
 
 Modal.setAppElement('#root')
 
@@ -30,6 +31,7 @@ const App = () => {
                     <HomePage />
                   </Route>
                 </Switch>
+                <ToastContainer position='top-right' />
               </ScrollToTopController>
             </ConnectedRouter>
           </Provider>

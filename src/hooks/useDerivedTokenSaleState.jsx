@@ -30,12 +30,12 @@ export default function useDerivedTokenSaleState (address, typedValue) {
   const currentTimestamp = dayjs().unix()
 
   let inputError
-  if (currentTimestamp < Number(startTime)) {
+  if (!address) {
+    inputError = 'Select Price'
+  } else if (currentTimestamp < Number(startTime)) {
     inputError = 'Sale not started'
   } else if (currentTimestamp > Number(startTime + saleDuration)) {
     inputError = 'Sale ended'
-  } else if (!address) {
-    inputError = 'Select Price'
   } else if (Number(typedValue) > Number(fuseBalance)) {
     inputError = 'Insufficient balance'
   } else if (Number(typedValue) > Number(maxPurchase)) {

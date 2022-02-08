@@ -6,6 +6,7 @@ import Select from '../common/select'
 import arrowIcon from '../../assets/images/arrow.svg'
 import { useWeb3Context } from '../../context/web3'
 import useSwitchNetwork from '../../hooks/useSwitchNetwork'
+import { toast } from 'react-toastify'
 
 const VoltSaleCard = () => {
   const { account, toggleWeb3Modal, chainId } = useWeb3Context()
@@ -34,8 +35,17 @@ const VoltSaleCard = () => {
   const onSwap = useCallback(async () => {
     if (!swapCallback) return
 
-    await swapCallback(typedValueWei)
-  }, [swapCallback, typedValueWei])
+    try {
+      await swapCallback(typedValueWei)
+
+      setTypedValue(undefined)
+      setTokenSaleAddress(undefined)
+      toast.success('Swap successful')
+    } catch (error) {
+      console.error('Swap failed', error)
+      toast.error('Swap failed')
+    }
+  }, [swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
 
   return (
     <div className='eco-round-card grid-container'>
