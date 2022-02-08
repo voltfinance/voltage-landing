@@ -1,4 +1,7 @@
 @import "modal";
+@import "button";
+@import "numerical_input";
+@import "select";
 
 @include block(site-wrapper) {
   position: relative;
@@ -251,115 +254,5 @@
   > iframe {
     width: 100%;
     height: 100%;
-  }
-}
-
-@include block(numerical-input) {
-  display: inline-block;
-  width: 100%;
-
-  @include element(label) {
-    margin-bottom: 4px;
-    font-size: 18px;
-  }
-
-  @include element(inner) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: #071927;
-    min-height: 55px;
-    border-radius: 12px;
-    border-width: 0.5px;
-    border-style: solid;
-    border-color: transparent;
-    padding: 0 12px;
-
-    &:hover {
-      border-color: #B5B9D3
-    }
-
-    input {
-      width: 100%;
-      background-color: transparent;
-      border-color: transparent;
-      border: 0;
-      color: #8DA9BB;
-      font-size: 18px;
-
-      &::-webkit-input-placeholder {
-        opacity: 1 !important;
-      }
-      
-      &:-moz-placeholder {
-        opacity: 1 !important;
-      }
-      
-      &::-moz-placeholder {
-        opacity: 1 !important;
-      }
-    }
-  }
-}
-
-.react-select {
-  &__control {
-    background-color: #071927 !important;
-    border-color: transparent !important;
-    min-height: 55px !important;
-    border-radius: 12px !important;
-    cursor: pointer !important;
-
-    &--is-focused {
-      border-color: transparent !important;
-      box-shadow: none !important;
-    }
- 
-    &:hover {
-      border-color: transparent !important;
-      box-shadow: none !important;
-    }
-  }
-
-  &__menu {
-    background-color: #071927 !important;
-  }
-
-  &__option {
-    font-size: 18px !important;
-    background-color: #071927 !important;
-    cursor: pointer !important;
-    
-    &:hover {
-      background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%) !important;;
-      color: black !important;
-    }
-  }
-
-  &__single-value,
-  &__placeholder {
-    font-size: 18px !important;
-    color: #8DA9BB !important;
-  }
-}
-
-@include block(button) {
-  display: inline-block;
-  border-radius: 12px;
-  min-height: 55px;
-  font-size: 18px;
-  width: 100%;
-
-
-  &--primary {
-    background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
-    color: black;
-  }
-
-  &--small {
-    height: 35px;
-    min-height: 35px;
-    width: 100px;
   }
 }

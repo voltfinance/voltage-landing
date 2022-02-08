@@ -1,0 +1,19 @@
+@include block(button) {
+  display: inline-block;
+  border-radius: 12px;
+  min-height: 55px;
+  font-size: 18px;
+  width: 100%;
+
+
+  &--primary {
+    background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
+    color: black;
+  }
+
+  &--small {
+    height: 35px;
+    min-height: 35px;
+    width: 100px;
+  }
+}
