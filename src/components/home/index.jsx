@@ -1,120 +1,176 @@
-import React, { useRef, useEffect, useState } from 'react'
-import lottie from 'lottie-web'
-import { useSelector } from 'react-redux'
-import { isMobile } from 'react-device-detect'
+import React, { useRef, useEffect, useState } from "react";
+import lottie from "lottie-web";
+import { useSelector } from "react-redux";
+import { isMobile } from "react-device-detect";
+import styled from "styled-components";
 
-import starsAnimationData from '@/assets/lotties/stars.json'
-import lightingAnimationData from '@/assets/lotties/lighting.json'
-import smokeAnimationData from '@/assets/lotties/smoke.json'
-import github from '@/assets/images/github.png'
-import telegram from '@/assets/images/telegram.png'
-import twitter from '@/assets/images/twitter.png'
-import voltage from '@/assets/images/voltage_icon.png'
-import discord from '@/assets/images/discord.png'
-import arrow from '@/assets/images/enter_app.png'
-import NewsletterForm from './newsletter_form'
-import useOutsideClick from '@/hooks/useOutsideClick.jsx'
-import VoltSaleCard from './volt_sale_card'
+import starsAnimationData from "@/assets/lotties/stars.json";
+import lightingAnimationData from "@/assets/lotties/lighting.json";
+import smokeAnimationData from "@/assets/lotties/smoke.json";
+import voltage from "@/assets/images/voltage_icon.png";
+import computer from "@/assets/images/computer.png";
+import smartphone from "@/assets/images/smartphone.png";
+import income from "@/assets/images/income.png";
+import timeline from "@/assets/images/timeline.png";
+
+import VoltSaleCard from "./volt_sale_card";
+import Faq from "./faq";
+import Content from "./content";
+import Appstores from "./appstores";
+import Footer from "./footer";
+
+const Button = styled.a`
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: white;
+  line-height: 19px;
+  background: linear-gradient(
+    273.62deg,
+    rgba(243, 252, 31, 0.5) 9.22%,
+    rgba(58, 216, 137, 0.5) 100%
+  );
+  border: 1.5px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px 40px;
+`;
 
 const HomePage = () => {
-  const starsRef = useRef(null)
-  const lightingRef = useRef(null)
-  const smokeRef = useRef(null)
-  const { animate } = useSelector(state => state.animation)
-  const [isOpen, setMenuOpen] = useState(false)
-  const hamburgerRef = useRef(null)
-
-  useOutsideClick(hamburgerRef, () => {
-    console.log(`hamburgerRef ${isOpen}`)
-    if (isOpen) {
-      setMenuOpen(false)
-    }
-  })
+  const starsRef = useRef(null);
+  const lightingRef = useRef(null);
+  const smokeRef = useRef(null);
+  const { animate } = useSelector((state) => state.animation);
+  const [isOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (smokeRef.current) {
       lottie.loadAnimation({
         animationData: smokeAnimationData,
         container: smokeRef.current,
-        renderer: 'svg',
+        renderer: "svg",
         autoplay: true,
-        loop: true
-      })
+        loop: true,
+      });
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (lightingRef.current) {
       lottie.loadAnimation({
         animationData: lightingAnimationData,
         container: lightingRef.current,
-        renderer: 'svg',
+        renderer: "svg",
         autoplay: animate,
-        loop: false
-      })
+        loop: false,
+      });
     }
-  }, [animate])
+  }, [animate]);
 
   useEffect(() => {
     if (starsRef.current) {
       lottie.loadAnimation({
         animationData: starsAnimationData,
         container: starsRef.current,
-        renderer: 'svg',
-        loop: true
-      })
+        renderer: "svg",
+        loop: true,
+      });
     }
-  }, [])
+  }, []);
 
   return (
     <>
-      <section className='homepage__container'>
-        <div className='logo'>
-          <img alt='voltage' src={voltage} />
-          <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.voltage.finance'>
-            <span>Enter App</span>
-            <img src={arrow} />
-          </a>
+      <section className="homepage__container">
+        <div className="logo">
+          <img alt="voltage" src={voltage} />
+          <Button href={""}>Open App →</Button>
         </div>
-        <div className='homepage'>
-          {!isMobile && <div className='stars' ref={starsRef} />}
-          {!isMobile && <div className='smoke' ref={smokeRef} />}
-          {animate && <div className='lighting' ref={lightingRef} />}
-          <div className='homepage__main grid-y align-spaced align-middle'>
-            <div className='headline cell'>
-              <h1 className='headline__title'>Frictionless DeFi is coming</h1>
-              <p className='headline__text'>
-                The DAO to bring the next billion
-              </p>
-            </div>
-            <div ref={hamburgerRef}>
-              <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
+
+        <div className="homepage">
+          {!isMobile && <div className="stars" ref={starsRef} />}
+          {!isMobile && (
+            <>
+              <div className="smoke" ref={smokeRef} />{" "}
+              <div className="smoke" ref={smokeRef} />
+            </>
+          )}
+          {animate && <div className="lighting" ref={lightingRef} />}
+          <div className="homepage__main grid-y align-spaced align-middle">
+            <div className="headline cell">
+              <h1 className="headline__title">Frictionless DEFI is here</h1>
+              <p className="headline__text">Welcome to a new era of finance</p>
             </div>
           </div>
         </div>
-        <div className='eco-round'>
+
+        <Content
+          gradient={true}
+          reverse={false}
+          title={"Supercharge your experience with Fuse Cash"}
+          subtitle={
+            <>
+              <p>
+                Imagine being in full control of your finances while earning the
+                highest interest rate to date.
+              </p>
+              <p>
+                Voltage is a non-custodial platform that brings cutting edge
+                finacial tools to your fingertips.
+              </p>
+            </>
+          }
+          images={[smartphone, computer]}
+          component={<Appstores />}
+        />
+
+        <Content
+          reverse={true}
+          title={"Create passive income"}
+          subtitle={
+            <>
+              <p>Let’s face it, we all want our money to stretch further. </p>
+              <p>
+                {" "}
+                Explore your options to earn competitive yields with us below.
+              </p>
+            </>
+          }
+          images={[income]}
+          component={
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <a
+                href="http://docs.fuse.io/"
+                className="button button--primary"
+                style={{
+                  width: "280px",
+                  margin: "auto",
+                  lineHeight: "58px",
+                  textAlign: "center",
+                  fontWeight: "500",
+                }}
+              >
+                Learn more
+              </a>
+            </div>
+          }
+        />
+
+        <Content imageTitle={"Timeline"} images={[timeline]} />
+
+        <div className="eco-round">
           <h1>VOLT Ecosystem Round</h1>
-          <div className='eco-round__wrapper'>
+          <div className="eco-round__wrapper">
             <VoltSaleCard />
           </div>
         </div>
-        <footer className='footer'>
-          <a rel='noreferrer noopener' target='_blank' href='https://t.me/voltage_finance'>
-            <img src={telegram} />
-          </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://github.com/voltfinance/'>
-            <img src={github} />
-          </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/voltfinance'>
-            <img src={twitter} />
-          </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://discord.gg/voltagefinance'>
-            <img src={discord} />
-          </a>
-        </footer>
+
+        <Faq />
+
+        <Footer />
       </section>
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

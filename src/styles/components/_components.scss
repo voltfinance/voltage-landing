@@ -15,7 +15,7 @@
   position: relative;
 
   @include element(container) {
-    background-image: url("images/background.jpg");
+    background-image: url("images/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -101,6 +101,8 @@
 
   @include block(smoke) {
     position: absolute;
+    top: 1%;
+    height: 55%;
     width: 100%;
     @include breakpoint(medium down) {
       display: none;
@@ -212,8 +214,6 @@
 
 @include block(eco-round) {
   position: relative;
-  padding: 64px 0;
-  
   > h1 {
     font-size: 30px;
     color: white;
@@ -224,6 +224,7 @@
   @include element(wrapper) {
     display: flex;
     justify-content: center;
+    
   }
 
   @include block(eco-round-card) {
@@ -233,8 +234,10 @@
     color: white;
     width: 600px;
     padding: 30px;
-
-    .grid-x {
+    border: 20px solid #000;
+    border: 4px solid;
+    border-image-source: linear-gradient(306.98deg, #F3FC1F -2.6%, #3AD889 101.84%);    
+    border-image-slice: 2;    .grid-x {
       margin-bottom: 24px;
     }
 
