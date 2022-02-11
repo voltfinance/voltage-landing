@@ -9,7 +9,7 @@ const Background = styled.div`
       ? "linear-gradient(0deg, rgba(0, 0, 0, 0.25) 13.99%, rgba(58, 216, 137, 0.25) 70.07%, rgba(243, 252, 31, 0.25) 134.56%);"
       : "black"};
   min-height: 100vh;
-  justify-content: ${({ center }) => (center ? "center" : "space-around")};
+  justify-content: ${({ center }) => (center ? "center" : "space-evenly")};
 `;
 
 const Content = styled.div`
@@ -92,7 +92,7 @@ const VoltSaleCard = ({
               </Title>
             )}
             <ImageWrap imageTitle={imageTitle}>
-              <img src={images[0]} style={{ minWidth: "30%" }} />
+              <img src={images[0]} style={{ minWidth: "750px" }} />
             </ImageWrap>
           </div>
         )}
