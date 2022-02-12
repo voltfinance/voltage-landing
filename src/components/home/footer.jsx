@@ -72,7 +72,7 @@ const Social = styled.div`
   margin-top: 23px;
 `;
 
-const FaqComponent = () => {
+const Footer = () => {
   const [isOpen, setMenuOpen] = useState(false);
   const hamburgerRef = useRef(null);
 
@@ -157,4 +157,4 @@ const FaqComponent = () => {
   );
 };
 
-export default FaqComponent;
+export default Footer;

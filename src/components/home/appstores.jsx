@@ -12,7 +12,7 @@ const ImageWrap = styled.div`
   }
 `;
 
-const VoltSaleCard = () => {
+const AppStores = () => {
   return (
     <ImageWrap>
       <a href="https://play.google.com/store/apps/details?id=io.fuse.cash">
@@ -26,4 +26,4 @@ const VoltSaleCard = () => {
   );
 };
 
-export default VoltSaleCard;
+export default AppStores;

@@ -19,6 +19,8 @@ import Content from "./content";
 import Appstores from "./appstores";
 import Footer from "./footer";
 
+import {Supercharge} from './backgrounds'
+
 const Button = styled.a`
   font-family: SF Pro Display;
   font-style: normal;
@@ -106,6 +108,7 @@ const HomePage = () => {
 
         <Content
           gradient={true}
+          bg={<Supercharge />}
           reverse={false}
           title={"Supercharge your experience with Fuse Cash"}
           subtitle={
