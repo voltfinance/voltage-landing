@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Background = styled.div`
+const Main = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   background: ${({ background }) =>
@@ -56,8 +57,9 @@ const ImageWrap = styled.div`
   }
 `;
 
-const VoltSaleCard = ({
+const ContentCreator = ({
   gradient,
+  bg,
   reverse,
   title,
   subtitle,
@@ -66,7 +68,8 @@ const VoltSaleCard = ({
   imageTitle,
 }) => {
   return (
-    <Background background={gradient} center={imageTitle}>
+    <Main background={gradient} center={imageTitle}>
+      {bg}
       <Texts>
         {title && <Title> {title} </Title>}
         {subtitle && <SubTitle>{subtitle}</SubTitle>}
@@ -97,13 +100,12 @@ const VoltSaleCard = ({
           </div>
         )}
       </Content>
-
       {component}
-    </Background>
+    </Main>
   );
 };
 
-VoltSaleCard.defaultProps = {
+ContentCreator.defaultProps = {
   gradient: false,
   reverse: false,
   title: "",
@@ -112,4 +114,4 @@ VoltSaleCard.defaultProps = {
   component: <></>,
 };
 
-export default VoltSaleCard;
+export default ContentCreator;
