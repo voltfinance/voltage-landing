@@ -7,11 +7,13 @@ import styled from "styled-components";
 import starsAnimationData from "@/assets/lotties/stars.json";
 import lightingAnimationData from "@/assets/lotties/lighting.json";
 import smokeAnimationData from "@/assets/lotties/smoke.json";
+import scroll from "@/assets/images/scroll.png";
 import voltage from "@/assets/images/voltage_icon.png";
 import computer from "@/assets/images/computer.png";
 import smartphone from "@/assets/images/smartphone.png";
 import income from "@/assets/images/income.png";
 import timeline from "@/assets/images/timeline.png";
+import underline from "@/assets/images/underline.png";
 
 import VoltSaleCard from "./volt_sale_card";
 import Faq from "./faq";
@@ -90,6 +92,8 @@ const HomePage = () => {
         </div>
 
         <div className="homepage">
+          <img src={scroll} style={{position: 'absolute', bottom: '5%', left: '2%'}} />
+          <img src={underline} style={{position: 'absolute', bottom: '0%'}} />
           {!isMobile && <div className="stars" ref={starsRef} />}
           {!isMobile && (
             <>
