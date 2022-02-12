@@ -19,7 +19,7 @@ import Content from "./content";
 import Appstores from "./appstores";
 import Footer from "./footer";
 
-import {Supercharge} from './backgrounds'
+import {Supercharge, PassiveIncome} from './backgrounds'
 
 const Button = styled.a`
   font-family: SF Pro Display;
@@ -128,6 +128,7 @@ const HomePage = () => {
         />
 
         <Content
+          bg={<PassiveIncome />}
           reverse={true}
           title={"Create passive income"}
           subtitle={
