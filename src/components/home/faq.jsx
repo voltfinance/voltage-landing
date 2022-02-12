@@ -1,18 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import plus from "../../assets/images/plus.png";
+import rocket from "../../assets/images/rocket-swing.png";
 
 const Background = styled.div`
+  position: relative;
   height: 100vh;
   margin-top: 80px;
-`;
-const Wrap = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  width: 60%;
-  margin: auto;
-`;
+`
 
 const Title = styled.div`
   width: 100%;
@@ -23,7 +18,8 @@ const Title = styled.div`
   line-height: 57px;
   text-align: center;
   color: white;
-`;
+`
+
 const Faq = styled.details`
   width: 60%;
   margin: auto;
@@ -40,7 +36,7 @@ const Faq = styled.details`
     color: white;
     font-size: 16px;
   }
-`;
+`
 
 const Summary = styled.summary`
   list-style: none;
@@ -53,13 +49,15 @@ const Summary = styled.summary`
     top: 40%;
     right: 40px;
   }
-`;
+`
+
 const Headline = styled(Title)`
   text-align: left;
   font-size: 20px;
   line-height: 20px;
   font-weight: 600;
-`;
+`
+
 const Description = styled(Title)`
   color: #3ad889;
   margin-top: 14px;
@@ -67,7 +65,9 @@ const Description = styled(Title)`
   font-weight: 300;
   font-size: 20px;
   line-height: 20px;
-`;
+`
+
+
 const FaqComponent = () => {
   let datas = [
     {
@@ -96,9 +96,12 @@ const FaqComponent = () => {
       details: "Lorem Ipsum",
     },
   ];
+
+
   return (
     <Background>
       <Title> Frequently Asked questions</Title>
+      <img src={rocket} style={{position: 'absolute', top:'0%', left:'15%'}}/>
       {datas.length}
       {datas.map((item, index) => {
         return (

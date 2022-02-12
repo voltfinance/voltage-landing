@@ -87,7 +87,7 @@ const Footer = () => {
     <Main>
       <Content>
         <div style={{ width: "100%", marginBottom: "50px" }}>
-          <img src={logo} />
+          <img src={logo} width='275px'/>
         </div>
         <Wrap>
           <Column style={{ marginRight: "120px" }}>
