@@ -4,7 +4,7 @@ import styled from "styled-components";
 import NewsletterForm from "./newsletter_form";
 import useOutsideClick from "@/hooks/useOutsideClick.jsx";
 
-import logo from "../../assets/images/voltage_icon.png";
+import logo from "../../assets/images/voltage_icon.svg";
 import column from "../../assets/images/column.png";
 import github from "@/assets/images/github.png";
 import telegram from "@/assets/images/telegram.png";

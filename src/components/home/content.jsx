@@ -42,7 +42,7 @@ const SubTitle = styled(Title)`
   padding-left: 20%;
   padding-right: 20%;
   font-weight: normal;
-  line-height: 24px;
+  line-height: 39px;
   margin-top: 30px;
 `;
 const ImageWrap = styled.div`
@@ -50,6 +50,7 @@ const ImageWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   min-height: 350px;
+  padding: 0 1rem;
   margin: auto;
   > img {
     width: ${({ imageTitle }) => (imageTitle ? "80vw" : "")};

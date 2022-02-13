@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Newake";
-    src: url("../../fonts/Newake/NewakeRegular.woff2") format("woff2"), url("../../fonts/Newake/NewakeRegular.woff") format("woff");
+    src: url("./fonts/NewakeRegular.woff2") format("woff2"), url("./fonts/NewakeRegular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }

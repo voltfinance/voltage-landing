@@ -7,13 +7,12 @@ import styled from "styled-components";
 import starsAnimationData from "@/assets/lotties/stars.json";
 import lightingAnimationData from "@/assets/lotties/lighting.json";
 import smokeAnimationData from "@/assets/lotties/smoke.json";
-import scroll from "@/assets/images/scroll.png";
-import voltage from "@/assets/images/voltage_icon.png";
-import computer from "@/assets/images/computer.png";
-import smartphone from "@/assets/images/smartphone.png";
-import income from "@/assets/images/income.png";
-import timeline from "@/assets/images/timeline.png";
+import scroll from "@/assets/images/scroll.svg";
+import voltage from "@/assets/images/voltage_icon.svg";
+import income from "@/assets/images/income.svg";
+import timeline from "@/assets/images/timeline.svg";
 import underline from "@/assets/images/underline.png";
+import fusecash from '@/assets/images/fuse_cash.png'
 
 import VoltSaleCard from "./volt_sale_card";
 import Faq from "./faq";
@@ -95,12 +94,6 @@ const HomePage = () => {
           <img src={scroll} style={{position: 'absolute', bottom: '5%', left: '2%'}} />
           <img src={underline} style={{position: 'absolute', bottom: '0%'}} />
           {!isMobile && <div className="stars" ref={starsRef} />}
-          {!isMobile && (
-            <>
-              <div className="smoke" ref={smokeRef} />{" "}
-              <div className="smoke" ref={smokeRef} />
-            </>
-          )}
           {animate && <div className="lighting" ref={lightingRef} />}
           <div className="homepage__main grid-y align-spaced align-middle">
             <div className="headline cell">
@@ -127,7 +120,7 @@ const HomePage = () => {
               </p>
             </>
           }
-          images={[smartphone, computer]}
+          images={[fusecash]}
           component={<Appstores />}
         />
 
