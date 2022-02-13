@@ -19,8 +19,9 @@ const Content = styled.div`
   width: 100%;
   order: ${({ reverse }) => (reverse ? 1 : 0)};
 `;
+
 const Texts = styled.div`
-  margin-top: 65px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
 `;
@@ -36,6 +37,7 @@ const Title = styled.div`
   text-align: center;
   color: white;
 `;
+
 const SubTitle = styled(Title)`
   font-size: 24px;
   order: 1;
@@ -45,6 +47,7 @@ const SubTitle = styled(Title)`
   line-height: 39px;
   margin-top: 30px;
 `;
+
 const ImageWrap = styled.div`
   width: 100%;
   display: flex;
@@ -61,6 +64,7 @@ const ImageWrap = styled.div`
 const ContentCreator = ({
   gradient,
   bg,
+  center,
   reverse,
   title,
   subtitle,
@@ -69,7 +73,7 @@ const ContentCreator = ({
   imageTitle,
 }) => {
   return (
-    <Main background={gradient} center={imageTitle}>
+    <Main background={gradient} center={imageTitle || center}>
       {bg}
       <Texts>
         {title && <Title> {title} </Title>}
@@ -78,14 +82,14 @@ const ContentCreator = ({
 
       <Content reverse={reverse}>
         {images.length == 2 ? (
-          <ImageWrap style={{ height: "650px" }}>
+          <ImageWrap style={{ height: "300px" }}>
             <img
               src={images[0]}
-              style={{ position: "absolute", left: "20%", zIndex: "100" }}
+              style={{ position: "absolute", left: "25%", zIndex: "100", height: "375px" }}
             />
             <img
               src={images[1]}
-              style={{ position: "absolute", right: "20%" }}
+              style={{ position: "absolute", right: "25%", height: "375px" }}
             />
           </ImageWrap>
         ) : (
@@ -95,9 +99,11 @@ const ContentCreator = ({
                 {imageTitle}
               </Title>
             )}
-            <ImageWrap imageTitle={imageTitle}>
-              <img src={images[0]} style={{ minWidth: "750px" }} />
-            </ImageWrap>
+            {images[0] ? (
+              <ImageWrap imageTitle={imageTitle}>
+                <img src={images[0]} style={{ minWidth: "500px" }} />
+              </ImageWrap>
+            ) : null}
           </div>
         )}
       </Content>

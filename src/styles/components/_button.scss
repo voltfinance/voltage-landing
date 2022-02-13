@@ -9,6 +9,9 @@
   &--primary {
     background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
     color: black;
+    &:hover{
+      background: linear-gradient(95.27deg, #3AD889 -24.83%, #F3FC1F 131.84%);
+    }
   }
 
   &--small {

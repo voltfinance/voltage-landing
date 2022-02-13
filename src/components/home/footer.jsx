@@ -68,8 +68,8 @@ const Button = styled(Link)`
 
 const Social = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 23px;
+  justify-content: flex-end;
+  margin-bottom: 25px;
 `;
 
 const Footer = () => {
@@ -99,7 +99,7 @@ const Footer = () => {
           </Column>
           <Column>
             <img src={column} />
-            <Button href={""}>Open App →</Button>
+            <a className="button-baseline" href={"https://app.voltage.finance"}>Open App →</a>
             <Link href={"https://fuse.io"}></Link>
             <Link href={"https://staking.fuse.io/"}>Voltage Docs</Link>
             <Link href={"https://staking.fuse.io/"}>Work with us</Link>
@@ -107,9 +107,9 @@ const Footer = () => {
         </Wrap>
         <Wrap>
           <Column>
-            <div ref={hamburgerRef} className="homepage">
+            <div ref={hamburgerRef} className={'homepage'}>
               {" "}
-              <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
+              <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen}/>
             </div>
             <Social>
               <a

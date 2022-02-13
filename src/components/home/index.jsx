@@ -7,20 +7,23 @@ import styled from "styled-components";
 import starsAnimationData from "@/assets/lotties/stars.json";
 import lightingAnimationData from "@/assets/lotties/lighting.json";
 import smokeAnimationData from "@/assets/lotties/smoke.json";
-import scroll from "@/assets/images/scroll.svg";
-import voltage from "@/assets/images/voltage_icon.svg";
-import income from "@/assets/images/income.svg";
-import timeline from "@/assets/images/timeline.svg";
+import scroll from "@/assets/images/scroll.png";
+import voltage from "@/assets/images/voltage_icon.png";
+import computer from "@/assets/images/computer.png";
+import smartphone from "@/assets/images/smartphone.png";
+import income from "@/assets/images/income.png";
+import timeline from "@/assets/images/timeline.png";
 import underline from "@/assets/images/underline.png";
-import fusecash from '@/assets/images/fuse_cash.png'
+import wallet from "@/assets/images/wallet.svg";
 
 import VoltSaleCard from "./volt_sale_card";
 import Faq from "./faq";
 import Content from "./content";
 import Appstores from "./appstores";
 import Footer from "./footer";
+import { useWeb3Context } from '../../context/web3'
 
-import {Supercharge, PassiveIncome} from './backgrounds'
+import {Supercharge, PassiveIncome, Ecosystem} from './backgrounds'
 
 const Button = styled.a`
   font-family: SF Pro Display;
@@ -37,15 +40,20 @@ const Button = styled.a`
   border: 1.5px solid #ffffff;
   box-sizing: border-box;
   border-radius: 5px;
-  padding: 10px 40px;
+  padding: 10px 20px;
+  : hover{
+    background: linear-gradient(273.62deg, rgba(255, 255, 255, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
+
+  }
 `;
+
 
 const HomePage = () => {
   const starsRef = useRef(null);
   const lightingRef = useRef(null);
   const smokeRef = useRef(null);
   const { animate } = useSelector((state) => state.animation);
-  const [isOpen, setMenuOpen] = useState(false);
+  const { toggleWeb3Modal } = useWeb3Context()
 
   useEffect(() => {
     if (smokeRef.current) {
@@ -87,11 +95,14 @@ const HomePage = () => {
       <section className="homepage__container">
         <div className="logo">
           <img alt="voltage" src={voltage} />
-          <Button href={""}>Open App →</Button>
+          <div className="menu-wrap">
+          <a className="button-secondary" href={'https://app.voltage.finance/'}>Open App →</a>
+          <a className='button-baseline' onClick={toggleWeb3Modal} ><img src={wallet} />Connect Wallet</a>
+          </div>
         </div>
 
         <div className="homepage">
-          <img src={scroll} style={{position: 'absolute', bottom: '5%', left: '2%'}} />
+          <img src={scroll} style={{position: 'absolute', bottom: '5%', left: '4%'}} />
           <img src={underline} style={{position: 'absolute', bottom: '0%'}} />
           {!isMobile && <div className="stars" ref={starsRef} />}
           {animate && <div className="lighting" ref={lightingRef} />}
@@ -99,10 +110,11 @@ const HomePage = () => {
             <div className="headline cell">
               <h1 className="headline__title">Frictionless DEFI is here</h1>
               <p className="headline__text">Welcome to a new era of finance</p>
+             
             </div>
           </div>
         </div>
-
+  
         <Content
           gradient={true}
           bg={<Supercharge />}
@@ -120,10 +132,9 @@ const HomePage = () => {
               </p>
             </>
           }
-          images={[fusecash]}
+          images={[smartphone, computer]}
           component={<Appstores />}
         />
-
         <Content
           bg={<PassiveIncome />}
           reverse={true}
@@ -158,13 +169,18 @@ const HomePage = () => {
         />
 
         <Content imageTitle={"Timeline"} images={[timeline]} />
-
-        <div className="eco-round">
-          <h1>VOLT Ecosystem Round</h1>
-          <div className="eco-round__wrapper">
-            <VoltSaleCard />
-          </div>
-        </div>
+        <Content title={'Volt Ecosystem Round'} component={
+           <div className="eco-round">
+           <div className="eco-round__wrapper">
+             <VoltSaleCard />
+           </div>
+         </div>
+        } 
+        bg={
+          <Ecosystem />
+        }
+        center={true}/>
+       
 
         <Faq />
 
