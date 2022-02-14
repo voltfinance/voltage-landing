@@ -16,12 +16,14 @@ const Main = styled.div`
 const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   order: ${({ reverse }) => (reverse ? 1 : 0)};
 `;
 
 const Texts = styled.div`
   margin-top: 25px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
 `;
@@ -41,8 +43,8 @@ const Title = styled.div`
 const SubTitle = styled(Title)`
   font-size: 24px;
   order: 1;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 23%;
+  padding-right: 23%;
   font-weight: normal;
   line-height: 39px;
   margin-top: 30px;
@@ -85,7 +87,12 @@ const ContentCreator = ({
           <ImageWrap style={{ height: "55vh" }}>
             <img
               src={images[0]}
-              style={{ position: "absolute", left: "25%", zIndex: "100", height: "375px" }}
+              style={{
+                position: "absolute",
+                left: "25%",
+                zIndex: "100",
+                height: "375px",
+              }}
             />
             <img
               src={images[1]}
@@ -93,21 +100,31 @@ const ContentCreator = ({
             />
           </ImageWrap>
         ) : (
-          <div style={{ margin: "auto" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column-reverse",
+            }}
+          >
             {imageTitle && (
-              <Title style={{ marginBottom: "75px", width: "100%" }}>
-                {imageTitle}
-              </Title>
+              <Title style={{ width: "100%" }}>{imageTitle}</Title>
             )}
             {images[0] ? (
               <ImageWrap imageTitle={imageTitle}>
-                <img src={images[0]} style={{ minWidth: "500px" }} />
+                {imageTitle ? (
+                  <img src={images[0]} style={{ width: "85vw" }} />
+                ) : (
+                  <img src={images[0]} style={{ width: "45vw" }} />
+                )}
               </ImageWrap>
             ) : null}
           </div>
         )}
       </Content>
-      {component}
+      <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
+        {component}
+      </div>
     </Main>
   );
 };

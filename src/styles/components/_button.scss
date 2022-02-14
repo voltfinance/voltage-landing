@@ -15,8 +15,29 @@
   }
 
   &--small {
-    height: 35px;
-    min-height: 35px;
-    width: 100px;
+    height: 28px;
+    min-height: 28px;
+    width: 80px;
+    color: white;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1.75px transparent;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      ),
+      linear-gradient(110deg, #3ad889 -43%, #f3fc1fc9 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #071927 inset;
+    &:hover{
+      background: #3ad889;
+      cursor: pointer;
+    }
   }
+
 }
