@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect} from "react";
 import lottie from "lottie-web";
 import { useSelector } from "react-redux";
 import { isMobile } from "react-device-detect";
-import styled from "styled-components";
 
 import starsAnimationData from "@/assets/lotties/stars.json";
 import lightingAnimationData from "@/assets/lotties/lighting.json";
@@ -14,38 +13,15 @@ import smartphone from "@/assets/images/smartphone.png";
 import income from "@/assets/images/income.png";
 import timeline from "@/assets/images/timeline.png";
 import underline from "@/assets/images/underline.png";
-import wallet from "@/assets/images/wallet.svg";
 
 import VoltSaleCard from "./volt_sale_card";
-import Faq from "./faq";
+import Faq from "../faq";
 import Content from "./content";
 import Appstores from "./appstores";
 import Footer from "./footer";
-import { useWeb3Context } from '../../context/web3'
 
 import {Supercharge, PassiveIncome, Ecosystem} from './backgrounds'
-
-const Button = styled.a`
-  font-family: SF Pro Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  color: white;
-  line-height: 19px;
-  background: linear-gradient(
-    273.62deg,
-    rgba(243, 252, 31, 0.5) 9.22%,
-    rgba(58, 216, 137, 0.5) 100%
-  );
-  border: 1.5px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 5px;
-  padding: 10px 20px;
-  : hover{
-    background: linear-gradient(273.62deg, rgba(255, 255, 255, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
-
-  }
-`;
+import ConnectButton from './connectButton'
 
 
 const HomePage = () => {
@@ -53,7 +29,6 @@ const HomePage = () => {
   const lightingRef = useRef(null);
   const smokeRef = useRef(null);
   const { animate } = useSelector((state) => state.animation);
-  const { toggleWeb3Modal } = useWeb3Context()
 
   useEffect(() => {
     if (smokeRef.current) {
@@ -97,7 +72,7 @@ const HomePage = () => {
           <img alt="voltage" src={voltage} />
           <div className="menu-wrap">
           <a className="button-secondary" href={'https://app.voltage.finance/'}>Open App →</a>
-          <a className='button-baseline' onClick={toggleWeb3Modal} ><img src={wallet} />Connect Wallet</a>
+          <ConnectButton />
           </div>
         </div>
 
