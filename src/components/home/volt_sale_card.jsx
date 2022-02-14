@@ -5,10 +5,13 @@ import NumericalInput from '../common/numerical_input'
 import Select from '../common/select'
 import arrowIcon from '../../assets/images/arrow.svg'
 import info from '../../assets/images/info.svg'
+import voltInfo from '../../assets/images/volt_info.png'
+import docs from '../../assets/images/voltage_docs.svg'
 
 import { useWeb3Context } from '../../context/web3'
 import useSwitchNetwork from '../../hooks/useSwitchNetwork'
 import { toast } from 'react-toastify'
+import Modal from 'react-modal';
 
 
 const VoltSaleCard = () => {
@@ -50,11 +53,52 @@ const VoltSaleCard = () => {
     }
   }, [swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
 
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+
+
+  const modalStyle = {
+    overlay:{
+      background: 'transparent',
+    },
+    content: {
+      color: 'white',
+      border:'none',
+      background: '#0B0C13',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
 
   return (
-    <div className='eco-round-card grid-container'>
-
-      <div className='grid-x grid-margin-x align-bottom'>
+  <>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyle}
+        contentLabel="Voltage Info"
+      >
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+   <img src={voltInfo} width={'685px'}/>
+        <a href='https://docs.fuse.io' style={{textAlign: 'right',}}> <img src={docs} style={{marginRight:'8px'}} />Voltage Docs →</a>
+        </div>
+     
+      </Modal>
+      <div className='eco-round-card grid-container'>
+        <div className='grid-x grid-margin-x align-bottom'>
         <div className='cell small-12'>
           <NumericalInput
             label='FUSE'
@@ -94,8 +138,11 @@ const VoltSaleCard = () => {
           {inputError ?? 'Swap'}
         </button>
       )}
-      <div className='info'><span>More Info <img src={info} /></span> </div> 
+      <div className='info' onClick={openModal}><span>More Info <img src={info} /></span> </div> 
     </div>
+  </>
+  
+  
   )
 }
 

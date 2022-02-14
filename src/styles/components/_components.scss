@@ -272,7 +272,7 @@
 
 @include block(menu-wrap) {
   display: flex;
-  width: 375px;
+  min-width: 325px;
   justify-content: space-around;
 }
 
@@ -336,6 +336,7 @@
 }
 
 @include block(button-balance){
+  margin-left: 15px;
   display: flex;
   align-items: center;
   background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
