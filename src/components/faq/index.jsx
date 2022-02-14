@@ -7,7 +7,6 @@ const Background = styled.div`
   position: relative;
   height: 100vh;
   margin-top: 40px;
-  margin-bottom: 100px;
 `;
 
 const Title = styled.div`
