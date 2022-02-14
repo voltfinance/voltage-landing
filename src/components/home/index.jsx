@@ -1,4 +1,4 @@
-import React, { useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import lottie from "lottie-web";
 import { useSelector } from "react-redux";
 import { isMobile } from "react-device-detect";
@@ -14,15 +14,14 @@ import income from "@/assets/images/income.png";
 import timeline from "@/assets/images/timeline.png";
 import underline from "@/assets/images/underline.png";
 
-import VoltSaleCard from "./volt_sale_card";
+import Cards from "./cards";
 import Faq from "../faq";
 import Content from "./content";
 import Appstores from "./appstores";
 import Footer from "./footer";
 
-import {Supercharge, PassiveIncome, Ecosystem} from './backgrounds'
-import ConnectButton from './connectButton'
-
+import { Supercharge, PassiveIncome, Ecosystem } from "./backgrounds";
+import ConnectButton from "./connectButton";
 
 const HomePage = () => {
   const starsRef = useRef(null);
@@ -71,25 +70,32 @@ const HomePage = () => {
         <div className="logo">
           <img alt="voltage" src={voltage} />
           <div className="menu-wrap">
-          <a className="button-secondary" href={'https://app.voltage.finance/'}>Open App →</a>
-          <ConnectButton />
+            <a
+              className="button-secondary"
+              href={"https://app.voltage.finance/"}
+            >
+              Open App →
+            </a>
+            <ConnectButton />
           </div>
         </div>
 
         <div className="homepage">
-          <img src={scroll} style={{position: 'absolute', bottom: '5%', left: '4%'}} />
-          <img src={underline} style={{position: 'absolute', bottom: '0%'}} />
+          <img
+            src={scroll}
+            style={{ position: "absolute", bottom: "5%", left: "4%" }}
+          />
+          <img src={underline} style={{ position: "absolute", bottom: "0%" }} />
           {!isMobile && <div className="stars" ref={starsRef} />}
           {animate && <div className="lighting" ref={lightingRef} />}
           <div className="homepage__main grid-y align-spaced align-middle">
             <div className="headline cell">
               <h1 className="headline__title">Frictionless DEFI is here</h1>
               <p className="headline__text">Welcome to a new era of finance</p>
-             
             </div>
           </div>
         </div>
-  
+
         <Content
           gradient={true}
           bg={<Supercharge />}
@@ -144,18 +150,12 @@ const HomePage = () => {
         />
 
         <Content imageTitle={"Timeline"} images={[timeline]} />
-        <Content title={'Volt Ecosystem Round'} component={
-           <div className="eco-round">
-           <div className="eco-round__wrapper">
-             <VoltSaleCard />
-           </div>
-         </div>
-        } 
-        bg={
-          <Ecosystem />
-        }
-        center={true}/>
-       
+        <Content
+          title={"Volt Ecosystem Round"}
+          component={<Cards />}
+          bg={<Ecosystem />}
+          center={true}
+        />
 
         <Faq />
 

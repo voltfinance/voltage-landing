@@ -217,6 +217,7 @@
 
 @include block(eco-round) {
   position: relative;
+  width: 100%;
   > h1 {
     font-size: 30px;
     color: white;
@@ -235,12 +236,9 @@
     box-shadow: 4px 4px 100px 16px rgba(194, 246, 191, 0.2);
     border-radius: 12px;
     color: white;
-    width: 600px;
+    width: 100%;
     padding: 30px;
-    border: 20px solid #000;
-    border: 4px solid;
-    border-image-source: linear-gradient(306.98deg, #F3FC1F -2.6%, #3AD889 101.84%);    
-    border-image-slice: 2;    .grid-x {
+    .grid-x {
       margin-bottom: 24px;
     }
 

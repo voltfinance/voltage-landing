@@ -10,6 +10,7 @@ import github from "@/assets/images/github.png";
 import telegram from "@/assets/images/telegram.png";
 import twitter from "@/assets/images/twitter.png";
 import discord from "@/assets/images/discord.png";
+import medium from "@/assets/images/medium.svg";
 
 const Main = styled.div`
   width: 100%;
@@ -52,6 +53,7 @@ const Link = styled.a`
   font-size: 20px;
   line-height: 41px;
   color: white;
+  padding-left: 8px;
 `;
 const Button = styled(Link)`
   line-height: 19px;
@@ -86,8 +88,8 @@ const Footer = () => {
   return (
     <Main>
       <Content>
-        <div style={{ width: "100%", marginBottom: "50px" }}>
-          <img src={logo} width='275px'/>
+        <div style={{ width: "100%", marginBottom: "25px" }}>
+          <img src={logo} width="275px" />
         </div>
         <Wrap>
           <Column style={{ marginRight: "120px" }}>
@@ -99,7 +101,9 @@ const Footer = () => {
           </Column>
           <Column>
             <img src={column} />
-            <a className="button-baseline" href={"https://app.voltage.finance"}>Open App →</a>
+            <a className="button-baseline" href={"https://app.voltage.finance"}>
+              Open App →
+            </a>
             <Link href={"https://fuse.io"}></Link>
             <Link href={"https://staking.fuse.io/"}>Voltage Docs</Link>
             <Link href={"https://staking.fuse.io/"}>Work with us</Link>
@@ -107,11 +111,21 @@ const Footer = () => {
         </Wrap>
         <Wrap>
           <Column>
-            <div ref={hamburgerRef} className={'homepage'}>
+            <div ref={hamburgerRef} className={"homepage"}>
               {" "}
-              <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen}/>
+              <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
             </div>
             <Social>
+              <a
+                rel="noreferrer noopener"
+                target="_blank"
+                href="https://blog.fuse.io/"
+              >
+                <img
+                  src={medium}
+                  style={{ width: "40px", marginRight: "10px" }}
+                />
+              </a>
               <a
                 rel="noreferrer noopener"
                 target="_blank"
@@ -135,19 +149,19 @@ const Footer = () => {
               <a
                 rel="noreferrer noopener"
                 target="_blank"
-                href="https://twitter.com/voltfinance"
+                href="https://discord.gg/voltagefinance"
               >
                 <img
-                  src={twitter}
+                  src={discord}
                   style={{ width: "40px", marginRight: "10px" }}
                 />
               </a>
               <a
                 rel="noreferrer noopener"
                 target="_blank"
-                href="https://discord.gg/voltagefinance"
+                href="https://twitter.com/voltfinance"
               >
-                <img src={discord} style={{ width: "40px" }} />
+                <img src={twitter} style={{ width: "40px" }} />
               </a>
             </Social>
           </Column>
