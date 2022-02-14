@@ -82,7 +82,7 @@ const ContentCreator = ({
 
       <Content reverse={reverse}>
         {images.length == 2 ? (
-          <ImageWrap style={{ height: "300px" }}>
+          <ImageWrap style={{ height: "55vh" }}>
             <img
               src={images[0]}
               style={{ position: "absolute", left: "25%", zIndex: "100", height: "375px" }}
