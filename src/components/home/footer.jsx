@@ -13,6 +13,8 @@ import discord from "@/assets/images/discord.png";
 import medium from "@/assets/images/medium.svg";
 
 const Main = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
   background: linear-gradient(
     180deg,
@@ -24,7 +26,7 @@ const Main = styled.div`
 `;
 const Content = styled.div`
   width: 80%;
-  margin: auto;
+  margin-top: 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -54,18 +56,6 @@ const Link = styled.a`
   line-height: 41px;
   color: white;
   padding-left: 8px;
-`;
-const Button = styled(Link)`
-  line-height: 19px;
-  background: linear-gradient(
-    273.62deg,
-    rgba(243, 252, 31, 0.5) 9.22%,
-    rgba(58, 216, 137, 0.5) 100%
-  );
-  border: 1.5px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 5px;
-  padding: 10px 40px;
 `;
 
 const Social = styled.div`
@@ -101,7 +91,7 @@ const Footer = () => {
           </Column>
           <Column>
             <img src={column} />
-            <a className="button-baseline" href={"https://app.voltage.finance"}>
+            <a className="button-secondary" href={"https://app.voltage.finance"}>
               Open App →
             </a>
             <Link href={"https://fuse.io"}></Link>
@@ -129,20 +119,20 @@ const Footer = () => {
               <a
                 rel="noreferrer noopener"
                 target="_blank"
-                href="https://t.me/voltage_finance"
+                href="https://github.com/voltfinance/"
               >
                 <img
-                  src={telegram}
+                  src={github}
                   style={{ width: "40px", marginRight: "10px" }}
                 />
               </a>
               <a
                 rel="noreferrer noopener"
                 target="_blank"
-                href="https://github.com/voltfinance/"
+                href="https://t.me/voltage_finance"
               >
                 <img
-                  src={github}
+                  src={telegram}
                   style={{ width: "40px", marginRight: "10px" }}
                 />
               </a>

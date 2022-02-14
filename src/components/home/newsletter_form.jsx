@@ -72,7 +72,7 @@ const NewsletterForm = ({ setMenuOpen, isOpen }) => {
               placeholder='Enter email'
               name='email'
             />
-            <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>I want In!</button>
+            <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>Sign for updates</button>
           </Form>
         </div>
       )}

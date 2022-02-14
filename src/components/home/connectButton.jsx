@@ -18,7 +18,7 @@ const HomePage = () => {
                    
     {!account ? (
         <button className='button-baseline' onClick={toggleWeb3Modal}>
-          Connect wallet
+         <img src={wallet} /> Connect wallet
         </button>
       ) : chainId !== 122 ? (
         <button className='button-baseline' onClick={switchNetwork}>
