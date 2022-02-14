@@ -84,9 +84,9 @@ const Footer = () => {
         <Wrap>
           <Column style={{ marginRight: "120px" }}>
             <img src={column} />
-            <Link href={"https://fuse.io"}>Getting Started</Link>
+            <Link href={"#"} style={{color:'#8DA9BB'}}>Getting Started</Link>
             <Link href={"https://staking.fuse.io/"}>Fuse Staking</Link>
-            <Link href={"https://staking.fuse.io/"}>Fuse Studio</Link>
+            <Link href={"https://studio.fuse.io/"}>Fuse Studio</Link>
             <Link href={"https://fuse.cash/"}>Fuse Cash</Link>
           </Column>
           <Column>
@@ -94,9 +94,8 @@ const Footer = () => {
             <a className="button-secondary" href={"https://app.voltage.finance"}>
               Open App →
             </a>
-            <Link href={"https://fuse.io"}></Link>
-            <Link href={"https://staking.fuse.io/"}>Voltage Docs</Link>
-            <Link href={"https://staking.fuse.io/"}>Work with us</Link>
+            <Link href={"https://docs.voltage.finance"}>Voltage Docs</Link>
+            <Link href={"https://www.linkedin.com/company/fuseio/jobs/"}>Work with us</Link>
           </Column>
         </Wrap>
         <Wrap>
