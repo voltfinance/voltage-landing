@@ -9,7 +9,7 @@ const Main = styled.div`
     background
       ? "linear-gradient(0deg, rgba(0, 0, 0, 0.25) 13.99%, rgba(58, 216, 137, 0.25) 70.07%, rgba(243, 252, 31, 0.25) 134.56%);"
       : "black"};
-  min-height: 100vh;
+  min-height: ${({active}) => (active ? '100vh' : '60vh')};
   justify-content: ${({ center }) => (center ? "center" : "space-evenly")};
 `;
 
@@ -75,7 +75,7 @@ const ContentCreator = ({
   imageTitle,
 }) => {
   return (
-    <Main background={gradient} center={imageTitle || center}>
+    <Main background={gradient} center={imageTitle || center} active={component}>
       {bg}
       <Texts>
         {title && <Title> {title} </Title>}
@@ -135,7 +135,7 @@ ContentCreator.defaultProps = {
   title: "",
   subtitle: "",
   images: [],
-  component: <></>,
+  component: null,
 };
 
 export default ContentCreator;

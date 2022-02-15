@@ -125,7 +125,7 @@ const HomePage = () => {
           component={
             <div style={{ display: "flex", justifyContent: "center" }}>
               <a
-                href="http://docs.fuse.io/"
+                href="http://docs.voltage.finance"
                 className="button button--primary"
                 style={{
                   width: "280px",
