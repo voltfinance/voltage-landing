@@ -60,13 +60,16 @@
       position: absolute;
     }
 
+    > * {
+      margin-left: 1em;
+    }
+
     > a {
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
       line-height: 41px;
       color: white;
-      margin-left: 1em;
     }
     > img {
       height: 162px;

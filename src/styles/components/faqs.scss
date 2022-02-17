@@ -72,6 +72,7 @@
   @include element(button) {
     @include xy-grid();
     @include flex-align(justify, middle);
+    padding: 0 1em;
 
     @include block(rotate) {
       transition: 0.3s;

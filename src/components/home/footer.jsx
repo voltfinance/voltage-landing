@@ -32,9 +32,9 @@ const Footer = () => {
             <a rel='noreferrer noopener' target='_blank' href='https://fuse.cash/'>Fuse Cash</a>
           </div>
           <div className='menu'>
-            <a rel='noreferrer noopener' target='_blank' className='button-secondary' href='https://app.voltage.finance'>
+            <button rel='noreferrer noopener' target='_blank' className='button-secondary' href='https://app.voltage.finance'>
               Open App →
-            </a>
+            </button>
             <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance'>Voltage Docs</a>
             <a rel='noreferrer noopener' target='_blank' href='https://www.linkedin.com/company/fuseio/jobs/'>Work with us</a>
           </div>

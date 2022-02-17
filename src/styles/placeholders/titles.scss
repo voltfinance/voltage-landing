@@ -7,6 +7,10 @@
   text-align: center;
   color: white;
 
+  @include breakpoint(medium down) {
+    font-size: 2em;
+  }
+
   @include breakpoint(small down) {
     font-size: 1.5em;
     line-height: 29px;
@@ -24,6 +28,10 @@
   line-height: 39px;
   text-align: center;
   letter-spacing: 0.055em;
+
+  @include breakpoint(medium down) {
+    font-size: 1.3em;
+  }
 
   @include breakpoint(small down) {
     font-size: 18px;

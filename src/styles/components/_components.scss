@@ -98,11 +98,14 @@
       font-style: normal;
       font-weight: normal;
       font-size: 6.25rem;
-      line-height: 93px;
       text-align: center;
       background-image: linear-gradient(to right, #00ff80, #f3fc1f);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+      @include breakpoint(xlarge up) {
+        line-height: 93px;
+      }
 
       @include breakpoint(xlarge down) {
         font-size: 5em;
@@ -122,19 +125,13 @@
       font-size: 2.25em;
       font-style: normal;
 
+      @include breakpoint(medium down) {
+        font-size: 1.7em;
+      }
+
       @include breakpoint(small down) {
         font-size: 1.25em;
       }
-    }
-  }
-
-  @include block(section) {
-    @include block(headline) {
-      font-size: 3rem;
-    }
-
-    @include block(subheadline) {
-      font-size: 1.5rem;
     }
   }
 }
