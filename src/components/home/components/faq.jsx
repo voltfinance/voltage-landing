@@ -54,8 +54,8 @@ function Faqs () {
           data.map(({ title, content }, index) => (
             <AccordionItem key={index} uuid={index}>
               <AccordionItemHeading>
-                {title}
                 <AccordionItemButton>
+                  <div>{title}</div>
                   <img src={FaqBtn} className={classNames({ rotate: index === val })} />
                 </AccordionItemButton>
               </AccordionItemHeading>

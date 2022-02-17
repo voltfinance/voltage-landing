@@ -36,12 +36,15 @@
     @include breakpoint(large up) {
       width: 1044px;
     }
+
     @include breakpoint(medium down) {
       width: 700px;
     }
+
     @include breakpoint(small down) {
       width: 90%;
     }
+
     background: #14172d;
     padding: 2em 1em;
     border-radius: 12px;
@@ -70,10 +73,13 @@
   }
 
   @include element(button) {
-    @include xy-grid();
+    @include xy-grid(horizontal, false);
     @include flex-align(justify, middle);
-    padding: 0 1em;
+    width: 100%;
 
+    > img {
+      padding: 0 1em;
+    }
     @include block(rotate) {
       transition: 0.3s;
       transform: rotate(45deg);
