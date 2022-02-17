@@ -8,7 +8,7 @@ import Secion3 from './components/section_3'
 // import Inverstors from './components/inverstors'
 import Faqs from './components/faq'
 import Swap from './components/swap'
-import Timeline from './components/Timeline'
+import Timeline from './components/timeline'
 import Footer from './footer'
 import Header from './header'
 
