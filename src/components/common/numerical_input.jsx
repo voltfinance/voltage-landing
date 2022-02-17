@@ -1,6 +1,6 @@
 import React from 'react'
 
-const inputRegex = RegExp('^\\d*(?:\\\\[.])?\\d*$')
+const inputRegex = /'^\\d*(?:\\\\[.])?\\d*$'/
 
 const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 

@@ -2,6 +2,14 @@
 @import "button";
 @import "numerical_input";
 @import "select";
+@import "section_2";
+@import "section_3";
+@import "inverstors";
+@import "faqs";
+@import "footer";
+@import "swap";
+@import "timeline";
+@import "header";
 
 @include block(site-wrapper) {
   position: relative;
@@ -15,57 +23,27 @@
   position: relative;
 
   @include element(container) {
-    background-image: url("images/background.png");
+    background-image: url("images/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+    position: relative;
 
     @include breakpoint(medium down) {
       background-image: url("images/mobile-bg.jpg");
     }
-    @include block(logo) {
-      padding: 2em 4em;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      left: 0;
-      z-index: 999;
-      @include xy-grid();
-      @include flex-align(justify, middle);
 
-      @include breakpoint(medium down) {
-        @include flex-align(right, middle);
-      }
-
-      > img {
-        height: 60px;
-
-        @include breakpoint(medium down) {
-          display: none;
-        }
-      }
-
-      @include block(enter_app) {
-        @include xy-grid();
-        z-index: 100;
-        @include flex-align(center, middle);
-
-        > span {
-          font-style: normal;
-          font-weight: 500;
-          font-size: 1em;
-          color: #ffffff;
-        }
-        > img {
-          margin-left: 0.5em;
-        }
-      }
-    }
     @include block(footer) {
       padding: 2em;
       @include xy-grid();
       @include flex-align(right, middle);
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
       @include breakpoint(medium down) {
+        left: 0;
+        right: 0;
         margin-left: auto;
         margin-right: auto;
         width: max-content;
@@ -102,8 +80,6 @@
 
   @include block(smoke) {
     position: absolute;
-    top: 1%;
-    height: 55%;
     width: 100%;
     @include breakpoint(medium down) {
       display: none;
@@ -111,7 +87,7 @@
   }
 
   @include element(main) {
-    height: 100%;
+    height: 60%;
   }
 
   @include block(headline) {
@@ -122,14 +98,21 @@
       font-style: normal;
       font-weight: normal;
       font-size: 6.25rem;
-      line-height: 5rem;
       text-align: center;
       background-image: linear-gradient(to right, #00ff80, #f3fc1f);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
+      @include breakpoint(xlarge up) {
+        line-height: 93px;
+      }
+
+      @include breakpoint(xlarge down) {
+        font-size: 5em;
+      }
+
       @include breakpoint(medium down) {
-        font-size: 4rem;
+        font-size: 1.875em;
       }
     }
 
@@ -141,218 +124,18 @@
       -webkit-text-fill-color: transparent;
       font-size: 2.25em;
       font-style: normal;
-      text-align: center;
-    }
-  }
 
-  @include block(form) {
-    width: 465px;
-    height: 60px;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 5px;
-    position: relative;
-
-    @include element(wrapper) {
-      @include xy-grid(vertical);
-      @include flex-align(center, middle);
-
-      @include block(sub) {
-        // background-image: linear-gradient(to right, #00ff80, #f3fc1f);
-        // background-clip: text;
-        color: white;
-        // -webkit-background-clip: text;
-        // -webkit-text-fill-color: transparent;
-        font-size: 16px;
-        font-style: normal;
-        margin-top: 1em;
-        text-align: center;
-        font-weight: 500;
-
-        @include breakpoint(medium down) {
-          font-size: 1.25em;
-        }
+      @include breakpoint(medium down) {
+        font-size: 1.7em;
       }
-    }
-
-    @include breakpoint(small down) {
-      width: 95%;
-    }
-
-    @include element(input) {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background-color: transparent;
-      padding-left: 10px;
-    }
-
-    @include element(button) {
-      position: absolute;
-      right: 5px;
-      width: 200px;
-      padding: 5px;
 
       @include breakpoint(small down) {
-        width: 155px;
+        font-size: 1.25em;
       }
-      height: 50px;
-      font-size: 1.2em;
-      font-weight: bold;
-      font-style: normal;
-      background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
-      border-radius: 10px;
-    }
-  }
-
-  @include block(section) {
-    @include block(headline) {
-      font-size: 3rem;
-    }
-
-    @include block(subheadline) {
-      font-size: 1.5rem;
     }
   }
 }
 
-@include block(eco-round) {
-  position: relative;
-  width: 100%;
-  > h1 {
-    font-size: 30px;
-    color: white;
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
-  @include element(wrapper) {
-    display: flex;
-    justify-content: center;
-    
-  }
-
-  @include block(eco-round-card) {
-    background-color: #0B0C13;
-    box-shadow: 4px 4px 100px 16px rgba(194, 246, 191, 0.2);
-    border-radius: 12px;
-    color: white;
-    width: 100%;
-    padding: 30px;
-    .grid-x {
-      margin-bottom: 24px;
-    }
-
-    @include element(arrow-icon) {
-      text-align: center;
-    }
-  }
-}
-
-@include block(info) {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px 2px;
-  > span {
-    cursor: pointer;
-    font-family: SF Pro Display;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 130%;
-    color: #3AD889;
-  }
-  > img {
-    margin-left: 5px;
-  }
-}
-
-
-@include block(menu-wrap) {
-  display: flex;
-  min-width: 325px;
-  justify-content: space-around;
-}
-
-@include block(button-baseline) {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-family: SF Pro Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  > img {
-    margin-right: 5px;
-  }
-  &:hover{
-    background: linear-gradient(95.27deg, #3AD889 -24.83%, #F3FC1F 131.84%);
-  }
-}
-
-
-@include block(button-secondary){
-  font-family: SF Pro Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  color: white;
-  line-height: 19px;
-  background: linear-gradient(
-    273.62deg,
-    rgba(243, 252, 31, 0.5) 9.22%,
-    rgba(58, 216, 137, 0.5) 100%
-  );
-  border: 1.5px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 5px;
-  padding: 10px 20px;
-  &:hover{
-    background: linear-gradient(273.62deg, rgba(255, 255, 255, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
-
-  }
-}
-
-@include block(button-web3){
-  padding: 10px 10px;
-  border: 2px solid #b5f043;
-  border-radius: 5px;
-  background: black;
-  color: white;
-  border-radius: 0px 5px 5px 0px;
-  > span {
-    margin-left: 8px;
-    height: 12px;
-    width: 12px;
-    background-color: #9FEC5C;
-    border-radius: 50%;
-    display: inline-block;
-  }
-}
-
-@include block(button-balance){
-  margin-left: 15px;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
-  border-radius: 5px 0px 0px 5px;
-  padding: 10px 10px;
-  font-family: SF Pro Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  > img {
-    margin-right: 5px;
-  }
-  &:hover{
-    background: linear-gradient(95.27deg, #3AD889 -24.83%, #F3FC1F 131.84%);
-  }
-}
 @include block(iframe) {
   width: 600px;
   height: 550px;

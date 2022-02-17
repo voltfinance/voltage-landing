@@ -27,32 +27,8 @@ const NewsletterForm = ({ setMenuOpen, isOpen }) => {
       validationSchema={SignupSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         const { email } = values
-        const body = {
-          accountAddress: email,
-          email,
-          provider: 'HDWallet',
-          subscribe: true,
-          source: 'Voltage.finance',
-          displayName: 'Voltage.finance'
-        }
-
         try {
           setSrc(encodeURIComponent(email))
-          // await axios.post('https://studio.fuse.io/api/v2/users', { body })
-          // dispatch({ type: 'START_ANIMATION' })
-          // setTimeout(() => {
-          //   dispatch({ type: 'STOP_ANIMATION' })
-          // }, 3000)
-          // setSubmitting(true)
-          // resetForm({ email: '' })
-          // // if (response.status === 200) {
-          // // } else if (response.status === 500) {
-          // //   dispatch({ type: 'START_ANIMATION' })
-          // //   setTimeout(() => {
-          // //     dispatch({ type: 'STOP_ANIMATION' })
-          // //   }, 3000)
-          // //   setSubmitting(true)
-          // // }
           showModal()
           setMenuOpen(true)
         } catch (error) {
