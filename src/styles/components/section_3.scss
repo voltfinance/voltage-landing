@@ -1,0 +1,140 @@
+@include block(section_3) {
+  position: relative;
+  padding: 10em 0px;
+  @include xy-grid(vertical, false);
+  @include flex-align(center, middle);
+
+  @include breakpoint(small down) {
+    padding: 2em 1em;
+  }
+
+  @include element(title) {
+    width: 100%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 57px;
+    text-align: center;
+    color: white;
+    @include breakpoint(small down) {
+      font-size: 1.5em;
+      line-height: 29px;
+      text-align: start;
+    }
+  }
+
+  @include element(subtitle) {
+    margin-top: 30px;
+    width: 100%;
+    font-style: normal;
+    color: white;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.055em;
+    @include breakpoint(small down) {
+      font-size: 18px;
+      line-height: 30px;
+      text-align: start;
+    }
+  }
+
+  @include block(stores) {
+    @include xy-grid();
+    @include flex-align(center, middle);
+
+    > a {
+      @include xy-cell(50%);
+    }
+  }
+
+  @include element(learnmore) {
+    margin: 2em 0px 4em;
+
+    @include breakpoint(medium down) {
+      order: 3;
+    }
+  }
+
+  @include block(card) {
+    @include element(container) {
+      @include xy-grid();
+      @include flex-align(center, middle);
+
+      @include breakpoint(medium down) {
+        padding: 2em 0;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 2px;
+      border-radius: 8px;
+      background: linear-gradient(-40deg, rgba(58, 216, 137, 0), rgba(79, 220, 125, 0.45));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    @include modifier(bigger) {
+      @include xy-cell(35%);
+
+      @include breakpoint(xlarge up) {
+        width: 291px;
+        height: 397.35px;
+      }
+
+      @include breakpoint(small down) {
+        // width: 117.18px;
+      }
+    }
+
+    @include xy-cell(30%);
+
+    @include breakpoint(xlarge up) {
+      width: 289px;
+    }
+    padding: 2em;
+    @include breakpoint(small down) {
+      width: 100.26px;
+      height: 136.91px;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding: 10px;
+    }
+    @include xy-grid(vertical, false);
+    @include flex-align(center, middle);
+
+    background-image: linear-gradient(-40deg, rgba(58, 216, 137, 0), rgba(79, 220, 125, 0.45));
+
+    border-radius: 8px;
+
+    @include block(image) {
+      // width: 100px;
+    }
+
+    @include block(title) {
+      @extend %title;
+      text-align: center;
+      @include breakpoint(small down) {
+        font-size: 16px;
+      }
+    }
+    //   font-style: normal;
+    //   font-weight: 600;
+    //   font-size: 41.7831px;
+    //   letter-spacing: 0.055em;
+    //   color: #ffffff;
+    // }
+  }
+}

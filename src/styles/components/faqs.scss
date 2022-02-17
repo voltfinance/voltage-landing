@@ -1,0 +1,88 @@
+@include block(faqs) {
+  position: relative;
+  padding: 8em 0px 10em;
+  @include xy-grid(vertical, false);
+  @include flex-align(center, middle);
+  overflow: hidden;
+
+  @include breakpoint(small down) {
+    padding: 4em 0px 10em;
+  }
+  @include block(title) {
+    @extend %title;
+    margin-bottom: 0.5em;
+    @include breakpoint(small down) {
+      padding: 0px 1em;
+    }
+  }
+  @include block(rocket) {
+    position: absolute;
+    top: -5%;
+    left: 15%;
+
+    @include breakpoint(medium down) {
+      transform: rotate(90deg);
+      right: -5em;
+      left: unset;
+    }
+  }
+}
+
+@include block(accordion) {
+  width: 100%;
+  @include xy-grid(vertical, false);
+  @include flex-align(center, middle);
+  @include element(item) {
+    @include breakpoint(large up) {
+      width: 1044px;
+    }
+    @include breakpoint(medium down) {
+      width: 700px;
+    }
+    @include breakpoint(small down) {
+      width: 90%;
+    }
+    background: #14172d;
+    padding: 2em 1em;
+    border-radius: 12px;
+    &:not(:last-child) {
+      margin-bottom: 1.5em;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  @include element(heading) {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    @include xy-grid(horizontal, false);
+    @include flex-align(justify, middle);
+
+    @include breakpoint(small down) {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  @include element(button) {
+    @include xy-grid();
+    @include flex-align(justify, middle);
+
+    @include block(rotate) {
+      transition: 0.3s;
+      transform: rotate(45deg);
+    }
+  }
+
+  @include element(panel) {
+    margin-top: 20px;
+    color: #3ad889;
+    font-style: normal;
+    font-size: 20px;
+  }
+}

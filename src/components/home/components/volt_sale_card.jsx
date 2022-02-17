@@ -1,15 +1,15 @@
 import React, { useCallback, useState } from 'react'
-import useDerivedTokenSaleState from '../../hooks/useDerivedTokenSaleState'
-import useSwapCallback from '../../hooks/useSwapCallback'
-import NumericalInput from '../common/numerical_input'
-import Select from '../common/select'
-import arrowIcon from '../../assets/images/arrow.svg'
-import info from '../../assets/images/info.svg'
-import voltInfo from '../../assets/images/volt_info.png'
-import docs from '../../assets/images/voltage_docs.svg'
+import useDerivedTokenSaleState from '@/hooks/useDerivedTokenSaleState'
+import useSwapCallback from '@/hooks/useSwapCallback'
+import NumericalInput from '@/components/common/numerical_input'
+import Select from '@/components/common/select'
+import arrowIcon from '@/assets/images/arrow.svg'
+import info from '@/assets/images/info.svg'
+import voltInfo from '@/assets/images/volt_info.png'
+import docs from '@/assets/images/voltage_docs.svg'
 
-import { useWeb3Context } from '../../context/web3'
-import useSwitchNetwork from '../../hooks/useSwitchNetwork'
+import { useWeb3Context } from '@/context/web3'
+import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { toast } from 'react-toastify'
 import Modal from 'react-modal'
 
@@ -63,22 +63,6 @@ const VoltSaleCard = () => {
     setIsOpen(false)
   }
 
-  const Gradient = styled.div`
-    padding: 20px;
-    border-radius: 10px;
-    color: linear-gradient(110deg, #3ad889 -43%, #f3fc1fc9 100%);
-    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
-    border: solid 1.75px transparent;
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0)
-      ),
-      linear-gradient(110deg, #3ad889 -43%, #f3fc1fc9 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px #0b0c13 inset;
-  `
-
   const modalStyle = {
     overlay: {
       background: 'transparent'
@@ -113,7 +97,7 @@ const VoltSaleCard = () => {
         style={modalStyle}
         contentLabel='Voltage Info'
       >
-        <Gradient>
+        <div className='swap_info_modal'>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img src={voltInfo} width='685px' />
             <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' style={style}>
@@ -122,9 +106,9 @@ const VoltSaleCard = () => {
               Voltage Docs →
             </a>
           </div>
-        </Gradient>
+        </div>
       </Modal>
-      <div className='eco-round-card grid-container'>
+      <div className='card grid-container'>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-12'>
             <NumericalInput
@@ -145,7 +129,7 @@ const VoltSaleCard = () => {
           </div>
         </div>
 
-        <div className='eco-round-card__arrow-icon'>
+        <div className='card__arrow-icon'>
           <img src={arrowIcon} alt='arrow icon' />
         </div>
 
@@ -154,27 +138,29 @@ const VoltSaleCard = () => {
             <NumericalInput label='VOLT' value={tokenAmount} />
           </div>
         </div>
-        {!account
-          ? (
-            <button className='button button--primary' onClick={toggleWeb3Modal}>
-              Connect wallet
-            </button>
-            )
-          : chainId !== 122
+        {
+          !account
             ? (
-              <button className='button button--primary' onClick={switchNetwork}>
-                Switch to Fuse
+              <button className='button button--primary' onClick={toggleWeb3Modal}>
+                Connect wallet
               </button>
               )
-            : (
-              <button
-                className='button button--primary'
-                onClick={onSwap}
-                disabled={!!inputError}
-              >
-                {inputError ?? 'Swap'}
-              </button>
-              )}
+            : chainId !== 122
+              ? (
+                <button className='button button--primary' onClick={switchNetwork}>
+                  Switch to Fuse
+                </button>
+                )
+              : (
+                <button
+                  className='button button--primary'
+                  onClick={onSwap}
+                  disabled={!!inputError}
+                >
+                  {inputError ?? 'Swap'}
+                </button>
+                )
+        }
         <div className='info' onClick={openModal}>
           <span>
             More Info <img src={info} />

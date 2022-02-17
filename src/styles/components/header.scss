@@ -1,0 +1,131 @@
+@include block(header) {
+  padding: 2em;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 100;
+  @include xy-grid();
+  @include flex-align(justify, middle);
+
+  @include breakpoint(medium down) {
+    @include flex-align(right, middle);
+  }
+
+  @include breakpoint(medium down) {
+    top: 40%;
+    padding: 0;
+    max-width: 400px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  @include block(open_app) {
+    height: 40px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    line-height: 41px;
+    background: linear-gradient(273.62deg, rgba(243, 252, 31, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
+    border: 1.5px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0px 20px;
+    &:hover {
+      background: linear-gradient(273.62deg, rgba(255, 255, 255, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
+    }
+
+    @include breakpoint(small down) {
+      order: 3;
+    }
+  }
+
+  @include block(button-baseline) {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(93.58deg, #3ad889 -105.35%, #f3fc1f 103.54%);
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    > img {
+      margin-right: 5px;
+    }
+    &:hover {
+      background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
+    }
+  }
+
+  @include block(button-web3) {
+    padding: 10px 10px;
+    border: 2px solid #b5f043;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    border-radius: 0px 5px 5px 0px;
+    > span {
+      margin-left: 8px;
+      height: 12px;
+      width: 12px;
+      background-color: #9fec5c;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  }
+
+  @include block(button-balance) {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(93.58deg, #3ad889 -105.35%, #f3fc1f 103.54%);
+    border-radius: 5px 0px 0px 5px;
+    padding: 10px 10px;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    > img {
+      margin-right: 5px;
+    }
+    &:hover {
+      background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
+    }
+  }
+
+  @include block(menu-wrap) {
+    display: flex;
+    min-width: 325px;
+    justify-content: space-around;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+    }
+  }
+  @include block(icon) {
+    height: 60px;
+    @include breakpoint(medium down) {
+      display: none;
+    }
+  }
+
+  @include block(enter_app) {
+    @include xy-grid();
+    z-index: 100;
+    @include flex-align(center, middle);
+
+    > span {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1em;
+      color: #ffffff;
+    }
+    > img {
+      margin-left: 0.5em;
+    }
+  }
+}
