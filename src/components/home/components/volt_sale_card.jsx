@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useRef } from 'react'
 import useDerivedTokenSaleState from '@/hooks/useDerivedTokenSaleState'
 import useSwapCallback from '@/hooks/useSwapCallback'
 import NumericalInput from '@/components/common/numerical_input'
@@ -7,6 +7,8 @@ import arrowIcon from '@/assets/images/arrow.svg'
 import info from '@/assets/images/info.svg'
 import voltInfo from '@/assets/images/volt_info.png'
 import docs from '@/assets/images/voltage_docs.svg'
+import useOutsideClick from '@/hooks/useOutsideClick.jsx'
+import NewsletterForm from '../newsletter_form'
 
 import { useWeb3Context } from '@/context/web3'
 import useSwitchNetwork from '@/hooks/useSwitchNetwork'
@@ -46,7 +48,7 @@ const VoltSaleCard = () => {
 
       setTypedValue(undefined)
       setTokenSaleAddress(undefined)
-      toast.success('Swap successful')
+      toast.error('Swap Disabled')
     } catch (error) {
       console.error('Swap failed', error)
       toast.error('Swap failed')
@@ -56,12 +58,21 @@ const VoltSaleCard = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false)
 
   function openModal () {
-    setIsOpen(true)
+    setIsOpen(false)
   }
 
   function closeModal () {
     setIsOpen(false)
   }
+
+  const [isOpen, setMenuOpen] = useState(false)
+  const hamburgerRef = useRef(null)
+
+  useOutsideClick(hamburgerRef, () => {
+    if (isOpen) {
+      setMenuOpen(false)
+    }
+  })
 
   const modalStyle = {
     overlay: {
@@ -109,6 +120,16 @@ const VoltSaleCard = () => {
         </div>
       </Modal>
       <div className='card grid-container'>
+        <div className='overlay' >
+          <p className='headline_text'>
+            Coming soon...
+           
+          </p>
+          <div className='social_link_form' ref={hamburgerRef} style={{color: 'black'}}>
+            <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
+
+              </div>
+        </div>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-12'>
             <NumericalInput
@@ -155,7 +176,7 @@ const VoltSaleCard = () => {
                 <button
                   className='button button--primary'
                   onClick={onSwap}
-                  disabled={!!inputError}
+                  disabled={true}
                 >
                   {inputError ?? 'Swap'}
                 </button>

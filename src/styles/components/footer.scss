@@ -80,6 +80,7 @@
   }
 
   @include block(social_link_form) {
+    color: black;
     @include breakpoint(small down) {
       width: 100%;
       margin-top: 3em;
@@ -152,6 +153,8 @@
 
 @include block(button-secondary) {
   height: 40px;
+  display: flex;
+  align-items: center;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
