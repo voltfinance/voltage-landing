@@ -138,6 +138,7 @@ const VoltSaleCard = () => {
               onChange={setTypedValue}
               onMax={onMax}
               showMax
+              disabled
             />
           </div>
           <div className='cell small-12'>
@@ -146,6 +147,7 @@ const VoltSaleCard = () => {
               defaultValue={tokenSaleAddress}
               onChange={(option) => setTokenSaleAddress(option.value)}
               options={options}
+              isDisabled={true}
             />
           </div>
         </div>
@@ -156,7 +158,7 @@ const VoltSaleCard = () => {
 
         <div className='grid-x'>
           <div className='small-24'>
-            <NumericalInput label='VOLT' value={tokenAmount} />
+            <NumericalInput label='VOLT' value={tokenAmount} disabled />
           </div>
         </div>
         {
