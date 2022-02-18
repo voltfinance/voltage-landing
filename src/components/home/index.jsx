@@ -1,34 +1,27 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import lottie from 'lottie-web'
 import { useSelector } from 'react-redux'
 import { isMobile } from 'react-device-detect'
 
+import Secion2 from './components/section_2'
+import Secion3 from './components/section_3'
+// import Inverstors from './components/inverstors'
+import Faqs from './components/faq'
+import Swap from './components/swap'
+import Timeline from './components/timeline'
+import Footer from './footer'
+import Header from './header'
+
 import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
 import smokeAnimationData from '@/assets/lotties/smoke.json'
-import github from '@/assets/images/github.png'
-import telegram from '@/assets/images/telegram.png'
-import twitter from '@/assets/images/twitter.png'
-import voltage from '@/assets/images/voltage_icon.png'
-import discord from '@/assets/images/discord.png'
-import arrow from '@/assets/images/enter_app.png'
-import NewsletterForm from './newsletter_form'
-import useOutsideClick from '@/hooks/useOutsideClick.jsx'
+import underline from '@/assets/images/underline.png'
 
 const HomePage = () => {
   const starsRef = useRef(null)
   const lightingRef = useRef(null)
   const smokeRef = useRef(null)
-  const { animate } = useSelector(state => state.animation)
-  const [isOpen, setMenuOpen] = useState(false)
-  const hamburgerRef = useRef(null)
-
-  useOutsideClick(hamburgerRef, () => {
-    console.log(`hamburgerRef ${isOpen}`)
-    if (isOpen) {
-      setMenuOpen(false)
-    }
-  })
+  const { animate } = useSelector((state) => state.animation)
 
   useEffect(() => {
     if (smokeRef.current) {
@@ -68,44 +61,28 @@ const HomePage = () => {
   return (
     <>
       <section className='homepage__container'>
-        <div className='logo'>
-          <img alt='voltage' src={voltage} />
-          <a className='enter_app' rel='noreferrer noopener' target='_blank' href='https://app.voltage.finance'>
-            <span>Enter App</span>
-            <img src={arrow} />
-          </a>
-        </div>
+        <Header />
         <div className='homepage'>
+          <img src={underline} style={{ position: 'absolute', bottom: '0%' }} />
           {!isMobile && <div className='stars' ref={starsRef} />}
-          {!isMobile && <div className='smoke' ref={smokeRef} />}
+          {/* {!isMobile && <div className='smoke' ref={smokeRef} />} */}
           {animate && <div className='lighting' ref={lightingRef} />}
           <div className='homepage__main grid-y align-spaced align-middle'>
             <div className='headline cell'>
-              <h1 className='headline__title'>Frictionless DeFi is coming</h1>
-              <p className='headline__text'>
-                The DAO to bring the next billion
-              </p>
-            </div>
-            <div ref={hamburgerRef}>
-              <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
+              <h1 className='headline__title'>Frictionless DeFi is Here</h1>
+              <p className='headline__text'>Welcome to a new era of finance</p>
             </div>
           </div>
+          {isMobile && <Header />}
         </div>
-        <footer className='footer'>
-          <a rel='noreferrer noopener' target='_blank' href='https://t.me/voltage_finance'>
-            <img src={telegram} />
-          </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://github.com/voltfinance/'>
-            <img src={github} />
-          </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/voltfinance'>
-            <img src={twitter} />
-          </a>
-          <a rel='noreferrer noopener' target='_blank' href='https://discord.gg/voltagefinance'>
-            <img src={discord} />
-          </a>
-        </footer>
       </section>
+      <Secion2 />
+      <Secion3 />
+      <Timeline />
+      <Swap />
+      {/* <Inverstors /> */}
+      <Faqs />
+      <Footer />
     </>
   )
 }

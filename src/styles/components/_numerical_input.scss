@@ -1,0 +1,48 @@
+@include block(numerical-input) {
+  display: inline-block;
+  width: 100%;
+  
+  @include element(label) {
+    margin-bottom: 4px;
+    font-size: 18px;
+  }
+
+  @include element(inner) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #071927;
+    min-height: 55px;
+    border-radius: 12px;
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: transparent;
+    padding: 0 12px;
+
+    &:hover {
+      border-color: #B5B9D3
+    }
+
+    input {
+      width: 100%;
+      background-color: transparent;
+      border-color: transparent;
+      border: 0;
+      color: #8DA9BB;
+      font-size: 18px;
+
+      &::-webkit-input-placeholder {
+        opacity: 1 !important;
+      }
+      
+      &:-moz-placeholder {
+        opacity: 1 !important;
+      }
+      
+      &::-moz-placeholder {
+        opacity: 1 !important;
+      }
+    }
+  }
+}

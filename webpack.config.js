@@ -33,14 +33,14 @@ module.exports = {
         use: [
           !isDev
             ? {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                publicPath: '/'
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: '/'
+                }
               }
-            }
             : {
-              loader: 'style-loader'
-            },
+                loader: 'style-loader'
+              },
           {
             loader: 'css-loader',
             options: {
@@ -72,7 +72,9 @@ module.exports = {
         test: /\.(eot|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          name: '/fonts/[name].[ext]'
+          name: '[name].[ext]',
+          outputPath: 'fonts',
+          publicPath: '/fonts'
         }
       },
       {
@@ -145,7 +147,7 @@ module.exports = {
             }
           }
         ]
-      },
+      }
     ]
   },
   resolve: {

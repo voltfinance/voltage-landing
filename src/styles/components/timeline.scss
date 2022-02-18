@@ -1,0 +1,18 @@
+@include block(timeline) {
+  position: relative;
+  padding: 20em 0px;
+  @include xy-grid(vertical, false);
+  @include flex-align(center, middle);
+
+  @include breakpoint(small down) {
+    padding: 10em 0px;
+  }
+
+  @include block(title) {
+    @extend %title;
+    @include breakpoint(small down) {
+      padding: 0px 1em;
+      margin-bottom: 0.5em;
+    }
+  }
+}
