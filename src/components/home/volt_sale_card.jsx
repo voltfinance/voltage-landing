@@ -16,7 +16,7 @@ import Modal from 'react-modal'
 const VoltSaleCard = () => {
   const { account, toggleWeb3Modal, chainId } = useWeb3Context()
 
-  const [typedValue, setTypedValue] = useState()
+  const [typedValue, setTypedValue] = useState('')
 
   const [tokenSaleAddress, setTokenSaleAddress] = useState(null)
 
@@ -151,7 +151,6 @@ const VoltSaleCard = () => {
 
         <div className='grid-x'>
           <div className='small-24'>
-            <NumericalInput label='VOLT' value={tokenAmount} />
           </div>
         </div>
         {!account

@@ -6,7 +6,7 @@ const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
 const NumericalInput = ({ value, onChange, placeholder, label, showMax, onMax, ...rest }) => {
   const enforce = (input) => {
-    if (input === '' || inputRegex.test(escapeRegExp(input))) {
+    if (input !== '' || inputRegex.test(escapeRegExp(input))) {
       onChange(input)
     }
   }
