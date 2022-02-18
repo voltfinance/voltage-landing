@@ -6,7 +6,7 @@ import timelineMobile from '@/assets/images/timeline_mobile.png'
 function Timeline () {
   return (
     <div className='timeline'>
-      <div className='title'>Time line</div>
+      <div className='title'>Timeline</div>
       <img src={isMobile ? timelineMobile : timeline} alt='timeline' />
     </div>
   )

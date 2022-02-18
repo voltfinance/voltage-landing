@@ -18,7 +18,7 @@
   @include block(rocket) {
     position: absolute;
     top: -5%;
-    left: 15%;
+    left: 8%;
 
     @include breakpoint(medium down) {
       transform: rotate(90deg);
