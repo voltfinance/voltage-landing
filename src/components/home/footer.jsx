@@ -45,7 +45,7 @@ const Footer = () => {
             <a
               rel='noreferrer noopener'
               target='_blank'
-              href='https://blog.fuse.io/'
+              href='https://medium.com/@voltage.finance'
             >
               <img
                 src={medium}
