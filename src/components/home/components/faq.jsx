@@ -22,7 +22,7 @@ const data = [
   },
   {
     title: 'Are there any fees associated with this platform?',
-    content: 'Every transaction on Volt Finance will be subjected to a .3% fee. There are two smaller fees that combine to make up the total fee. The first is a .25% fee that is given to liquidity providers in the form of VOLT tokens and a 0.05% fee that is sent to the xVOLT pool. This fee is used to buy back VOLT tokens periodically. So when you exchange your xVOLT for VOLT, you\'ll get more VOLT than what you started with.'
+    content: 'Every transaction on Volt Finance will be subjected to a .3% fee. There are two smaller fees that combine to make up the total fee. The first is a .25% fee that is given to liquidity providers in the form of VOLT tokens. This fee is used to buy back VOLT tokens periodically. So when you exchange your xVOLT for VOLT, you\'ll get more VOLT than what you started with.'
   },
   {
     title: 'What is the purpose of holding VOLT?',
