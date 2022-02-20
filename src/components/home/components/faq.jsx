@@ -13,7 +13,11 @@ import classNames from 'classnames'
 
 const data = [
   {
-    title: 'Do I still need $FUSE after I acquire $VOLT?',
+    title: `What is Fuse Ecosystem Round and for how long?`,
+    content: `The Fuse Ecosystem Round is the Public sale for Fuse ecosystem users, in comparison with other public sales, this one have better unvesting period for our loyal community. The sale will be for 24 hours or until all tokens are sold out.`
+  },
+  {
+    title: 'Do I  still need $FUSE after I acquire $VOLT?',
     content: 'Yes! $FUSE is the native token of the Fuse blockchain. You will still need Fuse in order to pay for gas on your transactions.'
   },
   {
@@ -27,10 +31,6 @@ const data = [
   {
     title: 'Can I still use Volt Finance without owning any $VOLT?',
     content: ' Of course! You do not need the $VOLT token to use Volt Finance.'
-  },
-  {
-    title: 'How long is the FUSE/VOLT token swap available?    ',
-    content: '24 Hours'
   }
 ]
 
