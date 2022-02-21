@@ -44,8 +44,7 @@ import velvet from '@/assets/images/backers/velvet.png'
 import zbs_capital from '@/assets/images/backers/zbs_capital.png'
 import { isMobile } from 'react-device-detect'
 
-
-function PassiveIncome() {
+function PassiveIncome () {
   return (
     <>
       <img
@@ -88,9 +87,8 @@ const inverstorsLogos = [
   enjinstarter,
   poolz,
   olaFinance,
-  mexc,
+  mexc
 ]
-
 
 const backersLogos = [
   spark,
@@ -117,10 +115,10 @@ const backersLogos = [
   exnetwork_capital,
   royale,
   valhalla_capital,
-  side_door,
+  side_door
 ]
 
-function PartnersAndBackers() {
+function PartnersAndBackers () {
   return (
     <>
       <section className='inverstors'>
@@ -129,23 +127,25 @@ function PartnersAndBackers() {
         <div className='subtitle'>Our partners have been instrumental in allowing us to deliver a superior product. <br /> Voltage will remove many hurdles allowing other projects on the Fuse Network to grow.</div>
         <div className='images'>
           {
-            isMobile ? <Swiper
-              spaceBetween={0}
-              slidesPerView={1}
-              autoplay={true}
-              centeredSlides={true}
-              modules={[Autoplay]}
-            >
-              {
+            isMobile
+              ? <Swiper
+                  spaceBetween={0}
+                  slidesPerView={1}
+                  autoplay
+                  centeredSlides
+                  modules={[Autoplay]}
+                >
+                {
                 inverstorsLogos.map((logo, key) => (
-                  <SwiperSlide key={key}>{<img src={logo} />}</SwiperSlide>
+                  <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
                 ))
               }
-            </Swiper> : inverstorsLogos.map((logo, key) => (
-              <div className='image' key={key}>
-                <img src={logo} />
-              </div>
-            ))
+              </Swiper>
+              : inverstorsLogos.map((logo, key) => (
+                <div className='image' key={key}>
+                  <img src={logo} />
+                </div>
+              ))
           }
         </div>
       </section>
@@ -154,23 +154,25 @@ function PartnersAndBackers() {
         <div className='title'>Backers</div>
         <div className='images'>
           {
-            isMobile ? <Swiper
-              spaceBetween={0}
-              slidesPerView={1}
-              autoplay={true}
-              centeredSlides={true}
-              modules={[Autoplay]}
-            >
-              {
+            isMobile
+              ? <Swiper
+                  spaceBetween={0}
+                  slidesPerView={1}
+                  autoplay
+                  centeredSlides
+                  modules={[Autoplay]}
+                >
+                {
                 backersLogos.map((logo, key) => (
-                  <SwiperSlide key={key}>{<img src={logo} />}</SwiperSlide>
+                  <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
                 ))
               }
-            </Swiper> : backersLogos.map((logo, key) => (
-              <div className='image' key={key}>
-                <img src={logo} />
-              </div>
-            ))
+              </Swiper>
+              : backersLogos.map((logo, key) => (
+                <div className='image' key={key}>
+                  <img src={logo} />
+                </div>
+              ))
           }
         </div>
 

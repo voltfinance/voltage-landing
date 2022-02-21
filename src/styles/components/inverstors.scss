@@ -81,18 +81,4 @@
       @include flex-align(center, middle);
     }
   }
-  // @include block(images) {
-  //   @include xy-grid-container();
-  //   width: 100%;
-  //   display: grid;
-  //   grid-auto-flow: row;
-  //   justify-content: center;
-  //   grid-template-columns: repeat(5, auto);
-  //   grid-gap: 6em;
-
-  //   @include block(image) {
-  //     @include xy-grid();
-  //     @include flex-align(center, middle);
-  //   }
-  // }
 }
