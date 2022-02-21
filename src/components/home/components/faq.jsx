@@ -13,24 +13,24 @@ import classNames from 'classnames'
 
 const data = [
   {
-    title: 'Do I still need $FUSE after I acquire $VOLT?',
+    title: `What is Fuse Ecosystem Round and for how long?`,
+    content: `The Fuse Ecosystem Round is the Public sale for Fuse ecosystem users, in comparison with other public sales, this one have better unvesting period for our loyal community. The sale will be for 24 hours or until all tokens are sold out.`
+  },
+  {
+    title: 'Do I  still need $FUSE after I acquire $VOLT?',
     content: 'Yes! $FUSE is the native token of the Fuse blockchain. You will still need Fuse in order to pay for gas on your transactions.'
   },
   {
     title: 'Are there any fees associated with this platform?',
-    content: 'Every transaction on Volt Finance will be subjected to a .3% fee. There are two smaller fees that combine to make up the total fee. The first is a .25% fee that is given to liquidity providers in the form of VOLT tokens and a 0.05% fee that is sent to the xVOLT pool. This fee is used to buy back VOLT tokens periodically. So when you exchange your xVOLT for VOLT, you\'ll get more VOLT than what you started with.'
+    content: 'Every transaction on Volt Finance will be subjected to a .3% fee.'
   },
   {
     title: 'What is the purpose of holding VOLT?',
-    content: 'You can stake your VOLT in a single stake pool to earn xVOLT. Since this is a single-stake pool all impermanent loss potential is removed. xVOLT has built into its contract to buy back VOLT periodically increasing the ratio of VOLT to xVOLT over time.'
+    content: 'You can stake your VOLT in a single stake pool. By holding Volt you will get much more than just yield. Voltage is just starting and extra features will be added to the platform.'
   },
   {
     title: 'Can I still use Volt Finance without owning any $VOLT?',
     content: ' Of course! You do not need the $VOLT token to use Volt Finance.'
-  },
-  {
-    title: 'How long is the FUSE/VOLT token swap available?    ',
-    content: '24 Hours'
   }
 ]
 

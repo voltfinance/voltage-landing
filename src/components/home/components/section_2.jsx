@@ -59,11 +59,11 @@ function Secion2 () {
       <div className='subtitle'>Imagine being in full control of your finances while earning the highest interest <br /> rate to date. Voltage is a non-custodial platform that brings cutting edge finacial <br /> tools to your fingertips.</div>
       <img className='image' src={computer} />
       <div className='stores'>
-        <a rel='noreferrer noopener' target='_blank' href='https://play.google.com/store/apps/details?id=io.fuse.cash'>
+        <a rel='noreferrer noopener' target='_blank' href='https://get.fuse.cash/mrxn/dfb1a810'>
           {' '}
           <img src={google} />
         </a>
-        <a rel='noreferrer noopener' target='_blank' href='https://apps.apple.com/us/app/fuse-cash/id1559937899'>
+        <a rel='noreferrer noopener' target='_blank' href='https://get.fuse.cash/mrxn/dfb1a810'>
           <img src={apple} />{' '}
         </a>
       </div>
