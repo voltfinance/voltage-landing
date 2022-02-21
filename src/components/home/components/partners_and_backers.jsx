@@ -4,7 +4,6 @@ import { Autoplay } from 'swiper'
 import 'swiper/swiper.scss'
 import beefy from '@/assets/images/partners/beefy.png'
 import quillhash from '@/assets/images/partners/quillhash.png'
-import impossible from '@/assets/images/partners/impossible.png'
 import ascend from '@/assets/images/partners/ascend.png'
 import bittrex from '@/assets/images/partners/bittrex.png'
 import enjinstarter from '@/assets/images/partners/enjinstarter.png'
@@ -78,7 +77,6 @@ function PassiveIncome () {
 const inverstorsLogos = [
   beefy,
   quillhash,
-  impossible,
   ascend,
   bittrex,
   infinity,
