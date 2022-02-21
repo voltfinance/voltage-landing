@@ -36,7 +36,7 @@ const Footer = () => {
               Open App →
             </button>
             <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance'>Voltage Docs</a>
-            <a rel='noreferrer noopener' target='_blank' href='https://www.linkedin.com/company/fuseio/jobs/'>Work with us</a>
+            <a rel='noreferrer noopener' target='_blank' href='https://form.typeform.com/to/RLauPver'>Work with us</a>
           </div>
         </div>
         <div className='social_link_form' ref={hamburgerRef}>
