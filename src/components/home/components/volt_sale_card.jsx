@@ -120,15 +120,15 @@ const VoltSaleCard = () => {
         </div>
       </Modal>
       <div className='card grid-container'>
-        <div className='overlay' >
+        <div className='overlay'>
           <p className='headline_text'>
             Coming soon...
-           
+
           </p>
-          <div className='social_link_form' ref={hamburgerRef} style={{color: 'black'}}>
+          <div className='social_link_form' ref={hamburgerRef} style={{ color: 'black' }}>
             <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
 
-              </div>
+          </div>
         </div>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-12'>
@@ -147,7 +147,7 @@ const VoltSaleCard = () => {
               defaultValue={tokenSaleAddress}
               onChange={(option) => setTokenSaleAddress(option.value)}
               options={options}
-              isDisabled={true}
+              isDisabled
             />
           </div>
         </div>
@@ -178,7 +178,7 @@ const VoltSaleCard = () => {
                 <button
                   className='button button--primary'
                   onClick={onSwap}
-                  disabled={true}
+                  disabled
                 >
                   {inputError ?? 'Swap'}
                 </button>
