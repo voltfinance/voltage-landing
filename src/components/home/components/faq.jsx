@@ -22,11 +22,11 @@ const data = [
   },
   {
     title: 'Are there any fees associated with this platform?',
-    content: 'Every transaction on Volt Finance will be subjected to a .3% fee. There are two smaller fees that combine to make up the total fee. The first is a .25% fee that is given to liquidity providers in the form of VOLT tokens. This fee is used to buy back VOLT tokens periodically. So when you exchange your xVOLT for VOLT, you\'ll get more VOLT than what you started with.'
+    content: 'Every transaction on Volt Finance will be subjected to a .3% fee.'
   },
   {
     title: 'What is the purpose of holding VOLT?',
-    content: 'You can stake your VOLT in a single stake pool to earn xVOLT. Since this is a single-stake pool all impermanent loss potential is removed. xVOLT has built into its contract to buy back VOLT periodically increasing the ratio of VOLT to xVOLT over time.'
+    content: 'You can stake your VOLT in a single stake pool. By holding Volt you will get much more than just yield. Voltage is just starting and extra features will be added to the platform.'
   },
   {
     title: 'Can I still use Volt Finance without owning any $VOLT?',
