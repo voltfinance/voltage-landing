@@ -36,7 +36,7 @@ import shima from '@/assets/images/backers/shima.png'
 import side_door from '@/assets/images/backers/side_door.png'
 import spark from '@/assets/images/backers/spark.png'
 import tech_meets from '@/assets/images/backers/tech_meets.png'
-import tectona from '@/assets/images/backers/tectona.png'
+import blockchain_fund from '@/assets/images/backers/blockchain_fund.png'
 import trgc from '@/assets/images/backers/trgc.png'
 import triangle from '@/assets/images/backers/triangle.png'
 import valhalla_capital from '@/assets/images/backers/valhalla_capital.png'
@@ -105,7 +105,7 @@ const backersLogos = [
   zbs_capital,
   gda_capital,
   sheesha_finance,
-  tectona,
+  blockchain_fund,
   alpha_square,
   banter_capital,
   velvet,
