@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect'
 
 import Secion2 from './components/section_2'
 import Secion3 from './components/section_3'
-// import Inverstors from './components/inverstors'
+import PartnersAndBackers from './components/partners_and_backers'
 import Faqs from './components/faq'
 import Swap from './components/swap'
 import Timeline from './components/timeline'
@@ -80,7 +80,7 @@ const HomePage = () => {
       <Secion3 />
       <Timeline />
       <Swap />
-      {/* <Inverstors /> */}
+      <PartnersAndBackers />
       <Faqs />
       <Footer />
     </>

@@ -5,7 +5,7 @@
   @include flex-align(center, middle);
 
   @include breakpoint(small down) {
-    padding: 4em 0px;
+    padding: 4em 1em;
   }
 
   @include block(title) {
@@ -14,47 +14,85 @@
 
   @include block(subtitle) {
     @extend %subtitle;
+    margin-bottom: 3em;
   }
 
   @include block(images) {
-    width: 100%;
-    display: grid;
-    grid-auto-flow: row;
-    justify-content: center;
-    grid-template-columns: repeat(4, 246px);
-    grid-gap: 2em;
-
+    @include breakpoint(large up) {
+      @include xy-grid-container();
+      width: 100%;
+      display: grid;
+      grid-auto-flow: row;
+      justify-content: center;
+      grid-template-columns: repeat(4, auto);
+      grid-gap: 6em;
+    }
+    @include breakpoint(large down) {
+      width: 50%;
+    }
+    @include breakpoint(small down) {
+      width: 100%;
+    }
     @include block(image) {
-      position: relative;
-      max-height: 92px;
-      min-height: 92px;
-      padding: 2em;
-      border-radius: 9.3494px;
-      position: relative;
       @include xy-grid();
       @include flex-align(center, middle);
-      background-image: linear-gradient(-40deg, rgba(58, 216, 137, 0), rgba(79, 220, 125, 0.45));
-
-      &:before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 2px;
-        border-radius: 8px;
-        background: linear-gradient(-40deg, rgba(58, 216, 137, 0), rgba(79, 220, 125, 0.45));
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-      }
-
-      img {
-        position: absolute;
-      }
     }
   }
+}
+
+@include block(backers) {
+  position: relative;
+  padding: 8em 0px 10em;
+  @include xy-grid(vertical, false);
+  @include flex-align(center, middle);
+
+  @include breakpoint(small down) {
+    padding: 4em 1em 6em;
+  }
+
+  @include block(title) {
+    @extend %title;
+    margin-bottom: 1em;
+  }
+
+  @include block(subtitle) {
+    @extend %subtitle;
+    margin-bottom: 3em;
+  }
+
+  @include block(images) {
+    @include xy-grid-container();
+    @include breakpoint(large up) {
+      width: 100%;
+      display: grid;
+      grid-auto-flow: row;
+      justify-content: center;
+      grid-template-columns: repeat(5, auto);
+      grid-gap: 6em;
+    }
+    @include breakpoint(large down) {
+      width: 50%;
+    }
+    @include breakpoint(small down) {
+      width: 100%;
+    }
+    @include block(image) {
+      @include xy-grid();
+      @include flex-align(center, middle);
+    }
+  }
+  // @include block(images) {
+  //   @include xy-grid-container();
+  //   width: 100%;
+  //   display: grid;
+  //   grid-auto-flow: row;
+  //   justify-content: center;
+  //   grid-template-columns: repeat(5, auto);
+  //   grid-gap: 6em;
+
+  //   @include block(image) {
+  //     @include xy-grid();
+  //     @include flex-align(center, middle);
+  //   }
+  // }
 }

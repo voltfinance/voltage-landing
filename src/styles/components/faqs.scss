@@ -23,6 +23,7 @@
     @include breakpoint(medium down) {
       transform: rotate(90deg);
       right: -5em;
+      top: -3%;
       left: unset;
     }
   }
