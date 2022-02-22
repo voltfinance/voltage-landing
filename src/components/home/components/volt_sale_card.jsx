@@ -120,16 +120,6 @@ const VoltSaleCard = () => {
         </div>
       </Modal>
       <div className='card grid-container'>
-        <div className='overlay'>
-          <p className='headline_text'>
-            Coming soon...
-
-          </p>
-          <div className='social_link_form' ref={hamburgerRef} style={{ color: 'black' }}>
-            <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
-
-          </div>
-        </div>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-12'>
             <NumericalInput
@@ -138,7 +128,6 @@ const VoltSaleCard = () => {
               onChange={setTypedValue}
               onMax={onMax}
               showMax
-              disabled
             />
           </div>
           <div className='cell small-12'>
@@ -147,7 +136,6 @@ const VoltSaleCard = () => {
               defaultValue={tokenSaleAddress}
               onChange={(option) => setTokenSaleAddress(option.value)}
               options={options}
-              isDisabled
             />
           </div>
         </div>
@@ -158,7 +146,7 @@ const VoltSaleCard = () => {
 
         <div className='grid-x'>
           <div className='small-24'>
-            <NumericalInput label='VOLT' value={tokenAmount} disabled />
+            <NumericalInput label='VOLT' value={tokenAmount} />
           </div>
         </div>
         {
@@ -178,7 +166,6 @@ const VoltSaleCard = () => {
                 <button
                   className='button button--primary'
                   onClick={onSwap}
-                  disabled
                 >
                   {inputError ?? 'Swap'}
                 </button>
