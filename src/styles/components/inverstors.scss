@@ -25,7 +25,7 @@
       grid-auto-flow: row;
       justify-content: center;
       grid-template-columns: repeat(4, auto);
-      grid-gap: 6em;
+      grid-gap: 8em 4em;
     }
     @include breakpoint(large down) {
       width: 50%;
@@ -67,8 +67,8 @@
       display: grid;
       grid-auto-flow: row;
       justify-content: center;
-      grid-template-columns: repeat(5, auto);
-      grid-gap: 6em;
+      grid-template-columns: repeat(5, 270px);
+      grid-gap: 6em 4em;
     }
     @include breakpoint(large down) {
       width: 50%;
