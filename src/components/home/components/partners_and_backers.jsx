@@ -19,7 +19,7 @@ import planet from '@/assets/images/planet.svg'
 import alpha_sigma from '@/assets/images/backers/alpha_sigma.png'
 import alpha_square from '@/assets/images/backers/alpha_square.png'
 import angel_dao from '@/assets/images/backers/angel_dao.png'
-import avg from '@/assets/images/backers/avg.png'
+import aria from '@/assets/images/backers/aria.png'
 import banter_capital from '@/assets/images/backers/banter_capital.png'
 import collider from '@/assets/images/backers/collider.png'
 import crt_capital from '@/assets/images/backers/crt_capital.png'
@@ -29,7 +29,6 @@ import gda_capital from '@/assets/images/backers/gda_capital.png'
 import metavest from '@/assets/images/backers/metavest.png'
 import mvst from '@/assets/images/backers/mvst.png'
 import node from '@/assets/images/backers/node.png'
-import royale from '@/assets/images/backers/royale.png'
 import sheesha_finance from '@/assets/images/backers/sheesha_finance.png'
 import shima from '@/assets/images/backers/shima.png'
 import side_door from '@/assets/images/backers/side_door.png'
@@ -37,9 +36,7 @@ import spark from '@/assets/images/backers/spark.png'
 import tech_meets from '@/assets/images/backers/tech_meets.png'
 import blockchain_fund from '@/assets/images/backers/blockchain_fund.png'
 import trgc from '@/assets/images/backers/trgc.png'
-import triangle from '@/assets/images/backers/triangle.png'
 import valhalla_capital from '@/assets/images/backers/valhalla_capital.png'
-import velvet from '@/assets/images/backers/velvet.png'
 import zbs_capital from '@/assets/images/backers/zbs_capital.png'
 import { isMobile } from 'react-device-detect'
 
@@ -106,12 +103,9 @@ const backersLogos = [
   metavest,
   alpha_square,
   banter_capital,
-  velvet,
-  avg,
-  triangle,
+  aria,
   angel_dao,
   exnetwork_capital,
-  royale,
   valhalla_capital,
   side_door
 ]
