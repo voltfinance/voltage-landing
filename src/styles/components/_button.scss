@@ -14,6 +14,11 @@
     }
   }
 
+  &--secondary{
+    background: linear-gradient(93.58deg, #FF0000 -105.35%, #F3FC1F 103.54%);
+    color: black;
+  }  
+
   &--small {
     height: 28px;
     min-height: 28px;

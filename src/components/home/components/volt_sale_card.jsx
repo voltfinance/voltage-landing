@@ -48,17 +48,17 @@ const VoltSaleCard = () => {
 
       setTypedValue(undefined)
       setTokenSaleAddress(undefined)
-      toast.error('Swap Disabled')
+      toast.sucess('Purchase Successful!')
     } catch (error) {
       console.error('Swap failed', error)
-      toast.error('Swap failed')
+      toast.error('Purchase Failed!')
     }
   }, [swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
 
   const [modalIsOpen, setIsOpen] = React.useState(false)
 
   function openModal () {
-    setIsOpen(false)
+    setIsOpen(true)
   }
 
   function closeModal () {
@@ -167,7 +167,7 @@ const VoltSaleCard = () => {
                   className='button button--primary'
                   onClick={onSwap}
                 >
-                  {inputError ?? 'Swap'}
+                  {inputError ?? 'Purchase'}
                 </button>
                 )
         }
