@@ -72,7 +72,6 @@ function NotConncted () {
         </div>
         <div className='texts'>
           <div>Here you can claim your tokens as they unlock. Thank you for being a part of our ecosystem!</div>
-          <span>500 Volt tokens available to unvest</span>
         </div>
       </div>
       <div className='actions'>
