@@ -13,8 +13,8 @@ import classNames from 'classnames'
 
 const data = [
   {
-    title: `What is Fuse Ecosystem Round and for how long?`,
-    content: `The Fuse Ecosystem Round is the Public sale for Fuse ecosystem users, in comparison with other public sales, this one have better unvesting period for our loyal community. The sale will be for 24 hours or until all tokens are sold out.`
+    title: 'What is Fuse Ecosystem Round and for how long?',
+    content: 'The Fuse Ecosystem Round is the Public sale for Fuse ecosystem users, in comparison with other public sales, this one have better unvesting period for our loyal community. The sale will be for 24 hours or until all tokens are sold out.'
   },
   {
     title: 'Do I  still need $FUSE after I acquire $VOLT?',
