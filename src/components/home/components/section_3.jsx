@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import { useSpring, animated } from 'react-spring'
 import farm from '@/assets/images/farm.png'
 import lend from '@/assets/images/lend.png'
