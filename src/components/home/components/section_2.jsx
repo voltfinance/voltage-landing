@@ -56,7 +56,7 @@ function Secion2 () {
     <section className='section_2'>
       {isMobile ? <SuperchargeModile /> : <Supercharge />}
       <div className='title'>Supercharge your experience with Fuse Cash</div>
-      <div className='subtitle'>Imagine being in full control of your finances while earning the highest interest <br /> rate to date. Voltage is a non-custodial platform that brings cutting edge finacial <br /> tools to your fingertips.</div>
+      <div className='subtitle'>Imagine being in full control of your finances while earning the highest interest <br /> rate to date. Voltage is a non-custodial platform that brings cutting edge financial <br /> tools to your fingertips.</div>
       <img className='image' src={computer} />
       <div className='stores'>
         <a rel='noreferrer noopener' target='_blank' href='https://get.fuse.cash/mrxn/dfb1a810'>
