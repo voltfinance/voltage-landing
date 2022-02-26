@@ -5,6 +5,9 @@
   font-size: 18px;
   width: 100%;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
 
   &--primary {
     background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
@@ -17,7 +20,12 @@
   &--secondary{
     background: linear-gradient(93.58deg, #FF0000 -105.35%, #F3FC1F 103.54%);
     color: black;
-  }  
+  }
+
+  &--error {
+    background: linear-gradient(93.58deg, #FF0000 -105.35%, #F3FC1F 103.54%);
+    color: black;
+  }
 
   &--small {
     height: 28px;
@@ -25,7 +33,6 @@
     width: 80px;
     color: white;
     border-radius: 5px;
-    font-family: Inter;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;

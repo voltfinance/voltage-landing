@@ -9,7 +9,7 @@ const NumericalInput = ({ value, onChange, placeholder, label, showMax, onMax, .
     if (input !== '' || inputRegex.test(escapeRegExp(input))) {
       onChange(input)
     }
-    if  (!input){
+    if (!input) {
       onChange('')
     }
   }
