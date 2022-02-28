@@ -86,6 +86,17 @@
     }
   }
 
+  @include block(scroll) {
+    position: absolute;
+    width: 100px;
+    height: 250px;
+    bottom: 0px;
+
+    @include breakpoint(medium down) {
+      display: none;
+    }
+  }
+
   @include element(main) {
     height: 60%;
   }
