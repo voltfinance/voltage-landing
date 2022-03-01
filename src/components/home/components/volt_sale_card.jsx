@@ -123,11 +123,9 @@ const VoltSaleCard = () => {
         <div className='overlay'>
           <p className='headline_text'>
             Coming soon...
-
           </p>
           <div className='social_link_form' ref={hamburgerRef} style={{ color: 'black' }}>
             <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
-
           </div>
         </div>
         <div className='grid-x grid-margin-x align-bottom'>
