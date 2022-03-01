@@ -64,11 +64,9 @@
     @include xy-grid-container();
     @include breakpoint(large up) {
       width: 100%;
-      display: grid;
-      grid-auto-flow: row;
-      justify-content: center;
-      grid-template-columns: repeat(5, 270px);
       grid-gap: 6em 4em;
+      @include xy-grid();
+      @include flex-align(center, middle);
     }
     @include breakpoint(large down) {
       width: 50%;
@@ -79,6 +77,11 @@
     @include block(image) {
       @include xy-grid();
       @include flex-align(center, middle);
+
+      > img {
+        max-width: 250px;
+        width: fit-content;
+      }
     }
   }
 }

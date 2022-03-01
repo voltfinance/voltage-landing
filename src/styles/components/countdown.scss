@@ -1,0 +1,30 @@
+@include block(countdown) {
+  padding: 2em;
+  position: relative;
+
+  @include modifier(small) {
+    width: 300px;
+  }
+
+  @include block(content) {
+    @include xy-grid();
+    @include flex-align(center, middle);
+    font-style: normal;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(to right, #00ff80, #f3fc1f, #f3fc1f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include modifier(large) {
+      font-size: 9em;
+      line-height: 139px;
+    }
+
+    @include modifier(small) {
+      font-size: 48px;
+      line-height: 46px;
+    }
+  }
+}

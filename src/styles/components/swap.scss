@@ -61,7 +61,7 @@
       @include xy-cell(50%);
     }
   }
-  
+
   @include block(overlay) {
     position: absolute;
     top: 0;
@@ -76,19 +76,19 @@
     z-index: 999;
     background-color: #0c0d0edb;
     backdrop-filter: blur(1px);
-    
+
     > p {
       font-family: "Newake";
-        font-style: normal;
-        font-weight: normal;
-        font-size: 3.25rem;
-        text-align: center;
-        margin-bottom: 1rem;
-        background: linear-gradient(268.7deg, #F3FC1F -15.14%, #F3FC1F 43.63%, #00FF80 110.24%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 3.25rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(268.7deg, #f3fc1f -15.14%, #f3fc1f 43.63%, #00ff80 110.24%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    }
+  }
 
   @include block(card) {
     color: white;
@@ -155,19 +155,6 @@
           line-height: 40px;
           letter-spacing: 0.055em;
           color: #ffffff;
-        }
-
-        > span {
-          margin-top: 1em;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 18px;
-          line-height: 23px;
-
-          display: flex;
-          align-items: center;
-
-          color: #f3fc1f;
         }
       }
     }

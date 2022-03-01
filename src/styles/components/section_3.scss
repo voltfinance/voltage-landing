@@ -55,23 +55,11 @@
       bottom: 0;
       padding: 2px;
       border-radius: 8px;
-      background: linear-gradient(-40deg, rgba(58, 216, 137, 0), rgba(79, 220, 125, 0.45));
+      background: linear-gradient(-40deg, #f3fc1f, rgba(79, 220, 125, 0.45));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
-    }
-
-    @include modifier(bigger) {
-      @include xy-cell(35%);
-
-      @include breakpoint(xlarge up) {
-        width: 291px;
-        height: 397.35px;
-      }
-
-      @include breakpoint(small down) {
-      }
     }
 
     @include xy-cell(30%);

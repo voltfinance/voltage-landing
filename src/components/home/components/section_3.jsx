@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import { useSpring, animated } from 'react-spring'
 import farm from '@/assets/images/farm.png'
 import lend from '@/assets/images/lend.png'
@@ -23,8 +22,7 @@ const cards = [
   }
 ]
 
-function Card ({ title, image, index }) {
-  const isBiddger = index === 1
+function Card ({ title, image }) {
   const [props, set] = useSpring(() => ({
     transform: 'scale(1)',
     from: { transform: 'scale(0.99)' },
@@ -37,7 +35,7 @@ function Card ({ title, image, index }) {
       onMouseEnter={() => set(updateHover(true))}
       onMouseLeave={() => set(updateHover(false))}
       style={props}
-      className={classNames('card', { 'card--bigger': isBiddger })}
+      className='card'
     >
       <div className='image'>
         <img src={image} alt='card_image' />
@@ -117,7 +115,7 @@ function Secion3 () {
       </div>
       <div className='card__container'>
         {
-          cards.map((item, index) => <Card {...{ ...item, index }} key={index} />)
+          cards.map((item, index) => <Card {...item} key={index} />)
         }
       </div>
 

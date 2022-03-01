@@ -11,7 +11,9 @@ import Swap from './components/swap'
 import Timeline from './components/timeline'
 import Footer from './footer'
 import Header from './header'
+import CountDown from './components/countdown'
 
+import scrollAnimationData from '@/assets/lotties/scroll.json'
 import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
 import smokeAnimationData from '@/assets/lotties/smoke.json'
@@ -22,6 +24,18 @@ const HomePage = () => {
   const lightingRef = useRef(null)
   const smokeRef = useRef(null)
   const { animate } = useSelector((state) => state.animation)
+  const scrollRef = useRef(null)
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      lottie.loadAnimation({
+        animationData: scrollAnimationData,
+        container: scrollRef.current,
+        renderer: 'svg',
+        loop: true
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (smokeRef.current) {
@@ -63,6 +77,12 @@ const HomePage = () => {
       <section className='homepage__container'>
         <Header />
         <div className='homepage'>
+          <div className='scroll' ref={scrollRef} />
+          <div className='CountDown'>
+            <div>
+              <CountDown isSmall completeComponent={<></>} />
+            </div>
+          </div>
           <img src={underline} style={{ position: 'absolute', bottom: '0%' }} />
           {!isMobile && <div className='stars' ref={starsRef} />}
           {/* {!isMobile && <div className='smoke' ref={smokeRef} />} */}
