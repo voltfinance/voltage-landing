@@ -14,16 +14,21 @@ import { useWeb3Context } from '@/context/web3'
 import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { toast } from 'react-toastify'
 import Modal from 'react-modal'
+import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
 
 const VoltSaleCard = () => {
   const { account, toggleWeb3Modal, chainId } = useWeb3Context()
 
-  const [typedValue, setTypedValue] = useState()
+  const [typedValue, setTypedValue] = useState('')
 
   const [tokenSaleAddress, setTokenSaleAddress] = useState(null)
 
-  const { tokenAmount, typedValueWei, fuseBalance, inputError } =
+  const [swapState, setSwapState] = useState(null)
+
+  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } =
     useDerivedTokenSaleState(tokenSaleAddress, typedValue)
+
+  const soldOut = Number(availableTokens) === 0
 
   const swapCallback = useSwapCallback(tokenSaleAddress)
 
@@ -36,29 +41,36 @@ const VoltSaleCard = () => {
     label: tokenSaleContract
   }))
 
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const [purchaseModalIsOpen, setPurchaseModalIsOpen] = useState(false)
+
   const onMax = useCallback(() => {
     setTypedValue(fuseBalance)
   }, [fuseBalance])
 
   const onSwap = useCallback(async () => {
     if (!swapCallback) return
+    setSwapState(null)
 
     try {
       await swapCallback(typedValueWei)
 
-      setTypedValue(undefined)
-      setTokenSaleAddress(undefined)
-      toast.error('Swap Disabled')
+      setSwapState({
+        tokenAmount,
+        typedValue
+      })
+      setTypedValue('')
+      setTokenSaleAddress(null)
+      setPurchaseModalIsOpen(true)
+      toast.success('Purchase Successful!')
     } catch (error) {
       console.error('Swap failed', error)
-      toast.error('Swap failed')
+      toast.error('Purchase Failed!')
     }
-  }, [swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
-
-  const [modalIsOpen, setIsOpen] = React.useState(false)
+  }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
 
   function openModal () {
-    setIsOpen(false)
+    setIsOpen(true)
   }
 
   function closeModal () {
@@ -119,6 +131,13 @@ const VoltSaleCard = () => {
           </div>
         </div>
       </Modal>
+      <SuccessfulPurchaseModal
+        isOpen={purchaseModalIsOpen}
+        closeModal={() => setPurchaseModalIsOpen(false)}
+        account={account}
+        purchaseAmount={swapState?.typedValue}
+        tokenAmount={swapState?.tokenAmount}
+      />
       <div className='card grid-container'>
         <div className='overlay'>
           <p className='headline_text'>
@@ -129,23 +148,21 @@ const VoltSaleCard = () => {
           </div>
         </div>
         <div className='grid-x grid-margin-x align-bottom'>
-          <div className='cell small-12'>
+          <div className='cell small-24 medium-12'>
             <NumericalInput
               label='FUSE'
               value={typedValue}
               onChange={setTypedValue}
               onMax={onMax}
               showMax
-              disabled
             />
           </div>
-          <div className='cell small-12'>
+          <div className='cell small-24 medium-12'>
             <Select
               placeholder='Choose price'
               defaultValue={tokenSaleAddress}
               onChange={(option) => setTokenSaleAddress(option.value)}
               options={options}
-              isDisabled
             />
           </div>
         </div>
@@ -156,7 +173,7 @@ const VoltSaleCard = () => {
 
         <div className='grid-x'>
           <div className='small-24'>
-            <NumericalInput label='VOLT' value={tokenAmount} disabled />
+            <NumericalInput label='VOLT' value={tokenAmount} />
           </div>
         </div>
         {
@@ -172,15 +189,21 @@ const VoltSaleCard = () => {
                   Switch to Fuse
                 </button>
                 )
-              : (
-                <button
-                  className='button button--primary'
-                  onClick={onSwap}
-                  disabled
-                >
-                  {inputError ?? 'Swap'}
-                </button>
-                )
+              : tokenSaleAddress && soldOut
+                ? (
+                  <button className='button button--error' disabled>
+                    This pool is fully sold
+                  </button>
+                  )
+                : (
+                  <button
+                    className='button button--primary'
+                    onClick={onSwap}
+                    disabled={inputError}
+                  >
+                    {inputError ?? 'Purchase'}
+                  </button>
+                  )
         }
         <div className='info' onClick={openModal}>
           <span>

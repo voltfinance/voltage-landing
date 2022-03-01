@@ -40,7 +40,7 @@ export default function useDerivedTokenSaleState (address, typedValue) {
     inputError = 'Insufficient balance'
   } else if (Number(typedValue) > Number(maxPurchase)) {
     inputError = 'Amount greater than max purchase amount'
-  } else if (Number(typedValue) > Number(availableTokens)) {
+  } else if (Number(tokenAmount) > Number(availableTokens)) {
     inputError = 'Amount greater than available tokens for sale'
   }
 
@@ -49,6 +49,7 @@ export default function useDerivedTokenSaleState (address, typedValue) {
     typedValueWei,
     inputError,
     fuseBalance,
-    tokenAmount
+    tokenAmount,
+    availableTokens
   }
 }
