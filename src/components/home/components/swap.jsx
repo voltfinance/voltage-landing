@@ -1,6 +1,7 @@
 import React from 'react'
 import { useWeb3Context } from '@/context/web3'
 import { isMobile } from 'react-device-detect'
+import CountDown from './countdown'
 import Card from './volt_sale_card'
 import logo from '@/assets/images/voltage_logo.svg'
 import star from '@/assets/images/star.svg'
@@ -100,7 +101,7 @@ function Swap () {
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
       {account && <div className='title'>Fuse Ecosystem Round</div>}
       <div className='swap__wrapper'>
-        {account ? <Card /> : <NotConncted />}
+        <CountDown completeComponent={account ? <Card /> : <NotConncted />} />
       </div>
     </div>
   )

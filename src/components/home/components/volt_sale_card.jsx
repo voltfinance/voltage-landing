@@ -139,6 +139,14 @@ const VoltSaleCard = () => {
         tokenAmount={swapState?.tokenAmount}
       />
       <div className='card grid-container'>
+        <div className='overlay'>
+          <p className='headline_text'>
+            Coming soon...
+          </p>
+          <div className='social_link_form' ref={hamburgerRef} style={{ color: 'black' }}>
+            <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
+          </div>
+        </div>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-24 medium-12'>
             <NumericalInput

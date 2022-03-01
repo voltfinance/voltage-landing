@@ -40,7 +40,7 @@ function Header () {
                   {Number(fuseBalance).toFixed(2)} Fuse
                 </button>
                 <button className='button-web3'>
-                  {account.substring(0, 2)}...{account.substring(38)}
+                  {account.substring(0, 6)}...{account.substring(38)}
                   <span />
                 </button>
               </div>
