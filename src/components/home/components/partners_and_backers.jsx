@@ -6,38 +6,37 @@ import beefy from '@/assets/images/partners/beefy.png'
 import quillhash from '@/assets/images/partners/quillhash.png'
 import ascend from '@/assets/images/partners/ascend.png'
 import bittrex from '@/assets/images/partners/bittrex.png'
-import enjinstarter from '@/assets/images/partners/enjinstarter.png'
 import infinity from '@/assets/images/partners/infinity.png'
 import israeliBlockchain from '@/assets/images/partners/israeli_blockchain.png'
 import mexc from '@/assets/images/partners/mexc.png'
 import olaFinance from '@/assets/images/partners/ola_finance.png'
 import poolz from '@/assets/images/partners/poolz.png'
-import the_graph from '@/assets/images/partners/the_graph.png'
+import theGraph from '@/assets/images/partners/the_graph.png'
 import star from '@/assets/images/star.svg'
 import planet from '@/assets/images/planet.svg'
 
-import alpha_sigma from '@/assets/images/backers/alpha_sigma.png'
-import alpha_square from '@/assets/images/backers/alpha_square.png'
-import angel_dao from '@/assets/images/backers/angel_dao.png'
+import alphaSigma from '@/assets/images/backers/alpha_sigma.png'
+import alphaSquare from '@/assets/images/backers/alpha_square.png'
+import angelDao from '@/assets/images/backers/angel_dao.png'
 import aria from '@/assets/images/backers/aria.png'
-import banter_capital from '@/assets/images/backers/banter_capital.png'
+import banterCapital from '@/assets/images/backers/banter_capital.png'
 import collider from '@/assets/images/backers/collider.png'
-import crt_capital from '@/assets/images/backers/crt_capital.png'
-import exnetwork_capital from '@/assets/images/backers/exnetwork_capital.png'
+import crtCapital from '@/assets/images/backers/crt_capital.png'
+import exnetworkCapital from '@/assets/images/backers/exnetwork_capital.png'
 import gbv from '@/assets/images/backers/gbv.png'
-import gda_capital from '@/assets/images/backers/gda_capital.png'
+import gdaCapital from '@/assets/images/backers/gda_capital.png'
 import metavest from '@/assets/images/backers/metavest.png'
 import mvst from '@/assets/images/backers/mvst.png'
 import node from '@/assets/images/backers/node.png'
-import sheesha_finance from '@/assets/images/backers/sheesha_finance.png'
+import sheeshaFinance from '@/assets/images/backers/sheesha_finance.png'
 import shima from '@/assets/images/backers/shima.png'
-import side_door from '@/assets/images/backers/side_door.png'
+import sideDoor from '@/assets/images/backers/side_door.png'
 import spark from '@/assets/images/backers/spark.png'
-import tech_meets from '@/assets/images/backers/tech_meets.png'
-import blockchain_fund from '@/assets/images/backers/blockchain_fund.png'
+import techMeets from '@/assets/images/backers/tech_meets.png'
+import blockchainFund from '@/assets/images/backers/blockchain_fund.png'
 import trgc from '@/assets/images/backers/trgc.png'
-import valhalla_capital from '@/assets/images/backers/valhalla_capital.png'
-import zbs_capital from '@/assets/images/backers/zbs_capital.png'
+import valhallaCapital from '@/assets/images/backers/valhalla_capital.png'
+import zbsCapital from '@/assets/images/backers/zbs_capital.png'
 import { isMobile } from 'react-device-detect'
 
 function PassiveIncome () {
@@ -78,8 +77,7 @@ const inverstorsLogos = [
   bittrex,
   infinity,
   israeliBlockchain,
-  the_graph,
-  enjinstarter,
+  theGraph,
   poolz,
   olaFinance,
   mexc
@@ -89,25 +87,25 @@ const backersLogos = [
   spark,
   shima,
   collider,
-  crt_capital,
+  crtCapital,
   trgc,
-  tech_meets,
+  techMeets,
   mvst,
   node,
   gbv,
-  blockchain_fund,
-  alpha_sigma,
-  zbs_capital,
-  gda_capital,
-  sheesha_finance,
+  blockchainFund,
+  alphaSigma,
+  zbsCapital,
+  gdaCapital,
+  sheeshaFinance,
   metavest,
-  alpha_square,
-  banter_capital,
+  alphaSquare,
+  banterCapital,
   aria,
-  angel_dao,
-  exnetwork_capital,
-  valhalla_capital,
-  side_door
+  angelDao,
+  exnetworkCapital,
+  valhallaCapital,
+  sideDoor
 ]
 
 function PartnersAndBackers () {
@@ -120,19 +118,21 @@ function PartnersAndBackers () {
         <div className='images'>
           {
             isMobile
-              ? <Swiper
+              ? (
+                <Swiper
                   spaceBetween={0}
                   slidesPerView={1}
                   autoplay
                   centeredSlides
                   modules={[Autoplay]}
                 >
-                {
-                inverstorsLogos.map((logo, key) => (
-                  <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
-                ))
-              }
-              </Swiper>
+                  {
+                    inverstorsLogos.map((logo, key) => (
+                      <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
+                    ))
+                  }
+                </Swiper>
+                )
               : inverstorsLogos.map((logo, key) => (
                 <div className='image' key={key}>
                   <img src={logo} />
@@ -147,19 +147,21 @@ function PartnersAndBackers () {
         <div className='images'>
           {
             isMobile
-              ? <Swiper
+              ? (
+                <Swiper
                   spaceBetween={0}
                   slidesPerView={1}
                   autoplay
                   centeredSlides
                   modules={[Autoplay]}
                 >
-                {
-                backersLogos.map((logo, key) => (
-                  <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
-                ))
-              }
-              </Swiper>
+                  {
+                    backersLogos.map((logo, key) => (
+                      <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
+                    ))
+                  }
+                </Swiper>
+                )
               : backersLogos.map((logo, key) => (
                 <div className='image' key={key}>
                   <img src={logo} />
