@@ -34,7 +34,7 @@ export default function useDerivedTokenSaleState (address, typedValue) {
     inputError = 'Select Price'
   } else if (currentTimestamp < Number(startTime)) {
     inputError = 'Sale not started'
-  } else if (currentTimestamp > Number(startTime + saleDuration)) {
+  } else if (currentTimestamp > Number(startTime) + Number(saleDuration)) {
     inputError = 'Sale ended'
   } else if (Number(typedValue) > Number(fuseBalance)) {
     inputError = 'Insufficient balance'
