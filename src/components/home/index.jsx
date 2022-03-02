@@ -11,6 +11,7 @@ import Swap from './components/swap'
 import Timeline from './components/timeline'
 import Footer from './footer'
 import Header from './header'
+import CountDown from './components/countdown'
 
 import scrollAnimationData from '@/assets/lotties/scroll.json'
 import starsAnimationData from '@/assets/lotties/stars.json'
@@ -77,6 +78,11 @@ const HomePage = () => {
         <Header />
         <div className='homepage'>
           <div className='scroll' ref={scrollRef} />
+          <div className='CountDown'>
+            <div>
+              <CountDown isSmall completeComponent={<></>} />
+            </div>
+          </div>
           <img src={underline} style={{ position: 'absolute', bottom: '0%' }} />
           {!isMobile && <div className='stars' ref={starsRef} />}
           {/* {!isMobile && <div className='smoke' ref={smokeRef} />} */}
