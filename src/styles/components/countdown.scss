@@ -20,11 +20,13 @@
     @include modifier(large) {
       font-size: 9em;
       line-height: 139px;
+      min-height: 340px;
     }
 
     @include modifier(small) {
       font-size: 48px;
       line-height: 46px;
+      min-height: 100px;
     }
   }
 }

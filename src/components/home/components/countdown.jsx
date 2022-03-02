@@ -42,7 +42,7 @@ function CountDown ({ completeComponent, isSmall = false }) {
             <div className={classNames('countdown', { 'countdown--small': isSmall })}>
               <Starts isSmall={isSmall} />
               <div className={classNames('content', { 'content--small': isSmall, 'content--large': !isSmall })}>
-                <div>{days} days {hours}:{minutes}:{seconds}</div>
+                <div>{days !== 0 && `${days} days`} {hours}:{minutes}:{seconds}</div>
               </div>
             </div>
             )
