@@ -3,6 +3,7 @@ import Countdown from 'react-countdown'
 import star from '@/assets/images/star.svg'
 import planet from '@/assets/images/planet.svg'
 import classNames from 'classnames'
+import { START_TIME } from '@/constants'
 
 function Starts ({ isSmall }) {
   return (
@@ -29,12 +30,10 @@ function Starts ({ isSmall }) {
   )
 }
 
-const startDate = 1646748000000
-
-function CountDown ({ completeComponent, isSmall = false }) {
+function CountDown ({ date = START_TIME, completeComponent, isSmall = false }) {
   return (
     <Countdown
-      date={startDate}
+      date={date}
       renderer={({ days, hours, minutes, seconds, completed }) => {
         return completed
           ? completeComponent
@@ -42,7 +41,7 @@ function CountDown ({ completeComponent, isSmall = false }) {
             <div className={classNames('countdown', { 'countdown--small': isSmall })}>
               <Starts isSmall={isSmall} />
               <div className={classNames('content', { 'content--small': isSmall, 'content--large': !isSmall })}>
-                <div>{days !== 0 && `${days} days`} {hours}:{minutes}:{seconds}</div>
+                <div>{!isSmall && <>Be part of <br /> Voltage Finance <br /></>} {days !== 0 && <>{days} days<br /></>} {hours}:{minutes}:{seconds}</div>
               </div>
             </div>
             )

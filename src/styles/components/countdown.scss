@@ -9,8 +9,8 @@
   @include block(content) {
     @include xy-grid();
     @include flex-align(center, middle);
+    font-family: Newake;
     font-style: normal;
-    font-weight: 600;
     color: #ffffff;
     text-align: center;
     background: linear-gradient(to right, #00ff80, #f3fc1f, #f3fc1f);
@@ -18,8 +18,7 @@
     -webkit-text-fill-color: transparent;
 
     @include modifier(large) {
-      font-size: 9em;
-      line-height: 139px;
+      font-size: 72px;
       min-height: 340px;
     }
 

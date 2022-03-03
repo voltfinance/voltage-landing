@@ -1,12 +1,14 @@
 import React from 'react'
 import { useWeb3Context } from '@/context/web3'
 import { isMobile } from 'react-device-detect'
-import CountDown from './countdown'
+import { START_TIME, END_TIME } from '@/constants'
+import MyCountDown from './countdown'
 import Card from './volt_sale_card'
 import logo from '@/assets/images/voltage_logo.svg'
 import star from '@/assets/images/star.svg'
 import planet from '@/assets/images/planet.svg'
 import rocket from '@/assets/images/rocket.svg'
+import Countdown from 'react-countdown'
 
 function Ecosystem () {
   return (
@@ -101,7 +103,17 @@ function Swap () {
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
       {account && <div className='title'>Fuse Ecosystem Round</div>}
       <div className='swap__wrapper'>
-        <CountDown completeComponent={account ? <Card /> : <NotConncted />} />
+        <MyCountDown
+          date={START_TIME}
+          completeComponent={
+            <Countdown
+              date={END_TIME}
+              renderer={({ completed }) => completed
+                ? <NotConncted />
+                : <Card />}
+            />
+          }
+        />
       </div>
     </div>
   )
