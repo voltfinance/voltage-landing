@@ -1,14 +1,16 @@
 import React from 'react'
+import Countdown from 'react-countdown'
 import { useWeb3Context } from '@/context/web3'
 import { isMobile } from 'react-device-detect'
 import { START_TIME, END_TIME } from '@/constants'
 import MyCountDown from './countdown'
 import Card from './volt_sale_card'
+import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
+
 import logo from '@/assets/images/voltage_logo.svg'
 import star from '@/assets/images/star.svg'
 import planet from '@/assets/images/planet.svg'
 import rocket from '@/assets/images/rocket.svg'
-import Countdown from 'react-countdown'
 
 function Ecosystem () {
   return (
@@ -101,7 +103,7 @@ function Swap () {
   return (
     <div className='swap'>
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
-      {account && <div className='title'>Fuse Ecosystem Round</div>}
+      <div className='title'>Fuse Ecosystem Round</div>
       <div className='swap__wrapper'>
         <MyCountDown
           date={START_TIME}
@@ -109,7 +111,17 @@ function Swap () {
             <Countdown
               date={END_TIME}
               renderer={({ completed }) => completed
-                ? <NotConncted />
+                ? account
+                    ? (
+                      <SuccessfulPurchaseModal
+                        isOpen
+                        closeModal={() => console.log('Close')}
+                        account={account}
+                        purchaseAmount={0}
+                        tokenAmount={1}
+                      />
+                      )
+                    : <NotConncted />
                 : <Card />}
             />
           }

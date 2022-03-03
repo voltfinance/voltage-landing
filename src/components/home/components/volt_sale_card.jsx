@@ -22,8 +22,6 @@ const VoltSaleCard = () => {
 
   const [tokenSaleAddress, setTokenSaleAddress] = useState(null)
 
-  const [swapState, setSwapState] = useState(null)
-
   const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } =
     useDerivedTokenSaleState(tokenSaleAddress, typedValue)
 
@@ -49,15 +47,9 @@ const VoltSaleCard = () => {
 
   const onSwap = useCallback(async () => {
     if (!swapCallback) return
-    setSwapState(null)
 
     try {
       await swapCallback(typedValueWei)
-
-      setSwapState({
-        tokenAmount,
-        typedValue
-      })
       setTypedValue('')
       setTokenSaleAddress(null)
       setPurchaseModalIsOpen(true)
@@ -117,8 +109,6 @@ const VoltSaleCard = () => {
         isOpen={purchaseModalIsOpen}
         closeModal={() => setPurchaseModalIsOpen(false)}
         account={account}
-        purchaseAmount={swapState?.typedValue}
-        tokenAmount={swapState?.tokenAmount}
       />
       <Modal
         isOpen={modalIsOpen}

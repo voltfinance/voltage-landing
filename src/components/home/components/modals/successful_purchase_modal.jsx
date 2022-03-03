@@ -1,7 +1,7 @@
 import React from 'react'
 import boltIcon from '@/assets/images/bolt.svg'
 
-function SuccessfulPurchaseModal ({ isOpen, closeModal, account, purchaseAmount, tokenAmount }) {
+function SuccessfulPurchaseModal ({ isOpen, closeModal, account }) {
   if (!isOpen) {
     return null
   }
@@ -11,8 +11,8 @@ function SuccessfulPurchaseModal ({ isOpen, closeModal, account, purchaseAmount,
         <div className='successful_purchase_modal__icon'>
           <img src={boltIcon} alt='bolt' />
         </div>
-        <p><b>You participated in the auction successfully with his address:</b> {account} <b>with this amount:</b> {purchaseAmount}</p>
-        <p><b>Your tokens will be vested, here is a guide on how to access them:</b> {tokenAmount}</p>
+        <p><b>You participated in the auction successfully with his address:</b> {account}</p>
+        <p><b>Your tokens will be vested, Here you can access the vesting interface: XXXXXX </b></p>
         <button className='button button--primary' onClick={closeModal}>Ok</button>
       </div>
     </div>
