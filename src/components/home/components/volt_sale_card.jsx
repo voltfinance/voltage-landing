@@ -8,12 +8,14 @@ import info from '@/assets/images/info.svg'
 import voltInfo from '@/assets/images/volt_info.png'
 import docs from '@/assets/images/voltage_docs.svg'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
+import { useModal } from 'react-modal-hook'
 
 import { useWeb3Context } from '@/context/web3'
 import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { toast } from 'react-toastify'
-import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
+import SwapInfoModal from './modals/swap_info'
 
 const VoltSaleCard = () => {
   const { account, toggleWeb3Modal, chainId } = useWeb3Context()
@@ -37,7 +39,33 @@ const VoltSaleCard = () => {
     label: tokenSaleContract
   }))
 
-  const [modalIsOpen, setIsOpen] = useState(false)
+  const [showModal, hideModal] = useModal(() => (
+    <ReactModal
+      isOpen
+      style={{
+        overlay: {
+          background: 'rgb(0 0 0 / 57%)',
+          backdropFilter: 'blur(1px)'
+        },
+        content: {
+          color: 'white',
+          border: 'none',
+          background: 'transparent',
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          padding: '0px'
+        }
+      }}
+    >
+      <SwapInfoModal />
+    </ReactModal>
+  ))
+
+  // const [modalIsOpen, setIsOpen] = useState(false)
   const [purchaseModalIsOpen, setPurchaseModalIsOpen] = useState(false)
 
   const onMax = useCallback(() => {
@@ -59,50 +87,46 @@ const VoltSaleCard = () => {
     }
   }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, saleOption])
 
-  function openModal () {
-    setIsOpen(true)
-  }
+  // function openModal () {
+  //   setIsOpen(true)
+  // }
 
-  function closeModal () {
-    setIsOpen(false)
-  }
+  // function closeModal () {
+  //   setIsOpen(false)
+  // }
 
-  const [isOpen, setMenuOpen] = useState(false)
-  const hamburgerRef = useRef(null)
+  // const [isOpen, setMenuOpen] = useState(false)
+  const ref = useRef(null)
 
-  useOutsideClick(hamburgerRef, () => {
-    if (isOpen) {
-      setMenuOpen(false)
-    }
-  })
+  useOutsideClick(ref, () => hideModal())
 
-  const modalStyle = {
-    overlay: {
-      background: 'rgb(0 0 0 / 57%)',
-      backdropFilter: 'blur(1px)'
-    },
-    content: {
-      color: 'white',
-      border: 'none',
-      background: 'transparent',
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: '0px'
-    }
-  }
+  // const modalStyle = {
+  //   overlay: {
+  //     background: 'rgb(0 0 0 / 57%)',
+  //     backdropFilter: 'blur(1px)'
+  //   },
+  //   content: {
+  //     color: 'white',
+  //     border: 'none',
+  //     background: 'transparent',
+  //     top: '50%',
+  //     left: '50%',
+  //     right: 'auto',
+  //     bottom: 'auto',
+  //     marginRight: '-50%',
+  //     transform: 'translate(-50%, -50%)',
+  //     padding: '0px'
+  //   }
+  // }
 
-  const style = {
-    textAlign: 'right',
-    marginTop: '15px',
-    ':hover': {
-      textDecoration: 'underline',
-      color: '#ffffff'
-    }
-  }
+  // const style = {
+  //   textAlign: 'right',
+  //   marginTop: '15px',
+  //   ':hover': {
+  //     textDecoration: 'underline',
+  //     color: '#ffffff'
+  //   }
+  // }
 
   return (
     <>
@@ -111,7 +135,7 @@ const VoltSaleCard = () => {
         closeModal={() => setPurchaseModalIsOpen(false)}
         account={account}
       />
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={modalStyle}
@@ -127,8 +151,8 @@ const VoltSaleCard = () => {
             </a>
           </div>
         </div>
-      </Modal>
-      <div className='card grid-container'>
+      </Modal> */}
+      <div ref={ref} className='card grid-container'>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-24 medium-12'>
             <NumericalInput
@@ -202,7 +226,7 @@ const VoltSaleCard = () => {
                   </button>
                   )
         }
-        <div className='info' onClick={openModal}>
+        <div className='info' onClick={showModal}>
           <span>
             More Info <img src={info} />
           </span>{' '}

@@ -173,6 +173,19 @@
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px #0b0c13 inset;
+
+  @include block(link) {
+    textAlign: right;
+    marginTop: 15px;
+    &:hover {
+      text-decoration: underline;
+      color: #ffffff
+    }
+
+    > img {
+      margin-right: 8px;
+    }
+  }
 }
 
 @include block(successful_purchase_modal) {
