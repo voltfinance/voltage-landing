@@ -8,20 +8,52 @@ import { START_TIME } from '@/constants'
 function Starts ({ isSmall }) {
   return (
     <>
+      {
+        !isSmall && (
+
+          <img
+            src={star}
+            style={{ position: 'absolute', top: '9%', left: '10%' }}
+          />
+        )
+      }
       <img
         src={star}
-        style={{ position: 'absolute', top: '10%', left: '18%' }}
+        style={{ position: 'absolute', top: '7%', left: '35%' }}
       />
+      {
+        !isSmall && (
+          <img
+            src={star}
+            style={{ position: 'absolute', top: '5%', left: '60%' }}
+          />
+        )
+      }
+      {
+        !isSmall && (
+          <img
+            src={star}
+            style={{ position: 'absolute', top: '40%', right: '8%' }}
+          />
+        )
+      }
       <img
         src={isSmall ? star : planet}
         style={{ position: 'absolute', top: '5%', right: '5%' }}
       />
       {
         !isSmall && (
-
           <img
             src={star}
             style={{ position: 'absolute', bottom: '4%', left: '5%' }}
+          />
+        )
+      }
+      {
+        !isSmall && (
+          <img
+            src={star}
+            style={{ position: 'absolute', bottom: '3%', left: '20%' }}
           />
         )
       }
@@ -41,7 +73,7 @@ function CountDown ({ date = START_TIME, completeComponent, isSmall = false }) {
             <div className={classNames('countdown', { 'countdown--small': isSmall })}>
               <Starts isSmall={isSmall} />
               <div className={classNames('content', { 'content--small': isSmall, 'content--large': !isSmall })}>
-                <div>Be part of <br /> Voltage Finance <br /> {days !== 0 && <>{days} days {!isSmall && <br />}</>} {hours}:{minutes}:{seconds}<small>s</small></div>
+                <div>Be part of <br /> Voltage Finance <br /> {days !== 0 && <>{days} days </>} {hours}:{minutes}:{seconds}<small>s</small></div>
               </div>
             </div>
             )
