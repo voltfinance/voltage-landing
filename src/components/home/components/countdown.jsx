@@ -86,11 +86,15 @@ function CountDown ({ date = START_TIME, completeComponent, isSmall = false }) {
                   <div className='timer'>{days !== 0 && <>{days} days </>} {hours}:{minutes}:{seconds}<small>s</small></div>
                 </div>
               </div>
-              <div className='info' onClick={showModal}>
-                <span>
-                  More Info <img src={info} />
-                </span>{' '}
-              </div>
+              {
+                !isSmall && (
+                  <div className='info' onClick={showModal}>
+                    <span>
+                      More Info <img src={info} />
+                    </span>{' '}
+                  </div>
+                )
+              }
             </div>
             )
       }}
