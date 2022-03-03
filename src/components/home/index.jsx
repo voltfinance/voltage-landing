@@ -13,6 +13,7 @@ import Footer from './footer'
 import Header from './header'
 import CountDown from './components/countdown'
 
+import { START_TIME } from '@/constants'
 import scrollAnimationData from '@/assets/lotties/scroll.json'
 import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
@@ -80,7 +81,7 @@ const HomePage = () => {
           <div className='scroll' ref={scrollRef} />
           <div className='CountDown'>
             <div>
-              <CountDown isSmall completeComponent={<></>} />
+              <CountDown date={START_TIME} isSmall completeComponent={<></>} />
             </div>
           </div>
           <img src={underline} style={{ position: 'absolute', bottom: '0%' }} />
