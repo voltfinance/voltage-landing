@@ -21,18 +21,15 @@ const VoltSaleCard = () => {
 
   const [typedValue, setTypedValue] = useState('')
 
-  const [tokenSaleAddress, setTokenSaleAddress] = useState(null)
-
-  const [tokenPriceSelected, setTokenPriceSelected] = useState('')
+  const [saleOption, setSaleOption] = useState(null)
 
   const [swapState, setSwapState] = useState(null)
 
-  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } =
-    useDerivedTokenSaleState(tokenSaleAddress, typedValue)
+  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } = useDerivedTokenSaleState(saleOption?.value, typedValue)
 
   const soldOut = Number(availableTokens) === 0
 
-  const swapCallback = useSwapCallback(tokenSaleAddress)
+  const swapCallback = useSwapCallback(saleOption?.value)
 
   const switchNetwork = useSwitchNetwork()
 
@@ -62,20 +59,20 @@ const VoltSaleCard = () => {
         typedValue
       })
       setTypedValue('')
-      setTokenSaleAddress(null)
+      setSaleOption(null)
       setPurchaseModalIsOpen(true)
       toast.success('Purchase Successful!')
     } catch (error) {
       console.error('Swap failed', error)
       toast.error('Purchase Failed!')
     }
-  }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
+  }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, saleOption])
 
-  function openModal() {
+  function openModal () {
     setIsOpen(true)
   }
 
-  function closeModal() {
+  function closeModal () {
     setIsOpen(false)
   }
 
@@ -109,6 +106,7 @@ const VoltSaleCard = () => {
 
   const style = {
     textAlign: 'right',
+    marginTop: '15px',
     ':hover': {
       textDecoration: 'underline',
       color: '#ffffff'
@@ -123,13 +121,12 @@ const VoltSaleCard = () => {
         style={modalStyle}
         contentLabel='Voltage Info'
       >
-        <h1 style={{textAlign: 'center', fontSize: '25px', paddingBottom: '10px'}}>Some Text</h1>
         <div className='swap_info_modal'>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img src={voltInfo} width='685px' />
-            <a style={{ marginTop: '15px' }} rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' style={style}>
+            <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' style={style}>
               {' '}
-              <img src={docs} style={{ marginRight: '8px'}} />
+              <img src={docs} style={{ marginRight: '8px' }} />
               Voltage Docs →
             </a>
           </div>
@@ -165,8 +162,8 @@ const VoltSaleCard = () => {
             <p style={{ marginBottom: '5px', marginRight: '5px', textAlign: 'right' }}>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
             <Select
               placeholder='Choose price'
-              defaultValue={tokenSaleAddress}
-              onChange={(option) => setTokenSaleAddress(option.value) & setTokenPriceSelected(option.label)}
+              defaultValue={saleOption?.value}
+              onChange={(option) => setSaleOption(option)}
               options={options}
             />
           </div>
@@ -181,10 +178,10 @@ const VoltSaleCard = () => {
             <NumericalInput label='VOLT' value={tokenAmount} />
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', marginBottom: '48px', paddingInline: '10px' }}>
               <div>
-                Price: {tokenSaleAddress ? tokenPriceSelected : '$0'}
+                Price: {saleOption?.value ? saleOption?.label : '$0'}
               </div>
-              <div >
-                Total Amount: ${tokenSaleAddress && typedValue ? (tokenPriceSelected.substring(1) * tokenAmount).toFixed(2) : '0.00'}
+              <div>
+                Total Amount: ${saleOption?.value && typedValue ? (saleOption?.label.substring(1) * tokenAmount).toFixed(2) : '0.00'}
               </div>
             </div>
           </div>
@@ -195,19 +192,19 @@ const VoltSaleCard = () => {
               <button className='button button--primary' onClick={toggleWeb3Modal}>
                 Connect wallet
               </button>
-            )
+              )
             : chainId !== 122
               ? (
                 <button className='button button--primary' onClick={switchNetwork}>
                   Switch to Fuse
                 </button>
-              )
-              : tokenSaleAddress && soldOut
+                )
+              : saleOption?.value && soldOut
                 ? (
                   <button className='button button--error' disabled>
                     This pool is fully sold
                   </button>
-                )
+                  )
                 : (
                   <button
                     className='button button--primary'
@@ -216,7 +213,7 @@ const VoltSaleCard = () => {
                   >
                     {inputError ?? 'Purchase'}
                   </button>
-                )
+                  )
         }
         <div className='info' onClick={openModal}>
           <span>
