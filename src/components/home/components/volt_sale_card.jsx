@@ -20,14 +20,13 @@ const VoltSaleCard = () => {
 
   const [typedValue, setTypedValue] = useState('')
 
-  const [tokenSaleAddress, setTokenSaleAddress] = useState(null)
+  const [saleOption, setSaleOption] = useState(null)
 
-  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } =
-    useDerivedTokenSaleState(tokenSaleAddress, typedValue)
+  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } = useDerivedTokenSaleState(saleOption?.value, typedValue)
 
   const soldOut = Number(availableTokens) === 0
 
-  const swapCallback = useSwapCallback(tokenSaleAddress)
+  const swapCallback = useSwapCallback(saleOption?.value)
 
   const switchNetwork = useSwitchNetwork()
 
@@ -51,14 +50,14 @@ const VoltSaleCard = () => {
     try {
       await swapCallback(typedValueWei)
       setTypedValue('')
-      setTokenSaleAddress(null)
+      setSaleOption(null)
       setPurchaseModalIsOpen(true)
       toast.success('Purchase Successful!')
     } catch (error) {
       console.error('Swap failed', error)
       toast.error('Purchase Failed!')
     }
-  }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
+  }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, saleOption])
 
   function openModal () {
     setIsOpen(true)
@@ -79,12 +78,13 @@ const VoltSaleCard = () => {
 
   const modalStyle = {
     overlay: {
-      background: 'transparent'
+      background: 'rgb(0 0 0 / 57%)',
+      backdropFilter: 'blur(1px)'
     },
     content: {
       color: 'white',
       border: 'none',
-      background: '#0B0C13',
+      background: 'transparent',
       top: '50%',
       left: '50%',
       right: 'auto',
@@ -97,6 +97,7 @@ const VoltSaleCard = () => {
 
   const style = {
     textAlign: 'right',
+    marginTop: '15px',
     ':hover': {
       textDecoration: 'underline',
       color: '#ffffff'
@@ -131,7 +132,7 @@ const VoltSaleCard = () => {
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-24 medium-12'>
             <NumericalInput
-              label='FUSE'
+              label='Fuse'
               value={typedValue}
               onChange={setTypedValue}
               onMax={onMax}
@@ -141,12 +142,15 @@ const VoltSaleCard = () => {
           <div className='cell small-24 medium-12'>
             {
               !purchaseModalIsOpen && (
-                <Select
-                  placeholder='Choose price'
-                  defaultValue={tokenSaleAddress}
-                  onChange={(option) => setTokenSaleAddress(option.value)}
-                  options={options}
-                />
+                <>
+                  <p className='card__balance'>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
+                  <Select
+                    placeholder='Choose price'
+                    defaultValue={saleOption?.value}
+                    onChange={(option) => setSaleOption(option)}
+                    options={options}
+                  />
+                </>
               )
             }
           </div>
@@ -159,6 +163,14 @@ const VoltSaleCard = () => {
         <div className='grid-x'>
           <div className='small-24'>
             <NumericalInput label='VOLT' value={tokenAmount} />
+            <div className='card__price'>
+              <div>
+                Price: {saleOption?.value ? saleOption?.label : '$0'}
+              </div>
+              <div>
+                Total Amount: ${saleOption?.value && typedValue ? (saleOption?.label.substring(1) * tokenAmount).toFixed(2) : '0.00'}
+              </div>
+            </div>
           </div>
         </div>
         {
@@ -174,7 +186,7 @@ const VoltSaleCard = () => {
                   Switch to Fuse
                 </button>
                 )
-              : tokenSaleAddress && soldOut
+              : saleOption?.value && soldOut
                 ? (
                   <button className='button button--error' disabled>
                     This pool is fully sold
