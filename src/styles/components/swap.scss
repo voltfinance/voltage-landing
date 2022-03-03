@@ -67,6 +67,20 @@
     width: 100%;
     padding: 2em 2em 0px;
 
+    @include element(balance) {
+      marginbottom: 5px;
+      marginright: 5px;
+      textalign: right;
+    }
+
+    @include element(price) {
+      display: flex;
+      width: 100%;
+      justifycontent: space-between;
+      marginbottom: 48px;
+      paddinginline: 10px;
+    }
+
     @include element(arrow-icon) {
       text-align: center;
     }

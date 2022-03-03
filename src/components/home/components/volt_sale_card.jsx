@@ -143,7 +143,7 @@ const VoltSaleCard = () => {
             {
               !purchaseModalIsOpen && (
                 <>
-                  <p style={{ marginBottom: '5px', marginRight: '5px', textAlign: 'right' }}>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
+                  <p className='card__balance'>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
                   <Select
                     placeholder='Choose price'
                     defaultValue={saleOption?.value}
@@ -163,7 +163,7 @@ const VoltSaleCard = () => {
         <div className='grid-x'>
           <div className='small-24'>
             <NumericalInput label='VOLT' value={tokenAmount} />
-            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', marginBottom: '48px', paddingInline: '10px' }}>
+            <div className='card__price'>
               <div>
                 Price: {saleOption?.value ? saleOption?.label : '$0'}
               </div>
