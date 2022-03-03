@@ -146,8 +146,8 @@ const VoltSaleCard = () => {
                   <p style={{ marginBottom: '5px', marginRight: '5px', textAlign: 'right' }}>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
                   <Select
                     placeholder='Choose price'
-                    defaultValue={tokenSaleAddress}
-                    onChange={(option) => setTokenSaleAddress(option.value)}
+                    defaultValue={saleOption?.value}
+                    onChange={(option) => setSaleOption(option)}
                     options={options}
                   />
                 </>
