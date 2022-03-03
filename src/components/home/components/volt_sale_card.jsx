@@ -5,8 +5,6 @@ import NumericalInput from '@/components/common/numerical_input'
 import Select from '@/components/common/select'
 import arrowIcon from '@/assets/images/arrow.svg'
 import info from '@/assets/images/info.svg'
-import voltInfo from '@/assets/images/volt_info.png'
-import docs from '@/assets/images/voltage_docs.svg'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
 import { useModal } from 'react-modal-hook'
 
@@ -65,7 +63,6 @@ const VoltSaleCard = () => {
     </ReactModal>
   ))
 
-  // const [modalIsOpen, setIsOpen] = useState(false)
   const [purchaseModalIsOpen, setPurchaseModalIsOpen] = useState(false)
 
   const onMax = useCallback(() => {
@@ -87,46 +84,9 @@ const VoltSaleCard = () => {
     }
   }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, saleOption])
 
-  // function openModal () {
-  //   setIsOpen(true)
-  // }
-
-  // function closeModal () {
-  //   setIsOpen(false)
-  // }
-
-  // const [isOpen, setMenuOpen] = useState(false)
   const ref = useRef(null)
 
   useOutsideClick(ref, () => hideModal())
-
-  // const modalStyle = {
-  //   overlay: {
-  //     background: 'rgb(0 0 0 / 57%)',
-  //     backdropFilter: 'blur(1px)'
-  //   },
-  //   content: {
-  //     color: 'white',
-  //     border: 'none',
-  //     background: 'transparent',
-  //     top: '50%',
-  //     left: '50%',
-  //     right: 'auto',
-  //     bottom: 'auto',
-  //     marginRight: '-50%',
-  //     transform: 'translate(-50%, -50%)',
-  //     padding: '0px'
-  //   }
-  // }
-
-  // const style = {
-  //   textAlign: 'right',
-  //   marginTop: '15px',
-  //   ':hover': {
-  //     textDecoration: 'underline',
-  //     color: '#ffffff'
-  //   }
-  // }
 
   return (
     <>
@@ -135,23 +95,6 @@ const VoltSaleCard = () => {
         closeModal={() => setPurchaseModalIsOpen(false)}
         account={account}
       />
-      {/* <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={modalStyle}
-        contentLabel='Voltage Info'
-      >
-        <div className='swap_info_modal'>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <img src={voltInfo} width='685px' />
-            <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' style={style}>
-              {' '}
-              <img src={docs} style={{ marginRight: '8px' }} />
-              Voltage Docs →
-            </a>
-          </div>
-        </div>
-      </Modal> */}
       <div ref={ref} className='card grid-container'>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-24 medium-12'>
