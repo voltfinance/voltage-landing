@@ -34,14 +34,14 @@ function CountDown ({ date = START_TIME, completeComponent, isSmall = false }) {
   return (
     <Countdown
       date={date}
-      renderer={({ days, hours, minutes, seconds, completed }) => {
+      renderer={({ completed, formatted: { days, hours, minutes, seconds } }) => {
         return completed
           ? completeComponent
           : (
             <div className={classNames('countdown', { 'countdown--small': isSmall })}>
               <Starts isSmall={isSmall} />
               <div className={classNames('content', { 'content--small': isSmall, 'content--large': !isSmall })}>
-                <div>{!isSmall && <>Be part of <br /> Voltage Finance <br /></>} {days !== 0 && <>{days} days<br /></>} {hours}:{minutes}:{seconds}</div>
+                <div>Be part of <br /> Voltage Finance <br /> {days !== 0 && <>{days} days {!isSmall && <br />}</>} {hours}:{minutes}:{seconds}<small>s</small></div>
               </div>
             </div>
             )

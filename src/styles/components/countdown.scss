@@ -3,7 +3,7 @@
   position: relative;
 
   @include modifier(small) {
-    width: 300px;
+    width: 368px;
   }
 
   @include block(content) {
@@ -23,8 +23,7 @@
     }
 
     @include modifier(small) {
-      font-size: 48px;
-      line-height: 46px;
+      font-size: 36px;
       min-height: 100px;
     }
   }

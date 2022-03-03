@@ -139,12 +139,16 @@ const VoltSaleCard = () => {
             />
           </div>
           <div className='cell small-24 medium-12'>
-            <Select
-              placeholder='Choose price'
-              defaultValue={tokenSaleAddress}
-              onChange={(option) => setTokenSaleAddress(option.value)}
-              options={options}
-            />
+            {
+              !purchaseModalIsOpen && (
+                <Select
+                  placeholder='Choose price'
+                  defaultValue={tokenSaleAddress}
+                  onChange={(option) => setTokenSaleAddress(option.value)}
+                  options={options}
+                />
+              )
+            }
           </div>
         </div>
 
