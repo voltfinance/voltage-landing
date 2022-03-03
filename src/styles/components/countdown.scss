@@ -6,6 +6,24 @@
     width: 368px;
   }
 
+  @include block(info) {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    > span {
+      cursor: pointer;
+      font-family: SF Pro Display;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      color: #3ad889;
+    }
+    > img {
+      margin-left: 5px;
+    }
+  }
+
   @include block(content) {
     @include xy-grid();
     @include flex-align(center, middle);
