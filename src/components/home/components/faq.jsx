@@ -13,8 +13,8 @@ import classNames from 'classnames'
 
 const data = [
   {
-    title: 'What is Fuse Ecosystem Round and for how long?',
-    content: 'The Fuse Ecosystem Round is the Public sale for Fuse ecosystem users, in comparison with other public sales, this one have better unvesting period for our loyal community. The sale will be for 24 hours or until all tokens are sold out.'
+    title: 'What is the Fuse Ecosystem Round, and how long will it last?',
+    content: 'The Fuse Ecosystem Round is the Public sale for Fuse ecosystem users. During this event, the Fuse community can swap their Fuse tokens for Volt tokens. The sale will be for 24 hours or until all tokens are sold out.'
   },
   {
     title: 'Do I  still need $FUSE after I acquire $VOLT?',
@@ -26,7 +26,7 @@ const data = [
   },
   {
     title: 'What is the purpose of holding VOLT?',
-    content: 'You can stake your VOLT in a single stake pool. By holding Volt you will get much more than just yield. Voltage is just starting and extra features will be added to the platform.'
+    content: 'You can stake your VOLT in a single stake pool. By staking Volt, you receive a yield and the ability to govern the Voltage platform at large. Voltage is a relatively newer platform, therefore many features will need to be implemented in the near future.'
   },
   {
     title: 'Can I still use Volt Finance without owning any $VOLT?',

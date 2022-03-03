@@ -67,6 +67,20 @@
     width: 100%;
     padding: 2em 2em 0px;
 
+    @include element(balance) {
+      marginbottom: 5px;
+      marginright: 5px;
+      textalign: right;
+    }
+
+    @include element(price) {
+      display: flex;
+      width: 100%;
+      justifycontent: space-between;
+      marginbottom: 48px;
+      paddinginline: 10px;
+    }
+
     @include element(arrow-icon) {
       text-align: center;
     }
@@ -159,6 +173,19 @@
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px #0b0c13 inset;
+
+  @include block(link) {
+    textAlign: right;
+    marginTop: 15px;
+    &:hover {
+      text-decoration: underline;
+      color: #ffffff
+    }
+
+    > img {
+      margin-right: 8px;
+    }
+  }
 }
 
 @include block(successful_purchase_modal) {

@@ -5,29 +5,28 @@ import NumericalInput from '@/components/common/numerical_input'
 import Select from '@/components/common/select'
 import arrowIcon from '@/assets/images/arrow.svg'
 import info from '@/assets/images/info.svg'
-import voltInfo from '@/assets/images/volt_info.png'
-import docs from '@/assets/images/voltage_docs.svg'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
+import { useModal } from 'react-modal-hook'
 
 import { useWeb3Context } from '@/context/web3'
 import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { toast } from 'react-toastify'
-import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
+import SwapInfoModal from './modals/swap_info'
 
 const VoltSaleCard = () => {
   const { account, toggleWeb3Modal, chainId } = useWeb3Context()
 
   const [typedValue, setTypedValue] = useState('')
 
-  const [tokenSaleAddress, setTokenSaleAddress] = useState(null)
+  const [saleOption, setSaleOption] = useState(null)
 
-  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } =
-    useDerivedTokenSaleState(tokenSaleAddress, typedValue)
+  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } = useDerivedTokenSaleState(saleOption?.value, typedValue)
 
   const soldOut = Number(availableTokens) === 0
 
-  const swapCallback = useSwapCallback(tokenSaleAddress)
+  const swapCallback = useSwapCallback(saleOption?.value)
 
   const switchNetwork = useSwitchNetwork()
 
@@ -38,7 +37,32 @@ const VoltSaleCard = () => {
     label: tokenSaleContract
   }))
 
-  const [modalIsOpen, setIsOpen] = useState(false)
+  const [showModal, hideModal] = useModal(() => (
+    <ReactModal
+      isOpen
+      style={{
+        overlay: {
+          background: 'rgb(0 0 0 / 57%)',
+          backdropFilter: 'blur(1px)'
+        },
+        content: {
+          color: 'white',
+          border: 'none',
+          background: 'transparent',
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          padding: '0px'
+        }
+      }}
+    >
+      <SwapInfoModal />
+    </ReactModal>
+  ))
+
   const [purchaseModalIsOpen, setPurchaseModalIsOpen] = useState(false)
 
   const onMax = useCallback(() => {
@@ -51,57 +75,18 @@ const VoltSaleCard = () => {
     try {
       await swapCallback(typedValueWei)
       setTypedValue('')
-      setTokenSaleAddress(null)
+      setSaleOption(null)
       setPurchaseModalIsOpen(true)
       toast.success('Purchase Successful!')
     } catch (error) {
       console.error('Swap failed', error)
       toast.error('Purchase Failed!')
     }
-  }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
+  }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, saleOption])
 
-  function openModal () {
-    setIsOpen(true)
-  }
+  const ref = useRef(null)
 
-  function closeModal () {
-    setIsOpen(false)
-  }
-
-  const [isOpen, setMenuOpen] = useState(false)
-  const hamburgerRef = useRef(null)
-
-  useOutsideClick(hamburgerRef, () => {
-    if (isOpen) {
-      setMenuOpen(false)
-    }
-  })
-
-  const modalStyle = {
-    overlay: {
-      background: 'transparent'
-    },
-    content: {
-      color: 'white',
-      border: 'none',
-      background: '#0B0C13',
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: '0px'
-    }
-  }
-
-  const style = {
-    textAlign: 'right',
-    ':hover': {
-      textDecoration: 'underline',
-      color: '#ffffff'
-    }
-  }
+  useOutsideClick(ref, () => hideModal())
 
   return (
     <>
@@ -110,28 +95,11 @@ const VoltSaleCard = () => {
         closeModal={() => setPurchaseModalIsOpen(false)}
         account={account}
       />
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={modalStyle}
-        contentLabel='Voltage Info'
-      >
-        <div className='swap_info_modal'>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <img src={voltInfo} width='685px' />
-            <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' style={style}>
-              {' '}
-              <img src={docs} style={{ marginRight: '8px' }} />
-              Voltage Docs →
-            </a>
-          </div>
-        </div>
-      </Modal>
-      <div className='card grid-container'>
+      <div ref={ref} className='card grid-container'>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-24 medium-12'>
             <NumericalInput
-              label='FUSE'
+              label='Fuse'
               value={typedValue}
               onChange={setTypedValue}
               onMax={onMax}
@@ -141,12 +109,15 @@ const VoltSaleCard = () => {
           <div className='cell small-24 medium-12'>
             {
               !purchaseModalIsOpen && (
-                <Select
-                  placeholder='Choose price'
-                  defaultValue={tokenSaleAddress}
-                  onChange={(option) => setTokenSaleAddress(option.value)}
-                  options={options}
-                />
+                <>
+                  <p className='card__balance'>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
+                  <Select
+                    placeholder='Choose price'
+                    defaultValue={saleOption?.value}
+                    onChange={(option) => setSaleOption(option)}
+                    options={options}
+                  />
+                </>
               )
             }
           </div>
@@ -159,6 +130,14 @@ const VoltSaleCard = () => {
         <div className='grid-x'>
           <div className='small-24'>
             <NumericalInput label='VOLT' value={tokenAmount} />
+            <div className='card__price'>
+              <div>
+                Price: {saleOption?.value ? saleOption?.label : '$0'}
+              </div>
+              <div>
+                Total Amount: ${saleOption?.value && typedValue ? (saleOption?.label.substring(1) * tokenAmount).toFixed(2) : '0.00'}
+              </div>
+            </div>
           </div>
         </div>
         {
@@ -174,7 +153,7 @@ const VoltSaleCard = () => {
                   Switch to Fuse
                 </button>
                 )
-              : tokenSaleAddress && soldOut
+              : saleOption?.value && soldOut
                 ? (
                   <button className='button button--error' disabled>
                     This pool is fully sold
@@ -190,7 +169,7 @@ const VoltSaleCard = () => {
                   </button>
                   )
         }
-        <div className='info' onClick={openModal}>
+        <div className='info' onClick={showModal}>
           <span>
             More Info <img src={info} />
           </span>{' '}

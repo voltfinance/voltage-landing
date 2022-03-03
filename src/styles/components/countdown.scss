@@ -6,25 +6,60 @@
     width: 368px;
   }
 
+  @include block(info) {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    > span {
+      cursor: pointer;
+      font-family: SF Pro Display;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      color: #3ad889;
+    }
+    > img {
+      margin-left: 5px;
+    }
+  }
+
   @include block(content) {
     @include xy-grid();
     @include flex-align(center, middle);
-    font-family: Newake;
-    font-style: normal;
-    color: #ffffff;
-    text-align: center;
-    background: linear-gradient(to right, #00ff80, #f3fc1f, #f3fc1f);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+    @include block(title) {
+      text-align: center;
+      font-family: SF Pro Display;
+      color: white;
+    }
+
+    @include block(timer) {
+      font-family: Newake;
+      font-style: normal;
+      color: #ffffff;
+      text-align: center;
+      background: linear-gradient(to right, #00ff80, #f3fc1f, #f3fc1f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     @include modifier(large) {
       font-size: 72px;
       min-height: 340px;
+
+      @include block(title) {
+        font-size: 16px;
+      }
     }
 
     @include modifier(small) {
       font-size: 36px;
       min-height: 100px;
+
+      @include block(title) {
+        font-size: 12px;
+      }
     }
   }
 }
