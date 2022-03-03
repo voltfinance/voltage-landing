@@ -1,7 +1,6 @@
 import React from 'react'
 import Countdown from 'react-countdown'
 import star from '@/assets/images/star.svg'
-import planet from '@/assets/images/planet.svg'
 import classNames from 'classnames'
 import { START_TIME } from '@/constants'
 
@@ -21,24 +20,8 @@ function Starts ({ isSmall }) {
         src={star}
         style={{ position: 'absolute', top: '7%', left: '35%' }}
       />
-      {
-        !isSmall && (
-          <img
-            src={star}
-            style={{ position: 'absolute', top: '5%', left: '60%' }}
-          />
-        )
-      }
-      {
-        !isSmall && (
-          <img
-            src={star}
-            style={{ position: 'absolute', top: '40%', right: '8%' }}
-          />
-        )
-      }
       <img
-        src={isSmall ? star : planet}
+        src={star}
         style={{ position: 'absolute', top: '5%', right: '5%' }}
       />
       {
@@ -46,14 +29,6 @@ function Starts ({ isSmall }) {
           <img
             src={star}
             style={{ position: 'absolute', bottom: '4%', left: '5%' }}
-          />
-        )
-      }
-      {
-        !isSmall && (
-          <img
-            src={star}
-            style={{ position: 'absolute', bottom: '3%', left: '20%' }}
           />
         )
       }
