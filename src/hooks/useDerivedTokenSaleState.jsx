@@ -5,7 +5,7 @@ import useFuseBalance from './useFuseBalance'
 import useSingleContractCall from './useSingleContractCall'
 import dayjs from 'dayjs'
 
-export default function useDerivedTokenSaleState (address, typedValue) {
+export default function useDerivedTokenSaleState (address, typedValue = 0) {
   const { account } = useWeb3Context()
 
   const tokenSaleContract = useTokenSaleContract(address)
@@ -46,6 +46,7 @@ export default function useDerivedTokenSaleState (address, typedValue) {
 
   return {
     startTime,
+    saleDuration,
     typedValueWei,
     inputError,
     fuseBalance,

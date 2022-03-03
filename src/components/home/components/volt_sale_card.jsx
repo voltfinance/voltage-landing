@@ -8,7 +8,6 @@ import info from '@/assets/images/info.svg'
 import voltInfo from '@/assets/images/volt_info.png'
 import docs from '@/assets/images/voltage_docs.svg'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
-import NewsletterForm from '../newsletter_form'
 
 import { useWeb3Context } from '@/context/web3'
 import useSwitchNetwork from '@/hooks/useSwitchNetwork'
@@ -22,8 +21,6 @@ const VoltSaleCard = () => {
   const [typedValue, setTypedValue] = useState('')
 
   const [saleOption, setSaleOption] = useState(null)
-
-  const [swapState, setSwapState] = useState(null)
 
   const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } = useDerivedTokenSaleState(saleOption?.value, typedValue)
 
@@ -49,15 +46,9 @@ const VoltSaleCard = () => {
 
   const onSwap = useCallback(async () => {
     if (!swapCallback) return
-    setSwapState(null)
 
     try {
       await swapCallback(typedValueWei)
-
-      setSwapState({
-        tokenAmount,
-        typedValue
-      })
       setTypedValue('')
       setSaleOption(null)
       setPurchaseModalIsOpen(true)
@@ -115,6 +106,11 @@ const VoltSaleCard = () => {
 
   return (
     <>
+      <SuccessfulPurchaseModal
+        isOpen={purchaseModalIsOpen}
+        closeModal={() => setPurchaseModalIsOpen(false)}
+        account={account}
+      />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -132,22 +128,7 @@ const VoltSaleCard = () => {
           </div>
         </div>
       </Modal>
-      <SuccessfulPurchaseModal
-        isOpen={purchaseModalIsOpen}
-        closeModal={() => setPurchaseModalIsOpen(false)}
-        account={account}
-        purchaseAmount={swapState?.typedValue}
-        tokenAmount={swapState?.tokenAmount}
-      />
       <div className='card grid-container'>
-        <div className='overlay'>
-          <p className='headline_text'>
-            Coming soon...
-          </p>
-          <div className='social_link_form' ref={hamburgerRef} style={{ color: 'black' }}>
-            <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
-          </div>
-        </div>
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-24 medium-12'>
             <NumericalInput
@@ -159,13 +140,19 @@ const VoltSaleCard = () => {
             />
           </div>
           <div className='cell small-24 medium-12'>
-            <p style={{ marginBottom: '5px', marginRight: '5px', textAlign: 'right' }}>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
-            <Select
-              placeholder='Choose price'
-              defaultValue={saleOption?.value}
-              onChange={(option) => setSaleOption(option)}
-              options={options}
-            />
+            {
+              !purchaseModalIsOpen && (
+                <>
+                  <p style={{ marginBottom: '5px', marginRight: '5px', textAlign: 'right' }}>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
+                  <Select
+                    placeholder='Choose price'
+                    defaultValue={tokenSaleAddress}
+                    onChange={(option) => setTokenSaleAddress(option.value)}
+                    options={options}
+                  />
+                </>
+              )
+            }
           </div>
         </div>
 
