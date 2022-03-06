@@ -12,7 +12,7 @@ function SuccessfulPurchaseModal ({ isOpen, closeModal, account }) {
           <img src={boltIcon} alt='bolt' />
         </div>
         <p><b>You participated in the auction successfully with his address:</b> {account}</p>
-        <p><b>Your tokens will be vested, Here you can access the vesting interface: <a rel='noreferrer noopener' target='_blank' href='https://vesting.voltage.finance'>Vesting.Voltage.Finance</a> </b></p>
+        <p><b>Your tokens will be vested, start claiming on thursday 10th. <a rel='noreferrer noopener' target='_blank' href='https://medium.com/@voltage.finance'>Read more</a> </b></p>
         <button className='button button--primary' onClick={closeModal}>Ok</button>
       </div>
     </div>
