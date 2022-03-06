@@ -3,6 +3,8 @@ import lottie from 'lottie-web'
 import { useSelector } from 'react-redux'
 import { isMobile } from 'react-device-detect'
 import { useSpring, animated } from 'react-spring'
+import dayjs from 'dayjs'
+import useDerivedTokenSaleState from '@/hooks/useDerivedTokenSaleState'
 
 import Secion2 from './components/section_2'
 import Secion3 from './components/section_3'
@@ -14,7 +16,7 @@ import Footer from './footer'
 import Header from './header'
 import CountDown from './components/countdown'
 
-import { START_TIME } from '@/constants'
+// import { START_TIME } from '@/constants'
 import scrollAnimationData from '@/assets/lotties/scroll.json'
 import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
@@ -28,6 +30,8 @@ const HomePage = () => {
   const { animate } = useSelector((state) => state.animation)
   const scrollRef = useRef(null)
   const formRef = useRef(null)
+  const { startTime } = useDerivedTokenSaleState(Object.values(CONFIG?.tokenSaleContracts ?? {})[0])
+  const start = dayjs.unix(startTime).valueOf()
 
   const scrollTo = (ref) => {
     if (ref && ref.current) {
@@ -88,22 +92,27 @@ const HomePage = () => {
   }))
 
   const updateHover = hovering => ({ transform: `scale(${hovering ? 1.03 : 1})` })
+
   return (
     <>
       <section className='homepage__container'>
         <Header />
         <div className='homepage'>
           <div className='scroll' ref={scrollRef} />
-          <div className='CountDown'>
-            <animated.div
-              onClick={() => scrollTo(formRef)}
-              onMouseEnter={() => set(updateHover(true))}
-              onMouseLeave={() => set(updateHover(false))}
-              style={props}
-            >
-              <CountDown date={START_TIME} isSmall completeComponent={<></>} />
-            </animated.div>
-          </div>
+          {
+            start && (
+              <div className='CountDown'>
+                <animated.div
+                  onClick={() => scrollTo(formRef)}
+                  onMouseEnter={() => set(updateHover(true))}
+                  onMouseLeave={() => set(updateHover(false))}
+                  style={props}
+                >
+                  <CountDown date={start} isSmall completeComponent={<></>} />
+                </animated.div>
+              </div>
+            )
+          }
           <img src={underline} style={{ position: 'absolute', bottom: '0%' }} />
           {!isMobile && <div className='stars' ref={starsRef} />}
           {/* {!isMobile && <div className='smoke' ref={smokeRef} />} */}

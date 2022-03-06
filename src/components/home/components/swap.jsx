@@ -3,9 +3,11 @@ import Countdown from 'react-countdown'
 import { useWeb3Context } from '@/context/web3'
 import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { isMobile } from 'react-device-detect'
-import { START_TIME, END_TIME } from '@/constants'
+// import { START_TIME, END_TIME } from '@/constants'
 import MyCountDown from './countdown'
 import Card from './volt_sale_card'
+import dayjs from 'dayjs'
+import useDerivedTokenSaleState from '@/hooks/useDerivedTokenSaleState'
 import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
 
 import logo from '@/assets/images/voltage_logo.svg'
@@ -124,32 +126,42 @@ function SwitchToFuse () {
 
 function Swap ({ formRef }) {
   const { account, chainId } = useWeb3Context()
+  const { startTime, saleDuration } = useDerivedTokenSaleState(Object.values(CONFIG?.tokenSaleContracts ?? {})[0])
+  const start = dayjs.unix(startTime).valueOf()
+  const end = dayjs.unix(Number(startTime) + Number(saleDuration)).valueOf()
+
   return (
     <div className='swap' ref={formRef}>
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
       <div className='title'>Fuse Ecosystem Round</div>
       <div className='swap__wrapper'>
-        <MyCountDown
-          date={START_TIME}
-          completeComponent={
-            <Countdown
-              date={END_TIME}
-              renderer={({ completed }) => completed
-                ? account
-                    ? (
-                      <SuccessfulPurchaseModal
-                        isOpen
-                        closeModal={() => console.log('Close')}
-                        account={account}
-                        purchaseAmount={0}
-                        tokenAmount={1}
-                      />
-                      )
-                    : <NotConncted />
-                : account ? chainId !== 122 ? <SwitchToFuse /> : <Card /> : <NotConncted />}
-            />
-          }
-        />
+        {
+          startTime
+            ? (
+              <MyCountDown
+                date={start}
+                completeComponent={
+                  <Countdown
+                    date={end}
+                    renderer={({ completed }) => completed
+                      ? account
+                          ? (
+                            <SuccessfulPurchaseModal
+                              isOpen
+                              closeModal={() => console.log('Close')}
+                              account={account}
+                              purchaseAmount={0}
+                              tokenAmount={1}
+                            />
+                            )
+                          : <NotConncted />
+                      : account ? chainId !== 122 ? <SwitchToFuse /> : <Card /> : <NotConncted />}
+                  />
+                }
+              />
+              )
+            : <NotConncted />
+        }
       </div>
     </div>
   )
