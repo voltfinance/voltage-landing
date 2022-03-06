@@ -68,17 +68,16 @@
     padding: 2em 2em 0px;
 
     @include element(balance) {
-      marginbottom: 5px;
-      marginright: 5px;
-      textalign: right;
+      margin-bottom: 5px;
+      margin-right: 5px;
+      text-align: right;
     }
 
     @include element(price) {
       display: flex;
       width: 100%;
-      justifycontent: space-between;
-      marginbottom: 48px;
-      paddinginline: 10px;
+      justify-content: space-between;
+      margin-bottom: 1em;
     }
 
     @include element(arrow-icon) {
