@@ -174,12 +174,35 @@
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px #0b0c13 inset;
 
+  @include element(container) {
+    display: flex;
+    flex-direction: column;
+    max-width: 850px;
+  }
+
+  @include element(title) {
+    text-align: center;
+    font-size: 18px;
+    padding-bottom: 8px;
+  }
+
+  @include element(subtitle) {
+    text-align: center;
+    font-size: 18px;
+    padding-bottom: 15px;
+  }
+
+  @include element(info_img) {
+    margin: auto;
+    width: 685px;
+  }
+
   @include block(link) {
-    textAlign: right;
-    marginTop: 15px;
+    text-align: right;
+    margin-top: 10px;
     &:hover {
       text-decoration: underline;
-      color: #ffffff
+      color: #ffffff;
     }
 
     > img {
