@@ -6,7 +6,7 @@ function SwapInfoModal () {
   return (
     <div className='swap_info_modal'>
       <div className='swap_info_modal__container'>
-        <p className='swap_info_modal__title'>The fuse ecosystem round is focused on offering the communty the <br />control of voltage.The volt tokens will have voing power and much more.</p>
+        <p className='swap_info_modal__title'>The fuse ecosystem round is focused on offering the communty the <br />control of voltage. The volt tokens will have voing power and much more.</p>
         <img className='swap_info_modal__info_img' src={voltInfo} />
         <div className='swap_info_modal__actions'>
           <a rel='noreferrer noopener' target='_blank' href='https://medium.com/fusenet/one-for-all-and-all-for-one-%EF%B8%8F-843f11b779f2' className='link'>
