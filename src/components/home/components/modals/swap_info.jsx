@@ -6,14 +6,17 @@ function SwapInfoModal () {
   return (
     <div className='swap_info_modal'>
       <div className='swap_info_modal__container'>
-        <p className='swap_info_modal__title'>The Fuse Ecosystem Round is focused on offering the community the control of Voltage.</p>
-        <p className='swap_info_modal__subtitle'>The Volt tokens will have voting power and much more</p>
+        <p className='swap_info_modal__title'>The fuse ecosystem round is focused on offering the communty the <br />control of voltage.The volt tokens will have voing power and much more.</p>
         <img className='swap_info_modal__info_img' src={voltInfo} />
-        <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' className='link'>
-          {' '}
-          <img src={docs} />
-          Voltage Docs →
-        </a>
+        <div className='swap_info_modal__actions'>
+          <a rel='noreferrer noopener' target='_blank' href='https://medium.com/fusenet/one-for-all-and-all-for-one-%EF%B8%8F-843f11b779f2' className='link'>
+            <span>Read more about the auction here</span>
+          </a>
+          <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' className='docs'>
+            <img src={docs} />
+            <span>Voltage Docs →</span>
+          </a>
+        </div>
       </div>
     </div>
   )

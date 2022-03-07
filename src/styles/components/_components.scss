@@ -105,6 +105,7 @@
     margin: 3em;
 
     > div:first-child {
+      z-index: 200000;
       position: relative;
       background: black;
       box-shadow: 4px 4px 100px 16px rgba(194, 246, 191, 0.2);
@@ -123,6 +124,10 @@
         mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
 

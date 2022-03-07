@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import lottie from 'lottie-web'
 import { useSelector } from 'react-redux'
 import { isMobile } from 'react-device-detect'
+import { useSpring, animated } from 'react-spring'
 
 import Secion2 from './components/section_2'
 import Secion3 from './components/section_3'
@@ -26,6 +27,13 @@ const HomePage = () => {
   const smokeRef = useRef(null)
   const { animate } = useSelector((state) => state.animation)
   const scrollRef = useRef(null)
+  const formRef = useRef(null)
+
+  const scrollTo = (ref) => {
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -73,6 +81,13 @@ const HomePage = () => {
     }
   }, [])
 
+  const [props, set] = useSpring(() => ({
+    transform: 'scale(1)',
+    from: { transform: 'scale(0.99)' },
+    config: { tension: 400, mass: 2, velocity: 5 }
+  }))
+
+  const updateHover = hovering => ({ transform: `scale(${hovering ? 1.03 : 1})` })
   return (
     <>
       <section className='homepage__container'>
@@ -80,9 +95,14 @@ const HomePage = () => {
         <div className='homepage'>
           <div className='scroll' ref={scrollRef} />
           <div className='CountDown'>
-            <div>
+            <animated.div
+              onClick={() => scrollTo(formRef)}
+              onMouseEnter={() => set(updateHover(true))}
+              onMouseLeave={() => set(updateHover(false))}
+              style={props}
+            >
               <CountDown date={START_TIME} isSmall completeComponent={<></>} />
-            </div>
+            </animated.div>
           </div>
           <img src={underline} style={{ position: 'absolute', bottom: '0%' }} />
           {!isMobile && <div className='stars' ref={starsRef} />}
@@ -100,7 +120,7 @@ const HomePage = () => {
       <Secion2 />
       <Secion3 />
       <Timeline />
-      <Swap />
+      <Swap formRef={formRef} />
       <PartnersAndBackers />
       <Faqs />
       <Footer />

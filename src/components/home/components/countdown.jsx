@@ -9,18 +9,13 @@ import SwapInfoModal from './modals/swap_info'
 import info from '@/assets/images/info.svg'
 import useOutsideClick from '@/hooks/useOutsideClick.jsx'
 
-function Starts ({ isSmall }) {
+function Starts () {
   return (
     <>
-      {
-        !isSmall && (
-
-          <img
-            src={star}
-            style={{ position: 'absolute', top: '9%', left: '10%' }}
-          />
-        )
-      }
+      <img
+        src={star}
+        style={{ position: 'absolute', top: '9%', left: '10%' }}
+      />
       <img
         src={star}
         style={{ position: 'absolute', top: '7%', left: '35%' }}
@@ -29,14 +24,10 @@ function Starts ({ isSmall }) {
         src={star}
         style={{ position: 'absolute', top: '5%', right: '5%' }}
       />
-      {
-        !isSmall && (
-          <img
-            src={star}
-            style={{ position: 'absolute', bottom: '4%', left: '5%' }}
-          />
-        )
-      }
+      <img
+        src={star}
+        style={{ position: 'absolute', bottom: '4%', left: '5%' }}
+      />
       <img src={star} style={{ position: 'absolute', bottom: '20%', right: '5%' }} />
     </>
   )
@@ -79,10 +70,10 @@ function CountDown ({ date = START_TIME, completeComponent, isSmall = false }) {
           ? completeComponent
           : (
             <div ref={ref} className={classNames('countdown', { 'countdown--small': isSmall })}>
-              <Starts isSmall={isSmall} />
+              {!isSmall && <Starts />}
               <div className={classNames('content', { 'content--small': isSmall, 'content--large': !isSmall })}>
                 <div>
-                  <div className='title'>Ecosystem round at: 08.03.2022 12:00 PM +2 GMT <br /></div>
+                  <div className='title'>Ecosystem round at: 08.03.2022 12:00 PM UTC <br /></div>
                   <div className='timer'>{days !== 0 && <>{days} days </>} {hours}:{minutes}:{seconds}<small>s</small></div>
                 </div>
               </div>
