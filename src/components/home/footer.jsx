@@ -10,6 +10,7 @@ import twitter from '@/assets/images/twitter.png'
 import discord from '@/assets/images/discord.png'
 import medium from '@/assets/images/medium.svg'
 import docs from '@/assets/images/docs.svg'
+import voltLogo from '@/assets/images/volt_logo.png'
 
 const Footer = () => {
   const [isOpen, setMenuOpen] = useState(false)
@@ -46,7 +47,10 @@ const Footer = () => {
             </a>
             <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance'>Voltage Docs</a>
             <a rel='noreferrer noopener' target='_blank' href='https://form.typeform.com/to/RLauPver'>Work with us</a>
-            <a rel='noreferrer noopener' target='_blank' onClick={addToken}>Add VOLT Token to your wallet</a>
+            <a rel='noreferrer noopener' target='_blank' onClick={addToken}>
+              <img src={voltLogo} />
+              Add VOLT Token to your wallet
+            </a>
           </div>
         </div>
         <div className='social_link_form' ref={hamburgerRef}>
