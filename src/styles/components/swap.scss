@@ -104,6 +104,56 @@
     }
   }
 
+  @include block(switch_to_fuse) {
+    padding: 5em;
+    @include breakpoint(small down) {
+      padding: 2em;
+    }
+    @include block(content) {
+      margin-bottom: 4em;
+      @include xy-grid(vertical, false);
+      @include flex-align(center, middle);
+
+      @include block(logo) {
+        margin-bottom: 2em;
+        img {
+          width: 105px;
+
+          @include breakpoint(small down) {
+            width: 100px;
+          }
+        }
+      }
+
+      @include block(texts) {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        @include breakpoint(small down) {
+          font-size: 20px;
+        }
+
+        letter-spacing: 0.055em;
+        color: #ffffff;
+      }
+    }
+
+    @include block(actions) {
+      @include xy-grid();
+      @include flex-align(center, middle);
+      > a {
+        text-align: center;
+        margin-top: 2em;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+      }
+    }
+  }
+
   @include block(emptystate) {
     padding: 2em;
     @include block(content) {
