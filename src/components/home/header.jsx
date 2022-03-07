@@ -16,32 +16,35 @@ function Header () {
       <img className='icon' alt='voltage' src={voltage} />
       <div className='menu-wrap'>
         <a
-          rel='noreferrer noopener'
-          target='_blank'
+          rel='noreferrer noopener' target='_blank'
           className='open_app'
           href='https://app.voltage.finance/'
         >
           Open App →
         </a>
-        {!account ? (
-          <button className='button-baseline' onClick={toggleWeb3Modal}>
-            <img src={wallet} /> Connect wallet
-          </button>
-        ) : chainId !== 122 ? (
-          <button className='button-baseline' onClick={switchNetwork}>
-            Switch to Fuse
-          </button>
-        ) : (
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            <button className='button-balance' style={{ borderLeft: '0px' }}>
-              {Number(fuseBalance).toFixed(2)} Fuse
+        {!account
+          ? (
+            <button className='button-baseline' onClick={toggleWeb3Modal}>
+              <img src={wallet} /> Connect wallet
             </button>
-            <button className='button-web3'>
-              {account.substring(0, 6)}...{account.substring(38)}
-              <span />
-            </button>
-          </div>
-        )}
+            )
+          : chainId !== 122
+            ? (
+              <button className='button-baseline' onClick={switchNetwork}>
+                Switch to Fuse
+              </button>
+              )
+            : (
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <button className='button-balance' style={{ borderLeft: '0px' }}>
+                  {Number(fuseBalance).toFixed(2)} Fuse
+                </button>
+                <button className='button-web3'>
+                  {account.substring(0, 6)}...{account.substring(38)}
+                  <span />
+                </button>
+              </div>
+              )}
       </div>
     </div>
   )

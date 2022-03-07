@@ -20,14 +20,14 @@ export const hideModal = () => {
   }
 }
 
-export const setModalProps = modalProps => {
+export const setModalProps = (modalProps) => {
   return {
     type: SET_MODAL_PROPS,
     modalProps
   }
 }
 
-export const updateModalProps = modalProps => {
+export const updateModalProps = (modalProps) => {
   return {
     type: UPDATE_MODAL_PROPS,
     modalProps

@@ -2,7 +2,7 @@
   display: inline-block;
   width: 100%;
   margin-bottom: 1.5rem;
-
+  
   @include element(label) {
     margin-bottom: 4px;
     font-size: 18px;
@@ -22,7 +22,7 @@
     padding: 0 12px;
 
     &:hover {
-      border-color: #b5b9d3;
+      border-color: #B5B9D3
     }
 
     input {
@@ -30,17 +30,17 @@
       background-color: transparent;
       border-color: transparent;
       border: 0;
-      color: #8da9bb;
+      color: #8DA9BB;
       font-size: 18px;
 
       &::-webkit-input-placeholder {
         opacity: 1 !important;
       }
-
+      
       &:-moz-placeholder {
         opacity: 1 !important;
       }
-
+      
       &::-moz-placeholder {
         opacity: 1 !important;
       }

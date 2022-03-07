@@ -30,21 +30,13 @@
     font-size: 16px;
     color: white;
     line-height: 41px;
-    background: linear-gradient(
-      273.62deg,
-      rgba(243, 252, 31, 0.5) 9.22%,
-      rgba(58, 216, 137, 0.5) 100%
-    );
+    background: linear-gradient(273.62deg, rgba(243, 252, 31, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
     border: 1.5px solid #ffffff;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 0px 20px;
     &:hover {
-      background: linear-gradient(
-        273.62deg,
-        rgba(255, 255, 255, 0.5) 9.22%,
-        rgba(58, 216, 137, 0.5) 100%
-      );
+      background: linear-gradient(273.62deg, rgba(255, 255, 255, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
     }
 
     @include breakpoint(small down) {

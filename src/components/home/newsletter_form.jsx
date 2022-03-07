@@ -9,28 +9,16 @@ const NewsletterForm = ({ setMenuOpen, isOpen }) => {
 
   const [showModal] = useModal(() => {
     return (
-      <ReactModal
-        isOpen={isOpen}
-        overlayClassName='modal__overlay'
-        className='modal__content'
-      >
+      <ReactModal isOpen={isOpen} overlayClassName='modal__overlay' className='modal__content'>
         <div className='iframe'>
-          <iframe
-            samesite='none'
-            secure='true'
-            src={`https://gleam.io/1l1hH/frictionless-defi-landing-page?email=${src}`}
-            frameBorder='0'
-            allowFullScreen
-          />
+          <iframe samesite='none' secure='true' src={`https://gleam.io/1l1hH/frictionless-defi-landing-page?email=${src}`} frameBorder='0' allowFullScreen />
         </div>
       </ReactModal>
     )
   }, [src, isOpen])
 
   const SignupSchema = object().shape({
-    email: string()
-      .email()
-      .required()
+    email: string().email().required()
   })
 
   return (
@@ -45,7 +33,8 @@ const NewsletterForm = ({ setMenuOpen, isOpen }) => {
           setMenuOpen(true)
         } catch (error) {
           resetForm({ email: '' })
-          setTimeout(() => {}, 3000)
+          setTimeout(() => {
+          }, 3000)
           setSubmitting(true)
         }
       }}
@@ -59,13 +48,7 @@ const NewsletterForm = ({ setMenuOpen, isOpen }) => {
               placeholder='Enter email'
               name='email'
             />
-            <button
-              type='submit'
-              disabled={!dirty || isSubmitting}
-              className='form__button'
-            >
-              Sign for updates
-            </button>
+            <button type='submit' disabled={!dirty || isSubmitting} className='form__button'>Sign for updates</button>
           </Form>
         </div>
       )}

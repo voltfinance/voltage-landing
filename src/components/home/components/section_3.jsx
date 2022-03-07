@@ -29,9 +29,7 @@ function Card ({ title, image }) {
     config: { tension: 400, mass: 2, velocity: 5 }
   }))
 
-  const updateHover = hovering => ({
-    transform: `scale(${hovering ? 1.03 : 1})`
-  })
+  const updateHover = hovering => ({ transform: `scale(${hovering ? 1.03 : 1})` })
   return (
     <animated.div
       onMouseEnter={() => set(updateHover(true))}
@@ -98,14 +96,10 @@ function Secion3 () {
     <section className='section_3'>
       {isMobile ? <PassiveIncomeMobile /> : <PassiveIncome />}
       <div className='section_3__title'>Create passive income</div>
-      <div className='section_3__subtitle'>
-        Let’s face it, we all want our money to stretch further. Explore your{' '}
-        <br /> options to earn competitive yields with us below.
-      </div>
+      <div className='section_3__subtitle'>Let’s face it, we all want our money to stretch further. Explore your <br /> options to earn competitive yields with us below.</div>
       <div className='section_3__learnmore'>
         <a
-          rel='noreferrer noopener'
-          target='_blank'
+          rel='noreferrer noopener' target='_blank'
           href='http://docs.voltage.finance'
           className='button button--primary'
           style={{
@@ -120,10 +114,11 @@ function Secion3 () {
         </a>
       </div>
       <div className='card__container'>
-        {cards.map((item, index) => (
-          <Card {...item} key={index} />
-        ))}
+        {
+          cards.map((item, index) => <Card {...item} key={index} />)
+        }
       </div>
+
     </section>
   )
 }

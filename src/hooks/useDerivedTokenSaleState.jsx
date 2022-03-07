@@ -18,23 +18,13 @@ export default function useDerivedTokenSaleState (address, typedValue = 0) {
   const fuseBalanceWei = useFuseBalance(account)
   const fuseBalance = fromWei(fuseBalanceWei)
 
-  const maxPurchaseWei = useSingleContractCall(
-    tokenSaleContract,
-    'purchaseLimit'
-  )
+  const maxPurchaseWei = useSingleContractCall(tokenSaleContract, 'purchaseLimit')
   const maxPurchase = fromWei(maxPurchaseWei)
 
-  const tokenAmountWei = useSingleContractCall(
-    tokenSaleContract,
-    'calculateTokenAmount',
-    [typedValueWei]
-  )
+  const tokenAmountWei = useSingleContractCall(tokenSaleContract, 'calculateTokenAmount', [typedValueWei])
   const tokenAmount = fromWei(tokenAmountWei)
 
-  const availableTokensWei = useSingleContractCall(
-    tokenSaleContract,
-    'availableTokensForSale'
-  )
+  const availableTokensWei = useSingleContractCall(tokenSaleContract, 'availableTokensForSale')
   const availableTokens = fromWei(availableTokensWei)
 
   const currentTimestamp = dayjs().unix()
