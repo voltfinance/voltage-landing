@@ -98,10 +98,10 @@ function NotConncted () {
   )
 }
 
-function Swap () {
+function Swap ({ formRef }) {
   const { account } = useWeb3Context()
   return (
-    <div className='swap'>
+    <div className='swap' ref={formRef}>
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
       <div className='title'>Fuse Ecosystem Round</div>
       <div className='swap__wrapper'>

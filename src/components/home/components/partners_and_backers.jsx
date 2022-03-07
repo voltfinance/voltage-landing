@@ -48,7 +48,7 @@ function PassiveIncome () {
       />
       <img
         src={planet}
-        style={{ position: 'absolute', top: '65%', left: '12%' }}
+        style={{ position: 'absolute', top: '65%', left: '8%' }}
       />
       <img
         src={star}
