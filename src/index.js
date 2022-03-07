@@ -9,7 +9,11 @@ import './styles/styles.scss'
 if (typeof CONFIG?.reactGA?.trackingId === 'string') {
   ReactGA.initialize(CONFIG?.reactGA?.trackingId, CONFIG.reactGA.gaOptions)
   ReactGA.set({
-    customBrowserType: !isMobile ? 'desktop' : 'web3' in window || 'ethereum' in window ? 'mobileWeb3' : 'mobileRegular'
+    customBrowserType: !isMobile
+      ? 'desktop'
+      : 'web3' in window || 'ethereum' in window
+      ? 'mobileWeb3'
+      : 'mobileRegular'
   })
 } else {
   ReactGA.initialize('test', { testMode: true, debug: true })
@@ -20,10 +24,10 @@ window.addEventListener('error', error => {
     description: `${error.message} @ ${error.filename}:${error.lineno}:${error.colno}`,
     fatal: true
   })
-});
+})
 
 // imports all images so webpack can compile them
-((ctx) => {
+;(ctx => {
   const keys = ctx.keys()
   const values = keys.map(ctx)
   return keys.reduce((o, k, i) => {
@@ -33,5 +37,4 @@ window.addEventListener('error', error => {
   }, {})
 })(require.context('./assets', true, /.*/))
 
-ReactDOM.render(<App />,
-  document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))

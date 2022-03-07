@@ -11,7 +11,7 @@
       border-color: transparent !important;
       box-shadow: none !important;
     }
-  
+
     &:hover {
       border-color: transparent !important;
       box-shadow: none !important;
@@ -26,9 +26,13 @@
     font-size: 18px !important;
     background-color: #071927 !important;
     cursor: pointer !important;
-    
+
     &:hover {
-      background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%) !important;;
+      background: linear-gradient(
+        93.58deg,
+        #3ad889 -105.35%,
+        #f3fc1f 103.54%
+      ) !important;
       color: black !important;
     }
   }
@@ -36,6 +40,6 @@
   &__single-value,
   &__placeholder {
     font-size: 18px !important;
-    color: #8DA9BB !important;
+    color: #8da9bb !important;
   }
 }

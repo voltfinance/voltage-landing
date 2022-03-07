@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState
+} from 'react'
 import Web3Modal from 'web3modal'
 import Web3 from 'web3'
 
@@ -13,7 +19,7 @@ export function Web3Provider ({ children }) {
     cacheProvider: true
   })
 
-  const onConnect = useCallback(async (provider) => {
+  const onConnect = useCallback(async provider => {
     const web3 = new Web3(provider)
 
     const accounts = await web3.eth.getAccounts()
@@ -34,22 +40,22 @@ export function Web3Provider ({ children }) {
       setWeb3Data(null)
     })
 
-    provider.on('accountsChanged', (accounts) => {
-      setWeb3Data((state) => ({
+    provider.on('accountsChanged', accounts => {
+      setWeb3Data(state => ({
         ...state,
         account: accounts[0]
       }))
     })
 
-    provider.on('chainChanged', (chainId) => {
-      setWeb3Data((state) => ({
+    provider.on('chainChanged', chainId => {
+      setWeb3Data(state => ({
         ...state,
         chainId: web3.utils.hexToNumber(chainId)
       }))
     })
   }, [])
 
-  web3Modal.on('connect', (provider) => {
+  web3Modal.on('connect', provider => {
     setProvider(provider)
     onConnect(provider)
   })

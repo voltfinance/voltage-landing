@@ -2,10 +2,18 @@ import React from 'react'
 
 const inputRegex = /'^\\d*(?:\\\\[.])?\\d*$'/
 
-const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const escapeRegExp = string => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-const NumericalInput = ({ value, onChange, placeholder, label, showMax, onMax, ...rest }) => {
-  const enforce = (input) => {
+const NumericalInput = ({
+  value,
+  onChange,
+  placeholder,
+  label,
+  showMax,
+  onMax,
+  ...rest
+}) => {
+  const enforce = input => {
     if (input !== '' || inputRegex.test(escapeRegExp(input))) {
       onChange(input)
     }
@@ -21,7 +29,7 @@ const NumericalInput = ({ value, onChange, placeholder, label, showMax, onMax, .
         <input
           {...rest}
           value={value}
-          onChange={(event) => {
+          onChange={event => {
             enforce(event.target.value.replace(/,/g, '.'))
           }}
           className='numerical-input__input'
@@ -36,7 +44,14 @@ const NumericalInput = ({ value, onChange, placeholder, label, showMax, onMax, .
           maxLength={79}
           spellCheck='false'
         />
-        {showMax && <button className='button button--primary button--small' onClick={onMax}>Max</button>}
+        {showMax && (
+          <button
+            className='button button--primary button--small'
+            onClick={onMax}
+          >
+            Max
+          </button>
+        )}
       </div>
     </div>
   )

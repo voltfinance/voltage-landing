@@ -25,11 +25,11 @@ const HomePage = () => {
   const starsRef = useRef(null)
   const lightingRef = useRef(null)
   const smokeRef = useRef(null)
-  const { animate } = useSelector((state) => state.animation)
+  const { animate } = useSelector(state => state.animation)
   const scrollRef = useRef(null)
   const formRef = useRef(null)
 
-  const scrollTo = (ref) => {
+  const scrollTo = ref => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
@@ -87,7 +87,9 @@ const HomePage = () => {
     config: { tension: 400, mass: 2, velocity: 5 }
   }))
 
-  const updateHover = hovering => ({ transform: `scale(${hovering ? 1.03 : 1})` })
+  const updateHover = hovering => ({
+    transform: `scale(${hovering ? 1.03 : 1})`
+  })
   return (
     <>
       <section className='homepage__container'>

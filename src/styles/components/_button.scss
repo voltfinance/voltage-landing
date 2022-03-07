@@ -10,20 +10,20 @@
   }
 
   &--primary {
-    background: linear-gradient(93.58deg, #3AD889 -105.35%, #F3FC1F 103.54%);
+    background: linear-gradient(93.58deg, #3ad889 -105.35%, #f3fc1f 103.54%);
     color: black;
-    &:hover{
-      background: linear-gradient(95.27deg, #3AD889 -24.83%, #F3FC1F 131.84%);
+    &:hover {
+      background: linear-gradient(95.27deg, #3ad889 -24.83%, #f3fc1f 131.84%);
     }
   }
 
-  &--secondary{
-    background: linear-gradient(93.58deg, #FF0000 -105.35%, #F3FC1F 103.54%);
+  &--secondary {
+    background: linear-gradient(93.58deg, #ff0000 -105.35%, #f3fc1f 103.54%);
     color: black;
   }
 
   &--error {
-    background: linear-gradient(93.58deg, #FF0000 -105.35%, #F3FC1F 103.54%);
+    background: linear-gradient(93.58deg, #ff0000 -105.35%, #f3fc1f 103.54%);
     color: black;
   }
 
@@ -46,10 +46,9 @@
     background-origin: border-box;
     background-clip: content-box, border-box;
     box-shadow: 2px 1000px 1px #071927 inset;
-    &:hover{
+    &:hover {
       background: #3ad889;
       cursor: pointer;
     }
   }
-
 }

@@ -12,10 +12,7 @@ export default function configureStore (initialState) {
   const store = createStore(
     createRootReducer(history),
     initialState,
-    applyMiddleware(
-      routerMiddleware(history),
-      sagaMiddleware
-    )
+    applyMiddleware(routerMiddleware(history), sagaMiddleware)
   )
 
   store.runSaga = sagaMiddleware.run

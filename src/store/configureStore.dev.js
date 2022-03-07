@@ -8,7 +8,8 @@ import createRootReducer from '../reducers'
 export default function configureStore (initialState) {
   const history = createBrowserHistory()
   const sagaMiddleware = createSagaMiddleware()
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const store = createStore(
     createRootReducer(history),
     initialState,
@@ -18,7 +19,7 @@ export default function configureStore (initialState) {
         sagaMiddleware,
         createLogger({
           collapsed: (getState, action, logEntry) => !action.error,
-          actionTransformer: (action) => {
+          actionTransformer: action => {
             if (action.error) {
               console.error(action.error)
             }

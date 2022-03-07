@@ -114,62 +114,61 @@ function PartnersAndBackers () {
       <section className='inverstors'>
         {!isMobile && <PassiveIncome />}
         <div className='title'>Partners</div>
-        <div className='subtitle'>Our partners have been instrumental in allowing us to deliver a superior product. <br /> Voltage will remove many hurdles allowing other projects on the Fuse Network to grow.</div>
+        <div className='subtitle'>
+          Our partners have been instrumental in allowing us to deliver a
+          superior product. <br /> Voltage will remove many hurdles allowing
+          other projects on the Fuse Network to grow.
+        </div>
         <div className='images'>
-          {
-            isMobile
-              ? (
-                <Swiper
-                  spaceBetween={0}
-                  slidesPerView={1}
-                  autoplay
-                  centeredSlides
-                  modules={[Autoplay]}
-                >
-                  {
-                    inverstorsLogos.map((logo, key) => (
-                      <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
-                    ))
-                  }
-                </Swiper>
-                )
-              : inverstorsLogos.map((logo, key) => (
-                <div className='image' key={key}>
+          {isMobile ? (
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={1}
+              autoplay
+              centeredSlides
+              modules={[Autoplay]}
+            >
+              {inverstorsLogos.map((logo, key) => (
+                <SwiperSlide key={key}>
                   <img src={logo} />
-                </div>
-              ))
-          }
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            inverstorsLogos.map((logo, key) => (
+              <div className='image' key={key}>
+                <img src={logo} />
+              </div>
+            ))
+          )}
         </div>
       </section>
 
       <section className='backers'>
         <div className='title'>Backers</div>
         <div className='images'>
-          {
-            isMobile
-              ? (
-                <Swiper
-                  spaceBetween={0}
-                  slidesPerView={1}
-                  autoplay
-                  centeredSlides
-                  modules={[Autoplay]}
-                >
-                  {
-                    backersLogos.map((logo, key) => (
-                      <SwiperSlide key={key}><img src={logo} /></SwiperSlide>
-                    ))
-                  }
-                </Swiper>
-                )
-              : backersLogos.map((logo, key) => (
-                <div className='image' key={key}>
+          {isMobile ? (
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={1}
+              autoplay
+              centeredSlides
+              modules={[Autoplay]}
+            >
+              {backersLogos.map((logo, key) => (
+                <SwiperSlide key={key}>
                   <img src={logo} />
-                </div>
-              ))
-          }
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            backersLogos.map((logo, key) => (
+              <div className='image' key={key}>
+                <img src={logo} />
+              </div>
+            ))
+          )}
         </div>
-
       </section>
     </>
   )
