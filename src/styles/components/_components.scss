@@ -1,16 +1,16 @@
-@import "modal";
-@import "button";
-@import "numerical_input";
-@import "select";
-@import "section_2";
-@import "section_3";
-@import "inverstors";
-@import "faqs";
-@import "footer";
-@import "swap";
-@import "timeline";
-@import "header";
-@import "countdown";
+@import 'modal';
+@import 'button';
+@import 'numerical_input';
+@import 'select';
+@import 'section_2';
+@import 'section_3';
+@import 'inverstors';
+@import 'faqs';
+@import 'footer';
+@import 'swap';
+@import 'timeline';
+@import 'header';
+@import 'countdown';
 
 @include block(site-wrapper) {
   position: relative;
@@ -24,14 +24,14 @@
   position: relative;
 
   @include element(container) {
-    background-image: url("images/background.jpg");
+    background-image: url('images/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     position: relative;
 
     @include breakpoint(medium down) {
-      background-image: url("images/mobile-bg.jpg");
+      background-image: url('images/mobile-bg.jpg');
     }
 
     @include block(footer) {
@@ -111,7 +111,7 @@
       box-shadow: 4px 4px 100px 16px rgba(194, 246, 191, 0.2);
       border-radius: 8px;
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -119,8 +119,13 @@
         bottom: 0;
         padding: 2px;
         border-radius: 8px;
-        background: linear-gradient(93.58deg, #3ad889 -105.35%, #f3fc1f 103.54%);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        background: linear-gradient(
+          93.58deg,
+          #3ad889 -105.35%,
+          #f3fc1f 103.54%
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
         mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
@@ -141,7 +146,7 @@
   }
 
   @include block(headline) {
-    font-family: "Newake";
+    font-family: 'Newake';
     @include xy-grid(vertical);
     @include flex-align(center, middle);
     @include element(title) {

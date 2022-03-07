@@ -2,7 +2,8 @@ const webpack = require('webpack')
 const path = require('path')
 const config = require('config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -12,10 +13,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const sourceMap = isDev
 
 module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    './src/index.js'
-  ],
+  entry: ['react-hot-loader/patch', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
@@ -151,12 +149,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx',
-      '.png',
-      '.svg'
-    ],
+    extensions: ['.js', '.jsx', '.png', '.svg'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
       '@': path.resolve(path.resolve(__dirname, './'), 'src')
@@ -172,7 +165,10 @@ module.exports = {
     new ProgressBarPlugin(),
     new webpack.DefinePlugin({ CONFIG: JSON.stringify(config) }),
     new FaviconsWebpackPlugin({
-      logo: path.join(path.resolve(__dirname, './'), '/src/assets/images/favicon.png'),
+      logo: path.join(
+        path.resolve(__dirname, './'),
+        '/src/assets/images/favicon.png'
+      ),
       prefix: 'images/favicons/',
       favicons: {
         appName: 'voltage.finance',

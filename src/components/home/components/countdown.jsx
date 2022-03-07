@@ -28,7 +28,10 @@ function Starts () {
         src={star}
         style={{ position: 'absolute', bottom: '4%', left: '5%' }}
       />
-      <img src={star} style={{ position: 'absolute', bottom: '20%', right: '5%' }} />
+      <img
+        src={star}
+        style={{ position: 'absolute', bottom: '20%', right: '5%' }}
+      />
     </>
   )
 }
@@ -62,32 +65,48 @@ function CountDown ({ date = START_TIME, completeComponent, isSmall = false }) {
       <SwapInfoModal />
     </ReactModal>
   ))
+
   return (
     <Countdown
       date={date}
-      renderer={({ completed, formatted: { days, hours, minutes, seconds } }) => {
-        return completed
-          ? completeComponent
-          : (
-            <div ref={ref} className={classNames('countdown', { 'countdown--small': isSmall })}>
-              {!isSmall && <Starts />}
-              <div className={classNames('content', { 'content--small': isSmall, 'content--large': !isSmall })}>
-                <div>
-                  <div className='title'>Ecosystem round at: 08.03.2022 12:00 PM UTC <br /></div>
-                  <div className='timer'>{days !== 0 && <>{days} days </>} {hours}:{minutes}:{seconds}<small>s</small></div>
+      renderer={({
+        completed,
+        formatted: { days, hours, minutes, seconds }
+      }) => {
+        return completed ? (
+          completeComponent
+        ) : (
+          <div
+            ref={ref}
+            className={classNames('countdown', { 'countdown--small': isSmall })}
+          >
+            {!isSmall && <Starts />}
+            <div
+              className={classNames('content', {
+                'content--small': isSmall,
+                'content--large': !isSmall
+              })}
+            >
+              <div>
+                <div className='title'>
+                  Ecosystem round at: 08.03.2022 12:00 UTC
+                  <br />
+                </div>
+                <div className='timer'>
+                  {days !== 0 && <>{days} days </>} {hours}:{minutes}:{seconds}
+                  <small>s</small>
                 </div>
               </div>
-              {
-                !isSmall && (
-                  <div className='info' onClick={showModal}>
-                    <span>
-                      More Info <img src={info} />
-                    </span>{' '}
-                  </div>
-                )
-              }
             </div>
-            )
+            {!isSmall && (
+              <div className='info' onClick={showModal}>
+                <span>
+                  More Info <img src={info} />
+                </span>{' '}
+              </div>
+            )}
+          </div>
+        )
       }}
     />
   )

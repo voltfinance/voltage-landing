@@ -76,14 +76,14 @@ function NotConncted () {
           <img src={logo} />
         </div>
         <div className='texts'>
-          <div>Here you can claim your tokens as they unlock. Thank you for being a part of our ecosystem!</div>
+          <div>
+            Here you can claim your tokens as they unlock. Thank you for being a
+            part of our ecosystem!
+          </div>
         </div>
       </div>
       <div className='actions'>
-        <button
-          className='button button--primary'
-          onClick={toggleWeb3Modal}
-        >
+        <button className='button button--primary' onClick={toggleWeb3Modal}>
           Connect wallet
         </button>
         <a
@@ -110,19 +110,23 @@ function Swap ({ formRef }) {
           completeComponent={
             <Countdown
               date={END_TIME}
-              renderer={({ completed }) => completed
-                ? account
-                    ? (
-                      <SuccessfulPurchaseModal
-                        isOpen
-                        closeModal={() => console.log('Close')}
-                        account={account}
-                        purchaseAmount={0}
-                        tokenAmount={1}
-                      />
-                      )
-                    : <NotConncted />
-                : <Card />}
+              renderer={({ completed }) =>
+                completed ? (
+                  account ? (
+                    <SuccessfulPurchaseModal
+                      isOpen
+                      closeModal={() => console.log('Close')}
+                      account={account}
+                      purchaseAmount={0}
+                      tokenAmount={1}
+                    />
+                  ) : (
+                    <NotConncted />
+                  )
+                ) : (
+                  <Card />
+                )
+              }
             />
           }
         />
