@@ -134,9 +134,6 @@ const VoltSaleCard = () => {
               <div>
                 Price: {saleOption?.value ? saleOption?.label : '$0'}
               </div>
-              <div>
-                Total Amount: ${saleOption?.value && typedValue ? (saleOption?.label.substring(1) * tokenAmount).toFixed(2) : '0.00'}
-              </div>
             </div>
           </div>
         </div>
