@@ -73,7 +73,7 @@ function CountDown ({ date = START_TIME, completeComponent, isSmall = false }) {
               {!isSmall && <Starts />}
               <div className={classNames('content', { 'content--small': isSmall, 'content--large': !isSmall })}>
                 <div>
-                  <div className='title'>Ecosystem round at: 08.03.2022 12:00 PM UTC <br /></div>
+                  <div className='title'>Ecosystem round at: 08.03.2022 12:00 UTC<br /></div>
                   <div className='timer'>{days !== 0 && <>{days} days </>} {hours}:{minutes}:{seconds}<small>s</small></div>
                 </div>
               </div>
