@@ -1,6 +1,7 @@
 import React from 'react'
 import Countdown from 'react-countdown'
 import { useWeb3Context } from '@/context/web3'
+import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { isMobile } from 'react-device-detect'
 import { START_TIME, END_TIME } from '@/constants'
 import MyCountDown from './countdown'
@@ -8,6 +9,7 @@ import Card from './volt_sale_card'
 import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
 
 import logo from '@/assets/images/voltage_logo.svg'
+import fuseLogo from '@/assets/images/fuse_logo.png'
 import star from '@/assets/images/star.svg'
 import planet from '@/assets/images/planet.svg'
 import rocket from '@/assets/images/rocket.svg'
@@ -98,8 +100,30 @@ function NotConncted () {
   )
 }
 
+function SwitchToFuse () {
+  const switchNetwork = useSwitchNetwork()
+  return (
+    <div className='switch_to_fuse'>
+      <div className='content'>
+        <div className='logo'>
+          <img src={fuseLogo} />
+        </div>
+        <div className='texts'>Switch to Fuse Network</div>
+      </div>
+      <div className='actions'>
+        <button
+          className='button button--primary'
+          onClick={switchNetwork}
+        >
+          Switch
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function Swap ({ formRef }) {
-  const { account } = useWeb3Context()
+  const { account, chainId } = useWeb3Context()
   return (
     <div className='swap' ref={formRef}>
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
@@ -122,7 +146,7 @@ function Swap ({ formRef }) {
                       />
                       )
                     : <NotConncted />
-                : <Card />}
+                : account ? chainId !== 122 ? <SwitchToFuse /> : <Card /> : <NotConncted />}
             />
           }
         />
