@@ -6,7 +6,8 @@
   "keywords": [],
   "author": "Lior Agnin (https://github.com/LiorAgnin)",
   "standard": {
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "globals": ["CONFIG"]
   },
   "license": "MIT",
   "scripts": {
