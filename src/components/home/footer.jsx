@@ -30,68 +30,23 @@ const Footer = () => {
         </div>
         <div className='menus'>
           <div className='menu'>
-            <a
-              rel='noreferrer noopener'
-              target='_blank'
-              href='#'
-              style={{ color: '#8DA9BB' }}
-            >
-              Getting Started
-            </a>
-            <a
-              rel='noreferrer noopener'
-              target='_blank'
-              href='https://staking.fuse.io/'
-            >
-              Fuse Staking
-            </a>
-            <a
-              rel='noreferrer noopener'
-              target='_blank'
-              href='https://studio.fuse.io/'
-            >
-              Fuse Studio
-            </a>
-            <a
-              rel='noreferrer noopener'
-              target='_blank'
-              href='https://fuse.cash/'
-            >
-              Fuse Cash
-            </a>
+            <a rel='noreferrer noopener' target='_blank' href='#' style={{ color: '#8DA9BB' }}>Getting Started</a>
+            <a rel='noreferrer noopener' target='_blank' href='https://staking.fuse.io/'>Fuse Staking</a>
+            <a rel='noreferrer noopener' target='_blank' href='https://studio.fuse.io/'>Fuse Studio</a>
+            <a rel='noreferrer noopener' target='_blank' href='https://fuse.cash/'>Fuse Cash</a>
           </div>
           <div className='menu'>
             <a
-              rel='noreferrer noopener'
-              target='_blank'
+              rel='noreferrer noopener' target='_blank'
               href='https://app.voltage.finance/'
             >
-              <button
-                rel='noreferrer noopener'
-                target='_blank'
-                className='button-secondary'
-                href='https://app.voltage.finance'
-              >
+              <button rel='noreferrer noopener' target='_blank' className='button-secondary' href='https://app.voltage.finance'>
                 Open App →
               </button>
             </a>
-            <a
-              rel='noreferrer noopener'
-              target='_blank'
-              href='https://docs.voltage.finance'
-            >
-              Voltage Docs
-            </a>
-            <a
-              rel='noreferrer noopener'
-              target='_blank'
-              href='https://form.typeform.com/to/RLauPver'
-            >
-              Work with us
-            </a>
-            <a rel='noreferrer noopener' target='_blank' onClick={addToken}>
-              Add VOLT Token to your wallet
-            </a>
+            <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance'>Voltage Docs</a>
+            <a rel='noreferrer noopener' target='_blank' href='https://form.typeform.com/to/RLauPver'>Work with us</a>
+            <a rel='noreferrer noopener' target='_blank' onClick={addToken}>Add VOLT Token to your wallet</a>
           </div>
         </div>
         <div className='social_link_form' ref={hamburgerRef}>
@@ -102,7 +57,10 @@ const Footer = () => {
               target='_blank'
               href='https://docs.voltage.finance'
             >
-              <img src={docs} style={{ width: '40px', marginRight: '10px' }} />
+              <img
+                src={docs}
+                style={{ width: '40px', marginRight: '10px' }}
+              />
             </a>
             <a
               rel='noreferrer noopener'

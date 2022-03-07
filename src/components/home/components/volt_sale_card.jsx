@@ -22,13 +22,7 @@ const VoltSaleCard = () => {
 
   const [saleOption, setSaleOption] = useState(null)
 
-  const {
-    tokenAmount,
-    typedValueWei,
-    fuseBalance,
-    inputError,
-    availableTokens
-  } = useDerivedTokenSaleState(saleOption?.value, typedValue)
+  const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } = useDerivedTokenSaleState(saleOption?.value, typedValue)
 
   const soldOut = Number(availableTokens) === 0
 
@@ -38,7 +32,7 @@ const VoltSaleCard = () => {
 
   const tokenSaleContracts = CONFIG?.tokenSaleContracts ?? {}
 
-  const options = Object.keys(tokenSaleContracts).map(tokenSaleContract => ({
+  const options = Object.keys(tokenSaleContracts).map((tokenSaleContract) => ({
     value: tokenSaleContracts[tokenSaleContract],
     label: tokenSaleContract
   }))
@@ -113,19 +107,19 @@ const VoltSaleCard = () => {
             />
           </div>
           <div className='cell small-24 medium-12'>
-            {!purchaseModalIsOpen && (
-              <>
-                <p className='card__balance'>
-                  Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}
-                </p>
-                <Select
-                  placeholder='Choose price'
-                  defaultValue={saleOption?.value}
-                  onChange={option => setSaleOption(option)}
-                  options={options}
-                />
-              </>
-            )}
+            {
+              !purchaseModalIsOpen && (
+                <>
+                  <p className='card__balance'>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
+                  <Select
+                    placeholder='Choose price'
+                    defaultValue={saleOption?.value}
+                    onChange={(option) => setSaleOption(option)}
+                    options={options}
+                  />
+                </>
+              )
+            }
           </div>
         </div>
 
@@ -137,31 +131,44 @@ const VoltSaleCard = () => {
           <div className='small-24'>
             <NumericalInput label='VOLT' value={tokenAmount} />
             <div className='card__price'>
-              <div>Price: {saleOption?.value ? saleOption?.label : '$0'}</div>
+              <div>
+                Price: {saleOption?.value ? saleOption?.label : '$0'}
+              </div>
+              <div>
+                Total Amount: ${saleOption?.value && typedValue ? (saleOption?.label.substring(1) * tokenAmount).toFixed(2) : '0.00'}
+              </div>
             </div>
           </div>
         </div>
-        {!account ? (
-          <button className='button button--primary' onClick={toggleWeb3Modal}>
-            Connect wallet
-          </button>
-        ) : chainId !== 122 ? (
-          <button className='button button--primary' onClick={switchNetwork}>
-            Switch to Fuse
-          </button>
-        ) : saleOption?.value && soldOut ? (
-          <button className='button button--error' disabled>
-            This pool is fully sold
-          </button>
-        ) : (
-          <button
-            className='button button--primary'
-            onClick={onSwap}
-            disabled={inputError}
-          >
-            {inputError ?? 'Purchase'}
-          </button>
-        )}
+        {
+          !account
+            ? (
+              <button className='button button--primary' onClick={toggleWeb3Modal}>
+                Connect wallet
+              </button>
+              )
+            : chainId !== 122
+              ? (
+                <button className='button button--primary' onClick={switchNetwork}>
+                  Switch to Fuse
+                </button>
+                )
+              : saleOption?.value && soldOut
+                ? (
+                  <button className='button button--error' disabled>
+                    This pool is fully sold
+                  </button>
+                  )
+                : (
+                  <button
+                    className='button button--primary'
+                    onClick={onSwap}
+                    disabled={inputError}
+                  >
+                    {inputError ?? 'Purchase'}
+                  </button>
+                  )
+        }
         <div className='info' onClick={showModal}>
           <span>
             More Info <img src={info} />
