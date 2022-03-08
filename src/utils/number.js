@@ -1,5 +1,7 @@
 import BigNumber from 'bignumber.js'
 
+BigNumber.config({ EXPONENTIAL_AT: 100 })
+
 export function toWei (value, decimals = 18) {
   if (!value) {
     return 0
