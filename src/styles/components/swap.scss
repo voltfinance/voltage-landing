@@ -251,9 +251,13 @@
     @include xy-grid();
     @include flex-align(justify, middle);
     @include block(link) {
+      @include xy-cell(65%);
       @include xy-grid();
       @include flex-align(center, middle);
-      width: 373px;
+      @include breakpoint(small down) {
+        @include xy-cell();
+      }
+
       height: 54px;
       background: linear-gradient(273.62deg, rgba(243, 252, 31, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
       border: 1.5px solid #ffffff;
@@ -270,9 +274,13 @@
       }
     }
     @include block(docs) {
+      @include xy-cell(35%);
       @include xy-grid();
       @include flex-align(center, middle);
-      width: 251px;
+      @include breakpoint(small down) {
+        margin-top: 1em;
+        @include xy-cell();
+      }
       height: 54px;
       border: 1.5px solid #ffffff;
       box-sizing: border-box;

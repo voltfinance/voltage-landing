@@ -1,6 +1,5 @@
 import React from 'react'
 import voltInfo from '@/assets/images/volt_info.png'
-import docs from '@/assets/images/voltage_docs.svg'
 
 function SwapInfoModal () {
   return (
@@ -13,7 +12,6 @@ function SwapInfoModal () {
             <span>Read more about the auction here</span>
           </a>
           <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance/welcome/fuse-ecosystem-round' className='docs'>
-            <img src={docs} />
             <span>Voltage Docs →</span>
           </a>
         </div>
