@@ -91,7 +91,7 @@ function NotConncted () {
         <a
           rel='noreferrer noopener'
           target='_blank'
-          href='https://docs.fuse.io'
+          href='https://docs.voltage.finance'
         >
           Learn about Volt
         </a>
