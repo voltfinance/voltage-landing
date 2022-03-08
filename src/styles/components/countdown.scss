@@ -63,3 +63,52 @@
     }
   }
 }
+
+@include block(round_ongoing) {
+  padding: 2em;
+  position: relative;
+  width: 368px;
+
+  @include block(content) {
+    @include xy-grid();
+    @include flex-align(center, middle);
+
+    @include block(title) {
+      font-size: 24px;
+      font-family: Newake;
+      font-style: normal;
+      color: #ffffff;
+      text-align: center;
+      background: linear-gradient(to right, #00ff80, #f3fc1f, #f3fc1f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include modifier(small) {
+        font-size: 18px;
+      }
+    }
+
+    @include block(check_it) {
+      margin-top: 1em;
+      @include xy-grid();
+      @include flex-align(center, middle);
+      width: 215px;
+      height: 45px;
+      background: linear-gradient(273.62deg, rgba(243, 252, 31, 0.5) 9.22%, rgba(58, 216, 137, 0.5) 100%);
+      border: 1.5px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 5px;
+      > span {
+        margin: 0px .5em;
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+      }
+    }
+  }
+}
