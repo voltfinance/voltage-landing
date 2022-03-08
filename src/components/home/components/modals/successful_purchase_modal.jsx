@@ -11,8 +11,8 @@ function SuccessfulPurchaseModal ({ isOpen, closeModal, account }) {
         <div className='successful_purchase_modal__icon'>
           <img src={boltIcon} alt='bolt' />
         </div>
-        <p><b>You participated in the auction successfully with his address:</b> {account}</p>
-        <p><b>Your tokens will be vested, start claiming on thursday 10th. <a rel='noreferrer noopener' target='_blank' href='https://medium.com/@voltage.finance'>Read more</a> </b></p>
+        <p><b>You participated in the fuse ecosystem round successfully with his address:</b> {account}</p>
+        <p><b>Your tokens will be vested, start claiming on thursday 10th. <a className='successful_purchase_modal__link' rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance/welcome/fuse-ecosystem-round'>Read more</a> </b></p>
         <button className='button button--primary' onClick={closeModal}>Ok</button>
       </div>
     </div>
