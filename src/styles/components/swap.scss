@@ -209,6 +209,66 @@
       }
     }
   }
+
+  @include block(soldout) {
+    padding: 3em;
+    @include breakpoint(small down) {
+      padding: 2em;
+    }
+    @include block(content) {
+      @include xy-grid(vertical, false);
+      @include flex-align(center, middle);
+
+      @include block(logo) {
+        margin-bottom: .5em;
+        img {
+          width: 160px;
+
+          @include breakpoint(small down) {
+            width: 100px;
+          }
+        }
+      }
+
+      @include block(round) {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        letter-spacing: 0.055em;
+        color: #ffffff;
+        margin-bottom: .5em;
+        @include breakpoint(small down) {
+          font-size: 20px;
+        }
+      }
+
+      @include block(sold) {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 64px;
+        text-align: center;
+        letter-spacing: 0.055em;
+        color: #ffffff;
+        margin-bottom: .5em;
+        @include breakpoint(small down) {
+          font-size: 40px;
+        }
+      }
+
+      @include block(tnx) {
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 25px;
+        text-align: center;
+        letter-spacing: 0.055em;
+        color: #ffffff;
+        @include breakpoint(small down) {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }
 
 @include block(swap_info_modal) {
