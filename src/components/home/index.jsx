@@ -20,22 +20,6 @@ import starsAnimationData from '@/assets/lotties/stars.json'
 import lightingAnimationData from '@/assets/lotties/lighting.json'
 import smokeAnimationData from '@/assets/lotties/smoke.json'
 import underline from '@/assets/images/underline.png'
-import lighting from '@/assets/images/lightning.svg'
-
-function RoundOngoing () {
-  return (
-    <div className='round_ongoing'>
-      <div className='content'>
-        <div className='title'>Fuse ecosystem round <br />ongoing</div>
-        <div className='check_it'>
-          <img src={lighting} />
-          <span>Check it now</span>
-          <img src={lighting} />
-        </div>
-      </div>
-    </div>
-  )
-}
 
 const HomePage = () => {
   const starsRef = useRef(null)
@@ -117,7 +101,7 @@ const HomePage = () => {
               onMouseLeave={() => set(updateHover(false))}
               style={props}
             >
-              <CountDown date={START_TIME} isSmall completeComponent={<RoundOngoing />} />
+              <CountDown date={START_TIME} isSmall completeComponent={<></>} />
             </animated.div>
           </div>
           <img src={underline} style={{ position: 'absolute', bottom: '0%' }} />
