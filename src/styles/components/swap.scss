@@ -268,21 +268,6 @@
         }
       }
     }
-
-    @include block(actions) {
-      @include xy-grid();
-      @include flex-align(center, middle);
-      > a {
-        text-align: center;
-        margin-top: 2em;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        color: #ffffff;
-      }
-    }
   }
 }
 
