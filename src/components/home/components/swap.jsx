@@ -1,12 +1,12 @@
 import React from 'react'
-import Countdown from 'react-countdown'
+// import Countdown from 'react-countdown'
 import { useWeb3Context } from '@/context/web3'
 import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { isMobile } from 'react-device-detect'
-import { START_TIME, END_TIME } from '@/constants'
-import MyCountDown from './countdown'
-import Card from './volt_sale_card'
-import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
+// import { START_TIME, END_TIME } from '@/constants'
+// import MyCountDown from './countdown'
+// import Card from './volt_sale_card'
+// import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
 
 import logo from '@/assets/images/voltage_logo.svg'
 import fuseLogo from '@/assets/images/fuse_logo.png'
@@ -69,67 +69,83 @@ function EcosystemMobile () {
   )
 }
 
-function NotConncted () {
-  const { toggleWeb3Modal } = useWeb3Context()
+// function NotConncted () {
+//   const { toggleWeb3Modal } = useWeb3Context()
+//   return (
+//     <div className='emptystate'>
+//       <div className='content'>
+//         <div className='logo'>
+//           <img src={logo} />
+//         </div>
+//         <div className='texts'>
+//           <div>Here you can claim your tokens as they unlock. Thank you for being a part of our ecosystem!</div>
+//         </div>
+//       </div>
+//       <div className='actions'>
+//         <button
+//           className='button button--primary'
+//           onClick={toggleWeb3Modal}
+//         >
+//           Start claiming
+//         </button>
+//         <a
+//           rel='noreferrer noopener'
+//           target='_blank'
+//           href='https://docs.voltage.finance'
+//         >
+//           Learn about Volt
+//         </a>
+//       </div>
+//     </div>
+//   )
+// }
+
+// function SwitchToFuse () {
+//   const switchNetwork = useSwitchNetwork()
+//   return (
+//     <div className='switch_to_fuse'>
+//       <div className='content'>
+//         <div className='logo'>
+//           <img src={fuseLogo} />
+//         </div>
+//         <div className='texts'>Switch to Fuse Network</div>
+//       </div>
+//       <div className='actions'>
+//         <button
+//           className='button button--primary'
+//           onClick={switchNetwork}
+//         >
+//           Switch
+//         </button>
+//       </div>
+//     </div>
+//   )
+// }
+
+function SoldOut () {
   return (
-    <div className='emptystate'>
+    <div className='soldout'>
       <div className='content'>
         <div className='logo'>
           <img src={logo} />
         </div>
-        <div className='texts'>
-          <div>Here you can claim your tokens as they unlock. Thank you for being a part of our ecosystem!</div>
-        </div>
-      </div>
-      <div className='actions'>
-        <button
-          className='button button--primary'
-          onClick={toggleWeb3Modal}
-        >
-          Connect wallet
-        </button>
-        <a
-          rel='noreferrer noopener'
-          target='_blank'
-          href='https://docs.voltage.finance'
-        >
-          Learn about Volt
-        </a>
-      </div>
-    </div>
-  )
-}
-
-function SwitchToFuse () {
-  const switchNetwork = useSwitchNetwork()
-  return (
-    <div className='switch_to_fuse'>
-      <div className='content'>
-        <div className='logo'>
-          <img src={fuseLogo} />
-        </div>
-        <div className='texts'>Switch to Fuse Network</div>
-      </div>
-      <div className='actions'>
-        <button
-          className='button button--primary'
-          onClick={switchNetwork}
-        >
-          Switch
-        </button>
+        <div className='round'>Fuse Ecosystem Round</div>
+        <div className='sold'>Sold out</div>
+        <div className='tnx'>Thank you for being part of Voltage finance</div>
       </div>
     </div>
   )
 }
 
 function Swap ({ formRef }) {
-  const { account, chainId } = useWeb3Context()
+  // const { account, chainId } = useWeb3Context()
   return (
     <div className='swap' ref={formRef}>
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
-      <div className='title'>Fuse Ecosystem Round</div>
+      {/* <div className='title'>Fuse Ecosystem Round</div> */}
       <div className='swap__wrapper'>
-        <MyCountDown
+        <SoldOut />
+        {/* <MyCountDown
           date={START_TIME}
           completeComponent={
             <Countdown
@@ -149,7 +165,7 @@ function Swap ({ formRef }) {
                 : account ? chainId !== 122 ? <SwitchToFuse /> : <Card /> : <NotConncted />}
             />
           }
-        />
+        /> */}
       </div>
     </div>
   )
