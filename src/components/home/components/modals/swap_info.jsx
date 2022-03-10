@@ -8,7 +8,7 @@ function SwapInfoModal() {
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '850px' }}>
         <p style={{ textAlign: 'center', fontSize: '18px', paddingBottom: '8px' }}>The Fuse Ecosystem Round is focused on offering the community the control of Voltage.</p>
         <p style={{ textAlign: 'center', fontSize: '18px', paddingBottom: '15px' }}>The Volt tokens will have voting power and much more</p>
-        <img src={voltInfo} width='685px' />
+        <img src={voltInfo} style={{margin: 'auto'}} width='685px' />
 
         <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' className='link' style={{marginTop: '10px'}}>
           {' '}
