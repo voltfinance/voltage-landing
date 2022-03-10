@@ -1,7 +1,7 @@
 import React from 'react'
-// import Countdown from 'react-countdown'
-import { useWeb3Context } from '@/context/web3'
-import useSwitchNetwork from '@/hooks/useSwitchNetwork'
+import Countdown from 'react-countdown'
+// import { useWeb3Context } from '@/context/web3'
+// import useSwitchNetwork from '@/hooks/useSwitchNetwork'
 import { isMobile } from 'react-device-detect'
 // import { START_TIME, END_TIME } from '@/constants'
 // import MyCountDown from './countdown'
@@ -9,7 +9,7 @@ import { isMobile } from 'react-device-detect'
 // import SuccessfulPurchaseModal from './modals/successful_purchase_modal'
 
 import logo from '@/assets/images/voltage_logo.svg'
-import fuseLogo from '@/assets/images/fuse_logo.png'
+// import fuseLogo from '@/assets/images/fuse_logo.png'
 import star from '@/assets/images/star.svg'
 import planet from '@/assets/images/planet.svg'
 import rocket from '@/assets/images/rocket.svg'
@@ -69,36 +69,39 @@ function EcosystemMobile () {
   )
 }
 
-// function NotConncted () {
-//   const { toggleWeb3Modal } = useWeb3Context()
-//   return (
-//     <div className='emptystate'>
-//       <div className='content'>
-//         <div className='logo'>
-//           <img src={logo} />
-//         </div>
-//         <div className='texts'>
-//           <div>Here you can claim your tokens as they unlock. Thank you for being a part of our ecosystem!</div>
-//         </div>
-//       </div>
-//       <div className='actions'>
-//         <button
-//           className='button button--primary'
-//           onClick={toggleWeb3Modal}
-//         >
-//           Start claiming
-//         </button>
-//         <a
-//           rel='noreferrer noopener'
-//           target='_blank'
-//           href='https://docs.voltage.finance'
-//         >
-//           Learn about Volt
-//         </a>
-//       </div>
-//     </div>
-//   )
-// }
+function Thanks () {
+  return (
+    <div className='emptystate'>
+      <div className='content'>
+        <div className='logo'>
+          <img src={logo} />
+        </div>
+        <div className='texts'>
+          <div>Here you can claim your tokens as they unlock. Thank you for being a part of our ecosystem!</div>
+        </div>
+      </div>
+      <div className='actions'>
+        <button
+          className='button button--primary'
+        >
+          <a
+            rel='noreferrer noopener' target='_blank'
+            href='http://vesting.voltage.finance'
+          >
+            Start claiming
+          </a>
+        </button>
+        <a
+          rel='noreferrer noopener'
+          target='_blank'
+          href='https://docs.voltage.finance/tokenomics'
+        >
+          Learn about Volt
+        </a>
+      </div>
+    </div>
+  )
+}
 
 // function SwitchToFuse () {
 //   const switchNetwork = useSwitchNetwork()
@@ -144,7 +147,10 @@ function Swap ({ formRef }) {
       {isMobile ? <EcosystemMobile /> : <Ecosystem />}
       {/* <div className='title'>Fuse Ecosystem Round</div> */}
       <div className='swap__wrapper'>
-        <SoldOut />
+        <Countdown
+          date={1646913600000}
+          renderer={({ completed }) => completed ? <Thanks /> : <SoldOut />}
+        />
         {/* <MyCountDown
           date={START_TIME}
           completeComponent={
