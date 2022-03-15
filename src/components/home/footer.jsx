@@ -36,9 +36,14 @@ const Footer = () => {
             <a rel='noreferrer noopener' target='_blank' href='https://fuse.cash/'>Fuse Cash</a>
           </div>
           <div className='menu'>
-            <button rel='noreferrer noopener' target='_blank' className='button-secondary' href='https://app.voltage.finance'>
-              Open App →
-            </button>
+            <a
+              rel='noreferrer noopener' target='_blank'
+              href='https://app.voltage.finance/'
+            >
+              <button rel='noreferrer noopener' target='_blank' className='button-secondary' href='https://app.voltage.finance'>
+                Open App →
+              </button>
+            </a>
             <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance'>Voltage Docs</a>
             <a rel='noreferrer noopener' target='_blank' href='https://form.typeform.com/to/RLauPver'>Work with us</a>
             <a rel='noreferrer noopener' target='_blank' onClick={addToken}>Add VOLT Token to your wallet</a>
@@ -47,7 +52,7 @@ const Footer = () => {
         <div className='social_link_form' ref={hamburgerRef}>
           <NewsletterForm setMenuOpen={setMenuOpen} isOpen={isOpen} />
           <div className='social_icons'>
-          <a
+            <a
               rel='noreferrer noopener'
               target='_blank'
               href='https://docs.voltage.finance'
@@ -57,7 +62,7 @@ const Footer = () => {
                 style={{ width: '40px', marginRight: '10px' }}
               />
             </a>
-          <a
+            <a
               rel='noreferrer noopener'
               target='_blank'
               href='https://github.com/voltfinance/'
