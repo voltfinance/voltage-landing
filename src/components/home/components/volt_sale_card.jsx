@@ -90,13 +90,13 @@ const VoltSaleCard = () => {
 
   const modalStyle = {
     overlay: {
-      background: '#0000004d',
+      background: 'rgb(0 0 0 / 57%)',
       backdropFilter: 'blur(1px)'
     },
     content: {
       color: 'white',
       border: 'none',
-      background: '#0B0C13',
+      background: 'transparent',
       top: '50%',
       left: '50%',
       right: 'auto',
@@ -123,12 +123,13 @@ const VoltSaleCard = () => {
         style={modalStyle}
         contentLabel='Voltage Info'
       >
+        <h1 style={{textAlign: 'center', fontSize: '25px', paddingBottom: '10px'}}>Some Text</h1>
         <div className='swap_info_modal'>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img src={voltInfo} width='685px' />
-            <a rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' style={style}>
+            <a style={{ marginTop: '15px' }} rel='noreferrer noopener' target='_blank' href='https://docs.voltage.finance' style={style}>
               {' '}
-              <img src={docs} style={{ marginRight: '8px' }} />
+              <img src={docs} style={{ marginRight: '8px'}} />
               Voltage Docs →
             </a>
           </div>
