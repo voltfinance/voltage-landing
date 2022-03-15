@@ -23,6 +23,8 @@ const VoltSaleCard = () => {
 
   const [tokenSaleAddress, setTokenSaleAddress] = useState(null)
 
+  const [tokenPriceSelected, setTokenPriceSelected] = useState('')
+
   const [swapState, setSwapState] = useState(null)
 
   const { tokenAmount, typedValueWei, fuseBalance, inputError, availableTokens } =
@@ -69,11 +71,11 @@ const VoltSaleCard = () => {
     }
   }, [tokenAmount, swapCallback, typedValueWei, setTypedValue, setTokenSaleAddress])
 
-  function openModal () {
+  function openModal() {
     setIsOpen(true)
   }
 
-  function closeModal () {
+  function closeModal() {
     setIsOpen(false)
   }
 
@@ -88,7 +90,8 @@ const VoltSaleCard = () => {
 
   const modalStyle = {
     overlay: {
-      background: 'transparent'
+      background: '#0000004d',
+      backdropFilter: 'blur(1px)'
     },
     content: {
       color: 'white',
@@ -150,7 +153,7 @@ const VoltSaleCard = () => {
         <div className='grid-x grid-margin-x align-bottom'>
           <div className='cell small-24 medium-12'>
             <NumericalInput
-              label='FUSE'
+              label='Fuse'
               value={typedValue}
               onChange={setTypedValue}
               onMax={onMax}
@@ -158,10 +161,11 @@ const VoltSaleCard = () => {
             />
           </div>
           <div className='cell small-24 medium-12'>
+            <p style={{ marginBottom: '5px', marginRight: '5px', textAlign: 'right' }}>Balance: {fuseBalance ? Number(fuseBalance).toFixed(4) : 0}</p>
             <Select
               placeholder='Choose price'
               defaultValue={tokenSaleAddress}
-              onChange={(option) => setTokenSaleAddress(option.value)}
+              onChange={(option) => setTokenSaleAddress(option.value) & setTokenPriceSelected(option.label)}
               options={options}
             />
           </div>
@@ -174,6 +178,14 @@ const VoltSaleCard = () => {
         <div className='grid-x'>
           <div className='small-24'>
             <NumericalInput label='VOLT' value={tokenAmount} />
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', marginBottom: '48px', paddingInline: '10px' }}>
+              <div>
+                Price: {tokenSaleAddress ? tokenPriceSelected : '$0'}
+              </div>
+              <div >
+                Total Amount: ${tokenSaleAddress && typedValue ? (tokenPriceSelected.substring(1) * tokenAmount).toFixed(2) : '0.00'}
+              </div>
+            </div>
           </div>
         </div>
         {
@@ -182,19 +194,19 @@ const VoltSaleCard = () => {
               <button className='button button--primary' onClick={toggleWeb3Modal}>
                 Connect wallet
               </button>
-              )
+            )
             : chainId !== 122
               ? (
                 <button className='button button--primary' onClick={switchNetwork}>
                   Switch to Fuse
                 </button>
-                )
+              )
               : tokenSaleAddress && soldOut
                 ? (
                   <button className='button button--error' disabled>
                     This pool is fully sold
                   </button>
-                  )
+                )
                 : (
                   <button
                     className='button button--primary'
@@ -203,7 +215,7 @@ const VoltSaleCard = () => {
                   >
                     {inputError ?? 'Purchase'}
                   </button>
-                  )
+                )
         }
         <div className='info' onClick={openModal}>
           <span>
