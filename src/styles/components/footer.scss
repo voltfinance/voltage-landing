@@ -153,6 +153,7 @@
 
 @include block(button-secondary) {
   height: 40px;
+  max-width: 130px;
   display: flex;
   align-items: center;
   font-style: normal;
