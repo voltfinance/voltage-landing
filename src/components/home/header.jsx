@@ -13,7 +13,10 @@ function Header () {
 
   return (
     <div className='header'>
-      <img className='icon' alt='voltage' src={voltage} />
+      <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+        <img className='icon' alt='voltage' src={voltage} />
+        {account && (<button className='button button--network-add' onClick={switchNetwork()}>+ Add Fuse Network </button>)}
+      </div>
       <div className='menu-wrap'>
         <a
           rel='noreferrer noopener' target='_blank'
