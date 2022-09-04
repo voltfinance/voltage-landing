@@ -1,2 +1,0 @@
-export const START_TIME = 1646740800000
-export const END_TIME = 1646827200000

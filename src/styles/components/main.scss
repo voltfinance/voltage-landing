@@ -1,0 +1,11 @@
+@import "./_header";
+
+@include block(todo) {
+  @include element(list) {
+    @apply m-4;
+  }
+
+  @include element(item) {
+    @apply flex border p-4 shadow-sm mb-6;
+  }
+}

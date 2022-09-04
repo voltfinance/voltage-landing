@@ -1,0 +1,12 @@
+%button {
+  border-radius: 5px;
+  width: 170.38px;
+  padding: .3em 0px;
+  @apply flex justify-center align-middle;
+
+  @include modifier(white) {
+  }
+
+  @include modifier(transparent) {
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "reactGA": {
-    "gaOptions": {
-      "testMode": false,
-      "debug": false
-    }
-  }
-}
