@@ -1,26 +1,28 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ['./src/**/*.{js,jsx}', 'index.html'],
+  content: ["./src/**/*.{js,jsx}", "index.html"],
   theme: {
     screens: {
-      '2xl': { max: '1535px' },
-      xl: { max: '1279px' },
-      lg: { max: '1023px' },
-      md: { max: '767px' },
-      sm: { max: '639px' }
+      "2xl": { max: "1535px" },
+      xl: { max: "1279px" },
+      lg: { max: "1023px" },
+      md: { max: "767px" },
+      sm: { max: "639px" },
     },
     colors: {
-      navy: '#071927',
-      gray: '#F7F8FA',
-      lightBlue: '#063B64',
-      purple: '#7A159A'
+      navy: "#071927",
+      gray: "#F7F8FA",
+      lightGray: "#AFAFAF",
+      lightBlue: "#063B64",
+      purple: "#7A159A",
+      green: "#70E000",
+      black: "#212529",
     },
     fontFamily: {
-      sans: [
-        'SF Pro Display',
-        ...defaultTheme.fontFamily.sans
-      ]
+      sans: ["SF Pro Display", ...defaultTheme.fontFamily.sans],
+      montserrat: ["Montserrat", ...defaultTheme.fontFamily.sans],
+
       // sans: ['SF Pro Display', 'sans-serif']
     },
     extend: {
@@ -33,7 +35,7 @@ module.exports = {
       // }
     },
     corePlugins: {
-      preflight: false
-    }
-  }
-}
+      preflight: false,
+    },
+  },
+};

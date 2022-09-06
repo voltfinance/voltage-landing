@@ -1,0 +1,18 @@
+@include block(banner) {
+  @apply h-20 w-screen left-0 absolute bottom-0 bg-lightGray  w-full flex font-montserrat justify-center;
+
+  @include element(item) {
+    @apply bg-lightGray w-screen pl-5 pr-20   flex flex-col justify-center;
+    border-left: 1px solid black;
+
+    height: inherit;
+    width: fit-content;
+
+    @include element(header) {
+      @apply text-2xl font-bold;
+    }
+    @include element(subheader) {
+      @apply text-sm;
+    }
+  }
+}

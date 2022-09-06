@@ -1,6 +1,6 @@
-$elementSeparator: '__';
-$modifierSeparator: '--';
-$stateSeparator: ':';
+$elementSeparator: "__";
+$modifierSeparator: "--";
+$stateSeparator: ":";
 
 @function selectorToString($selector) {
   $selector: inspect($selector);

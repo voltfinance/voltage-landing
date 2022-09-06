@@ -1,13 +1,12 @@
-import { makeObservable, observable } from 'mobx'
+import { makeObservable, observable } from "mobx";
 
 export default class TodoStore {
-  list = []
+  list = [];
 
   constructor(rootStore) {
     makeObservable(this, {
       list: observable,
-    })
-    this.rootStore = rootStore
+    });
+    this.rootStore = rootStore;
   }
 }
-

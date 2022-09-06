@@ -1,11 +1,6 @@
-@import "./_header";
-
-@include block(todo) {
-  @include element(list) {
-    @apply m-4;
-  }
-
-  @include element(item) {
-    @apply flex border p-4 shadow-sm mb-6;
-  }
-}
+@import "./_section";
+@import "./_button.scss";
+@import "./_header.scss";
+@import "./_banner.scss";
+@import "./_navbar.scss";
+@import "./_footer.scss";

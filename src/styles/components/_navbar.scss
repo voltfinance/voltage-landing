@@ -1,0 +1,26 @@
+@include block(navbar) {
+  @apply h-20 w-full items-center flex;
+
+  @include element(logo) {
+    width: 120px;
+    height: 40px;
+  }
+
+  @include element(menu) {
+    @apply flex ml-20 flex gap-4;
+    color: white;
+
+    @include element(item) {
+      @apply font-montserrat text-sm font-thin;
+    }
+  }
+  @include element(button) {
+    margin-left: auto;
+    @extend %button;
+    @apply text-sm flex;
+    font-family: Helvetica;
+    font-weight: 500;
+    height: 34px;
+    width: 180px;
+  }
+}

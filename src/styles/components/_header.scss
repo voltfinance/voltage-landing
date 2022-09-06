@@ -1,31 +1,7 @@
 @include block(header) {
-  padding: 0px 1em;
-  height: 70px;
-  background-color: theme("colors.navy");
-  @apply flex justify-end items-center;
-
-  @include element(list) {
-    @apply flex items-center;
-  }
-
-  @include element(item) {
-    color: white;
-    &:not(:last-child) {
-      margin-right: 3em;
-    }
-  }
-
-  @include element(link) {
-  }
-
-  @include element(signin) {
-    @extend %button;
-    border: 1px solid #ffffff;
-  }
-
-  @include element(connect) {
-    @extend %button;
-    color: theme('colors.navy');
-    background: #ffffff;
+  @apply text-6xl  font-montserrat font-semibold leading-tight;
+  color: white;
+  @include element(subheader) {
+    @apply text-base font-montserrat pt-2 font-thin;
   }
 }

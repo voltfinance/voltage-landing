@@ -1,0 +1,15 @@
+@include block(footer) {
+  height: 520px;
+  @apply pt-28;
+  @include element(logo) {
+    width: 150px;
+  }
+  @include element(link) {
+    color: white;
+    height: 250px;
+    width: 600px;
+    @apply font-montserrat pt-24 flex flex-col gap-3 flex-wrap;
+    @include element(item) {
+    }
+  }
+}

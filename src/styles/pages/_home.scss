@@ -1,0 +1,41 @@
+// @include block(home) {
+//   @apply h-screen w-screen;
+//   background-color: theme("colors.black");
+
+//   @include element(landing) {
+//     @apply h-screen w-screen flex flex-col justify-between;
+//     @include element(header) {
+//       @apply h-20 w-screen;
+//       background-color: orange;
+//     }
+//     @include element(content) {
+//       background-color: red;
+//       @apply h-full flex;
+
+//       @include element(image) {
+//         @apply h-full w-2/4;
+//         background-color: purple;
+//       }
+//     }
+//     @include element(banner) {
+//       @apply h-20 w-screen;
+//       background-color: green;
+//     }
+//   }
+
+//   //section
+
+//   @include element(section) {
+//     @apply h-screen w-screen flex sm:flex-col;
+//     // background-color: inherit;
+
+//     @include element(content) {
+//       @apply w-2/4 h-screen sm:w-screen;
+//       background-color: red;
+//     }
+//     @include element(image) {
+//       @apply w-2/4 h-screen sm:w-screen;
+//       background-color: orange;
+//     }
+//   }
+// }

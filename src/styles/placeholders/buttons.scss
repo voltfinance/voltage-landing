@@ -1,9 +1,8 @@
 %button {
-  border-radius: 5px;
-  width: 170.38px;
-  padding: .3em 0px;
-  @apply flex justify-center align-middle;
-
+  @apply text-base flex font-montserrat tracking-wider justify-center items-center font-semibold rounded-lg;
+  width: 215px;
+  height: 45px;
+  background-color: theme("colors.green");
   @include modifier(white) {
   }
 

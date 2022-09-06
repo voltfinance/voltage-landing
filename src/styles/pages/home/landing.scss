@@ -1,0 +1,21 @@
+@include block(landing) {
+  background-color: red;
+  @apply h-screen w-screen flex flex-col justify-between;
+  @include element(header) {
+    @apply h-20 w-screen;
+    background-color: orange;
+  }
+  @include element(content) {
+    background-color: red;
+    @apply h-full flex;
+
+    @include element(image) {
+      @apply h-full w-2/4;
+      background-color: purple;
+    }
+  }
+  @include element(banner) {
+    @apply h-20 w-screen;
+    background-color: green;
+  }
+}

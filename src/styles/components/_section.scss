@@ -1,0 +1,13 @@
+@include element(section) {
+  @apply h-screen w-screen flex sm:flex-col;
+  background-color: inherit;
+
+  @include element(content) {
+    @apply w-2/4 h-screen sm:w-screen;
+    background-color: red;
+  }
+  @include element(image) {
+    @apply w-2/4 h-screen sm:w-screen;
+    background-color: orange;
+  }
+}
