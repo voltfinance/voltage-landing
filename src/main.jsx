@@ -4,8 +4,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store, { StoreContext } from "./stores";
 import { configure } from "mobx";
-
-const App = lazy(() => import("./App"));
+import VoltApp from "./features/voltApp";
+import Home from "./features/home";
 
 configure({ enforceActions: "observed" });
 
@@ -15,8 +15,8 @@ ReactDOM.render(
       <Suspense fallback={<>loading...</>}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/app" element={<div>Volt App page</div>} />
+            <Route path="/" element={<Home />} />
+            <Route path="/app" element={<VoltApp />} />
           </Routes>
         </BrowserRouter>
       </Suspense>

@@ -1,18 +1,67 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 
-const Navbar = () => {
+const Navbar = ({
+  routes = [
+    {
+      name: "Swap",
+      to: "https://app.voltage.finance/#/swap",
+      replace: true,
+    },
+    {
+      name: "Pool",
+      to: "https://app.voltage.finance/#/pool",
+      replace: true,
+    },
+    {
+      name: "Bridge",
+      to: "https://app.voltage.finance/#/bridge",
+      replace: true,
+    },
+    {
+      name: "Farm",
+      to: "https://app.voltage.finance/#/farm",
+      replace: true,
+    },
+    {
+      name: "Stake",
+      to: "https://app.voltage.finance/#/stake",
+      replace: true,
+    },
+    {
+      name: "Volt App",
+      to: "/app",
+    },
+  ],
+}) => {
   return (
     <div className="navbar">
       <img className="navbar__logo" src={Logo} />
       <div className="navbar__menu">
-        <div className="navbar__menu__item">Swap</div>
-        <div className="navbar__menu__item">Pool</div>
-        <div className="navbar__menu__item">Bridge</div>
-        <div className="navbar__menu__item">Farm</div>
-        <div className="navbar__menu__item">Stake</div>
-        <div className="navbar__menu__item">Volt App</div>
+        {routes.map(({ name, to, replace }) => (
+          <div className="navbar__menu__item">
+            {replace ? (
+              <div
+                onClick={() => {
+                  window.location = to;
+                }}
+              >
+                {name}
+              </div>
+            ) : (
+              <Link to={to}>{name}</Link>
+            )}
+          </div>
+        ))}
       </div>
-      <button className="navbar__button">Open App</button>
+      <button
+        onClick={() => {
+          window.location = "https://app.voltage.finance/#/home";
+        }}
+        className="navbar__button"
+      >
+        Open App
+      </button>
     </div>
   );
 };

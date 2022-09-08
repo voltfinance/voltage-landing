@@ -1,14 +1,17 @@
-@include block(button) {
-  @apply text-base flex  text-sm font-montserrat tracking-wider justify-center items-center font-semibold rounded-lg;
+%button {
   width: 215px;
   height: 45px;
+  @apply flex text-sm sm:text-base sm:w-36 font-montserrat tracking-wider justify-center items-center font-semibold rounded-lg sm:rounded-2xl;
+
   background-color: theme("colors.green");
 }
 
-@include block(button__inverted) {
-  @apply text-base flex text-sm font-montserrat tracking-wider justify-center items-center   font-semibold rounded-lg;
-  width: 215px;
-  height: 45px;
+@include block(button) {
+  @extend %button;
+}
+
+@include block(button--inverted) {
+  @extend %button;
   color: white;
   border: 1px solid white;
   background-color: theme("colors.black");

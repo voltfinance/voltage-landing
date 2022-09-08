@@ -1,7 +1,18 @@
 @include block(header) {
-  @apply text-6xl  font-montserrat font-semibold leading-tight;
+  @apply text-5xl sm:text-3xl  font-montserrat font-semibold leading-tight;
   color: white;
-  @include element(subheader) {
-    @apply text-base font-montserrat pt-2 font-thin;
-  }
+}
+
+@include block(header--subheader) {
+  @apply text-base sm:text-base font-montserrat pt-2 font-thin;
+}
+
+@include block(header--title) {
+  @apply text-3xl  font-montserrat font-semibold leading-tight;
+  color: white;
+}
+
+@include block(header--bold) {
+  @apply font-montserrat font-semibold leading-tight;
+  color: white;
 }

@@ -23,6 +23,13 @@
 //     }
 //   }
 
+@include block(first-section) {
+  @include element(content) {
+    padding-right: 50%;
+    padding-top: 7%;
+    @apply sm:pr-0;
+  }
+}
 //   //section
 
 //   @include element(section) {

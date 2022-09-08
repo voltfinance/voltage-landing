@@ -1,13 +1,33 @@
-@include element(section) {
-  @apply h-screen w-screen flex sm:flex-col;
-  background-color: inherit;
+@include block(section) {
+  @apply grid grid-cols-2  auto-rows-auto sm:grid-cols-1;
+  @include element(image) {
+    max-width: 700px;
+    @apply mt-28 sm:max-w-full sm:mt-10;
+  }
+  @include element(image--reduced-size) {
+    max-width: 600px;
+  }
+
+  @include element(image--right-aligned) {
+    margin-right: auto;
+    @apply sm:order-2;
+  }
+  @include element(image--left-aligned) {
+    @apply ml-auto sm:order-2 sm:ml-0;
+  }
 
   @include element(content) {
-    @apply w-2/4 h-screen sm:w-screen;
-    background-color: red;
+    @apply max-w-3xl;
   }
-  @include element(image) {
-    @apply w-2/4 h-screen sm:w-screen;
-    background-color: orange;
+  @include element(content--padded) {
+    @apply pt-40 px-32 sm:mx-6 sm:px-0 sm:pt-24;
   }
+}
+
+@include block(container) {
+  @apply mx-auto max-w-7xl;
+}
+
+@include block(container--padded) {
+  @apply pt-20 p-5  mx-auto max-w-7xl;
 }

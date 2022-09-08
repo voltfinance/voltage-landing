@@ -1,5 +1,5 @@
 @include block(navbar) {
-  @apply h-20 w-full items-center flex;
+  @apply h-20 w-full items-center flex py-10;
 
   @include element(logo) {
     width: 120px;
@@ -7,7 +7,7 @@
   }
 
   @include element(menu) {
-    @apply flex ml-20 flex gap-4;
+    @apply flex ml-20 flex gap-4 sm:hidden;
     color: white;
 
     @include element(item) {

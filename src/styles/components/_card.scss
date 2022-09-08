@@ -1,0 +1,19 @@
+@include block(card) {
+  color: white;
+
+  @apply rounded-lg flex flex-col justify-center p-10 w-full h-full;
+
+  background-color: #2e2e2e;
+  @include element(name) {
+    @apply font-montserrat font-semibold mx-auto text-lg   pt-7;
+  }
+  @include element(logo) {
+    max-width: 100px;
+    margin: 0 auto;
+  }
+}
+
+@include block(list) {
+  @apply flex gap-6 pt-10 mx-auto flex-wrap;
+  @apply grid grid-cols-6  auto-rows-auto gap-x-2 gap-y-2 sm:grid-cols-2 lg:grid-cols-3;
+}

@@ -1,15 +1,38 @@
 @include block(footer) {
   height: 520px;
-  @apply pt-28;
+
   @include element(logo) {
     width: 150px;
   }
-  @include element(link) {
+
+  @include element(container) {
+    @apply flex flex-row  flex-wrap gap-8  justify-between;
+  }
+}
+
+@include block(links) {
+  color: white;
+  height: 228px;
+  width: 600px;
+  @apply font-montserrat pt-24 flex flex-col gap-3  flex-wrap;
+}
+
+@include block(signup) {
+  width: 444px;
+  height: 51px;
+  @apply flex  mt-auto  justify-between bg-lightGray rounded-lg;
+  @include element(input) {
+    @apply pl-6;
     color: white;
-    height: 250px;
-    width: 600px;
-    @apply font-montserrat pt-24 flex flex-col gap-3 flex-wrap;
-    @include element(item) {
+    &::placeholder {
+      @apply font-montserrat;
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: white;
+      opacity: 1; /* Firefox */
     }
+  }
+  @include element(button) {
+    color: white;
+    @apply flex justify-between items-center font-medium m-1 font-montserrat  px-8 bg-green  rounded-lg;
   }
 }

@@ -1,18 +1,19 @@
 @include block(banner) {
-  @apply h-20 w-screen left-0 absolute bottom-0 bg-lightGray  w-full flex font-montserrat justify-center;
+  @apply w-screen left-0 absolute bottom-0   flex flex-wrap font-montserrat;
+  height: 100px;
+}
 
-  @include element(item) {
-    @apply bg-lightGray w-screen pl-5 pr-20   flex flex-col justify-center;
-    border-left: 1px solid black;
+@include block(item) {
+  border-left: 1px solid black;
+  border-top: 1px solid black;
 
-    height: inherit;
-    width: fit-content;
+  height: inherit;
+  @apply bg-lightGray  w-screen pl-5 pr-20   flex flex-col justify-center w-1/4 sm:w-1/2;
 
-    @include element(header) {
-      @apply text-2xl font-bold;
-    }
-    @include element(subheader) {
-      @apply text-sm;
-    }
+  @include element(header) {
+    @apply text-2xl font-bold;
+  }
+  @include element(subheader) {
+    @apply text-sm sm:text-xs;
   }
 }
