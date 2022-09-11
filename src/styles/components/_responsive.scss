@@ -1,0 +1,9 @@
+@include block(mobile) {
+  display: none;
+  @apply sm:block;
+}
+
+@include block(desktop) {
+  display: block;
+  @apply sm:hidden;
+}

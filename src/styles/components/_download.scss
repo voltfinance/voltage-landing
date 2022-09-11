@@ -1,26 +1,21 @@
 @include block(download) {
-  @extend %button;
   height: 54px;
-  width: 195px;
+  width: 170px;
   color: white;
   border: 1px solid white;
-  @apply flex flex-row gap-3 pr-2  sm:rounded-lg;
+  @apply flex rounded-lg justify-center  lg:gap-x-2 items-center gap-x-3;
 
   background-color: theme("colors.black");
   @include element(logo) {
-    width: 28px;
-    @apply sm:ml-2 sm:w-5;
-  }
-  @include element(container) {
-    @apply flex flex-col mt-auto;
+    @apply w-6;
     margin-bottom: 4px;
   }
-  @include element(header) {
-    @apply text-xs  sm:text-xs font-normal;
 
+  @include element(header) {
+    @apply text-xs lg:text-xs font-normal;
     line-height: 0.8em;
   }
   @include element(subheader) {
-    @apply text-lg sm:text-lg  font-normal;
+    @apply text-lg  font-normal;
   }
 }

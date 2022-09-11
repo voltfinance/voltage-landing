@@ -34,6 +34,20 @@ module.exports = {
       "6xl": "4rem",
       "7xl": "5rem",
     },
+    backgroundSize: {
+      auto: "auto",
+      cover: "cover",
+      contain: "contain",
+      300: "300px auto",
+      400: "auto 400px",
+      500: "auto 500px",
+      600: "auto 600px",
+      700: "auto 700px",
+
+   
+
+      16: "4rem",
+    },
 
     fontFamily: {
       sans: ["SF Pro Display", ...defaultTheme.fontFamily.sans],
@@ -50,6 +64,58 @@ module.exports = {
       // borderRadius: {
       //   '4xl': '2rem',
       // }
+
+      backgroundImage: {
+        "home-landing-desktop": "url('src/assets/home-landing.png')",
+        "home-landing-mobile": "url('src/assets/home-landing-mobile.png')",
+        "home-phone-mockup": "url('src/assets/phone-spaceship.png')",
+        "home-fuse-dollar": "url('src/assets/fuse-dollar.png')",
+        "home-fuse-dollar-mobile": "url('src/assets/fuse-dollar-mobile.png')",
+
+        "home-coin-wallet": "url('src/assets/coin-wallet.png')",
+        "home-phone-mockup-mobile": "url('src/assets/phone-spaceship-mobile.png')",
+
+      },
+      width: {
+        50: "50px",
+        75: "75px",
+
+        100: "100px",
+        150: "150px",
+        175: "175px",
+
+        200: "200px",
+        300: "300px",
+        350: "350px",
+        375: "375px",
+
+        400: "400px",
+        500: "500px",
+        600: "600px",
+        700: "700px",
+        800: "800px",
+        900: "900px",
+      },
+      height: {
+        50: "50px",
+        75: "75px",
+
+        100: "100px",
+        150: "150px",
+        175: "175px",
+
+        200: "200px",
+        300: "300px",
+        400: "400px",
+        500: "500px",
+        600: "600px",
+        700: "700px",
+        800: "800px",
+        900: "900px",
+
+        "section-desktop": "800px",
+        "section-mobile": "300px",
+      },
     },
     corePlugins: {
       preflight: false,

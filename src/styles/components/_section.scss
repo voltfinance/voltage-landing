@@ -1,33 +1,16 @@
 @include block(section) {
-  @apply grid grid-cols-2  auto-rows-auto sm:grid-cols-1;
-  @include element(image) {
-    max-width: 700px;
-    @apply mt-28 sm:max-w-full sm:mt-10;
-  }
-  @include element(image--reduced-size) {
-    max-width: 600px;
-  }
+  @apply grid grid-cols-8  gap-x-32 sm:gap-x-0  sm:gap-y-10   pt-32 sm:grid-cols-1  h-full sm:h-screen;
+  height: auto;
+  @include element(header) {
+    // background-color: red;
 
-  @include element(image--right-aligned) {
-    margin-right: auto;
-    @apply sm:order-2;
+    @apply col-span-4  w-full  sm:pt-0;
   }
-  @include element(image--left-aligned) {
-    @apply ml-auto sm:order-2 sm:ml-0;
+  @include element(background) {
+    // background-color: orange;
+    @apply col-span-4  sm:order-2;
   }
-
-  @include element(content) {
-    @apply max-w-3xl;
+  @include element(buttons) {
+    @apply flex gap-4  pt-5;
   }
-  @include element(content--padded) {
-    @apply pt-40 px-32 sm:mx-6 sm:px-0 sm:pt-24;
-  }
-}
-
-@include block(container) {
-  @apply mx-auto max-w-7xl;
-}
-
-@include block(container--padded) {
-  @apply pt-20 p-5  mx-auto max-w-7xl;
 }

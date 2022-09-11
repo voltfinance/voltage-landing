@@ -15,7 +15,7 @@
     height: inherit;
     height: 68px;
 
-    @apply flex flex-row justify-between items-center px-8 font-montserrat font-semibold;
+    @apply flex flex-row justify-between items-center px-8 font-montserrat;
   }
   @include element(item--open) {
     @apply font-montserrat px-8 pb-5;
