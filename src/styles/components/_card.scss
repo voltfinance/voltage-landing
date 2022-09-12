@@ -6,7 +6,7 @@
   // background-color: #2e2e2e;
   background-color: theme("colors.darkGray");
   cursor: pointer;
-
+  @extend %no-select;
   &:hover {
     opacity: 0.7;
   }

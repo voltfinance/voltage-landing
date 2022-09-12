@@ -45,11 +45,17 @@ function VoltApp() {
                 Download the Volt App Today
               </div>
               <div className="section__buttons">
-                <button className="button--logo">
+                <button  onClick={()=>{
+                    window.location = "https://apps.apple.com/US/app/id1559937899?mt=8";
+
+
+                }} className="button--logo">
                   <img src={AppleLogo} />
                   <div className="mt-0.5"> Apple Store</div>
                 </button>
-                <button className="button--logo">
+                <button  onClick={()=>{
+                    window.location='https://play.google.com/store/apps/details?id=io.fuse.cash&hl=en&gl=US'
+                }} className="button--logo">
                   <img src={GoogleLogo} />
                   <div className="mt-0.5">Get fUSD</div>
                 </button>

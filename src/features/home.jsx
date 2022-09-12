@@ -72,11 +72,19 @@ rate to date. Voltage is a non-custodial platform that brings cutting edge finan
             <div className="section__buttons">
               <Download
                 src={Apple}
+                onClick={()=>{
+                    window.location = "https://apps.apple.com/US/app/id1559937899?mt=8";
+
+
+                }}
                 header="Avaliable on the"
                 subheader="App Store"
               />
               <Download
                 src={Google}
+                onClick={()=>{
+                    window.location='https://play.google.com/store/apps/details?id=io.fuse.cash&hl=en&gl=US'
+                }}
                 header="GET IT ON"
                 subheader="Google Play"
               />

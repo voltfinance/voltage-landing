@@ -4,12 +4,9 @@
   color: white;
   border: 1px solid white;
   @apply flex rounded-lg justify-center  lg:gap-x-2 items-center gap-x-3;
-
+  cursor: pointer;
   background-color: theme("colors.black");
-  &:hover {
-    cursor: pointer;
-    opacity: 80%;
-  }
+  @extend %no-select;
   @include element(logo) {
     @apply w-6;
     margin-bottom: 4px;
