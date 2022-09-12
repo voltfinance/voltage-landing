@@ -1,5 +1,6 @@
 @include block(navbar) {
   @apply h-20 w-full items-center flex py-10;
+  @extend %no-select;
 
   @include element(container) {
     cursor: pointer;
@@ -18,7 +19,7 @@
     z-index: 9999999;
 
     @include element(item) {
-      @apply font-montserrat text-sm font-thin;
+      @apply font-montserrat text-sm font-thin hover:text-link;
     }
   }
   @include element(button) {

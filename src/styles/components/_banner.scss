@@ -1,5 +1,6 @@
 @include block(banner) {
-  @apply w-screen  max-w-7xl  m-auto left-0 right-0 absolute bottom-0  flex  flex-wrap font-montserrat;
+  @apply w-screen    m-auto left-0 right-0 absolute bottom-0  flex  flex-wrap font-montserrat;
+  max-width: 2000px;
 }
 
 @include block(item) {

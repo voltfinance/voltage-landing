@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
+import { useLocation } from 'react-router-dom'
 
 const Navbar = ({
   history,
@@ -41,7 +42,8 @@ const Navbar = ({
     },
   ],
 }) => {
-  console.log(history, "history");
+    const location = useLocation();
+    console.log(location.pathname);
   return (
     <div className="navbar">
       <Link className="navbar__container" to={"/"}>
@@ -52,7 +54,10 @@ const Navbar = ({
           <div
             className={`navbar__menu__item ${
               !mobile ? "sm:hidden" : "sm:block "
-            }`}
+            }
+            ${location.pathname===to&&'text-link'}
+            
+            `}
           >
             {replace ? (
               <div
