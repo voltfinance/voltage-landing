@@ -1,5 +1,5 @@
 @include block(banner) {
-  @apply w-screen  left-0  absolute bottom-0  flex  flex-wrap font-montserrat;
+  @apply w-screen  max-w-7xl  m-auto left-0 right-0 absolute bottom-0  flex  flex-wrap font-montserrat;
 }
 
 @include block(item) {
@@ -7,7 +7,7 @@
   border-top: 1px solid black;
 
   height: inherit;
-  @apply bg-lightGray py-3 sm:py-2 pl-5 pr-20   flex flex-col justify-center w-1/4 sm:w-1/2;
+  @apply bg-lightGray  py-3 sm:py-2 pl-5 pr-20   flex flex-col justify-center w-1/4 sm:w-1/2;
 
   @include element(header) {
     @apply text-2xl sm:text-xl font-bold;

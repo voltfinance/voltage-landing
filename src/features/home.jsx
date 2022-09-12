@@ -30,7 +30,7 @@ function Home() {
         <div className=" h-full w-full bg-center		 left-0 z-0  mx-auto sm:mx-auto absolute bg-home-landing-desktop sm:bottom-20 sm:bg-contain sm:w-375 sm:bg-home-landing-mobile  sm:left-0 sm:right-0  sm:bg-bottom bg-no-repeat"></div>
         <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full ">
           <Navbar />
-          <div className="section   sm:pt-10 ">
+          <div className="section  sm:pt-10 ">
             <div className="header section__header">
             Supercharge your
 DeFi experience
@@ -42,10 +42,14 @@ rate to date. Voltage is a non-custodial platform that brings cutting edge finan
                 <button className="button">Swap Now</button>
                 <button className="button--inverted">Get fUSD</button>
               </div>
+              
             </div>
+            
           </div>
+          <Banner />
+
         </div>
-        <Banner />
+        
       </div>
 
       <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full">
