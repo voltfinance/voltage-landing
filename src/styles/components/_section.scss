@@ -1,10 +1,10 @@
 @include block(section) {
-  @apply grid grid-cols-8  gap-x-32 sm:gap-x-0  sm:gap-y-10   pt-32 sm:grid-cols-1  h-full sm:h-screen;
+  @apply grid grid-cols-8 z-20 relative  gap-x-32 sm:gap-x-0  sm:gap-y-10   pt-32 sm:pt-48 sm:grid-cols-1  h-full sm:h-screen;
   height: auto;
   @include element(header) {
     // background-color: red;
 
-    @apply col-span-4  w-full  sm:pt-0;
+    @apply col-span-4 w-full  sm:pt-0;
   }
   @include element(background) {
     // background-color: orange;

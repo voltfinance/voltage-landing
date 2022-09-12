@@ -18,7 +18,9 @@ module.exports = {
       lightBlue: "#063B64",
       purple: "#7A159A",
       green: "#70E000",
-      black: "#212529",
+      black: "#000000",
+      background: "#212529",
+      link:'#B5B9D3'
     },
     fontSize: {
       xs: ".75rem",
@@ -43,8 +45,6 @@ module.exports = {
       500: "auto 500px",
       600: "auto 600px",
       700: "auto 700px",
-
-   
 
       16: "4rem",
     },
@@ -73,8 +73,8 @@ module.exports = {
         "home-fuse-dollar-mobile": "url('src/assets/fuse-dollar-mobile.png')",
 
         "home-coin-wallet": "url('src/assets/coin-wallet.png')",
-        "home-phone-mockup-mobile": "url('src/assets/phone-spaceship-mobile.png')",
-
+        "home-phone-mockup-mobile":
+          "url('src/assets/phone-spaceship-mobile.png')",
       },
       width: {
         50: "50px",
@@ -90,11 +90,13 @@ module.exports = {
         375: "375px",
 
         400: "400px",
+        450: "450px",
         500: "500px",
         600: "600px",
         700: "700px",
         800: "800px",
         900: "900px",
+        "2x": "200%",
       },
       height: {
         50: "50px",

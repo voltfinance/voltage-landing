@@ -15,6 +15,9 @@
   height: 228px;
   width: 600px;
   @apply font-montserrat pt-24 flex flex-col gap-3  flex-wrap;
+  @include element(item) {
+    @apply hover:text-link cursor-pointer;
+  }
 }
 
 @include block(signup) {
@@ -33,6 +36,6 @@
   }
   @include element(button) {
     color: white;
-    @apply flex justify-between items-center font-medium m-1 font-montserrat  px-8 bg-green  rounded-lg;
+    @apply flex justify-between items-center font-bold m-1 font-montserrat  text-sm px-8 bg-green  rounded-lg;
   }
 }

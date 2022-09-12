@@ -26,38 +26,36 @@ function Home() {
   return (
     <>
       <div className="h-screen w-screen relative ">
-          <div className=" h-full w-full sm:w-375 z-0 sm:bottom-20 left-0 sm:mx-auto sm:left-0 sm:right-0  absolute bg-home-landing-desktop sm:bg-contain sm:bg-home-landing-mobile sm:bg-bottom bg-no-repeat"></div>
+        <div className=" h-full w-full bg-center left-0 z-0  mx-auto sm:mx-auto absolute bg-home-landing-desktop sm:bottom-20 sm:bg-contain sm:w-375 sm:bg-home-landing-mobile  sm:left-0 sm:right-0  sm:bg-bottom bg-no-repeat"></div>
         <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full ">
-        <Navbar />
-        <div className="section  sm:pt-10 ">
-          <div className="header section__header">
-            Take your DeFi everywhere you go!
-            <div className="header--subheader">
-              The Volt App is a web 3 non-custodial wallet with everything you
-              need to carry in your pocket.
-              <br></br>
-              <br></br>
-              Send, Receive, Swap, Stake & much more with out paying for gas
-              fees and with just one click.
-              <br></br>
-              <br></br>
-              Frictionless DEFI is here:
-            </div>
-            <div className="section__buttons">
-              <button className="button">Swap Now</button>
-              <button className="button--inverted">Get fUSD</button>
+          <Navbar />
+          <div className="section   sm:pt-10 ">
+            <div className="header section__header">
+              Take your DeFi everywhere you go!
+              <div className="header--subheader">
+                The Volt App is a web 3 non-custodial wallet with everything you
+                need to carry in your pocket.
+                <br></br>
+                <br></br>
+                Send, Receive, Swap, Stake & much more with out paying for gas
+                fees and with just one click.
+                <br></br>
+                <br></br>
+                Frictionless DEFI is here:
+              </div>
+              <div className="section__buttons">
+                <button className="button">Swap Now</button>
+                <button className="button--inverted">Get fUSD</button>
+              </div>
             </div>
           </div>
         </div>
-
-
-        </div>
         <Banner />
-
       </div>
 
       <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full">
-      
+        <div className="pt-10 sm:pt-0"></div>
+
         <div className="section">
           <div className="header section__header">
             Take your DeFi everywhere you go!
@@ -87,14 +85,16 @@ function Home() {
           </div>
 
           <div className="section__background">
-              <img className="mobile" src={PhoneMobile}/>
-              <img className="desktop " src={Phone}/>
+            <img className="mobile" src={PhoneMobile} />
+            <img className="desktop w-full ml-auto scale-125" src={Phone} />
           </div>
         </div>
+        <div className="pt-10 sm:pt-0"></div>
+
         <div className="section">
-         <div className="section__background">
-              <img className="mobile" src={FuseDollarMobile}/>
-              <img className="desktop " src={FuseDollar}/>
+          <div className="section__background">
+            <img className="mobile" src={FuseDollarMobile} />
+            <img className="desktop mr-auto scale-110" src={FuseDollar} />
           </div>
           <div className="header section__header">
             Discover Fuse Dollar
@@ -110,13 +110,14 @@ function Home() {
               into just one stable.
             </div>
             <div className="section__buttons">
-              <button className="button">Swap Now</button>
-              <button className="button--inverted">Get fUSD</button>
+              <button className="button">Get fUSD </button>
+              <button className="button--inverted">Read more</button>
             </div>
           </div>
         </div>
         <div className="section">
-          <div className="header section__header">
+          <div className="header section__header ">
+            <div className="pt-24 sm:pt-0"></div>
             Make your crypto work for you
             <div className="header--subheader">
               Check out how Voltage farms and Volt staking can help you make
@@ -128,31 +129,29 @@ function Home() {
             </div>
           </div>
           <div className="section__background">
-              <img  src={CoinWallet}/>
-          </div>        
+            <img
+              className="w-450 ml-auto scale-110 sm:scale-1 sm:mx-auto sm:w-full"
+              src={CoinWallet}
+            />
           </div>
+        </div>
 
-    
         <div className="header--title text-center pb-10 pt-32">
           join our community
         </div>
         <CardList />
-  
+
         <div className="header--title text-center pb-10 pt-32">
           Frequently Asked Questions
         </div>
         <Faq />
-
       </div>
       <div className="h-screen w-screen pt-32">
-          <div style={{border:'1px solid white'}}></div>
+        <div style={{ border: "1px solid white" }}></div>
         <div className="max-w-7xl pt-32 px-10 sm:px-5 mx-auto h-full w-full">
-         <Footer />
+          <Footer />
         </div>
       </div>
-
-    
-
     </>
   );
 }

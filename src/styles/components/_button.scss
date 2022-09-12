@@ -17,3 +17,19 @@
   background-color: theme("colors.black");
   @apply font-normal;
 }
+
+@include block(button--white) {
+  @extend %button;
+  color: theme("colors.black");
+  border: 1px solid white;
+  background-color: white;
+  @apply font-semibold;
+}
+
+@include block(button--logo) {
+  @extend %button;
+  color: theme("colors.black");
+  border: 1px solid white;
+  background-color: white;
+  @apply font-bold items-center gap-3 sm:w-200;
+}

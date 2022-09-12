@@ -1,14 +1,21 @@
 @include block(navbar) {
   @apply h-20 w-full items-center flex py-10;
 
+  @include element(container) {
+    cursor: pointer;
+    z-index: 9999999;
+  }
   @include element(logo) {
     width: 120px;
     height: 40px;
   }
 
   @include element(menu) {
-    @apply flex ml-20 flex gap-4 sm:hidden;
+    @apply flex gap-4  ml-20 sm:ml-5;
+
     color: white;
+    cursor: pointer;
+    z-index: 9999999;
 
     @include element(item) {
       @apply font-montserrat text-sm font-thin;
@@ -17,10 +24,9 @@
   @include element(button) {
     margin-left: auto;
     @extend %button;
-    @apply text-sm flex;
-    font-family: Helvetica;
     font-weight: 500;
     height: 34px;
     width: 180px;
+    @apply text-sm flex sm:w-150;
   }
 }

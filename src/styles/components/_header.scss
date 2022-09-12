@@ -12,6 +12,11 @@
   color: white;
 }
 
+@include block(header--title-secondary) {
+  @apply text-2xl  font-montserrat leading-tight;
+  color: white;
+}
+
 @include block(header--bold) {
   @apply font-montserrat font-semibold leading-tight;
   color: white;
