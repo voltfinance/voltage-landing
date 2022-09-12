@@ -3,7 +3,13 @@
 
   @apply rounded-lg flex flex-col justify-center p-10 w-full h-full;
 
-  background-color: #2e2e2e;
+  // background-color: #2e2e2e;
+  background-color: theme("colors.darkGray");
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
   @include element(name) {
     @apply font-montserrat font-semibold mx-auto text-lg;
   }

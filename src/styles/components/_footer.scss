@@ -36,6 +36,12 @@
   }
   @include element(button) {
     color: white;
-    @apply flex justify-between items-center font-bold m-1 font-montserrat  text-sm px-8 bg-green  rounded-lg;
+
+    @apply flex justify-between items-center font-bold m-1 font-montserrat  text-sm px-8  rounded-lg;
+    background-color: theme("colors.green");
+
+    &:hover {
+      background-color: theme("colors.greenHover");
+    }
   }
 }

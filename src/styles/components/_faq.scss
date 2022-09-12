@@ -3,6 +3,7 @@
   @include element(icon) {
     height: 40px;
     width: 40px;
+    cursor: pointer;
     @apply flex justify-center items-center;
   }
   @include element(container) {

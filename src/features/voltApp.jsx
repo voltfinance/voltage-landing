@@ -8,7 +8,7 @@ import PhoneMobile from "../assets/phone-spaceship-mobile.png";
 import FuseLogo from "../assets/fuse-logo.png";
 import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
 
-import LandingImage from "../assets/home-landing.png";
+import AppBuyCrypto from "../assets/app-buy-crypto.png";
 import CoinWallet from "../assets/coin-wallet.png";
 import AppCoins from "../assets/app-coins.png";
 import AppWallet from "../assets/app-wallet.png";
@@ -34,7 +34,7 @@ function VoltApp() {
       <div className="h-fit min-h-screen w-screen relative ">
         <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full ">
           <Navbar />
-          <div className="section sm:pt-10 ">
+          <div className="section sm:pt-10">
             <div className="header section__header flex flex-col">
               DeFi For the Masses
               <div className="header--subheader">
@@ -73,7 +73,7 @@ function VoltApp() {
           All without fees. You know... like cash.
         </div>
 
-        <div className="section">
+        <div className="section sm:pt-20">
           <div className="section__background">
             <img
               className="w-450 ml-auto sm:mx-auto sm:w-full"
@@ -141,7 +141,7 @@ function VoltApp() {
           <div className="section__background">
             <img
               className="w-450 ml-auto sm:scale-1 sm:mx-auto sm:w-full"
-              src={AppExchange}
+              src={AppBuyCrypto}
             />
           </div>
         </div>
