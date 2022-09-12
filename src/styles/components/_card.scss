@@ -5,7 +5,7 @@
 
   background-color: #2e2e2e;
   @include element(name) {
-    @apply font-montserrat font-semibold mx-auto text-lg   pt-7;
+    @apply font-montserrat font-semibold mx-auto text-lg;
   }
   @include element(logo) {
     max-width: 100px;

@@ -6,6 +6,10 @@
   @apply flex rounded-lg justify-center  lg:gap-x-2 items-center gap-x-3;
 
   background-color: theme("colors.black");
+  &:hover {
+    cursor: pointer;
+    opacity: 80%;
+  }
   @include element(logo) {
     @apply w-6;
     margin-bottom: 4px;

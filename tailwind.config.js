@@ -18,7 +18,9 @@ module.exports = {
       lightBlue: "#063B64",
       purple: "#7A159A",
       green: "#70E000",
-      black: "#000000",
+      greenHover:'#65ca00',
+      blackHover:'#AFAFAF',
+      black: "#1A1A1A",
       background: "#212529",
       link:'#B5B9D3'
     },

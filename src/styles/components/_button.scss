@@ -4,6 +4,9 @@
   @apply flex z-10 text-sm sm:text-base sm:w-36 font-montserrat tracking-wider justify-center items-center  rounded-lg sm:rounded-2xl;
 
   background-color: theme("colors.green");
+  &:hover {
+    background-color: theme("colors.greenHover");
+  }
 }
 
 @include block(button) {
@@ -15,7 +18,12 @@
   color: white;
   border: 1px solid white;
   background-color: theme("colors.black");
-  @apply font-normal;
+  @apply font-bold;
+  &:hover {
+    background-color: theme("colors.blackHover");
+    border: 1px solid theme("colors.blackHover");
+    color: theme("colors.black");
+  }
 }
 
 @include block(button--white) {
@@ -24,6 +32,11 @@
   border: 1px solid white;
   background-color: white;
   @apply font-semibold;
+  &:hover {
+    background-color: theme("colors.blackHover");
+    border: 1px solid theme("colors.blackHover");
+    color: theme("colors.black");
+  }
 }
 
 @include block(button--logo) {
@@ -32,4 +45,9 @@
   border: 1px solid white;
   background-color: white;
   @apply font-bold items-center gap-3 sm:w-200;
+  &:hover {
+    background-color: theme("colors.blackHover");
+    border: 1px solid theme("colors.blackHover");
+    color: theme("colors.black");
+  }
 }

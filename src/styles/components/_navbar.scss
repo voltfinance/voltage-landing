@@ -24,7 +24,6 @@
   @include element(button) {
     margin-left: auto;
     @extend %button;
-    font-weight: 500;
     height: 34px;
     width: 180px;
     @apply text-sm flex sm:w-150;

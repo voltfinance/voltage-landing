@@ -5,7 +5,7 @@ import Navbar from "./shared/Navbar";
 import Phone from "../assets/phone-spaceship.png";
 import PhoneMobile from "../assets/phone-spaceship-mobile.png";
 
-import FuseDollar from "../assets/fuse-dollar.png";
+import FuseLogo from "../assets/fuse-logo.png";
 import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
 
 import LandingImage from "../assets/home-landing.png";
@@ -81,7 +81,7 @@ function VoltApp() {
             />
           </div>
           <div className="header section__header ">
-            <div className="pt-40 sm:pt-0"></div>A non-custodial wallet that
+            <div className="sm:pt-0"></div>A non-custodial wallet that
             will free you from fees
             <div className="header--subheader">
               The Voltage app lets you create a contract account but no need to
@@ -179,7 +179,7 @@ function VoltApp() {
           <div className="section__background">
             <img
               className="w-450 ml-auto sm:scale-1 sm:mx-auto sm:w-full"
-              src={AppExchange}
+              src={FuseLogo}
             />
           </div>
         </div>

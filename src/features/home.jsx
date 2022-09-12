@@ -7,6 +7,7 @@ import PhoneMobile from "../assets/phone-spaceship-mobile.png";
 
 import FuseDollar from "../assets/fuse-dollar.png";
 import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
+import HomeLine from "../assets/home-line.png";
 
 import LandingImage from "../assets/home-landing.png";
 import CoinWallet from "../assets/coin-wallet.png";
@@ -26,22 +27,16 @@ function Home() {
   return (
     <>
       <div className="h-screen w-screen relative ">
-        <div className=" h-full w-full bg-center left-0 z-0  mx-auto sm:mx-auto absolute bg-home-landing-desktop sm:bottom-20 sm:bg-contain sm:w-375 sm:bg-home-landing-mobile  sm:left-0 sm:right-0  sm:bg-bottom bg-no-repeat"></div>
+        <div className=" h-full w-full bg-center		 left-0 z-0  mx-auto sm:mx-auto absolute bg-home-landing-desktop sm:bottom-20 sm:bg-contain sm:w-375 sm:bg-home-landing-mobile  sm:left-0 sm:right-0  sm:bg-bottom bg-no-repeat"></div>
         <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full ">
           <Navbar />
           <div className="section   sm:pt-10 ">
             <div className="header section__header">
-              Take your DeFi everywhere you go!
+            Supercharge your
+DeFi experience
               <div className="header--subheader">
-                The Volt App is a web 3 non-custodial wallet with everything you
-                need to carry in your pocket.
-                <br></br>
-                <br></br>
-                Send, Receive, Swap, Stake & much more with out paying for gas
-                fees and with just one click.
-                <br></br>
-                <br></br>
-                Frictionless DEFI is here:
+              Imagine being in full control of your finances while earning the highest interest
+rate to date. Voltage is a non-custodial platform that brings cutting edge financial tools to your fingertips.
               </div>
               <div className="section__buttons">
                 <button className="button">Swap Now</button>
@@ -134,6 +129,11 @@ function Home() {
               src={CoinWallet}
             />
           </div>
+        </div>
+        <div className="w-full  h-300 flex justify-center items-center">
+
+            <img className="desktop h-1/2 w-auto  mr-auto" src={HomeLine} />
+
         </div>
 
         <div className="header--title text-center pb-10 pt-32">
