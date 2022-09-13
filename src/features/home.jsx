@@ -4,12 +4,17 @@ import Header from "./shared/Header";
 import Navbar from "./shared/Navbar";
 import Phone from "../assets/phone-spaceship.png";
 import PhoneMobile from "../assets/phone-spaceship-mobile.png";
+import AppleLogo from "../assets/apple-black.svg";
 
+import FuseLogo from "../assets/fuse-logo.png";
 import FuseDollar from "../assets/fuse-dollar.png";
 import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
 import HomeLine from "../assets/home-line.png";
+import GoogleLogo from "../assets/google-black.svg";
 
 import LandingImage from "../assets/home-landing.png";
+import LandingImageMobile from "../assets/home-landing-mobile.png";
+
 import CoinWallet from "../assets/coin-wallet.png";
 
 import Apple from "../assets/apple.svg";
@@ -22,41 +27,45 @@ import Footer from "./shared/Footer";
 import Download from "./shared/download";
 import Faq from "./shared/Faq";
 import CardList from "./shared/CardList";
+import Padding from "./shared/Padding";
 
 function Home() {
   return (
     <>
-      <div className="h-screen w-screen relative ">
-        <div className=" h-full w-full bg-center		 left-0 z-0  mx-auto sm:mx-auto absolute bg-home-landing-desktop sm:bottom-20 sm:bg-contain sm:w-375 sm:bg-home-landing-mobile  sm:left-0 sm:right-0  sm:bg-bottom bg-no-repeat"></div>
-        <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full ">
+      <div className="h-screen w-screen max-h-page relative ">
+      
+        <img className="desktop absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src={LandingImage} />
+
+        <div className="container">
+          <img
+            className="mobile absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            src={LandingImageMobile}
+          />
           <Navbar />
-          <div className="section  sm:pt-10 ">
-            <div className="header section__header">
-            Supercharge your
-DeFi experience
+          <Padding size="xs" />
+
+          <div className="section">
+            <div className="header section__content ">
+              Supercharge your DeFi experience
               <div className="header--subheader">
-              Imagine being in full control of your finances while earning the highest interest
-rate to date. Voltage is a non-custodial platform that brings cutting edge financial tools to your fingertips.
+                Imagine being in full control of your finances while earning the
+                highest interest rate to date. Voltage is a non-custodial
+                platform that brings cutting edge financial tools to your
+                fingertips.
               </div>
               <div className="section__buttons">
                 <button className="button">Swap Now</button>
                 <button className="button--inverted">Get fUSD</button>
               </div>
-              
             </div>
-            
           </div>
           <Banner />
-
         </div>
-        
       </div>
-
-      <div className="max-w-7xl px-10 sm:px-5 mx-auto h-full w-full">
-        <div className="pt-10 sm:pt-0"></div>
-
+      <Padding size="sm" />
+      <div className="container">
         <div className="section">
-          <div className="header section__header">
+          <div className="header section__content">
             Take your DeFi everywhere you go!
             <div className="header--subheader">
               The Volt App is a web 3 non-custodial wallet with everything you
@@ -70,24 +79,8 @@ rate to date. Voltage is a non-custodial platform that brings cutting edge finan
               Frictionless DEFI is here:
             </div>
             <div className="section__buttons">
-              <Download
-                src={Apple}
-                onClick={()=>{
-                    window.location = "https://apps.apple.com/US/app/id1559937899?mt=8";
-
-
-                }}
-                header="Avaliable on the"
-                subheader="App Store"
-              />
-              <Download
-                src={Google}
-                onClick={()=>{
-                    window.location='https://play.google.com/store/apps/details?id=io.fuse.cash&hl=en&gl=US'
-                }}
-                header="GET IT ON"
-                subheader="Google Play"
-              />
+              <Download type="apple" />
+              <Download type="google" />
             </div>
           </div>
 
@@ -96,14 +89,15 @@ rate to date. Voltage is a non-custodial platform that brings cutting edge finan
             <img className="desktop w-full ml-auto scale-125" src={Phone} />
           </div>
         </div>
-        <div className="pt-10 sm:pt-0"></div>
 
-        <div className="section">
+        <Padding size="lg" />
+
+        <div className="section ">
           <div className="section__background">
             <img className="mobile" src={FuseDollarMobile} />
-            <img className="desktop mr-auto scale-110" src={FuseDollar} />
+            <img className="desktop mr-auto scale-125" src={FuseDollar} />
           </div>
-          <div className="header section__header">
+          <div className="header section__content">
             Discover Fuse Dollar
             <div className="header--subheader">
               The decentralized stablecoin in Fuse. Multiple stables backing
@@ -122,9 +116,11 @@ rate to date. Voltage is a non-custodial platform that brings cutting edge finan
             </div>
           </div>
         </div>
+
+        <Padding size="lg" />
+
         <div className="section">
-          <div className="header section__header ">
-            <div className="pt-24 sm:pt-0"></div>
+          <div className="header section__content ">
             Make your crypto work for you
             <div className="header--subheader">
               Check out how Voltage farms and Volt staking can help you make
@@ -137,30 +133,34 @@ rate to date. Voltage is a non-custodial platform that brings cutting edge finan
           </div>
           <div className="section__background">
             <img
-              className="w-450 ml-auto scale-110 sm:scale-1 sm:mx-auto sm:w-full"
+              className="ml-auto scale-125 sm:scale-1 sm:mx-auto sm:w-full"
               src={CoinWallet}
             />
           </div>
         </div>
-        <div className="w-full  h-300 flex justify-center items-center">
 
+        {/* <div className="w-full  h-300 flex justify-center items-center">
             <img className="desktop h-1/2 w-auto  mr-auto" src={HomeLine} />
+        </div> */}
+        <Padding size="sm" />
 
-        </div>
-
-        <div className="header--title text-center pb-10 pt-32">
+        <div className="header--section header--bold header--padded">
           join our community
         </div>
         <CardList />
 
-        <div className="header--title text-center pb-10 pt-32">
+        <Padding size="sm" />
+
+        <div className="header--section header--bold header--padded">
           Frequently Asked Questions
         </div>
         <Faq />
       </div>
-      <div className="h-screen w-screen pt-32">
-        <div style={{ border: "1px solid white" }}></div>
-        <div className="max-w-7xl pt-32 px-10 sm:px-5 mx-auto h-full w-full">
+      <Padding size="xl" />
+
+      <div className="h-screen w-screen">
+        <div style={{ border: "1px solid #8C8C8C" }}></div>
+        <div className="container p-20">
           <Footer />
         </div>
       </div>

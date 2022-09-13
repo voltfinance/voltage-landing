@@ -1,0 +1,5 @@
+@include block(container) {
+  @apply max-w-7xl h-full w-full;
+  @apply px-10 sm:px-5;
+  @apply mx-auto;
+}

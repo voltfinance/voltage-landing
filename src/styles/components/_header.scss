@@ -1,23 +1,41 @@
+%header-section {
+  @apply text-3xl;
+  @apply leading-tight;
+  color: white;
+}
+
 @include block(header) {
-  @apply text-5xl sm:text-3xl  font-montserrat font-semibold leading-tight;
+  @apply text-5xl sm:text-3xl;
+  @apply font-montserrat font-extrabold leading-tight;
   color: white;
 }
 
 @include block(header--subheader) {
-  @apply text-base sm:text-base font-montserrat pt-2 font-thin;
+  @apply text-base sm:text-base;
+  @apply font-montserrat font-normal;
+  @apply pt-5;
 }
 
-@include block(header--title) {
-  @apply text-3xl  font-montserrat font-semibold leading-tight;
-  color: white;
-}
+@include block(header--section) {
+  @extend %header-section;
+  @apply text-center;
+  @apply text-center mx-auto w-3/4 sm:w-full;
 
-@include block(header--title-secondary) {
-  @apply text-2xl  font-montserrat leading-tight;
-  color: white;
+  // @apply pb-10 pt-32;
 }
+// @include block(header--section-padding) {
+//   @apply pb-10 pt-32;
+// }
 
 @include block(header--bold) {
-  @apply font-montserrat font-semibold leading-tight;
+  @apply font-bold;
+}
+
+@include block(header--padded) {
+  @apply pb-10;
+}
+
+@include block(header--mini-bold) {
+  @apply font-semibold leading-tight text-base;
   color: white;
 }

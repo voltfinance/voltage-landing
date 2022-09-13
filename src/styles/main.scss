@@ -1,11 +1,17 @@
 @import "https://fonts.cdnfonts.com/css/sf-pro-display";
-@import url("https://use.typekit.net/fri4duk.css");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap");
 @import "resets/resets";
 @import "utils";
 @import "tailwind";
 @import "components/main";
 @import "pages/main";
+
+*:not(i) {
+  text-rendering: optimizeLegibility !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: antialiased !important;
+  @apply font-montserrat;
+}
 
 html,
 body {

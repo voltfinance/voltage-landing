@@ -20,12 +20,14 @@ const Banner = ({
 }) => {
   return (
     <div className="banner">
-      {items.map(({ header, subheader }) => (
-        <div className="item">
-          <div className="item__header">{header}</div>
-          <div className="item__subheader">{subheader}</div>
-        </div>
-      ))}
+      <div className="banner__container">
+        {items.map(({ header, subheader }) => (
+          <div className="item">
+            <div className="item__header">{header}</div>
+            <div className="item__subheader">{subheader}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

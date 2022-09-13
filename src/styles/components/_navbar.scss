@@ -12,14 +12,17 @@
   }
 
   @include element(menu) {
-    @apply flex gap-4  ml-20 sm:ml-5;
+    @apply flex gap-9  ml-20 sm:ml-5;
 
     color: white;
     cursor: pointer;
     z-index: 9999999;
 
     @include element(item) {
-      @apply font-montserrat text-sm font-thin hover:text-link;
+      @apply font-montserrat text-sm font-normal;
+      &:hover {
+        color: theme("colors.green");
+      }
     }
   }
   @include element(button) {
@@ -27,6 +30,6 @@
     @extend %button;
     height: 34px;
     width: 180px;
-    @apply text-sm flex sm:w-150;
+    @apply text-sm font-medium flex sm:w-150;
   }
 }

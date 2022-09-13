@@ -8,8 +8,8 @@ import File from "../../assets/file.svg";
 const CardList = ({
   items = [
     {
-        src: Telegram,
-        name: "Telegram",
+      src: Telegram,
+      name: "Telegram",
     },
     {
       src: Twitter,

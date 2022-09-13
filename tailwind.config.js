@@ -3,6 +3,22 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{js,jsx}", "index.html"],
   theme: {
+    animation: {
+      wiggle: "wiggle 1s infinite",
+    },
+    maxHeight: {
+      'page': '1300px',
+    },
+    keyframes: {
+      wiggle: {
+        "0% 100%": {
+          transform: "scale(1.2) rotate(7deg)",
+        },
+        "50%": {
+          transform: "scale(0.8) rotate(-7deg)",
+        },
+      },
+    },
     screens: {
       "2xl": { max: "1535px" },
       xl: { max: "1279px" },
@@ -20,11 +36,11 @@ module.exports = {
       lightBlue: "#063B64",
       purple: "#7A159A",
       green: "#70E000",
-      greenHover:'#65ca00',
-      blackHover:'#AFAFAF',
+      greenHover: "#65ca00",
+      blackHover: "#AFAFAF",
       black: "#1A1A1A",
       background: "#212529",
-      link:'#B5B9D3'
+      link: "#B5B9D3",
     },
     fontSize: {
       xs: ".75rem",
@@ -101,6 +117,10 @@ module.exports = {
         800: "800px",
         900: "900px",
         "2x": "200%",
+      },
+      padding: {
+        sm: "16rem 0rem 0rem 0rem",
+        lg: "16rem 0rem 0rem 0rem",
       },
       height: {
         50: "50px",

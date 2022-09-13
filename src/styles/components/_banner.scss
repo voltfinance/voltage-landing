@@ -1,19 +1,25 @@
 @include block(banner) {
-  @apply w-screen    m-auto left-0 right-0 absolute bottom-0  flex  flex-wrap font-montserrat;
-  max-width: 2000px;
+  @apply w-screen;
+  @apply absolute bottom-0 left-0;
+  @apply bg-lightGray;
+
+  @include element(container) {
+    @apply grid grid-cols-4 sm:grid-cols-2;
+    @apply max-w-7xl mx-auto;
+  }
 }
 
 @include block(item) {
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+  @apply py-3 sm:py-2 pl-5 pr-20;
+  @apply justify-center flex flex-col;
+  // @apply sm:border border-y-2 border-black;
 
   height: inherit;
-  @apply bg-lightGray  py-3 sm:py-2 pl-5 pr-20   flex flex-col justify-center w-1/4 sm:w-1/2;
 
   @include element(header) {
-    @apply text-2xl sm:text-xl font-bold;
+    @apply text-2xl sm:text-xl font-extrabold;
   }
   @include element(subheader) {
-    @apply text-sm sm:text-xs;
+    @apply text-sm font-normal sm:text-xs;
   }
 }
