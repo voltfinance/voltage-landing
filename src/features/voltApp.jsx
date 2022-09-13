@@ -18,7 +18,9 @@ function VoltApp() {
       <div className="container">
         <Navbar />
         <div className="section">
-          <div className="header section__content">
+  
+          <div className="header section__content--not-centered">
+          <Padding size="xs"/>
             DeFi For the Masses
             <div className="header--subheader">
               Start your DEFI journey with our easy to use app. Secure, Gasless

@@ -15,6 +15,12 @@
     @apply sm:pt-0;
     @apply justify-center flex flex-col;
   }
+  @include element(content--not-centered) {
+    @apply col-span-4;
+    @apply w-full;
+    @apply sm:pt-0;
+    @apply flex flex-col;
+  }
   @include element(background) {
     // background-color: orange;
     @apply col-span-4  sm:order-2;
