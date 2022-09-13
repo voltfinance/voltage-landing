@@ -43,6 +43,7 @@ module.exports = {
       background: "#212529",
       link: "#B5B9D3",
     },
+ 
     fontSize: {
       xs: ".75rem",
       sm: ".875rem",

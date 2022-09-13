@@ -12,9 +12,13 @@
 @include block(item) {
   @apply py-3 sm:py-2 pl-5 pr-20;
   @apply justify-center flex flex-col;
-  // @apply sm:border border-y-2 border-black;
+  border-left: 1px solid black;
 
   height: inherit;
+
+  @media screen and (max-width: 767px) {
+    border-bottom: 1px solid black;
+  }
 
   @include element(header) {
     @apply text-2xl sm:text-xl font-extrabold;
