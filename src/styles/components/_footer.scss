@@ -6,22 +6,22 @@
   }
 
   @include element(container) {
-    @apply flex flex-row  flex-wrap gap-8  justify-between;
+    @apply flex flex-row   flex-wrap gap-8  justify-between;
   }
 }
 
 @include block(links) {
   color: white;
-  height: 228px;
-  width: 600px;
-  @apply font-montserrat pt-24 flex flex-col gap-3  flex-wrap;
+
+  // @apply font-montserrat pt-24 flex flex-col gap-3  flex-wrap;
+  @apply grid grid-cols-2 gap-y-3 pt-14 gap-x-10;
   @include element(item) {
     @apply hover:text-link cursor-pointer;
   }
 }
 
 @include block(signup) {
-  width: 444px;
+  width: 460px;
   height: 51px;
   @apply flex  mt-auto  justify-between bg-lightGray rounded-lg;
   @include element(input) {
@@ -37,7 +37,7 @@
   @include element(button) {
     color: white;
 
-    @apply flex justify-between items-center font-bold m-1 font-montserrat  text-sm px-8  rounded-lg;
+    @apply flex justify-between  items-center font-bold m-1 font-montserrat  text-sm px-8  rounded-lg;
     background-color: theme("colors.green");
 
     &:hover {

@@ -20,6 +20,7 @@ module.exports = {
       },
     },
     screens: {
+      "3xl": { min: "1535px" },
       "2xl": { max: "1535px" },
       xl: { max: "1279px" },
       lg: { max: "1023px" },
@@ -55,6 +56,7 @@ module.exports = {
       "5xl": "3rem",
       "6xl": "4rem",
       "7xl": "5rem",
+      "8xl": "22px",
     },
     backgroundSize: {
       auto: "auto",
