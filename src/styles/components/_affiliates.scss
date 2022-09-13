@@ -1,0 +1,6 @@
+@include block(affiliates) {
+  @apply flex flex-wrap gap-x-10 items-center justify-center;
+  @include element(image) {
+    width: 200px;
+  }
+}

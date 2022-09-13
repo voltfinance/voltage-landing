@@ -11,10 +11,20 @@ import FuseDollar from "../assets/fuse-dollar.png";
 import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
 import HomeLine from "../assets/home-line.png";
 import GoogleLogo from "../assets/google-black.svg";
+import Beefy from '../assets/beefy-p.png'
+import Bittrex from '../assets/bittrex-p.png'
+import InfinityPad from '../assets/infinity-p.png'
+import Quill from '../assets/quill-p.png'
+
+import Collider from '../assets/collide-s.png'
+import Mg from '../assets/mg-s.png'
+import Spark from '../assets/spark-s.png'
+import Trg from '../assets/trg-s.png'
+import Capital from '../assets/capital-s.png'
 
 import LandingImage from "../assets/home-landing.png";
 import LandingImageMobile from "../assets/home-landing-mobile.png";
-
+import Ascend from '../assets/ascend-p.png'
 import CoinWallet from "../assets/coin-wallet.png";
 
 import Apple from "../assets/apple.svg";
@@ -28,6 +38,7 @@ import Download from "./shared/download";
 import Faq from "./shared/Faq";
 import CardList from "./shared/CardList";
 import Padding from "./shared/Padding";
+import Affiliates from "./shared/Affiliates";
 
 function Home() {
   return (
@@ -148,6 +159,21 @@ function Home() {
           join our community
         </div>
         <CardList />
+        <Padding size="sm" />
+
+<div className="header--section header--bold header--padded">
+  Partners
+</div>
+<Affiliates items={[Beefy, Bittrex, InfinityPad, Quill,Ascend]} />
+        
+<Padding size="sm" />
+
+<div className="header--section header--bold header--padded">
+  Sponsers
+</div>
+<Affiliates items={[Spark, Collider, Trg, Mg,Capital]} />
+        
+
 
         <Padding size="sm" />
 
