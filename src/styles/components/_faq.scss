@@ -1,9 +1,12 @@
 @include block(faq) {
+  cursor: pointer;
+  @extend %no-select;
+
   @apply w-3/4 sm:w-full mx-auto flex flex-col gap-3;
   @include element(icon) {
     height: 40px;
     width: 40px;
-    cursor: pointer;
+
     @apply flex justify-center items-center;
   }
   @include element(container) {

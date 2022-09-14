@@ -27,17 +27,17 @@ const Faq = ({
   return (
     <div className="faq">
       {items.map(({ q, a }, index) => (
-        <div className="faq__container">
+        <div onClick={() => {
+          if (openIndex === index) {
+            setOpenIndex(-1);
+            return;
+          }
+          setOpenIndex(index);
+        }} className="faq__container">
           <div className="faq__item">
             <div>{q}</div>
             <div
-              onClick={() => {
-                if (openIndex === index) {
-                  setOpenIndex(-1);
-                  return;
-                }
-                setOpenIndex(index);
-              }}
+              
               className="faq__icon"
             >
               <img src={openIndex !== index ? Plus : Minus} />
