@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Plus from "../../assets/plus.svg";
 import Minus from "../../assets/minus.svg";
+import { motion } from "framer-motion";
 
 const Faq = ({
   items = [
@@ -27,24 +28,26 @@ const Faq = ({
   return (
     <div className="faq">
       {items.map(({ q, a }, index) => (
-        <div onClick={() => {
-          if (openIndex === index) {
-            setOpenIndex(-1);
-            return;
-          }
-          setOpenIndex(index);
-        }} className="faq__container">
+        <motion.div
+        initial={{ opacity: 1 }}
+        animate={openIndex==index||openIndex===-1? {opacity:1}:{opacity:0.3}}
+          onClick={() => {
+            if (openIndex === index) {
+              setOpenIndex(-1);
+              return;
+            }
+            setOpenIndex(index);
+          }}
+          className="faq__container"
+        >
           <div className="faq__item">
             <div>{q}</div>
-            <div
-              
-              className="faq__icon"
-            >
+            <div className="faq__icon">
               <img src={openIndex !== index ? Plus : Minus} />
             </div>
           </div>
-          {openIndex === index && <div className="faq__item--open">{a}</div>}
-        </div>
+          {openIndex === index && <motion.div    className="faq__item--open">{a}</motion.div>}
+        </motion.div>
       ))}
     </div>
   );

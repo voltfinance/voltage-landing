@@ -2,7 +2,7 @@ import AppBuyCrypto from "../assets/app-buy-crypto.png";
 import AppCoins from "../assets/app-coins.png";
 import AppExchange from "../assets/app-exchange.png";
 import AppPlant from "../assets/app-plant.png";
-import AppWallet from "../assets/app-wallet.png";
+import AppWallet from "../assets/coin-wallet.png";
 import AppleLogo from "../assets/apple-black.svg";
 import FuseLogo from "../assets/fuse-logo.png";
 import GoogleLogo from "../assets/google-black.svg";
@@ -11,17 +11,30 @@ import Faq from "./shared/Faq";
 import Footer from "./shared/Footer";
 import Navbar from "./shared/Navbar";
 import Padding from "./shared/Padding";
+import Download from "./shared/download";
+import FadeInAnimation from "./shared/FadeIn";
+import Image from "./shared/Image";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect } from "react";
+import TextAnimation from "./shared/TextAnimation";
+
+let title = "DeFi For the Masses";
+
+
 
 function VoltApp() {
+
+  
   return (
     <>
       <div className="container">
         <Navbar />
         <div className="section">
-  
           <div className="header section__content--not-centered">
-          <Padding size="xs"/>
-            DeFi For the Masses
+            <TextAnimation
+           text="DeFi For the Masses"/>
+
+
             <div className="header--subheader">
               Start your DEFI journey with our easy to use app. Secure, Gasless
               and frictionless crypto is here!
@@ -30,35 +43,15 @@ function VoltApp() {
               Download the Volt App Today
             </div>
             <div className="section__buttons">
-              <button
-                onClick={() => {
-                  window.location =
-                    "https://apps.apple.com/US/app/id1559937899?mt=8";
-                }}
-                className="button--logo"
-              >
-                <img src={AppleLogo} />
-                <div className="mt-0.5"> Apple Store</div>
-              </button>
-              <button
-                onClick={() => {
-                  window.location =
-                    "https://play.google.com/store/apps/details?id=io.fuse.cash&hl=en&gl=US";
-                }}
-                className="button--logo"
-              >
-                <img src={GoogleLogo} />
-                <div className="mt-0.5">Get fUSD</div>
-              </button>
+              <Download type="apple" />
+              <Download type="google" />
             </div>
           </div>
 
           <div className="section__background">
-            <img
-              className="desktop scale-150 my-32 w-auto ml-auto"
-              src={VoltPhone}
-            />
-            <img className="mobile " src={VoltPhone} />
+            <FadeInAnimation>
+              <Image width={769.88}  removeRatio height={650.57} mobile={VoltPhone} desktop={VoltPhone} />
+            </FadeInAnimation>
           </div>
         </div>
       </div>
@@ -73,10 +66,9 @@ function VoltApp() {
 
         <div className="section">
           <div className="section__background">
-            <img
-              className="w-450 ml-auto sm:mx-auto sm:w-full"
-              src={AppWallet}
-            />
+            <FadeInAnimation>
+              <Image aligned='left'   width={667.44} mobile={AppWallet} desktop={AppWallet} />
+            </FadeInAnimation>
           </div>
 
           <div className="header section__content ">
@@ -101,20 +93,18 @@ function VoltApp() {
             </div>
           </div>
           <div className="section__background">
-            <img
-              className="w-450 ml-auto  sm:scale-1 sm:mx-auto sm:w-full"
-              src={AppPlant}
-            />
+            <FadeInAnimation>
+              <Image aligned='right'   width={682} mobile={AppPlant} desktop={AppPlant} />
+            </FadeInAnimation>
           </div>
         </div>
         <Padding size="lg" />
 
         <div className="section ">
           <div className="section__background">
-            <img
-              className="w-450 ml-auto sm:scale-1 sm:mx-auto sm:w-full"
-              src={AppCoins}
-            />
+            <FadeInAnimation>
+              <Image  aligned='left'   width={624.94} mobile={AppCoins} desktop={AppCoins} />
+            </FadeInAnimation>
           </div>
           <div className="header section__content ">
             Send and recieve funds from your phone contacts
@@ -137,20 +127,18 @@ function VoltApp() {
             </div>
           </div>
           <div className="section__background">
-            <img
-              className="w-450 ml-auto scale-90 sm:scale-1 sm:mx-auto sm:w-full"
-              src={AppBuyCrypto}
-            />
+            <FadeInAnimation>
+              <Image aligned='right'   width={481.03} mobile={AppBuyCrypto} desktop={AppBuyCrypto} />
+            </FadeInAnimation>
           </div>
         </div>
         <Padding size="lg" />
 
         <div className="section ">
           <div className="section__background">
-            <img
-              className="w-450 ml-auto scale-90 sm:scale-1 sm:mx-auto sm:w-full"
-              src={AppExchange}
-            />
+            <FadeInAnimation>
+              <Image aligned='left'   width={481.03} mobile={AppExchange} desktop={AppExchange} />
+            </FadeInAnimation>
           </div>
           <div className="header section__content ">
             A new type of smart wallet
@@ -176,10 +164,9 @@ function VoltApp() {
             </div>
           </div>
           <div className="section__background">
-            <img
-              className="w-450 ml-auto scale-90 sm:scale-1 sm:mx-auto sm:w-full"
-              src={FuseLogo}
-            />
+            <FadeInAnimation>
+              <Image aligned='right'   width={481.03} mobile={FuseLogo} desktop={FuseLogo} />
+            </FadeInAnimation>
           </div>
         </div>
 

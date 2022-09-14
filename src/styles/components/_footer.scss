@@ -15,28 +15,33 @@
 
   // @apply font-montserrat pt-24 flex flex-col gap-3  flex-wrap;
   @apply grid grid-cols-2 gap-y-3 pt-14 gap-x-10;
+
   @include element(item) {
     @apply hover:text-link cursor-pointer;
+    @extend %hover-animation;
   }
 }
 
 @include block(signup) {
   width: 460px;
   height: 51px;
-  @apply flex  mt-auto  justify-between bg-lightGray rounded-lg;
+  @apply flex  mt-auto  justify-between text-base  rounded-lg;
+  background-color: theme("colors.darkGray");
   @include element(input) {
     @apply pl-6;
     color: white;
     &::placeholder {
-      @apply font-montserrat;
+      @apply font-montserrat text-base;
+
       /* Chrome, Firefox, Opera, Safari 10.1+ */
+
       color: white;
       opacity: 1; /* Firefox */
     }
   }
   @include element(button) {
     color: white;
-
+    @extend %hover-animation;
     @apply flex justify-between  items-center font-bold m-1 font-montserrat  text-sm px-8  rounded-lg;
     background-color: theme("colors.green");
 

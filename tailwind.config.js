@@ -4,18 +4,19 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}", "index.html"],
   theme: {
     animation: {
-      wiggle: "wiggle 1s infinite",
+      fade: "fadeOut 5s ease-in-out",
     },
     maxHeight: {
-      'page': '1300px',
+      page: "1300px",
     },
+
     keyframes: {
-      wiggle: {
-        "0% 100%": {
-          transform: "scale(1.2) rotate(7deg)",
+      fadeOut: {
+        "0%": {
+          transform: "opacity(0) ",
         },
-        "50%": {
-          transform: "scale(0.8) rotate(-7deg)",
+        " 100%": {
+          transform: "opacity(1)",
         },
       },
     },
@@ -43,7 +44,7 @@ module.exports = {
       background: "#212529",
       link: "#B5B9D3",
     },
- 
+
     fontSize: {
       xs: ".75rem",
       sm: ".875rem",
@@ -55,9 +56,9 @@ module.exports = {
       "3xl": "1.875rem",
       "4xl": "2.25rem",
       "5xl": "3rem",
-      "6xl": "4rem",
+      "6xl": "3.875rem",
       "7xl": "5rem",
-      "8xl": "22px",
+      "8xl": "20px",
     },
     backgroundSize: {
       auto: "auto",

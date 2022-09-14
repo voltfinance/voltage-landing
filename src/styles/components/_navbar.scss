@@ -19,7 +19,8 @@
     z-index: 9999999;
 
     @include element(item) {
-      @apply font-montserrat text-sm font-normal;
+      @apply font-montserrat text-sm;
+      @extend %hover-animation;
       &:hover {
         color: theme("colors.green");
       }

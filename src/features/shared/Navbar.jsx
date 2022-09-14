@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Navbar = ({
   history,
@@ -51,11 +52,15 @@ const Navbar = ({
       </Link>
       <div className="navbar__menu">
         {routes.map(({ name, to, replace, mobile }) => (
+          
           <div
+            
             className={`navbar__menu__item ${
               !mobile ? "sm:hidden" : "sm:block "
             }
-            ${location.pathname === to && "text-link"}
+            
+            
+            ${location.pathname === to && "text-green font-bold"}
             
             `}
           >
@@ -66,10 +71,14 @@ const Navbar = ({
                 }}
               >
                 {name}
+                  
               </div>
             ) : (
-              <Link to={to}>{name}</Link>
+              <Link to={to}>{name}
+              </Link>
             )}
+          
+
           </div>
         ))}
       </div>

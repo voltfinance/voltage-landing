@@ -2,9 +2,8 @@
   width: 215px;
   height: 45px;
   @apply flex z-10 text-sm sm:text-base sm:w-36 font-montserrat font-bold tracking-wider justify-center items-center  rounded-lg sm:rounded-2xl;
-  transition-duration: 200ms;
-  transition-property: background-color, border-color;
-  transition-timing-function: ease-in-out;
+  @extend %hover-animation;
+
   color: theme("colors.black");
 
   background-color: theme("colors.green");

@@ -20,7 +20,7 @@ const Banner = ({
 }) => {
   return (
     <div className="banner">
-      <div className="banner__container">
+      <div className="banner__container container">
         {items.map(({ header, subheader }) => (
           <div className="item">
             <div className="item__header">{header}</div>

@@ -3,29 +3,30 @@ import Button from "./shared/Button";
 import Header from "./shared/Header";
 import Navbar from "./shared/Navbar";
 import Phone from "../assets/phone-spaceship.png";
-import PhoneMobile from "../assets/phone-spaceship-mobile.png";
+import VoltPhone from "../assets/app-landing.png";
 import AppleLogo from "../assets/apple-black.svg";
+import { motion, useScroll } from "framer-motion";
 
 import FuseLogo from "../assets/fuse-logo.png";
 import FuseDollar from "../assets/fuse-dollar.png";
 import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
 import HomeLine from "../assets/home-line.png";
 import GoogleLogo from "../assets/google-black.svg";
-import Beefy from '../assets/beefy-p.png'
-import Bittrex from '../assets/bittrex-p.png'
-import InfinityPad from '../assets/infinity-p.png'
-import Quill from '../assets/quill-p.png'
+import Beefy from "../assets/beefy-p.png";
+import Bittrex from "../assets/bittrex-p.png";
+import InfinityPad from "../assets/infinity-p.png";
+import Quill from "../assets/quill-p.png";
 
-import Collider from '../assets/collide-s.png'
-import Mg from '../assets/mg-s.png'
-import Spark from '../assets/spark-s.png'
-import Trg from '../assets/trg-s.png'
-import Capital from '../assets/capital-s.png'
+import Collider from "../assets/collide-s.png";
+import Mg from "../assets/mg-s.png";
+import Spark from "../assets/spark-s.png";
+import Trg from "../assets/trg-s.png";
+import Capital from "../assets/capital-s.png";
 
 import LandingImage from "../assets/home-landing.png";
 import LandingImageMobile from "../assets/home-landing-mobile.png";
-import Ascend from '../assets/ascend-p.png'
-import CoinWallet from "../assets/coin-wallet.png";
+import Ascend from "../assets/ascend-p.png";
+import CoinWallet from "../assets/home-coin-wallet.png";
 
 import Apple from "../assets/apple.svg";
 import Google from "../assets/google.svg";
@@ -39,25 +40,44 @@ import Faq from "./shared/Faq";
 import CardList from "./shared/CardList";
 import Padding from "./shared/Padding";
 import Affiliates from "./shared/Affiliates";
+import FadeInAnimation from "./shared/FadeIn";
+import Image from "./shared/Image";
+import TextAnimation from "./shared/TextAnimation";
+
+const ADJUST=130;
 
 function Home() {
   return (
     <>
       <div className="h-screen w-screen max-h-page relative ">
-      
-        <img className="desktop absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src={LandingImage} />
 
-        <div className="container">
+        <FadeInAnimation>
           <img
+            className="desktop animate-fade absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            src={LandingImage}
+          />
+        </FadeInAnimation>
+        <div className="container">
+          <FadeInAnimation>
+            <img
+              className="mobile absolute w-300 bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              src={LandingImageMobile}
+            />
+          </FadeInAnimation>
+          
+          {/* <img
             className="mobile absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             src={LandingImageMobile}
-          />
+          /> */}
           <Navbar />
-          <Padding size="xs" />
 
           <div className="section">
             <div className="header section__content ">
-              Supercharge your DeFi experience
+           
+              <TextAnimation
+           text="Supercharge your"/>
+ <TextAnimation
+           text="DeFi experience"/>
               <div className="header--subheader">
                 Imagine being in full control of your finances while earning the
                 highest interest rate to date. Voltage is a non-custodial
@@ -79,6 +99,7 @@ function Home() {
           <div className="header section__content">
             Take your DeFi everywhere you go!
             <div className="header--subheader">
+              <div className="w-3/4">
               The Volt App is a web 3 non-custodial wallet with everything you
               need to carry in your pocket.
               <br></br>
@@ -88,6 +109,8 @@ function Home() {
               <br></br>
               <br></br>
               Frictionless DEFI is here:
+              </div>
+           
             </div>
             <div className="section__buttons">
               <Download type="apple" />
@@ -96,8 +119,9 @@ function Home() {
           </div>
 
           <div className="section__background">
-            <img className="mobile" src={PhoneMobile} />
-            <img className="desktop w-full ml-auto scale-125" src={Phone} />
+            <FadeInAnimation>
+              <Image aligned='right'  width={769.52} mobile={VoltPhone} desktop={VoltPhone} />
+            </FadeInAnimation>
           </div>
         </div>
 
@@ -105,12 +129,14 @@ function Home() {
 
         <div className="section ">
           <div className="section__background">
-            <img className="mobile" src={FuseDollarMobile} />
-            <img className="desktop mr-auto scale-125" src={FuseDollar} />
+            <FadeInAnimation>
+              <Image aligned='left'   width={658}  mobile={FuseDollarMobile} desktop={FuseDollar} />
+            </FadeInAnimation>
           </div>
           <div className="header section__content">
             Discover Fuse Dollar
             <div className="header--subheader">
+            <div className="w-3/4">
               The decentralized stablecoin in Fuse. Multiple stables backing
               fUSD helps you hedge from the collateral uncertainty.
               <br></br>
@@ -120,6 +146,7 @@ function Home() {
               <br></br>
               fUSD mitigates liquidity fragmentation concentrating everything
               into just one stable.
+            </div>
             </div>
             <div className="section__buttons">
               <button className="button">Get fUSD </button>
@@ -131,22 +158,26 @@ function Home() {
         <Padding size="lg" />
 
         <div className="section">
-          <div className="header section__content ">
-            Make your crypto work for you
+        <div className="header section__content ">
+            <div className="w-3/4">Make your crypto work for you</div>
             <div className="header--subheader">
-              Check out how Voltage farms and Volt staking can help you make
+            <div className="w-3/4">
+            Check out how Voltage farms and Volt staking can help you make
               your crypto work for you. Lock your Volt tokens for stronger
               voting power and other benefits!
+            </div>
+           
             </div>
             <div className="section__buttons">
               <button className="button--inverted">Read More</button>
             </div>
           </div>
+         
+          
           <div className="section__background">
-            <img
-              className="ml-auto scale-125 sm:scale-1 sm:mx-auto sm:w-full"
-              src={CoinWallet}
-            />
+            <FadeInAnimation>
+              <Image aligned='right'   width={756.28}  mobile={CoinWallet} desktop={CoinWallet} />
+            </FadeInAnimation>
           </div>
         </div>
 
@@ -161,19 +192,17 @@ function Home() {
         <CardList />
         <Padding size="sm" />
 
-<div className="header--section header--bold header--padded">
-  Partners
-</div>
-<Affiliates items={[Beefy, Bittrex, InfinityPad, Quill,Ascend]} />
-        
-<Padding size="sm" />
+        <div className="header--section header--bold header--padded">
+          Partners
+        </div>
+        <Affiliates items={[Beefy, Bittrex, InfinityPad, Quill, Ascend]} />
 
-<div className="header--section header--bold header--padded">
-  Sponsers
-</div>
-<Affiliates items={[Spark, Collider, Trg, Mg,Capital]} />
-        
+        <Padding size="sm" />
 
+        <div className="header--section header--bold header--padded">
+          Sponsers
+        </div>
+        <Affiliates items={[Spark, Collider, Trg, Mg, Capital]} />
 
         <Padding size="sm" />
 
