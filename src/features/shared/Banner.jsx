@@ -4,7 +4,10 @@ const Banner = ({
   items = [],
 }) => {
   return (
-    <div className="banner">
+    <motion.div initial={{opacity:0}} style={{opacity:0}} animate={{opacity:1, transition:{
+      delay:0.9,
+      duration:1.5
+    }}} className="banner">
       <div className="banner__container">
         {items.map(({ value, header },index) => (
           <div key={index} className="item">
@@ -13,7 +16,7 @@ const Banner = ({
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

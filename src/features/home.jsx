@@ -84,8 +84,8 @@ function Home() {
 
   useEffect(()=>{
     if(!totalVolume.loading){
-
-     
+        
+      
     }
     if(!totalLocked.loading){
     }
