@@ -23,7 +23,7 @@ const Faq = ({
     },
   ],
 }) => {
-  let [openIndex, setOpenIndex] = useState(-1);
+  let [openIndex, setOpenIndex] = useState(0);
 
   return (
     <div className="faq">

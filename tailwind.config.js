@@ -5,12 +5,20 @@ module.exports = {
   theme: {
     animation: {
       fade: "fadeOut 5s ease-in-out",
+      ping: 'ping 1s cubic-bezier(0, 0, 0.1, 1) infinite'
+
     },
     maxHeight: {
       page: "1300px",
     },
 
     keyframes: {
+      ping :{
+        "75%, 100%" :{
+          transform: 'scale(1.1)',
+          opacity: '0'
+        }
+      },
       fadeOut: {
         "0%": {
           transform: "opacity(0) ",

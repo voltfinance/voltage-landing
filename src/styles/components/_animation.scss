@@ -3,3 +3,9 @@
   transition-property: background-color, color, border-color, opacity;
   transition-timing-function: ease-in-out;
 }
+
+%csale-animation {
+  transition-duration: 200ms;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+}

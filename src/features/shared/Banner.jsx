@@ -1,13 +1,13 @@
+import { motion } from "framer-motion";
+
 const Banner = ({
-  items = [
-    
-  ],
+  items = [],
 }) => {
   return (
     <div className="banner">
       <div className="banner__container container">
-        {items.map(({ value, header }) => (
-          <div className="item">
+        {items.map(({ value, header },index) => (
+          <div key={index} className="item">
             <div className="item__header">${parseFloat(value).toFixed(0)}</div>
             <div className="item__subheader">{header}</div>
           </div>

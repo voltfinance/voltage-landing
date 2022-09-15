@@ -18,10 +18,12 @@
 
 @include block(button--inverted) {
   @extend %button;
+
   color: white;
   border: 1px solid white;
   background-color: theme("colors.black");
   @apply font-bold;
+
   &:hover {
     background-color: theme("colors.blackHover");
     border: 1px solid theme("colors.blackHover");

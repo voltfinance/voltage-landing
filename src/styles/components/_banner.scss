@@ -2,13 +2,21 @@
   @apply w-screen;
   @apply absolute bottom-0 left-0;
   @apply bg-lightGray;
+  animation: fadeIn 3s;
 
   @include element(container) {
     @apply grid grid-cols-4 sm:grid-cols-2;
     @apply mx-auto;
   }
 }
-
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @include block(item) {
   @apply py-3 sm:py-2 pl-5 pr-20;
   @apply justify-center flex flex-col;

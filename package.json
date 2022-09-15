@@ -32,6 +32,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^7.3.4",
     "graphql": "^16.6.0",
+    "lodash": "^4.17.21",
     "mobx": "^6.4.1",
     "mobx-react-lite": "^3.3.0",
     "normalize.css": "^8.0.1",

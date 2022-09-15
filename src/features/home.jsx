@@ -45,7 +45,7 @@ import Image from "./shared/Image";
 import TextAnimation from "./shared/TextAnimation";
 import { useQuery, gql } from '@apollo/client';
 import { useEffect, useState } from "react";
-
+import {uniq} from 'lodash';
 const GET_TOTAL_VOLUME = gql`
 {
   uniswapDayDatas(first: 1, orderBy: date, orderDirection: desc) {
@@ -62,29 +62,38 @@ const GET_TOTAL_LOCKED = gql`
 }
 `;
 
+
 const ADJUST=130;
 
 function Home() {
-  let [stats,setStats] =useState([])
+  let [stats,setStats] =useState([{
+    value:1000,
+    header:'Daily Volume (usd)'
+  },{
+    value:1000,
+    header:'Daily Volume (usd)'
+  },{
+    value:1000,
+    header:'Daily Volume (usd)'
+  },{
+    value:1000,
+    header:'Daily Volume (usd)'
+  }])
   const totalVolume = useQuery(GET_TOTAL_VOLUME);
   const totalLocked = useQuery(GET_TOTAL_LOCKED);
 
   useEffect(()=>{
     if(!totalVolume.loading){
-      setStats([...stats,{
-        value:totalVolume.data.uniswapDayDatas[0].dailyVolumeUSD,
-        header:'Daily Volume (usd)'
-      }])
+
+     
     }
     if(!totalLocked.loading){
-      setStats([...stats,{
-        value:totalLocked.data.uniswapFactories[0].totalLiquidityUSD,
-        header:'Total Value Locked (usd)'
-      }])
     }
+    console.log(totalVolume,'totalVolume')
 
   },[totalVolume,totalLocked])
 
+ 
   console.log(stats,'stats')
 
 
@@ -143,7 +152,7 @@ function Home() {
           <div className="header section__content">
             Take your DeFi everywhere you go!
             <div className="header--subheader">
-              <div className="w-3/4">
+              <div className="w-3/4 sm:w-full">
               The Volt App is a web 3 non-custodial wallet with everything you
               need to carry in your pocket.
               <br></br>
@@ -180,7 +189,7 @@ function Home() {
           <div className="header section__content">
             Discover Fuse Dollar
             <div className="header--subheader">
-            <div className="w-3/4">
+            <div className="w-3/4 sm:w-full">
               The decentralized stablecoin in Fuse. Multiple stables backing
               fUSD helps you hedge from the collateral uncertainty.
               <br></br>
@@ -203,9 +212,9 @@ function Home() {
 
         <div className="section">
         <div className="header section__content ">
-            <div className="w-3/4">Make your crypto work for you</div>
+            <div className="w-3/4 sm:w-full">Make your crypto work for you</div>
             <div className="header--subheader">
-            <div className="w-3/4">
+            <div className="w-3/4 sm:w-full">
             Check out how Voltage farms and Volt staking can help you make
               your crypto work for you. Lock your Volt tokens for stronger
               voting power and other benefits!
