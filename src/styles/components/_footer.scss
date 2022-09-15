@@ -4,16 +4,15 @@
   }
 
   @include element(container) {
-    @apply flex flex-row   flex-wrap gap-8  justify-between;
+    @apply flex flex-row  pt-10   flex-wrap gap-8  justify-between;
   }
 }
 
 @include block(links) {
   color: white;
-  background-color: red;
-  width: auto;
-  height: 250px;
-  @apply flex gap-10 flex-wrap flex-col;
+  width: 300px;
+  height: 150px;
+  @apply flex gap-y-3 gap-x-5 flex-wrap flex-col;
 
   @include element(item) {
     @apply hover:text-link cursor-pointer;
