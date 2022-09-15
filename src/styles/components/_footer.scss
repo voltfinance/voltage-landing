@@ -23,7 +23,7 @@
 @include block(signup) {
   width: 460px;
   height: 51px;
-  @apply flex  mt-auto  justify-between text-base  rounded-lg;
+  @apply flex  mt-auto  justify-between text-base  rounded-lg sm:w-full;
   background-color: theme("colors.darkGray");
   @include element(input) {
     @apply pl-6;
