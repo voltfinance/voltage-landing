@@ -20,6 +20,7 @@ module.exports = {
         },
       },
     },
+   
     screens: {
       "3xl": { min: "1535px" },
       "2xl": { max: "1535px" },

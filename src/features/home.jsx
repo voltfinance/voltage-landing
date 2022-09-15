@@ -53,7 +53,8 @@ function Home() {
 
         <FadeInAnimation>
           <img
-            className="desktop animate-fade absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            style={{top:'450px'}}
+            className="desktop animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             src={LandingImage}
           />
         </FadeInAnimation>
@@ -70,6 +71,7 @@ function Home() {
             src={LandingImageMobile}
           /> */}
           <Navbar />
+          <div className="pt-20 sm:pt-3"></div>
 
           <div className="section">
             <div className="header section__content ">

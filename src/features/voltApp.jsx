@@ -28,9 +28,12 @@ function VoltApp() {
   return (
     <>
       <div className="container">
+
         <Navbar />
         <div className="section">
           <div className="header section__content--not-centered">
+          <div className="pt-20 sm:pt-3"></div>
+
             <TextAnimation
            text="DeFi For the Masses"/>
 
