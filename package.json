@@ -28,8 +28,10 @@
     }
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "formik": "^2.2.9",
     "framer-motion": "^7.3.4",
+    "graphql": "^16.6.0",
     "mobx": "^6.4.1",
     "mobx-react-lite": "^3.3.0",
     "normalize.css": "^8.0.1",

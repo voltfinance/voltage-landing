@@ -43,10 +43,52 @@ import Affiliates from "./shared/Affiliates";
 import FadeInAnimation from "./shared/FadeIn";
 import Image from "./shared/Image";
 import TextAnimation from "./shared/TextAnimation";
+import { useQuery, gql } from '@apollo/client';
+import { useEffect, useState } from "react";
+
+const GET_TOTAL_VOLUME = gql`
+{
+  uniswapDayDatas(first: 1, orderBy: date, orderDirection: desc) {
+    dailyVolumeUSD
+  }
+}
+`;
+
+const GET_TOTAL_LOCKED = gql`
+{
+  uniswapFactories(first: 1) {
+    totalLiquidityUSD
+  }
+}
+`;
 
 const ADJUST=130;
 
 function Home() {
+  let [stats,setStats] =useState([])
+  const totalVolume = useQuery(GET_TOTAL_VOLUME);
+  const totalLocked = useQuery(GET_TOTAL_LOCKED);
+
+  useEffect(()=>{
+    if(!totalVolume.loading){
+      setStats([...stats,{
+        value:totalVolume.data.uniswapDayDatas[0].dailyVolumeUSD,
+        header:'Daily Volume (usd)'
+      }])
+    }
+    if(!totalLocked.loading){
+      setStats([...stats,{
+        value:totalLocked.data.uniswapFactories[0].totalLiquidityUSD,
+        header:'Total Value Locked (usd)'
+      }])
+    }
+
+  },[totalVolume,totalLocked])
+
+  console.log(stats,'stats')
+
+
+  
   return (
     <>
       <div className="h-screen w-screen max-h-page relative ">
@@ -92,7 +134,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <Banner />
+          <Banner items={stats}/>
         </div>
       </div>
       <Padding size="sm" />

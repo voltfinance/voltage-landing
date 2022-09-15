@@ -1,30 +1,15 @@
 const Banner = ({
   items = [
-    {
-      header: "$50,341",
-      subheader: "Daily Volume (usd)",
-    },
-    {
-      header: "$50,341",
-      subheader: "Daily Volume (usd)",
-    },
-    {
-      header: "$50,341",
-      subheader: "Daily Volume (usd)",
-    },
-    {
-      header: "$50,341",
-      subheader: "Daily Volume (usd)",
-    },
+    
   ],
 }) => {
   return (
     <div className="banner">
       <div className="banner__container container">
-        {items.map(({ header, subheader }) => (
+        {items.map(({ value, header }) => (
           <div className="item">
-            <div className="item__header">{header}</div>
-            <div className="item__subheader">{subheader}</div>
+            <div className="item__header">${parseFloat(value).toFixed(0)}</div>
+            <div className="item__subheader">{header}</div>
           </div>
         ))}
       </div>

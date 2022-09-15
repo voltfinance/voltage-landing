@@ -1,6 +1,4 @@
 @include block(footer) {
-  height: 520px;
-
   @include element(logo) {
     width: 150px;
   }
@@ -12,9 +10,10 @@
 
 @include block(links) {
   color: white;
-
-  // @apply font-montserrat pt-24 flex flex-col gap-3  flex-wrap;
-  @apply grid grid-cols-2 gap-y-3 pt-14 gap-x-10;
+  background-color: red;
+  width: auto;
+  height: 250px;
+  @apply flex gap-10 flex-wrap flex-col;
 
   @include element(item) {
     @apply hover:text-link cursor-pointer;
@@ -48,5 +47,19 @@
     &:hover {
       background-color: theme("colors.greenHover");
     }
+  }
+}
+
+@include block(socials) {
+  @apply flex gap-x-2 mt-2 ml-auto sm:mr-auto sm:ml-0 w-fit;
+  @extend %hover-animation;
+  cursor: pointer;
+
+  @include element(logo) {
+    &:hover {
+      opacity: 0.7;
+    }
+    width: 40px;
+    height: 40px;
   }
 }
