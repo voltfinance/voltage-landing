@@ -5,7 +5,7 @@ const Banner = ({
 }) => {
   return (
     <div className="banner">
-      <div className="banner__container container">
+      <div className="banner__container">
         {items.map(({ value, header },index) => (
           <div key={index} className="item">
             <div className="item__header">${parseFloat(value).toFixed(0)}</div>

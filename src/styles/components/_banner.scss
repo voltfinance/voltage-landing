@@ -5,6 +5,10 @@
   animation: fadeIn 3s;
 
   @include element(container) {
+    @apply max-w-7xl sm:max-w-full h-full w-full;
+    @apply px-10 sm:px-0;
+    @apply mx-auto;
+
     @apply grid grid-cols-4 sm:grid-cols-2;
     @apply mx-auto;
   }
