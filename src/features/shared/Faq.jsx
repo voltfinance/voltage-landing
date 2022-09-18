@@ -6,20 +6,30 @@ import { motion } from "framer-motion";
 const Faq = ({
   items = [
     {
-      q: "Do I still need $FUSE after I acquire $VOLT?",
-      a: "A no-code platform for communities and businesses to build new economic models, leveraging powerful tools and APIs in a low entry sandbox.",
+      q: "What is the Volt App?",
+      a: `Focusing on reducing friction and non-experienced users, the Volt App provides a seamless experience on mobile devices. Non-custodial and without fees, the Volt App is the best way to interact with DeFi for beginners. <br></br>Read more about the app <a className="faq__link" href="/app">link</a>.
+      `,
     },
     {
-      q: "Do I still need $FUSE after I acquire $VOLT?",
-      a: "A fast, decentralized payment network that offers Ethereum smart contract capabilities and enables anyone to have ownership in the infrastructure.",
+      q: "What is the VOLT token for?",
+      a: "The VOLT token is the governance token of Voltage Finance. The token will give you ownership over the Dex, from rewards allocation to revenue share. Also by holding the VOLT token you will be able to participate in snapshot votes and much more.",
     },
     {
-      q: "Do I still need $FUSE after I acquire $VOLT?",
-      a: "An open-source, mobile alternative to legacy banking that allows anyone anywhere in the world to access digital payments and decentralized finance.",
+      q: "What about VOLT tokenomics?",
+      a: `Read more about VOLT tokenomics in our  <a className="faq__link" href="https://docs-voltage.gitbook.io/voltage/tokenomics">docs.</a>`,
     },
     {
-      q: "Do I still need $FUSE after I acquire $VOLT?",
-      a: "An open-source, mobile alternative to legacy banking that allows anyone anywhere in the world to access digital payments and decentralized finance.",
+      q: "What is the purpose of holding VOLT?",
+      a: "You can stake your VOLT in a single stake pool. By staking Volt, you receive a yield and the ability to govern the Voltage platform at large. Voltage is a relatively newer platform, therefore many features will need to be implemented in the near future.",
+    },
+    {
+      q: "How secure Voltage Finance is?",
+      a: `
+      We have audited most of our contracts with Quillhash.
+      <br></br>
+      Check out our docs <a className="faq__link" href="https://docs-voltage.gitbook.io/voltage/welcome/introduction">link</a>.
+
+      `,
     },
   ],
 }) => {
@@ -41,12 +51,15 @@ const Faq = ({
           className="faq__container"
         >
           <div className="faq__item">
-            <div>{q}</div>
+            <div  dangerouslySetInnerHTML={{ __html:q }}></div>
+
             <div className="faq__icon">
               <img src={openIndex !== index ? Plus : Minus} />
             </div>
           </div>
-          {openIndex === index && <motion.div    className="faq__item--open">{a}</motion.div>}
+          {openIndex === index && <motion.div    className="faq__item--open">
+          <div className="faq__answer"  dangerouslySetInnerHTML={{ __html:a }}></div>
+            </motion.div>}
         </motion.div>
       ))}
     </div>

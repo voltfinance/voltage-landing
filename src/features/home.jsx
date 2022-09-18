@@ -43,13 +43,21 @@ import Affiliates from "./shared/Affiliates";
 import FadeInAnimation from "./shared/FadeIn";
 import Image from "./shared/Image";
 import TextAnimation from "./shared/TextAnimation";
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql, ApolloClient, InMemoryCache } from '@apollo/client';
 import { useEffect, useState } from "react";
-import {uniq} from 'lodash';
+import {uniqBy} from 'lodash';
 const GET_TOTAL_VOLUME = gql`
 {
   uniswapDayDatas(first: 1, orderBy: date, orderDirection: desc) {
     dailyVolumeUSD
+  }
+}
+`;
+const GET_TOTAL_VOLUME_DAY = gql`
+{
+  uniswapDayDatas(orderBy: date, orderDirection: desc) {
+    dailyVolumeUSD
+    date
   }
 }
 `;
@@ -62,39 +70,45 @@ const GET_TOTAL_LOCKED = gql`
 }
 `;
 
+const GET_TOKEN_HOLDERS=gql`
+{
+  systemInfos(first: 5) {
+    id
+    userCount
+  }
+}`
+const client = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange',
+  cache: new InMemoryCache(),
+});
+
+const clientVoltHolders = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/volt-holders-subgraph',
+  cache: new InMemoryCache(),
+});
+
 
 const ADJUST=130;
 
 function Home() {
-  let [stats,setStats] =useState([{
-    value:1000,
-    header:'Daily Volume (usd)'
-  },{
-    value:1000,
-    header:'Daily Volume (usd)'
-  },{
-    value:1000,
-    header:'Daily Volume (usd)'
-  },{
-    value:1000,
-    header:'Daily Volume (usd)'
-  }])
-  const totalVolume = useQuery(GET_TOTAL_VOLUME);
-  const totalLocked = useQuery(GET_TOTAL_LOCKED);
 
-  useEffect(()=>{
-    if(!totalVolume.loading){
-        
-      
-    }
-    if(!totalLocked.loading){
-    }
-    console.log(totalVolume,'totalVolume')
-
-  },[totalVolume,totalLocked])
+  const totalVolume = useQuery(GET_TOTAL_VOLUME,{client});
+  const totalVolumeDay = useQuery(GET_TOTAL_VOLUME_DAY,{client});
+  const totalLocked = useQuery(GET_TOTAL_LOCKED,{client});
+  const tokenHolders = useQuery(GET_TOKEN_HOLDERS,{client:clientVoltHolders});
 
  
-  console.log(stats,'stats')
+
+
+  useEffect(()=>{
+    if(!totalVolumeDay.loading){
+      let mapped=totalVolumeDay?.data?.uniswapDayDatas.map(({date,dailyVolumeUSD})=>({
+        dailyVolumeUSD
+      }))
+      console.log(mapped,'mapped')
+    }
+  },[totalVolumeDay])
+
 
 
   
@@ -143,7 +157,11 @@ function Home() {
               </div>
             </div>
           </div>
-          <Banner items={stats}/>
+          <Banner 
+            dailVolume={!totalVolume.loading&&totalVolume?.data?.uniswapDayDatas[0]?.dailyVolumeUSD}
+            tokenHolders={!tokenHolders.loading&&tokenHolders?.data?.systemInfos[0]?.userCount}
+            totalLocked={!totalLocked.loading&&totalLocked?.data?.uniswapFactories[0]?.totalLiquidityUSD}
+          />
         </div>
       </div>
       <Padding size="sm" />
