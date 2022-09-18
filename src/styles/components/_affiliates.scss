@@ -1,5 +1,5 @@
 @include block(affiliates) {
-  @apply flex flex-wrap gap-x-10  items-center justify-center;
+  @apply flex flex-wrap mx-auto gap-x-10 gap-y-5 items-center justify-center;
   @include element(image) {
     @apply w-200 sm:w-150;
   }

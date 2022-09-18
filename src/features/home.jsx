@@ -16,6 +16,28 @@ import Beefy from "../assets/beefy-p.png";
 import Bittrex from "../assets/bittrex-p.png";
 import InfinityPad from "../assets/infinity-p.png";
 import Quill from "../assets/quill-p.png";
+import Ibc from "../assets/ibc.png";
+import Graph from "../assets/graph.png";
+import Poolz from "../assets/poolz.png";
+import Ola from "../assets/ola.png";
+import Mexc from "../assets/mexc.png";
+import Shima from "../assets/shima.png";
+import Crt from "../assets/crt.png";
+import Tmt from "../assets/tmt.png";
+import Node from "../assets/node.png";
+import Gbv from "../assets/gbv.png";
+import Blockchain from "../assets/blockchain.png";
+import Asc from "../assets/asc.png";
+import Gda from "../assets/gda.png";
+import Sheesha from "../assets/sheesha.png";
+import Metavest from "../assets/metavest.png";
+import As from "../assets/as.png";
+import Aria from "../assets/aria.png";
+import AngelDoa from "../assets/angeldoa.png";
+import Ex from "../assets/ex.png";
+import Valhalla from "../assets/valhalla.png";
+import SideDoor from "../assets/sidedoor.png";
+import Zbs from "../assets/zbs.png";
 
 import Collider from "../assets/collide-s.png";
 import Mg from "../assets/mg-s.png";
@@ -266,14 +288,14 @@ function Home() {
         <div className="header--section header--bold header--padded">
           Partners
         </div>
-        <Affiliates items={[Beefy, Bittrex, InfinityPad, Quill, Ascend]} />
+        <Affiliates items={[Beefy,Quill, Ascend,Bittrex, InfinityPad,Ibc, Graph, Poolz, Ola, Mexc]} />
 
         <Padding size="sm" />
 
         <div className="header--section header--bold header--padded">
           Sponsers
         </div>
-        <Affiliates items={[Spark, Collider, Trg, Mg, Capital]} />
+        <Affiliates items={[Spark,Shima,  Collider,Crt, Trg,Tmt,  Mg,Node,Gbv, Blockchain, Asc,Zbs, Gda, Sheesha, Metavest, As, Aria, AngelDoa, Ex, Valhalla, SideDoor]} />
 
         <Padding size="sm" />
 
