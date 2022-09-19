@@ -4,7 +4,7 @@
   @apply bg-lightGray;
 
   @include element(container) {
-    @apply max-w-7xl sm:max-w-full h-full w-full;
+    @apply max-w-6xl sm:max-w-full h-full w-full;
     @apply px-10 md:px-0 sm:px-0;
     @apply mx-auto;
 
@@ -24,9 +24,9 @@
   }
 
   @include element(header) {
-    @apply text-2xl sm:text-xl font-extrabold md:text-xl;
+    @apply text-xl sm:text-xl font-extrabold md:text-xl;
   }
   @include element(subheader) {
-    @apply text-sm font-normal sm:text-xs md:text-xs;
+    @apply text-xs font-normal sm:text-xs md:text-xs;
   }
 }

@@ -1,7 +1,7 @@
 %button {
-  width: 215px;
-  height: 45px;
-  @apply flex z-10 text-sm sm:text-base sm:w-36 font-montserrat font-bold tracking-wider justify-center items-center  rounded-lg sm:rounded-2xl;
+  width: 180px;
+  height: 38px;
+  @apply flex z-10 text-xs sm:text-base sm:w-36 font-montserrat font-bold tracking-wider justify-center items-center  rounded-lg sm:rounded-2xl;
   @extend %hover-animation;
 
   color: theme("colors.black");

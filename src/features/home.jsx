@@ -128,7 +128,7 @@ function Home() {
 
         <FadeInAnimation>
           <img
-            className="desktop top-1/2  animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="desktop top-3/4  animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             src={LandingImage}
           />
         </FadeInAnimation>

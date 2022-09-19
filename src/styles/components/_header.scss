@@ -11,7 +11,7 @@
 }
 
 @include block(header--subheader) {
-  @apply text-base sm:text-base;
+  @apply text-sm sm:text-sm;
   @apply font-montserrat font-normal;
   @apply pt-5;
 }

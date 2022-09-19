@@ -8,6 +8,7 @@ import File from "../../assets/file.svg";
 import VoltTokenSymbol from "../../assets/volt.svg";
 import Social from "./Social";
 
+
 const LINKS = [
   {
     name: "Getting Started",
@@ -34,22 +35,56 @@ const LINKS = [
     name: "Work with us",
   },
   {
-    to: "https://staking.fuse.io/",
+    onClick: async()=>{
+      const tokenAddress = '0xd00981105e61274c8a5cd5a88fe7e037d935b513';
+      const tokenSymbol = 'VOLT';
+      const tokenDecimals = 18;
+      const tokenImage = 'https://fuse-brand-assets.s3.eu-central-1.amazonaws.com/fuse.png';
+      try {
+        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+        const wasAdded = await ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20', // Initially only supports ERC20, but eventually more!
+            options: {
+              address: tokenAddress, // The address that the token is at.
+              symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+              decimals: tokenDecimals, // The number of decimals in the token
+              image: tokenImage, // A string url of the token logo
+            },
+          },
+        });
+      
+        if (wasAdded) {
+          console.log('Thanks for your interest!');
+        } else {
+          console.log('Your loss!');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     name: "Add VOLT token",
     icon: VoltTokenSymbol,
   },
+  
 ];
 
 const Footer = () => {
+ 
   return (
     <div className="footer">
       <img src={Logo} className="footer__logo" />
 
       <div className="footer__container">
         <div className="links">
-          {LINKS.map(({ name, to, icon }) => (
+          {LINKS.map(({ name, to,onClick, icon }) => (
             <div
-              onClick={() => {
+              onClick={async() => {
+                if(onClick){
+                  return onClick();
+                }
+            
                 window.open(to, "_blank");
               }}
               className={`links__item ${icon && "flex"}`}
