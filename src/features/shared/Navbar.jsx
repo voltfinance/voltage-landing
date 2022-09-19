@@ -40,6 +40,10 @@ const Navbar = ({
       name: "Volt App",
       to: "/app",
       mobile: true,
+      style:{
+        fontWeight:'bold',
+        color:'#70E000'
+      }
     },
   ],
 }) => {
@@ -51,16 +55,16 @@ const Navbar = ({
         <img className="navbar__logo" src={Logo} />
       </Link>
       <div className="navbar__menu">
-        {routes.map(({ name, to, replace, mobile }) => (
+        {routes.map(({ name, to, replace, mobile,style }) => (
           
           <div
-            
+           style={style}  
             className={`navbar__menu__item ${
               !mobile ? "sm:hidden" : "sm:block "
             }
             
             
-            ${location.pathname === to && "text-green font-bold"}
+            ${location.pathname === to && "text-green  font-bold"}
             
             `}
           >
@@ -74,7 +78,7 @@ const Navbar = ({
                   
               </div>
             ) : (
-              <Link to={to}>{name}
+              <Link style={style} className="navbar__menu__item" to={to}>{name}
               </Link>
             )}
           

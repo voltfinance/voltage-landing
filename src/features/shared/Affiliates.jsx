@@ -13,7 +13,7 @@ const Affiliates = ({ items = [] }) => {
            whileInView={{
             x: 0,
             opacity:1,
-            transition: { duration: 0.5,delay:index/8 }
+            transition: { duration: 1 }
            }}
         src={img} className="affiliates__image" />
       ))}

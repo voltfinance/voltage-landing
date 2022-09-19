@@ -1,73 +1,59 @@
-import Banner from "./shared/Banner";
-import Button from "./shared/Button";
-import Header from "./shared/Header";
-import Navbar from "./shared/Navbar";
-import Phone from "../assets/phone-spaceship.png";
+import { ApolloClient, gql, InMemoryCache, useQuery } from '@apollo/client';
+import { useEffect } from "react";
+import AngelDoa from "../assets/angeldoa.png";
 import VoltPhone from "../assets/app-landing.png";
-import AppleLogo from "../assets/apple-black.svg";
-import { motion, useScroll } from "framer-motion";
-
-import FuseLogo from "../assets/fuse-logo.png";
-import FuseDollar from "../assets/fuse-dollar.png";
-import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
-import HomeLine from "../assets/home-line.png";
-import GoogleLogo from "../assets/google-black.svg";
+import Aria from "../assets/aria.png";
+import As from "../assets/as.png";
+import Asc from "../assets/asc.png";
+import Ascend from "../assets/ascend-p.png";
 import Beefy from "../assets/beefy-p.png";
 import Bittrex from "../assets/bittrex-p.png";
-import InfinityPad from "../assets/infinity-p.png";
-import Quill from "../assets/quill-p.png";
-import Ibc from "../assets/ibc.png";
-import Graph from "../assets/graph.png";
-import Poolz from "../assets/poolz.png";
-import Ola from "../assets/ola.png";
-import Mexc from "../assets/mexc.png";
-import Shima from "../assets/shima.png";
-import Crt from "../assets/crt.png";
-import Tmt from "../assets/tmt.png";
-import Node from "../assets/node.png";
-import Gbv from "../assets/gbv.png";
 import Blockchain from "../assets/blockchain.png";
-import Asc from "../assets/asc.png";
-import Gda from "../assets/gda.png";
-import Sheesha from "../assets/sheesha.png";
-import Metavest from "../assets/metavest.png";
-import As from "../assets/as.png";
-import Aria from "../assets/aria.png";
-import AngelDoa from "../assets/angeldoa.png";
-import Ex from "../assets/ex.png";
-import Valhalla from "../assets/valhalla.png";
-import SideDoor from "../assets/sidedoor.png";
-import Zbs from "../assets/zbs.png";
-
 import Collider from "../assets/collide-s.png";
-import Mg from "../assets/mg-s.png";
-import Spark from "../assets/spark-s.png";
-import Trg from "../assets/trg-s.png";
-import Capital from "../assets/capital-s.png";
-
-import LandingImage from "../assets/home-landing.png";
-import LandingImageMobile from "../assets/home-landing-mobile.png";
-import Ascend from "../assets/ascend-p.png";
+import Crt from "../assets/crt.png";
+import Ex from "../assets/ex.png";
+import FuseDollarMobile from "../assets/fuse-dollar-mobile.png";
+import FuseDollar from "../assets/fuse-dollar.png";
+import GanterCaptain from "../assets/ganter-captain.png";
+import Gbv from "../assets/gbv.png";
+import Gda from "../assets/gda.png";
+import Graph from "../assets/graph.png";
 import CoinWallet from "../assets/home-coin-wallet.png";
-
-import Apple from "../assets/apple.svg";
-import Google from "../assets/google.svg";
-import Medium from "../assets/medium.svg";
-import Backers from "../assets/backers.png";
-import Partners from "../assets/partners.png";
-
-import Footer from "./shared/Footer";
-import Download from "./shared/download";
-import Faq from "./shared/Faq";
-import CardList from "./shared/CardList";
-import Padding from "./shared/Padding";
+import LandingImageMobile from "../assets/home-landing-mobile.png";
+import LandingImage from "../assets/home-landing.png";
+import Ibc from "../assets/ibc.png";
+import InfinityPad from "../assets/infinity-p.png";
+import Metavest from "../assets/metavest.png";
+import Mexc from "../assets/mexc.png";
+import Mg from "../assets/mg-s.png";
+import Node from "../assets/node.png";
+import Ola from "../assets/ola.png";
+import Poolz from "../assets/poolz.png";
+import Quill from "../assets/quill-p.png";
+import Sheesha from "../assets/sheesha.png";
+import Shima from "../assets/shima.png";
+import SideDoor from "../assets/sidedoor.png";
+import Spark from "../assets/spark-s.png";
+import Tmt from "../assets/tmt.png";
+import Trg from "../assets/trg-s.png";
+import Valhalla from "../assets/valhalla.png";
+import Zbs from "../assets/zbs.png";
 import Affiliates from "./shared/Affiliates";
+import Banner from "./shared/Banner";
+import CardList from "./shared/CardList";
+import Download from "./shared/download";
 import FadeInAnimation from "./shared/FadeIn";
+import Faq from "./shared/Faq";
+import Footer from "./shared/Footer";
 import Image from "./shared/Image";
+import Navbar from "./shared/Navbar";
+import Padding from "./shared/Padding";
 import TextAnimation from "./shared/TextAnimation";
-import { useQuery, gql, ApolloClient, InMemoryCache } from '@apollo/client';
-import { useEffect, useState } from "react";
-import {uniqBy} from 'lodash';
+
+
+
+
+
 const GET_TOTAL_VOLUME = gql`
 {
   uniswapDayDatas(first: 1, orderBy: date, orderDirection: desc) {
@@ -140,8 +126,7 @@ function Home() {
 
         <FadeInAnimation>
           <img
-            style={{top:'450px'}}
-            className="desktop animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="desktop top-1/2  animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             src={LandingImage}
           />
         </FadeInAnimation>
@@ -153,10 +138,7 @@ function Home() {
             />
           </FadeInAnimation>
           
-          {/* <img
-            className="mobile absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            src={LandingImageMobile}
-          /> */}
+        
           <Navbar />
           <div className="pt-20 sm:pt-3"></div>
 
@@ -295,7 +277,8 @@ function Home() {
         <div className="header--section header--bold header--padded">
           Sponsers
         </div>
-        <Affiliates items={[Spark,Shima,  Collider,Crt, Trg,Tmt,  Mg,Node,Gbv, Blockchain, Asc,Zbs, Gda, Sheesha, Metavest, As, Aria, AngelDoa, Ex, Valhalla, SideDoor]} />
+        <Affiliates items={[Spark,Shima,  Collider,Crt, Trg,Tmt,  Mg,Node,Gbv, Blockchain, Asc,Zbs, Gda, Sheesha, Metavest, As, Aria, AngelDoa, Ex, Valhalla, SideDoor,
+GanterCaptain]} />
 
         <Padding size="sm" />
 

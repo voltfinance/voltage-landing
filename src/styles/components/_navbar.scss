@@ -7,12 +7,12 @@
     z-index: 9999999;
   }
   @include element(logo) {
-    width: 120px;
-    height: 40px;
+    width: 145px;
+    height: auto;
   }
 
   @include element(menu) {
-    @apply flex gap-9  ml-20 sm:ml-5;
+    @apply grid grid-cols-6 w-500 ml-20;
 
     color: white;
     cursor: pointer;
@@ -20,6 +20,7 @@
 
     @include element(item) {
       @apply font-montserrat text-sm;
+
       @extend %hover-animation;
       &:hover {
         color: theme("colors.green");
@@ -31,6 +32,6 @@
     @extend %button;
     height: 34px;
     width: 180px;
-    @apply text-sm font-medium flex sm:w-150;
+    @apply font-medium flex text-xs sm:w-150;
   }
 }

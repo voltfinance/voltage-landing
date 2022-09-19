@@ -46,13 +46,13 @@ const Footer = () => {
           {
             LINKS.map(({name,to,icon})=>(<div onClick={()=>{
               window.open(to, '_blank')
-            }} className={`links__item ${icon&&'flex'}`}>{icon?(<> 
-            <img style={{width:'12px', marginRight:'4px'}} src={VoltTokenSymbol}/>
-          Add VOLT token</>):name}</div>))
+            }} className={`links__item ${icon&&'flex'}`}>{icon?(<div className="links__icon"> 
+            <img  src={VoltTokenSymbol}/>
+          Add VOLT token</div>):name}</div>))
           }
        
         </div>
-       <div className="mt-auto">
+       <div className="footer__contact">
        <div className="signup">
           <input placeholder="Enter Email" className="signup__input" />
           <button className="signup__button">Sign up</button>
