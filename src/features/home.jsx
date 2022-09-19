@@ -66,6 +66,7 @@ const GET_TOTAL_VOLUME_DAY = gql`
   uniswapDayDatas(orderBy: date, orderDirection: desc) {
     dailyVolumeUSD
     date
+
   }
 }
 `;
@@ -83,6 +84,7 @@ const GET_TOKEN_HOLDERS=gql`
   systemInfos(first: 5) {
     id
     userCount
+    
   }
 }`
 const client = new ApolloClient({
@@ -234,7 +236,7 @@ function Home() {
 
         <div className="section">
         <div className="header section__content ">
-            <div className="w-3/4 sm:w-full">Make your crypto work for you</div>
+            <div>Make your crypto work for you</div>
             <div className="header--subheader">
             <div className="w-3/4 sm:w-full">
             Check out how Voltage farms and Volt staking can help you make

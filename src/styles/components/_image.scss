@@ -1,0 +1,6 @@
+@include block(image) {
+  @include element(desktop) {
+    display: block;
+    @apply sm:hidden;
+  }
+}

@@ -6,7 +6,12 @@ import store, { StoreContext } from "./stores";
 import { configure } from "mobx";
 import VoltApp from "./features/voltApp";
 import Home from "./features/home";
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+} from "@apollo/client";
 
 configure({ enforceActions: "observed" });
 

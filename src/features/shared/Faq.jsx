@@ -39,8 +39,12 @@ const Faq = ({
     <div className="faq">
       {items.map(({ q, a }, index) => (
         <motion.div
-        initial={{ opacity: 1 }}
-        animate={openIndex==index||openIndex===-1? {opacity:1}:{opacity:0.3}}
+          initial={{ opacity: 1 }}
+          animate={
+            openIndex == index || openIndex === -1
+              ? { opacity: 1 }
+              : { opacity: 0.3 }
+          }
           onClick={() => {
             if (openIndex === index) {
               setOpenIndex(-1);
@@ -51,15 +55,20 @@ const Faq = ({
           className="faq__container"
         >
           <div className="faq__item">
-            <div  dangerouslySetInnerHTML={{ __html:q }}></div>
+            <div dangerouslySetInnerHTML={{ __html: q }}></div>
 
             <div className="faq__icon">
               <img src={openIndex !== index ? Plus : Minus} />
             </div>
           </div>
-          {openIndex === index && <motion.div    className="faq__item--open">
-          <div className="faq__answer"  dangerouslySetInnerHTML={{ __html:a }}></div>
-            </motion.div>}
+          {openIndex === index && (
+            <motion.div className="faq__item--open">
+              <div
+                className="faq__answer"
+                dangerouslySetInnerHTML={{ __html: a }}
+              ></div>
+            </motion.div>
+          )}
         </motion.div>
       ))}
     </div>

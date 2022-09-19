@@ -1,18 +1,19 @@
 @include block(navbar) {
   @apply h-20 w-full items-center flex py-10;
   @extend %no-select;
-
   @include element(container) {
     cursor: pointer;
     z-index: 9999999;
   }
   @include element(logo) {
-    width: 145px;
+    // width: 145px;
+
     height: auto;
+    @apply w-145  sm:w-full;
   }
 
   @include element(menu) {
-    @apply grid grid-cols-6 w-500 ml-20;
+    @apply grid grid-cols-6 sm:grid-cols-1 md:grid-cols-1 w-500 sm:w-100 ml-20 sm:ml-5 md:ml-5;
 
     color: white;
     cursor: pointer;
@@ -30,8 +31,9 @@
   @include element(button) {
     margin-left: auto;
     @extend %button;
+
     height: 34px;
     width: 180px;
-    @apply font-medium flex text-xs sm:w-150;
+    @apply font-bold flex text-xs sm:w-150;
   }
 }

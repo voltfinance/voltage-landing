@@ -5,19 +5,18 @@ module.exports = {
   theme: {
     animation: {
       fade: "fadeOut 5s ease-in-out",
-      ping: 'ping 1s cubic-bezier(0, 0, 0.1, 1) infinite'
-
+      ping: "ping 1s cubic-bezier(0, 0, 0.1, 1) infinite",
     },
     maxHeight: {
       page: "1300px",
     },
 
     keyframes: {
-      ping :{
-        "75%, 100%" :{
-          transform: 'scale(1.1)',
-          opacity: '0'
-        }
+      ping: {
+        "75%, 100%": {
+          transform: "scale(1.1)",
+          opacity: "0",
+        },
       },
       fadeOut: {
         "0%": {
@@ -28,7 +27,7 @@ module.exports = {
         },
       },
     },
-   
+
     screens: {
       "3xl": { min: "1535px" },
       "2xl": { max: "1535px" },
@@ -114,6 +113,7 @@ module.exports = {
         75: "75px",
 
         100: "100px",
+        145: "145px",
         150: "150px",
         175: "175px",
 

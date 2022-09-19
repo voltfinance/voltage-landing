@@ -5,49 +5,49 @@ import Telegram from "../../assets/telegram.svg";
 import Discord from "../../assets/discord.svg";
 import File from "../../assets/file.svg";
 
-const SOCIALS=[
+const SOCIALS = [
   {
     src: Telegram,
     name: "Telegram",
-    to:'https://t.me/voltage_finance'
+    to: "https://t.me/voltage_finance",
   },
   {
     src: Twitter,
     name: "Twitter",
-    to:'https://twitter.com/voltfinance'
+    to: "https://twitter.com/voltfinance",
   },
   {
     src: Medium,
     name: "Medium",
-    to:'https://medium.com/@voltage.finance'
+    to: "https://medium.com/@voltage.finance",
   },
   {
     src: Github,
     name: "Github",
-    to:'https://github.com/voltfinance/'
+    to: "https://github.com/voltfinance/",
   },
   {
     src: Discord,
     name: "Discord",
-    to:'https://discord.com/invite/voltagefinance'
+    to: "https://discord.com/invite/voltagefinance",
   },
   {
     src: File,
     name: "Docs",
-    to:'https://docs-voltage.gitbook.io/voltage/welcome/introduction'
+    to: "https://docs-voltage.gitbook.io/voltage/welcome/introduction",
   },
 ];
 
-
-const CardList = ({
- 
-}) => {
+const CardList = ({}) => {
   return (
     <div className="list">
-      {SOCIALS.map(({ src, name,to }) => (
-        <div onClick={()=>{
-          window.open(to,'_blank');
-        }} className="card">
+      {SOCIALS.map(({ src, name, to }) => (
+        <div
+          onClick={() => {
+            window.open(to, "_blank");
+          }}
+          className="card"
+        >
           <img src={src} className="card__logo" />
           <div className="card__name">{name}</div>
         </div>

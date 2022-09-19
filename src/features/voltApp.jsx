@@ -20,23 +20,16 @@ import TextAnimation from "./shared/TextAnimation";
 
 let title = "DeFi For the Masses";
 
-
-
 function VoltApp() {
-
-  
   return (
     <>
       <div className="container">
-
         <Navbar />
         <div className="section">
           <div className="header section__content--not-centered">
-          <div className="pt-20 sm:pt-3"></div>
+            <div className="pt-20 sm:pt-3"></div>
 
-            <TextAnimation
-           text="DeFi For the Masses"/>
-
+            <TextAnimation text="DeFi For the Masses" />
 
             <div className="header--subheader">
               Start your DEFI journey with our easy to use app. Secure, Gasless
@@ -53,7 +46,13 @@ function VoltApp() {
 
           <div className="section__background">
             <FadeInAnimation>
-              <Image width={769.88}  removeRatio height={650.57} mobile={VoltPhone} desktop={VoltPhone} />
+              <Image
+                width={769.88}
+                removeRatio
+                height={650.57}
+                mobile={VoltPhone}
+                desktop={VoltPhone}
+              />
             </FadeInAnimation>
           </div>
         </div>
@@ -70,7 +69,12 @@ function VoltApp() {
         <div className="section">
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='left'   width={667.44} mobile={AppWallet} desktop={AppWallet} />
+              <Image
+                aligned="left"
+                width={667.44}
+                mobile={AppWallet}
+                desktop={AppWallet}
+              />
             </FadeInAnimation>
           </div>
 
@@ -97,7 +101,12 @@ function VoltApp() {
           </div>
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'   width={682} mobile={AppPlant} desktop={AppPlant} />
+              <Image
+                aligned="right"
+                width={682}
+                mobile={AppPlant}
+                desktop={AppPlant}
+              />
             </FadeInAnimation>
           </div>
         </div>
@@ -106,7 +115,12 @@ function VoltApp() {
         <div className="section ">
           <div className="section__background">
             <FadeInAnimation>
-              <Image  aligned='left'   width={624.94} mobile={AppCoins} desktop={AppCoins} />
+              <Image
+                aligned="left"
+                width={624.94}
+                mobile={AppCoins}
+                desktop={AppCoins}
+              />
             </FadeInAnimation>
           </div>
           <div className="header section__content ">
@@ -131,7 +145,12 @@ function VoltApp() {
           </div>
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'   width={481.03} mobile={AppBuyCrypto} desktop={AppBuyCrypto} />
+              <Image
+                aligned="right"
+                width={481.03}
+                mobile={AppBuyCrypto}
+                desktop={AppBuyCrypto}
+              />
             </FadeInAnimation>
           </div>
         </div>
@@ -140,7 +159,12 @@ function VoltApp() {
         <div className="section ">
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='left'   width={481.03} mobile={AppExchange} desktop={AppExchange} />
+              <Image
+                aligned="left"
+                width={481.03}
+                mobile={AppExchange}
+                desktop={AppExchange}
+              />
             </FadeInAnimation>
           </div>
           <div className="header section__content ">
@@ -168,7 +192,12 @@ function VoltApp() {
           </div>
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'   width={481.03} mobile={FuseLogo} desktop={FuseLogo} />
+              <Image
+                aligned="right"
+                width={481.03}
+                mobile={FuseLogo}
+                desktop={FuseLogo}
+              />
             </FadeInAnimation>
           </div>
         </div>
