@@ -128,7 +128,8 @@ function Home() {
 
         <FadeInAnimation>
           <img
-            className="desktop top-3/4  animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            style={{top:'66%'}}
+            className="desktop   animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             src={LandingImage}
           />
         </FadeInAnimation>
@@ -197,7 +198,7 @@ function Home() {
 
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'  width={769.52} mobile={VoltPhone} desktop={VoltPhone} />
+              <Image aligned='right'  width={550.52} mobile={VoltPhone} desktop={VoltPhone} />
             </FadeInAnimation>
           </div>
         </div>
@@ -211,7 +212,7 @@ function Home() {
             </FadeInAnimation>
           </div>
           <div className="header section__content">
-            Discover Fuse Dollar
+           <div> Discover Fuse Dollar</div>
             <div className="header--subheader">
             <div className="w-3/4 sm:w-full">
               The decentralized stablecoin in Fuse. Multiple stables backing

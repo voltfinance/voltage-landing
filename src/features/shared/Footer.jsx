@@ -36,7 +36,7 @@ const LINKS = [
   },
   {
     onClick: async()=>{
-      const tokenAddress = '0xd00981105e61274c8a5cd5a88fe7e037d935b513';
+      const tokenAddress = '0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4';
       const tokenSymbol = 'VOLT';
       const tokenDecimals = 18;
       const tokenImage = 'https://fuse-brand-assets.s3.eu-central-1.amazonaws.com/fuse.png';
@@ -47,6 +47,7 @@ const LINKS = [
           params: {
             type: 'ERC20', // Initially only supports ERC20, but eventually more!
             options: {
+              
               address: tokenAddress, // The address that the token is at.
               symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
               decimals: tokenDecimals, // The number of decimals in the token
