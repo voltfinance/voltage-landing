@@ -83,6 +83,24 @@ query getSystemInfo($id:String){
 }
 
 `
+const GET_TOTAL_LOCKED_VALUE=gql`{
+  makers(first: 5) {
+    id
+    voltServed
+    voltServedUSD
+    totalServings
+  }
+  servers(first: 5) {
+    id
+    maker {
+      id
+    }
+    voltServed
+    voltServedUSD
+  }
+}`
+
+
 
 const GET_TOTAL_LOCKED = gql`
 {
@@ -120,7 +138,7 @@ const clientVoltStakeHolders = new ApolloClient({
 
 
 function Home() {
-
+  const totalValueLocked=useQuery(GET_TOTAL_LOCKED_VALUE, {client:clientVoltStakeHolders})
   const totalVolume = useQuery(GET_TOTAL_VOLUME,{client});
   const totalVolumeDay = useQuery(GET_TOTAL_VOLUME_DAY,{client});
   const totalLocked = useQuery(GET_TOTAL_LOCKED,{client});
@@ -130,7 +148,9 @@ function Home() {
       id:Math.floor(Date.now()/8.64e7)+''
     }});
 
- 
+ useEffect(()=>{
+  console.log(totalValueLocked,'totalValueLocked')
+ },[totalValueLocked])
 
 
   
@@ -305,7 +325,7 @@ GanterCaptain]} />
       </div>
       <Padding size="xl" />
 
-      <div className="h-screen w-screen">
+      <div className="h-500 w-screen">
         <div style={{ border: "1px solid #8C8C8C" }}></div>
         <div className="container p-20">
           <Footer />

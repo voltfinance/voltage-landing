@@ -215,7 +215,7 @@ function VoltApp() {
 
       <Padding size="xl" />
 
-      <div className="h-screen w-screen">
+      <div className="h-500 w-screen">
         <div style={{ border: "1px solid #8C8C8C" }}></div>
         <div className="container  p-20">
           <Footer />
