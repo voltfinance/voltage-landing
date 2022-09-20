@@ -39,7 +39,7 @@ const LINKS = [
       const tokenAddress = '0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4';
       const tokenSymbol = 'VOLT';
       const tokenDecimals = 18;
-      const tokenImage = 'https://fuse-brand-assets.s3.eu-central-1.amazonaws.com/fuse.png';
+      const tokenImage = 'https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png';
       try {
         // wasAdded is a boolean. Like any RPC method, an error may be thrown.
         const wasAdded = await ethereum.request({

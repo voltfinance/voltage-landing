@@ -27,7 +27,7 @@ function VoltApp() {
         <Navbar />
         <div className="section">
           <div className="header section__content--not-centered">
-            <div className="pt-20 sm:pt-3"></div>
+            <div className="pt-24 sm:pt-3"></div>
 
             <TextAnimation text="DeFi For the Masses" />
 
@@ -46,10 +46,10 @@ function VoltApp() {
 
           <div className="section__background">
             <FadeInAnimation>
+              <div className="p-6 sm:0"></div>
               <Image
-                width={769.88}
-                removeRatio
-                height={650.57}
+                width={400.88}
+                aligned="right"
                 mobile={VoltPhone}
                 desktop={VoltPhone}
               />
@@ -71,7 +71,7 @@ function VoltApp() {
             <FadeInAnimation>
               <Image
                 aligned="left"
-                width={667.44}
+                width={494.44}
                 mobile={AppWallet}
                 desktop={AppWallet}
               />
@@ -79,6 +79,7 @@ function VoltApp() {
           </div>
 
           <div className="header section__content ">
+            <div className="pt-20 sm:pt-0"></div>
             A non-custodial wallet that will free you from fees
             <div className="header--subheader">
               The Voltage app lets you create a contract account but no need to
@@ -103,7 +104,7 @@ function VoltApp() {
             <FadeInAnimation>
               <Image
                 aligned="right"
-                width={682}
+                width={404}
                 mobile={AppPlant}
                 desktop={AppPlant}
               />
@@ -117,13 +118,15 @@ function VoltApp() {
             <FadeInAnimation>
               <Image
                 aligned="left"
-                width={624.94}
+                width={463.94}
                 mobile={AppCoins}
                 desktop={AppCoins}
               />
             </FadeInAnimation>
           </div>
           <div className="header section__content ">
+          <div className="pt-28 sm:pt-0"></div>
+
             Send and recieve funds from your phone contacts
             <div className="header--subheader">
               No need to copy/paste public keys, send funds trough your phone
@@ -147,7 +150,7 @@ function VoltApp() {
             <FadeInAnimation>
               <Image
                 aligned="right"
-                width={481.03}
+                width={358.03}
                 mobile={AppBuyCrypto}
                 desktop={AppBuyCrypto}
               />
@@ -161,7 +164,7 @@ function VoltApp() {
             <FadeInAnimation>
               <Image
                 aligned="left"
-                width={481.03}
+                width={358.03}
                 mobile={AppExchange}
                 desktop={AppExchange}
               />
@@ -194,7 +197,7 @@ function VoltApp() {
             <FadeInAnimation>
               <Image
                 aligned="right"
-                width={481.03}
+                width={358.03}
                 mobile={FuseLogo}
                 desktop={FuseLogo}
               />

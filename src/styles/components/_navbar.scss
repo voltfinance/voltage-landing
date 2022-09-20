@@ -14,14 +14,14 @@
   }
 
   @include element(menu) {
-    @apply grid grid-cols-6 sm:grid-cols-1 md:grid-cols-1 w-400 sm:w-100 ml-20 sm:ml-5 md:ml-5;
+    @apply grid grid-cols-6 sm:grid-cols-1 md:grid-cols-1 w-2/5  sm:w-100 ml-20 sm:ml-5 md:ml-5;
 
     color: white;
     cursor: pointer;
     z-index: 9999999;
 
     @include element(item) {
-      @apply font-montserrat text-xs;
+      @apply font-montserrat text-sm;
 
       @extend %hover-animation;
       &:hover {
@@ -34,7 +34,7 @@
     @extend %button;
 
     height: 28px;
-    width: 160px;
+    width: 140px;
     @apply font-semibold flex text-xs sm:w-150 rounded-md;
   }
 }

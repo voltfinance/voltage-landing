@@ -12,8 +12,8 @@ const Image = ({
         <div
           className={'image'}
           style={{
-            maxHeight: height + "px",
-            maxWidth: width - (removeRatio ? 0 : 130) + "px",
+            maxHeight: (height/16) + "rem"||'auto',
+            maxWidth:( width/16)  + "rem",
           }}
 
           className={`image__desktop  

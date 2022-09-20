@@ -71,6 +71,25 @@ const GET_TOTAL_VOLUME_DAY = gql`
 }
 `;
 
+const GET_VOLT_STAKER_EARNING =gql`
+{
+  makers(first: 5) {
+    id
+    voltServed
+    voltServedUSD
+    totalServings
+  }
+  servers(first: 5) {
+    id
+    maker {
+      id
+    }
+    voltServed
+    voltServedUSD
+  }
+}
+`
+
 const GET_TOTAL_LOCKED = gql`
 {
   uniswapFactories(first: 1) {
@@ -96,9 +115,12 @@ const clientVoltHolders = new ApolloClient({
   uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/volt-holders-subgraph',
   cache: new InMemoryCache(),
 });
+const clientVoltStakeHolders = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/makerv2-fuse',
+  cache: new InMemoryCache(),
+});
 
 
-const ADJUST=130;
 
 function Home() {
 
@@ -106,18 +128,19 @@ function Home() {
   const totalVolumeDay = useQuery(GET_TOTAL_VOLUME_DAY,{client});
   const totalLocked = useQuery(GET_TOTAL_LOCKED,{client});
   const tokenHolders = useQuery(GET_TOKEN_HOLDERS,{client:clientVoltHolders});
+  const tokenStakeHolders = useQuery(GET_VOLT_STAKER_EARNING,{client:clientVoltStakeHolders});
 
  
 
 
   useEffect(()=>{
-    if(!totalVolumeDay.loading){
-      let mapped=totalVolumeDay?.data?.uniswapDayDatas.map(({date,dailyVolumeUSD})=>({
-        dailyVolumeUSD
-      }))
-      console.log(mapped,'mapped')
+
+
+    if(!tokenStakeHolders.loading){
+    
+      console.log(tokenStakeHolders,'tokenStakeHolders')
     }
-  },[totalVolumeDay])
+  },[tokenStakeHolders])
 
 
 
@@ -177,7 +200,7 @@ function Home() {
           <div className="header section__content">
             Take your DeFi everywhere you go!
             <div className="header--subheader">
-              <div className="w-3/4 sm:w-full">
+              <div className=" sm:w-full">
               The Volt App is a web 3 non-custodial wallet with everything you
               need to carry in your pocket.
               <br></br>
@@ -198,7 +221,7 @@ function Home() {
 
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'  width={550.52} mobile={VoltPhone} desktop={VoltPhone} />
+              <Image aligned='right'  width={420} mobile={VoltPhone} desktop={VoltPhone} />
             </FadeInAnimation>
           </div>
         </div>
@@ -208,7 +231,7 @@ function Home() {
         <div className="section ">
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='left'   width={658}  mobile={FuseDollarMobile} desktop={FuseDollar} />
+              <Image aligned='left'  width={490}  mobile={FuseDollarMobile} desktop={FuseDollar} />
             </FadeInAnimation>
           </div>
           <div className="header section__content">
@@ -254,7 +277,7 @@ function Home() {
           
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'   width={756.28}  mobile={CoinWallet} desktop={CoinWallet} />
+              <Image aligned='right'     mobile={CoinWallet} desktop={CoinWallet} />
             </FadeInAnimation>
           </div>
         </div>
