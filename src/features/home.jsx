@@ -72,22 +72,16 @@ const GET_TOTAL_VOLUME_DAY = gql`
 `;
 
 const GET_VOLT_STAKER_EARNING =gql`
-{
-  makers(first: 5) {
+query getSystemInfo($id:String){
+  
+    servingDayDatas (where: {id: $id}) {
     id
     voltServed
     voltServedUSD
-    totalServings
-  }
-  servers(first: 5) {
-    id
-    maker {
-      id
     }
-    voltServed
-    voltServedUSD
-  }
+    
 }
+
 `
 
 const GET_TOTAL_LOCKED = gql`
@@ -99,6 +93,7 @@ const GET_TOTAL_LOCKED = gql`
 `;
 
 const GET_TOKEN_HOLDERS=gql`
+
 {
   systemInfos(first: 5) {
     id
@@ -118,7 +113,9 @@ const clientVoltHolders = new ApolloClient({
 const clientVoltStakeHolders = new ApolloClient({
   uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/makerv2-fuse',
   cache: new InMemoryCache(),
+ 
 });
+
 
 
 
@@ -128,20 +125,12 @@ function Home() {
   const totalVolumeDay = useQuery(GET_TOTAL_VOLUME_DAY,{client});
   const totalLocked = useQuery(GET_TOTAL_LOCKED,{client});
   const tokenHolders = useQuery(GET_TOKEN_HOLDERS,{client:clientVoltHolders});
-  const tokenStakeHolders = useQuery(GET_VOLT_STAKER_EARNING,{client:clientVoltStakeHolders});
+  const tokenStakeHolders = useQuery(GET_VOLT_STAKER_EARNING,{client:clientVoltStakeHolders,
+    variables: {
+      id:Math.floor(Date.now()/8.64e7)+''
+    }});
 
  
-
-
-  useEffect(()=>{
-
-
-    if(!tokenStakeHolders.loading){
-    
-      console.log(tokenStakeHolders,'tokenStakeHolders')
-    }
-  },[tokenStakeHolders])
-
 
 
   
@@ -191,6 +180,7 @@ function Home() {
             dailVolume={!totalVolume.loading&&totalVolume?.data?.uniswapDayDatas[0]?.dailyVolumeUSD}
             tokenHolders={!tokenHolders.loading&&tokenHolders?.data?.systemInfos[0]?.userCount}
             totalLocked={!totalLocked.loading&&totalLocked?.data?.uniswapFactories[0]?.totalLiquidityUSD}
+            tokenStakeHolders={!tokenStakeHolders.loading&&tokenStakeHolders?.data?.servingDayDatas[0]?.voltServedUSD}
           />
         </div>
       </div>
@@ -296,12 +286,12 @@ function Home() {
         <div className="header--section header--bold header--padded">
           Partners
         </div>
-        <Affiliates items={[Beefy,Quill, Ascend,Bittrex, InfinityPad,Ibc, Graph, Poolz, Ola, Mexc]} />
+        <Affiliates items={[Beefy,Quill, Ascend, InfinityPad,Ibc, Graph, Poolz, Mexc]} />
 
         <Padding size="sm" />
 
         <div className="header--section header--bold header--padded">
-          Sponsers
+          Backers
         </div>
         <Affiliates items={[Spark,Shima,  Collider,Crt, Trg,Tmt,  Mg,Node,Gbv, Blockchain, Asc,Zbs, Gda, Sheesha, Metavest, As, Aria, AngelDoa, Ex, Valhalla, SideDoor,
 GanterCaptain]} />

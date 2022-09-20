@@ -27,7 +27,7 @@ const Faq = ({
       a: `
       We have audited most of our contracts with Quillhash.
       <br></br>
-      Check out our docs <a className="faq__link" href="https://docs-voltage.gitbook.io/voltage/welcome/introduction">link</a>.
+      Check out our docs <a className="faq__link" href="https://docs-voltage.gitbook.io/voltage/audits">link</a>.
 
       `,
     },

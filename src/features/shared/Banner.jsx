@@ -4,7 +4,7 @@ const Banner = ({
   dailVolume = 0,
   tokenHolders = 0,
   totalLocked = 0,
-  totalEarnings = 0,
+  tokenStakeHolders = 0,
 }) => {
   return (
     <motion.div
@@ -40,7 +40,7 @@ const Banner = ({
         </div>
         <div className="item">
           <div className="item__header">
-            ${parseFloat(totalEarnings).toFixed(0)}
+            ${parseFloat(tokenStakeHolders).toFixed(0)}
           </div>
           <div className="item__subheader">Volt staker's earning (24h)</div>
         </div>
