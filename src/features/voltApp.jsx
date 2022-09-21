@@ -52,7 +52,7 @@ function VoltApp() {
               </div>
             </div>
             <FadeInAnimation>
-              <img className="mobile w-full" src={VoltPhones} />
+              <img className="mobile w-full mx-auto" style={{maxWidth:'550px'}} src={VoltPhones} />
             </FadeInAnimation>
           </div>
         </div>
