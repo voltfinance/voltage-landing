@@ -60,6 +60,8 @@ const Banner = ({
             value={tokenStakeHolders}
             text={`Volt staker's earning (Week)`}
             loading={loading}
+            prefix=""
+
          
           />
         

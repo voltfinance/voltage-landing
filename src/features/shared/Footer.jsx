@@ -12,7 +12,7 @@ import Social from "./Social";
 const LINKS = [
   {
     name: "Getting Started",
-    to: "",
+    to: "https://docs-voltage.gitbook.io/voltage/welcome/introduction",
   },
   {
     to: "https://staking.fuse.io/",

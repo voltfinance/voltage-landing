@@ -7,12 +7,12 @@ const Faq = ({
   items = [
     {
       q: "What is the Volt App?",
-      a: `Focusing on reducing friction and non-experienced users, the Volt App provides a seamless experience on mobile devices. Non-custodial and without fees, the Volt App is the best way to interact with DeFi for beginners. <br></br>Read more about the app <a className="faq__link" href="/app">link</a>.
+      a: `Focusing on reducing friction for non-experienced users, the Volt App provides a seamless DeFi experience on mobile devices. Non-custodial and without fees, the Volt App is the best way to interact with DeFi for beginners. <br></br>Read more about the app <a className="faq__link" href="/app">link</a>.
       `,
     },
     {
       q: "What is the VOLT token for?",
-      a: "The VOLT token is the governance token of Voltage Finance. The token will give you ownership over the Dex, from rewards allocation to revenue share. Also by holding the VOLT token you will be able to participate in snapshot votes and much more.",
+      a: "The VOLT token is the governance token of Voltage Finance. The token will give you ownership over the protocol, from rewards allocation to revenue share. Also by holding the VOLT token you will be able to participate in snapshot votes and much more.",
     },
     {
       q: "What about VOLT tokenomics?",
