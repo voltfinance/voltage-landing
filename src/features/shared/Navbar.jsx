@@ -26,7 +26,7 @@ const Navbar = ({
     },
     {
       name: "Farm",
-      to: "https://app.voltage.finance/#/farm",
+      to: "https://app.voltage.finance/#/farm/122",
       replace: true,
       mobile: false,
     },

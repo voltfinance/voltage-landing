@@ -1,5 +1,5 @@
 import { ApolloClient, gql, InMemoryCache, useQuery } from '@apollo/client';
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import AngelDoa from "../assets/angeldoa.png";
 import VoltPhone from "../assets/app-landing.png";
 import Aria from "../assets/aria.png";
@@ -38,6 +38,7 @@ import Tmt from "../assets/tmt.png";
 import Trg from "../assets/trg-s.png";
 import Valhalla from "../assets/valhalla.png";
 import Zbs from "../assets/zbs.png";
+import { useStableswapTotalLiquidity } from '../hooks';
 import Affiliates from "./shared/Affiliates";
 import Banner from "./shared/Banner";
 import CardList from "./shared/CardList";
@@ -50,8 +51,7 @@ import Navbar from "./shared/Navbar";
 import Padding from "./shared/Padding";
 import TextAnimation from "./shared/TextAnimation";
 
-
-
+import VoltPhones from "../assets/phones.png";
 
 
 const GET_TOTAL_VOLUME = gql`
@@ -110,6 +110,17 @@ const GET_TOTAL_LOCKED = gql`
 }
 `;
 
+const GET_SWAP=gql`{
+  swaps {
+    id
+    balances
+    tokens {
+      id
+    }
+  }
+}`;
+
+
 const GET_TOKEN_HOLDERS=gql`
 
 {
@@ -134,25 +145,25 @@ const clientVoltStakeHolders = new ApolloClient({
  
 });
 
+const stableSwapClient = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/stableswap',
+  cache: new InMemoryCache(),
+});
 
 
 
 function Home() {
   const totalValueLocked=useQuery(GET_TOTAL_LOCKED_VALUE, {client:clientVoltStakeHolders})
   const totalVolume = useQuery(GET_TOTAL_VOLUME,{client});
-  const totalVolumeDay = useQuery(GET_TOTAL_VOLUME_DAY,{client});
+  const getSwap = useQuery(GET_SWAP,{client:stableSwapClient});
+  
   const totalLocked = useQuery(GET_TOTAL_LOCKED,{client});
   const tokenHolders = useQuery(GET_TOKEN_HOLDERS,{client:clientVoltHolders});
   const tokenStakeHolders = useQuery(GET_VOLT_STAKER_EARNING,{client:clientVoltStakeHolders,
     variables: {
       id:Math.floor(Date.now()/8.64e7)+''
     }});
-
- useEffect(()=>{
-  console.log(totalValueLocked,'totalValueLocked')
- },[totalValueLocked])
-
-
+  let stableSwapTotalLiquiditiy=useStableswapTotalLiquidity(18);
   
   return (
     <>
@@ -166,12 +177,7 @@ function Home() {
           />
         </FadeInAnimation>
         <div className="container">
-          <FadeInAnimation>
-            <img
-              className="mobile absolute w-300 bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              src={LandingImageMobile}
-            />
-          </FadeInAnimation>
+        
           
         
           <Navbar />
@@ -191,16 +197,32 @@ function Home() {
                 fingertips.
               </div>
               <div className="section__buttons">
-                <button className="button">Swap Now</button>
-                <button className="button--inverted">Get fUSD</button>
+                <button onClick={()=>{
+                  window.open('https://app.voltage.finance/#/swap','_blank')
+                }} className="button">Swap Now</button>
+                <button onClick={()=>{
+                  window.open('https://app.voltage.finance/#/swap','_blank')
+                }}  className="button--inverted">Get fUSD</button>
               </div>
             </div>
+            <FadeInAnimation>
+            <img
+              className="mobile  w-300 mx-auto relative z-1"
+              src={LandingImageMobile}
+            />
+          </FadeInAnimation>
           </div>
           <Banner 
+            loading={
+             totalVolume.loading||
+              tokenHolders.loading||
+              stableSwapTotalLiquiditiy===0||
+              tokenStakeHolders.loading
+            }
             dailVolume={!totalVolume.loading&&totalVolume?.data?.uniswapDayDatas[0]?.dailyVolumeUSD}
             tokenHolders={!tokenHolders.loading&&tokenHolders?.data?.systemInfos[0]?.userCount}
-            totalLocked={!totalLocked.loading&&totalLocked?.data?.uniswapFactories[0]?.totalLiquidityUSD}
-            tokenStakeHolders={!tokenStakeHolders.loading&&tokenStakeHolders?.data?.servingDayDatas[0]?.voltServedUSD}
+            totalLocked={stableSwapTotalLiquiditiy}
+            tokenStakeHolders={!tokenStakeHolders.loading&&tokenStakeHolders?.data?.servingDayDatas[0]?.voltServed}
           />
         </div>
       </div>
@@ -231,7 +253,7 @@ function Home() {
 
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'  width={420} mobile={VoltPhone} desktop={VoltPhone} />
+              <Image aligned='right'  height={1000} width={1000} mobile={VoltPhones} desktop={VoltPhones} />
             </FadeInAnimation>
           </div>
         </div>
@@ -260,8 +282,12 @@ function Home() {
             </div>
             </div>
             <div className="section__buttons">
-              <button className="button">Get fUSD </button>
-              <button className="button--inverted">Read more</button>
+              <button onClick={()=>{
+                  window.open('https://app.voltage.finance/#/swap','_blank')
+                }}  className="button">Get fUSD </button>
+              <button onClick={()=>{
+                window.open('https://forum.voltage.finance/t/vip-7-proposal-to-deploy-an-upgraded-fuse-stablecoin/260/14','_blank')
+              }} className="button--inverted">Read more</button>
             </div>
           </div>
         </div>
@@ -280,7 +306,9 @@ function Home() {
            
             </div>
             <div className="section__buttons">
-              <button className="button--inverted">Read More</button>
+              <button onClick={()=>{
+                window.open('https://app.voltage.finance/#/farm/122','_blank')
+              }} className="button--inverted">Read More</button>
             </div>
           </div>
          

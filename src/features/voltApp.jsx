@@ -6,7 +6,7 @@ import AppWallet from "../assets/coin-wallet.png";
 import AppleLogo from "../assets/apple-black.svg";
 import FuseLogo from "../assets/fuse-logo.png";
 import GoogleLogo from "../assets/google-black.svg";
-import VoltPhone from "../assets/app-landing.png";
+import VoltPhones from "../assets/phones.png";
 import Faq from "./shared/Faq";
 import Footer from "./shared/Footer";
 import Navbar from "./shared/Navbar";
@@ -17,53 +17,60 @@ import Image from "./shared/Image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect } from "react";
 import TextAnimation from "./shared/TextAnimation";
-
+import LandingImage from '../assets/app-landing-v2.png'
 let title = "DeFi For the Masses";
 
 function VoltApp() {
   return (
     <>
+      <div className="h-screen w-screen max-h-page relative ">
+
+<FadeInAnimation>
+  <img
+    style={{top:'66%'}}
+    className="desktop   animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    src={LandingImage}
+  />
+</FadeInAnimation>
+<div className="container">
+  
+  
+
+  <Navbar />
+  <div className="pt-20 sm:pt-3"></div>
+
+  <div className="section">
+    <div className="header section__content ">
+   
+    <TextAnimation text="DeFi For the Masses" />
+
+<div className="header--subheader">
+  Start your DEFI journey with our easy to use app. Secure, Gasless
+  and frictionless crypto is here!
+</div>
+<div className="header--mini-bold  pt-4">
+  Download the Volt App Today
+</div>
+<div className="section__buttons">
+  <Download type="apple" />
+  <Download type="google" />
+</div>
+      
+    </div>
+    <FadeInAnimation>
+    <img
+      className="mobile w-full"
+      src={VoltPhones}
+    />
+  </FadeInAnimation>
+  </div>
+
+</div>
+</div>
+     
+
       <div className="container">
-        <Navbar />
-        <div className="section">
-          <div className="header section__content--not-centered">
-            <div className="pt-24 sm:pt-3"></div>
-
-            <TextAnimation text="DeFi For the Masses" />
-
-            <div className="header--subheader">
-              Start your DEFI journey with our easy to use app. Secure, Gasless
-              and frictionless crypto is here!
-            </div>
-            <div className="header--mini-bold  pt-4">
-              Download the Volt App Today
-            </div>
-            <div className="section__buttons">
-              <Download type="apple" />
-              <Download type="google" />
-            </div>
-          </div>
-
-          <div className="section__background">
-            <FadeInAnimation>
-              <div className="p-6 sm:0"></div>
-              <Image
-                width={400.88}
-                aligned="right"
-                mobile={VoltPhone}
-                desktop={VoltPhone}
-              />
-            </FadeInAnimation>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <Padding size="xs" />
-        <div className="header--section">
-          Volt lets you use your crypto money everyday to buy, swap and save.
-          All without fees. You know... like cash.
-        </div>
+       
         <Padding size="sm" />
 
         <div className="section">

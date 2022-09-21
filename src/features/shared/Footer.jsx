@@ -19,12 +19,12 @@ const LINKS = [
     name: "Fuse Staking",
   },
   {
-    to: "https://studio.fuse.io/",
-    name: "Fuse Studio",
+    to: "https://chargeweb3.com/",
+    name: "Fuse Charge",
   },
   {
-    to: "https://fuse.cash/",
-    name: "Fuse Cash",
+    to: "/app",
+    name: "The Volt App",
   },
   {
     to: "https://docs-voltage.gitbook.io/voltage/welcome/introduction",
@@ -102,10 +102,15 @@ const Footer = () => {
           ))}
         </div>
         <div className="footer__contact">
-          <div className="signup">
-            <input placeholder="Enter Email" className="signup__input" />
-            <button className="signup__button">Sign up</button>
-          </div>
+        <form
+        className="signup"
+          action="https://formspree.io/f/mvoykeaw"
+          method="POST"
+        >
+                      <input type="email" name="email" placeholder="Enter Email" className="signup__input" />
+                      <button className="signup__button">Sign up</button>
+
+        </form>
           <Social />
         </div>
       </div>

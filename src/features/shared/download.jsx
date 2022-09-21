@@ -3,13 +3,13 @@ import GoogleLogo from "../../assets/google-black.svg";
 
 const SOURCES = {
   apple: {
-    location: "https://apps.apple.com/US/app/id1559937899?mt=8",
+    location: "https://get.voltage.finance/gBMb",
     logo: AppleLogo,
     text: "Apple Store",
   },
   google: {
     location:
-      "https://play.google.com/store/apps/details?id=io.fuse.cash&hl=en&gl=US",
+      "https://get.voltage.finance/gBMb",
     logo: GoogleLogo,
     text: "Google Store",
   },

@@ -1,7 +1,8 @@
 @include block(banner) {
   @apply w-screen;
-  @apply absolute bottom-0 left-0;
+  @apply absolute z-10 bottom-0 left-0;
   @apply bg-lightGray;
+  z-index: 999999;
 
   @include element(container) {
     @apply max-w-6xl sm:max-w-full h-full w-full;
