@@ -10,16 +10,14 @@ const Image = ({
     <>
       {desktop && (
         <div
-          className={'image'}
+          className={"image"}
           style={{
-            maxHeight: (height/16) + "rem"||'auto',
-            maxWidth:( width/16)  + "rem",
+            maxHeight: height / 16 + "rem" || "auto",
+            maxWidth: width / 16 + "rem",
           }}
-
           className={`image__desktop  
           ${aligned === "left" && "mr-auto"} 
-          ${aligned === "right" && "ml-auto"}`
-        }
+          ${aligned === "right" && "ml-auto"}`}
         >
           <img
             style={{ width: "100%", height: "100%", objectFit: "contain" }}

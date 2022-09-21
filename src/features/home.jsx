@@ -1,4 +1,4 @@
-import { ApolloClient, gql, InMemoryCache, useQuery } from '@apollo/client';
+import { ApolloClient, gql, InMemoryCache, useQuery } from "@apollo/client";
 import { useEffect, useMemo } from "react";
 import AngelDoa from "../assets/angeldoa.png";
 import VoltPhone from "../assets/app-landing.png";
@@ -38,12 +38,13 @@ import Tmt from "../assets/tmt.png";
 import Trg from "../assets/trg-s.png";
 import Valhalla from "../assets/valhalla.png";
 import Zbs from "../assets/zbs.png";
-import { useStableswapTotalLiquidity } from '../hooks';
+import { useStableswapTotalLiquidity } from "../hooks";
 import Affiliates from "./shared/Affiliates";
 import Banner from "./shared/Banner";
 import CardList from "./shared/CardList";
 import Download from "./shared/download";
 import FadeInAnimation from "./shared/FadeIn";
+import { sum } from "lodash";
 import Faq from "./shared/Faq";
 import Footer from "./shared/Footer";
 import Image from "./shared/Image";
@@ -52,144 +53,158 @@ import Padding from "./shared/Padding";
 import TextAnimation from "./shared/TextAnimation";
 
 import VoltPhones from "../assets/phones.png";
-
+import { useState } from "react";
 
 const GET_TOTAL_VOLUME = gql`
-{
-  uniswapDayDatas(first: 1, orderBy: date, orderDirection: desc) {
-    dailyVolumeUSD
+  {
+    uniswapDayDatas(first: 1, orderBy: date, orderDirection: desc) {
+      dailyVolumeUSD
+    }
   }
-}
 `;
 const GET_TOTAL_VOLUME_DAY = gql`
-{
-  uniswapDayDatas(orderBy: date, orderDirection: desc) {
-    dailyVolumeUSD
-    date
-
+  {
+    uniswapDayDatas(orderBy: date, orderDirection: desc) {
+      dailyVolumeUSD
+      date
+    }
   }
-}
 `;
 
-const GET_VOLT_STAKER_EARNING =gql`
-query getSystemInfo($id:String){
-  
-    servingDayDatas (where: {id: $id}) {
-    id
-    voltServed
-    voltServedUSD
-    }
-    
-}
-
-`
-const GET_TOTAL_LOCKED_VALUE=gql`{
-  makers(first: 5) {
-    id
-    voltServed
-    voltServedUSD
-    totalServings
-  }
-  servers(first: 5) {
-    id
-    maker {
+const GET_VOLT_STAKER_EARNING = gql`
+  query getSystemInfo($id: String) {
+    servingDayDatas(where: { id: $id }) {
       id
+      voltServed
+      voltServedUSD
     }
-    voltServed
-    voltServedUSD
   }
-}`
-
-
+`;
+const GET_TOTAL_LOCKED_VALUE = gql`
+  {
+    makers(first: 5) {
+      id
+      voltServed
+      voltServedUSD
+      totalServings
+    }
+    servers(first: 5) {
+      id
+      maker {
+        id
+      }
+      voltServed
+      voltServedUSD
+    }
+  }
+`;
 
 const GET_TOTAL_LOCKED = gql`
-{
-  uniswapFactories(first: 1) {
-    totalLiquidityUSD
-  }
-}
-`;
-
-const GET_SWAP=gql`{
-  swaps {
-    id
-    balances
-    tokens {
-      id
+  {
+    uniswapFactories(first: 1) {
+      totalLiquidityUSD
     }
   }
-}`;
+`;
 
-
-const GET_TOKEN_HOLDERS=gql`
-
-{
-  systemInfos(first: 5) {
-    id
-    userCount
-    
+const GET_SWAP = gql`
+  {
+    swaps {
+      id
+      balances
+      tokens {
+        id
+      }
+    }
   }
-}`
+`;
+
+const GET_TOKEN_HOLDERS = gql`
+  {
+    systemInfos(first: 5) {
+      id
+      userCount
+    }
+  }
+`;
 const client = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange',
+  uri: "https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange",
   cache: new InMemoryCache(),
 });
 
 const clientVoltHolders = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/volt-holders-subgraph',
+  uri: "https://api.thegraph.com/subgraphs/name/t0mcr8se/volt-holders-subgraph",
   cache: new InMemoryCache(),
 });
 const clientVoltStakeHolders = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/makerv2-fuse',
+  uri: "https://api.thegraph.com/subgraphs/name/t0mcr8se/makerv2-fuse",
   cache: new InMemoryCache(),
- 
 });
 
 const stableSwapClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/stableswap',
+  uri: "https://api.thegraph.com/subgraphs/name/voltfinance/stableswap",
   cache: new InMemoryCache(),
 });
 
-
-
 function Home() {
-  const totalValueLocked=useQuery(GET_TOTAL_LOCKED_VALUE, {client:clientVoltStakeHolders})
-  const totalVolume = useQuery(GET_TOTAL_VOLUME,{client});
-  const getSwap = useQuery(GET_SWAP,{client:stableSwapClient});
-  
-  const totalLocked = useQuery(GET_TOTAL_LOCKED,{client});
-  const tokenHolders = useQuery(GET_TOKEN_HOLDERS,{client:clientVoltHolders});
-  const tokenStakeHolders = useQuery(GET_VOLT_STAKER_EARNING,{client:clientVoltStakeHolders,
-    variables: {
-      id:Math.floor(Date.now()/8.64e7)+''
-    }});
-  let stableSwapTotalLiquiditiy=useStableswapTotalLiquidity(18);
-  
+  const totalValueLocked = useQuery(GET_TOTAL_LOCKED_VALUE, {
+    client: clientVoltStakeHolders,
+  });
+  const totalVolume = useQuery(GET_TOTAL_VOLUME, { client });
+  const getSwap = useQuery(GET_SWAP, { client: stableSwapClient });
+
+  const totalLocked = useQuery(GET_TOTAL_LOCKED, { client });
+  const tokenHolders = useQuery(GET_TOKEN_HOLDERS, {
+    client: clientVoltHolders,
+  });
+  let [tokenStakeHolders, setTokenStakeHolders] = useState(-1);
+
+  let stableSwapTotalLiquiditiy = useStableswapTotalLiquidity(18);
+
+  const getLastSevenDaysStakerEarnings = async () => {
+    const previousSevenDays = new Array(7).fill().map((_, index) => {
+      let date = new Date();
+      return Math.floor(date.setDate(date.getDate() - index) / 8.64e7) + "";
+    });
+    let results = await Promise.all(
+      previousSevenDays.map(async (day) => {
+        return await clientVoltStakeHolders.query({
+          query: GET_VOLT_STAKER_EARNING,
+          variables: {
+            id: day,
+          },
+        });
+      })
+    );
+    let sumOfPreviousSevenDays = sum(results
+      .map(({ data: { servingDayDatas } }) => {
+        return servingDayDatas[0]?.voltServed || 0;
+      })
+      .map((item) => Math.floor(parseFloat(item))));
+      return setTokenStakeHolders(sumOfPreviousSevenDays);
+  };
+  useEffect(() => {
+    getLastSevenDaysStakerEarnings();
+  }, []);
+
   return (
     <>
       <div className="h-screen w-screen max-h-page relative ">
-
         <FadeInAnimation>
           <img
-            style={{top:'66%'}}
+            style={{ top: "66%" }}
             className="desktop   animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             src={LandingImage}
           />
         </FadeInAnimation>
         <div className="container">
-        
-          
-        
           <Navbar />
           <div className="pt-20 sm:pt-3"></div>
 
           <div className="section">
             <div className="header section__content ">
-           
-              <TextAnimation
-           text="Supercharge your"/>
- <TextAnimation
-           text="DeFi experience"/>
+              <TextAnimation text="Supercharge your" />
+              <TextAnimation text="DeFi experience" />
               <div className="header--subheader">
                 Imagine being in full control of your finances while earning the
                 highest interest rate to date. Voltage is a non-custodial
@@ -197,32 +212,48 @@ function Home() {
                 fingertips.
               </div>
               <div className="section__buttons">
-                <button onClick={()=>{
-                  window.open('https://app.voltage.finance/#/swap','_blank')
-                }} className="button">Swap Now</button>
-                <button onClick={()=>{
-                  window.open('https://app.voltage.finance/#/swap','_blank')
-                }}  className="button--inverted">Get fUSD</button>
+                <button
+                  onClick={() => {
+                    window.open("https://app.voltage.finance/#/swap", "_blank");
+                  }}
+                  className="button"
+                >
+                  Swap Now
+                </button>
+                <button
+                  onClick={() => {
+                    window.open("https://app.voltage.finance/#/swap", "_blank");
+                  }}
+                  className="button--inverted"
+                >
+                  Get fUSD
+                </button>
               </div>
             </div>
             <FadeInAnimation>
-            <img
-              className="mobile  w-300 mx-auto relative z-1"
-              src={LandingImageMobile}
-            />
-          </FadeInAnimation>
+              <img
+                className="mobile  w-300 mx-auto relative z-1"
+                src={LandingImageMobile}
+              />
+            </FadeInAnimation>
           </div>
-          <Banner 
+          <Banner
             loading={
-             totalVolume.loading||
-              tokenHolders.loading||
-              stableSwapTotalLiquiditiy===0||
-              tokenStakeHolders.loading
+              totalVolume.loading ||
+              tokenHolders.loading ||
+              stableSwapTotalLiquiditiy === -1 ||
+              tokenStakeHolders===-1
             }
-            dailVolume={!totalVolume.loading&&totalVolume?.data?.uniswapDayDatas[0]?.dailyVolumeUSD}
-            tokenHolders={!tokenHolders.loading&&tokenHolders?.data?.systemInfos[0]?.userCount}
+            dailVolume={
+              !totalVolume.loading &&
+              totalVolume?.data?.uniswapDayDatas[0]?.dailyVolumeUSD
+            }
+            tokenHolders={
+              !tokenHolders.loading &&
+              tokenHolders?.data?.systemInfos[0]?.userCount
+            }
             totalLocked={stableSwapTotalLiquiditiy}
-            tokenStakeHolders={!tokenStakeHolders.loading&&tokenStakeHolders?.data?.servingDayDatas[0]?.voltServed}
+            tokenStakeHolders={tokenStakeHolders}
           />
         </div>
       </div>
@@ -233,17 +264,16 @@ function Home() {
             Take your DeFi everywhere you go!
             <div className="header--subheader">
               <div className=" sm:w-full">
-              The Volt App is a web 3 non-custodial wallet with everything you
-              need to carry in your pocket.
-              <br></br>
-              <br></br>
-              Send, Receive, Swap, Stake & much more with out paying for gas
-              fees and with just one click.
-              <br></br>
-              <br></br>
-              Frictionless DEFI is here:
+                The Volt App is a web 3 non-custodial wallet with everything you
+                need to carry in your pocket.
+                <br></br>
+                <br></br>
+                Send, Receive, Swap, Stake & much more with out paying for gas
+                fees and with just one click.
+                <br></br>
+                <br></br>
+                Frictionless DEFI is here:
               </div>
-           
             </div>
             <div className="section__buttons">
               <Download type="apple" />
@@ -253,7 +283,13 @@ function Home() {
 
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'  height={1000} width={1000} mobile={VoltPhones} desktop={VoltPhones} />
+              <Image
+                aligned="right"
+                height={1000}
+                width={1000}
+                mobile={VoltPhones}
+                desktop={VoltPhones}
+              />
             </FadeInAnimation>
           </div>
         </div>
@@ -263,31 +299,49 @@ function Home() {
         <div className="section ">
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='left'  width={490}  mobile={FuseDollarMobile} desktop={FuseDollar} />
+              <Image
+                aligned="left"
+                width={490}
+                mobile={FuseDollarMobile}
+                desktop={FuseDollar}
+              />
             </FadeInAnimation>
           </div>
           <div className="header section__content">
-           <div> Discover Fuse Dollar</div>
+            <div> Discover Fuse Dollar</div>
             <div className="header--subheader">
-            <div className="w-3/4 sm:w-full">
-              The decentralized stablecoin in Fuse. Multiple stables backing
-              fUSD helps you hedge from the collateral uncertainty.
-              <br></br>
-              <br></br>A fully DAO governed stablecoin where the community
-              decides the collateral, fees and weights.
-              <br></br>
-              <br></br>
-              fUSD mitigates liquidity fragmentation concentrating everything
-              into just one stable.
-            </div>
+              <div className="w-3/4 sm:w-full">
+                The decentralized stablecoin in Fuse. Multiple stables backing
+                fUSD helps you hedge from the collateral uncertainty.
+                <br></br>
+                <br></br>A fully DAO governed stablecoin where the community
+                decides the collateral, fees and weights.
+                <br></br>
+                <br></br>
+                fUSD mitigates liquidity fragmentation concentrating everything
+                into just one stable.
+              </div>
             </div>
             <div className="section__buttons">
-              <button onClick={()=>{
-                  window.open('https://app.voltage.finance/#/swap','_blank')
-                }}  className="button">Get fUSD </button>
-              <button onClick={()=>{
-                window.open('https://forum.voltage.finance/t/vip-7-proposal-to-deploy-an-upgraded-fuse-stablecoin/260/14','_blank')
-              }} className="button--inverted">Read more</button>
+              <button
+                onClick={() => {
+                  window.open("https://app.voltage.finance/#/swap", "_blank");
+                }}
+                className="button"
+              >
+                Get fUSD{" "}
+              </button>
+              <button
+                onClick={() => {
+                  window.open(
+                    "https://forum.voltage.finance/t/vip-7-proposal-to-deploy-an-upgraded-fuse-stablecoin/260/14",
+                    "_blank"
+                  );
+                }}
+                className="button--inverted"
+              >
+                Read more
+              </button>
             </div>
           </div>
         </div>
@@ -295,27 +349,33 @@ function Home() {
         <Padding size="lg" />
 
         <div className="section">
-        <div className="header section__content ">
+          <div className="header section__content ">
             <div>Make your crypto work for you</div>
             <div className="header--subheader">
-            <div className="w-3/4 sm:w-full">
-            Check out how Voltage farms and Volt staking can help you make
-              your crypto work for you. Lock your Volt tokens for stronger
-              voting power and other benefits!
-            </div>
-           
+              <div className="w-3/4 sm:w-full">
+                Check out how Voltage farms and Volt staking can help you make
+                your crypto work for you. Lock your Volt tokens for stronger
+                voting power and other benefits!
+              </div>
             </div>
             <div className="section__buttons">
-              <button onClick={()=>{
-                window.open('https://app.voltage.finance/#/farm/122','_blank')
-              }} className="button--inverted">Read More</button>
+              <button
+                onClick={() => {
+                  window.open(
+                    "https://app.voltage.finance/#/farm/122",
+                    "_blank"
+                  );
+                }}
+                className="button--inverted"
+              >
+                Read More
+              </button>
             </div>
           </div>
-         
-          
+
           <div className="section__background">
             <FadeInAnimation>
-              <Image aligned='right'     mobile={CoinWallet} desktop={CoinWallet} />
+              <Image aligned="right" mobile={CoinWallet} desktop={CoinWallet} />
             </FadeInAnimation>
           </div>
         </div>
@@ -334,15 +394,41 @@ function Home() {
         <div className="header--section header--bold header--padded">
           Partners
         </div>
-        <Affiliates items={[Beefy,Quill, Ascend, InfinityPad,Ibc, Graph, Poolz, Mexc]} />
+        <Affiliates
+          items={[Beefy, Quill, Ascend, InfinityPad, Ibc, Graph, Poolz, Mexc]}
+        />
 
         <Padding size="sm" />
 
         <div className="header--section header--bold header--padded">
           Backers
         </div>
-        <Affiliates items={[Spark,Shima,  Collider,Crt, Trg,Tmt,  Mg,Node,Gbv, Blockchain, Asc,Zbs, Gda, Sheesha, Metavest, As, Aria, AngelDoa, Ex, Valhalla, SideDoor,
-GanterCaptain]} />
+        <Affiliates
+          items={[
+            Spark,
+            Shima,
+            Collider,
+            Crt,
+            Trg,
+            Tmt,
+            Mg,
+            Node,
+            Gbv,
+            Blockchain,
+            Asc,
+            Zbs,
+            Gda,
+            Sheesha,
+            Metavest,
+            As,
+            Aria,
+            AngelDoa,
+            Ex,
+            Valhalla,
+            SideDoor,
+            GanterCaptain,
+          ]}
+        />
 
         <Padding size="sm" />
 

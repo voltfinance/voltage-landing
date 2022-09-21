@@ -14,7 +14,7 @@
   }
 
   @include element(menu) {
-    @apply grid grid-cols-6 sm:grid-cols-1 md:grid-cols-1 w-2/5  sm:w-100 ml-20 sm:ml-5 md:ml-5;
+    @apply grid grid-cols-6 sm:grid-cols-1 justify-center md:justify-items-start  md:grid-cols-1 w-500  sm:w-100 ml-20 sm:ml-5 md:ml-5;
 
     color: white;
     cursor: pointer;

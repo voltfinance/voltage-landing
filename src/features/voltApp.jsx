@@ -17,60 +17,48 @@ import Image from "./shared/Image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect } from "react";
 import TextAnimation from "./shared/TextAnimation";
-import LandingImage from '../assets/app-landing-v2.png'
+import LandingImage from "../assets/app-landing-v2.png";
 let title = "DeFi For the Masses";
 
 function VoltApp() {
   return (
     <>
       <div className="h-screen w-screen max-h-page relative ">
+        <FadeInAnimation>
+          <img
+            style={{ top: "66%" }}
+            className="desktop   animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            src={LandingImage}
+          />
+        </FadeInAnimation>
+        <div className="container">
+          <Navbar />
+          <div className="pt-20 sm:pt-3"></div>
 
-<FadeInAnimation>
-  <img
-    style={{top:'66%'}}
-    className="desktop   animate-fade absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-    src={LandingImage}
-  />
-</FadeInAnimation>
-<div className="container">
-  
-  
+          <div className="section">
+            <div className="header section__content ">
+              <TextAnimation text="DeFi For the Masses" />
 
-  <Navbar />
-  <div className="pt-20 sm:pt-3"></div>
-
-  <div className="section">
-    <div className="header section__content ">
-   
-    <TextAnimation text="DeFi For the Masses" />
-
-<div className="header--subheader">
-  Start your DEFI journey with our easy to use app. Secure, Gasless
-  and frictionless crypto is here!
-</div>
-<div className="header--mini-bold  pt-4">
-  Download the Volt App Today
-</div>
-<div className="section__buttons">
-  <Download type="apple" />
-  <Download type="google" />
-</div>
-      
-    </div>
-    <FadeInAnimation>
-    <img
-      className="mobile w-full"
-      src={VoltPhones}
-    />
-  </FadeInAnimation>
-  </div>
-
-</div>
-</div>
-     
+              <div className="header--subheader">
+                Start your DEFI journey with our easy to use app. Secure,
+                Gasless and frictionless crypto is here!
+              </div>
+              <div className="header--mini-bold  pt-4">
+                Download the Volt App Today
+              </div>
+              <div className="section__buttons">
+                <Download type="apple" />
+                <Download type="google" />
+              </div>
+            </div>
+            <FadeInAnimation>
+              <img className="mobile w-full" src={VoltPhones} />
+            </FadeInAnimation>
+          </div>
+        </div>
+      </div>
 
       <div className="container">
-       
         <Padding size="sm" />
 
         <div className="section">
@@ -86,8 +74,8 @@ function VoltApp() {
           </div>
 
           <div className="header section__content ">
-            <div className="pt-20 sm:pt-0"></div>
-            A non-custodial wallet that will free you from fees
+            <div className="pt-20 sm:pt-0"></div>A non-custodial wallet that
+            will free you from fees
             <div className="header--subheader">
               The Voltage app lets you create a contract account but no need to
               be a blockchain expert . Your fees are covered by Voltage DAO
@@ -132,8 +120,7 @@ function VoltApp() {
             </FadeInAnimation>
           </div>
           <div className="header section__content ">
-          <div className="pt-28 sm:pt-0"></div>
-
+            <div className="pt-28 sm:pt-0"></div>
             Send and recieve funds from your phone contacts
             <div className="header--subheader">
               No need to copy/paste public keys, send funds trough your phone

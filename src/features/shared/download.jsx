@@ -8,8 +8,7 @@ const SOURCES = {
     text: "Apple Store",
   },
   google: {
-    location:
-      "https://get.voltage.finance/gBMb",
+    location: "https://get.voltage.finance/gBMb",
     logo: GoogleLogo,
     text: "Google Store",
   },

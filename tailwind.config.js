@@ -11,10 +11,9 @@ module.exports = {
       page: "1300px",
     },
     maxWidth: {
-      '6xl': '73rem',
-      'full':'100%'
+      "6xl": "73rem",
+      full: "100%",
     },
-
 
     // keyframes: {
     //   ping: {
