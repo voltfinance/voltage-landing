@@ -1,0 +1,34 @@
+@include block(faq) {
+  cursor: pointer;
+  @extend %no-select;
+
+  @apply w-3/4 sm:w-full mx-auto flex flex-col gap-3;
+  @include element(icon) {
+    height: 40px;
+    width: 40px;
+
+    @apply flex justify-center items-center;
+  }
+  @include element(container) {
+    @apply rounded-lg;
+    background-color: #2e2e2e;
+    color: white;
+    width: 100%;
+  }
+  @include element(answer) {
+    a {
+      @apply text-green font-semibold;
+    }
+  }
+  @include element(item) {
+    height: inherit;
+    height: 68px;
+
+    @apply flex flex-row font-bold justify-between items-center px-8 font-montserrat;
+  }
+  @include element(item--open) {
+    @apply font-montserrat  px-8 pb-5;
+
+    width: 100%;
+  }
+}

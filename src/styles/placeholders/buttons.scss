@@ -1,0 +1,11 @@
+%button {
+  @apply text-base flex font-montserrat tracking-wider justify-center items-center font-semibold rounded-lg;
+  width: 215px;
+  height: 45px;
+  background-color: theme("colors.green");
+  @include modifier(white) {
+  }
+
+  @include modifier(transparent) {
+  }
+}

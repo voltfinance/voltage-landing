@@ -1,0 +1,64 @@
+// @include block(landing-background-image) {
+//   //   background-position-y: -150%;
+//   //   width: 80%;
+//   //   background-repeat: no-repeat;
+//   //   background-size: cover;
+// }
+
+.landing-background-image {
+  //   &:before {
+  //     content: "";
+  //     height: 100%;
+  //     width: 100%;
+  //     top: 150px;
+  //     position: absolute;
+  //     display: block;
+  //     background-size: cover;
+  //     background-image: url("src/assets/home-landing.png");
+  //     visibility: visible;
+  //     @apply sm:invisible;
+  //   }
+  //   &:after {
+  //     content: "";
+  //     height: 100%;
+  //     width: 100%;
+  //     top: 150px;
+  //     position: absolute;
+  //     display: block;
+  //     background-size: cover;
+  //     background-image: url("src/assets/home-landing-mobile.png");
+  //     visibility: invisible;
+  //     @apply sm:visible;
+  //   }
+}
+
+// @include block(image) {
+//   @include element(landing--desktop) {
+//     &:before {
+//       content: "";
+//       height: 100%;
+//       width: 100%;
+//       top: 150px;
+//       position: absolute;
+//       display: block;
+//       background-size: cover;
+//       visibility: hidden;
+//       background-image: url("src/assets/home-landing-mobile.png");
+//       @apply sm:visible;
+//     }
+//   }
+//   @include element(landing--mobile) {
+//     &:before {
+//       content: "";
+//       height: 100%;
+//       width: 100%;
+//       top: 150px;
+//       position: absolute;
+//       display: block;
+//       background-size: cover;
+//       visibility: hidden;
+//       background-image: url("src/assets/home-landing-mobile.png");
+//       @apply sm:visible;
+//     }
+//   }
+// }

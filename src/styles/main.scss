@@ -1,0 +1,29 @@
+@import "https://fonts.cdnfonts.com/css/sf-pro-display";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap");
+@import "resets/resets";
+@import "utils";
+@import "tailwind";
+@import "components/main";
+@import "pages/main";
+
+*:not(i) {
+  text-rendering: optimizeLegibility !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: antialiased !important;
+  @apply font-montserrat;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  @apply 3xl:text-8xl;
+  // @apply xl:text-sm;
+}
+
+// a {
+//   @apply font-semibold text-green;
+// }

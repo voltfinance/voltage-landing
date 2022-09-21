@@ -1,0 +1,7 @@
+%header {
+  @apply text-7xl font-montserrat;
+
+  @include modifier(subheader) {
+    @apply text-xl pt-2;
+  }
+}

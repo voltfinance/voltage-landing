@@ -1,0 +1,13 @@
+@include block(p--lg) {
+  @apply p-20 sm:p-16;
+}
+
+@include block(p--sm) {
+  @apply p-20 sm:p-14;
+}
+@include block(p--xs) {
+  @apply p-10 sm:p-10;
+}
+@include block(p--xl) {
+  @apply p-28 sm:p-20;
+}

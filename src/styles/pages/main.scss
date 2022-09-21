@@ -1,0 +1,6 @@
+@import "./home";
+
+body {
+  @apply h-screen  w-screen relative;
+  background-color: theme("colors.black");
+}

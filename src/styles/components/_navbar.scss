@@ -1,0 +1,40 @@
+@include block(navbar) {
+  @apply h-20 w-full items-center flex py-10;
+  @extend %no-select;
+  @include element(container) {
+    cursor: pointer;
+    z-index: 9999999;
+  }
+  @include element(logo) {
+    // width: 145px;
+
+    height: auto;
+    @apply w-100  sm:w-full;
+    width: 125px;
+  }
+
+  @include element(menu) {
+    @apply flex gap-x-10 ml-20 md:ml-5 sm:ml-5;
+
+    color: white;
+    cursor: pointer;
+    z-index: 9999999;
+
+    @include element(item) {
+      @apply font-montserrat text-sm;
+
+      @extend %hover-animation;
+      &:hover {
+        color: theme("colors.green");
+      }
+    }
+  }
+  @include element(button) {
+    margin-left: auto;
+    @extend %button;
+
+    height: 28px;
+    width: 140px;
+    @apply font-semibold flex text-xs sm:w-100 rounded-md;
+  }
+}
