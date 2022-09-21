@@ -123,7 +123,7 @@ function VoltApp() {
             <div className="pt-28 sm:pt-0"></div>
             Send and recieve funds from your phone contacts
             <div className="header--subheader">
-              No need to copy/paste public keys, send funds trough your phone
+              No need to copy/paste public keys, send funds through your phone
               contacts! Mobile payments were never so easy- and it works
               globally!
             </div>
