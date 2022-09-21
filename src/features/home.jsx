@@ -310,7 +310,7 @@ function Home() {
           <div className="header section__content">
             <div> Discover Fuse Dollar</div>
             <div className="header--subheader">
-              <div className="w-3/4 sm:w-full">
+              <div className=" sm:w-full">
                 The decentralized stablecoin in Fuse. Multiple stables backing
                 fUSD helps you hedge from the collateral uncertainty.
                 <br></br>
@@ -352,7 +352,7 @@ function Home() {
           <div className="header section__content ">
             <div>Make your crypto work for you</div>
             <div className="header--subheader">
-              <div className="w-3/4 sm:w-full">
+              <div className="w-full sm:w-full">
                 Check out how Voltage farms and Volt staking can help you make
                 your crypto work for you. Lock your Volt tokens for stronger
                 voting power and other benefits!
