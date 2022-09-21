@@ -104,8 +104,8 @@ const Footer = () => {
         <div className="footer__contact">
         <form
         className="signup"
-          action="https://formspree.io/f/mvoykeaw"
-          method="POST"
+        action="https://formspree.io/f/maykerbr"
+        method="POST"
         >
                       <input type="email" name="email" placeholder="Enter Email" className="signup__input" />
                       <button className="signup__button">Sign up</button>
