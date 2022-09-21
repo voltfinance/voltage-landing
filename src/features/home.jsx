@@ -362,7 +362,7 @@ function Home() {
               <button
                 onClick={() => {
                   window.open(
-                    "https://app.voltage.finance/#/farm/122",
+                    "https://docs-voltage.gitbook.io/voltage/the-platform/yield-farming",
                     "_blank"
                   );
                 }}
