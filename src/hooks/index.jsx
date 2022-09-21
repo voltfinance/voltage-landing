@@ -234,8 +234,8 @@ export function useStableswapTotalLiquidity(decimals = 0) {
   let [usdPrices, setUsdPrices] = useState(null);
 
   let [data, setData] = useState(null);
-  let [stableswapTotalLiquidity, setStableSwapTotalLiquidity] = useState(0);
-  let [totalLocked, setTotalLocked] = useState(-1);
+  let [stableswapTotalLiquidity, setStableSwapTotalLiquidity] = useState(-1);
+  let [totalLocked, setTotalLocked] = useState(0);
 
   const getData = async () => {
     const usdPrices = await getStablecoinPrices();
