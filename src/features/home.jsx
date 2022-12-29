@@ -129,7 +129,6 @@ function Home() {
   useEffect(() => {
     getLastSevenDaysStakerEarnings()
   }, [])
-  console.log(totalVolume, 'totalVolume')
   return (
     <>
       <div className="h-screen w-screen max-h-page relative ">
