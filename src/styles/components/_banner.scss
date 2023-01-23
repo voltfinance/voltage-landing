@@ -25,7 +25,7 @@
   }
 
   @include element(header) {
-    @apply text-xl sm:text-xl font-extrabold md:text-xl;
+    @apply text-xl sm:text-xl flex font-extrabold md:text-xl;
   }
   @include element(subheader) {
     @apply text-xs font-normal sm:text-xs md:text-xs;
