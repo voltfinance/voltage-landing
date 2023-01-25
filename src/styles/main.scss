@@ -20,10 +20,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
   @apply 3xl:text-8xl;
-  // @apply xl:text-sm;
 }
 
-// a {
-//   @apply font-semibold text-green;
-// }
