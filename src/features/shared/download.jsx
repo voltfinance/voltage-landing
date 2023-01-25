@@ -1,32 +1,36 @@
-import AppleLogo from "../../assets/apple-black.svg";
-import GoogleLogo from "../../assets/google-black.svg";
+import { isBrowser } from 'react-device-detect'
+import AppleLogo from '../../assets/apple-black.svg'
+import GoogleLogo from '../../assets/google-black.svg'
 
 const SOURCES = {
   apple: {
-    location: "https://get.voltage.finance/gBMb",
+    desktopUrl: ' https://apps.apple.com/us/app/volt-defi/id6444159237',
+    mobileUrl: 'https://get.voltage.finance/gBMb',
     logo: AppleLogo,
-    text: "Apple Store",
+    text: 'Apple Store',
   },
   google: {
-    location: "https://get.voltage.finance/gBMb",
+    desktopUrl: 'https://play.google.com/store/apps/details?id=finance.voltage.app',
+    mobileUrl: 'https://get.voltage.finance/gBMb',
     logo: GoogleLogo,
-    text: "Google Store",
+    text: 'Google Store',
   },
-};
+}
 
-const Download = ({ type }) => {
-  let { location, logo, text } = SOURCES[type];
+const Download = ({ fluid, type }) => {
+  let { mobileUrl, desktopUrl, logo, text } = SOURCES[type]
   return (
     <button
       onClick={() => {
-        window.location = location;
+        window.open(isBrowser ? desktopUrl : mobileUrl, '_blank')
       }}
+      style={fluid && { width: '100%' }}
       className="button--logo"
     >
       <img src={logo} />
       <div className="mt-0.5"> {text}</div>
     </button>
-  );
-};
+  )
+}
 
-export default Download;
+export default Download

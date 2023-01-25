@@ -1,0 +1,9 @@
+
+
+@include block(modal) {
+    @apply h-screen w-screen;
+    @include element(content){
+        @apply h-fit w-fit top-1/2  left-1/2 absolute -translate-x-1/2 -translate-y-1/2;
+    }
+}
+  
