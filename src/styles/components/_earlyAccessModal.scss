@@ -1,0 +1,34 @@
+@include block(early-access-modal) {
+  background-color:  #2e2e2e;
+  border:2px solid #76F80A;
+  z-index: 99999999999;
+  @apply w-900 3xl:w-1200 md:w-700 sm:h-425 rounded-lg sm:w-350;
+
+    @include element(content) {
+        @apply flex absolute w-600 sm:w-full flex-col p-10 sm:p-5
+    }
+    @include element(header) {
+        @apply text-3xl sm:text-2xl;
+        @apply font-montserrat font-extrabold leading-tight;
+        color: white;
+    }
+    @include element(body) {
+        @apply text-2xl sm:text-xl flex flex-col gap-6 pt-6;
+        @apply font-montserrat leading-tight;
+        color: white;
+    }
+    @include element(download) {
+        @apply font-montserrat flex gap-2 text-xl pb-4 font-extrabold leading-tight items-center   pt-6 ;
+        color: #76F80A;
+    }
+    @include element(image) {
+        @apply ml-auto sm:opacity-5 md:opacity-5 h-375 md:h-375 3xl:h-550 sm:absolute sm:bottom-0 sm:h-auto;
+    }
+    @include element(buttons) {
+        @apply flex sm:w-full w-400 sm:flex-col gap-2 sm:gap-3;
+    }
+    @include element(arrow) {
+        @apply h-5 mt-1;
+    }
+  }
+  

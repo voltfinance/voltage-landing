@@ -17,13 +17,14 @@ const SOURCES = {
   },
 }
 
-const Download = ({ type }) => {
+const Download = ({ fluid, type }) => {
   let { mobileUrl, desktopUrl, logo, text } = SOURCES[type]
   return (
     <button
       onClick={() => {
-        window.location = isBrowser ? desktopUrl : mobileUrl
+        window.open(isBrowser ? desktopUrl : mobileUrl, '_blank')
       }}
+      style={fluid && { width: '100%' }}
       className="button--logo"
     >
       <img src={logo} />
