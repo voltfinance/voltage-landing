@@ -9,7 +9,9 @@ const EarlyAccessModal = () => {
       <div className="early-access-modal__content">
         <div className="early-access-modal__header">Join the mobile DeFi revolution</div>
         <div className="early-access-modal__body">
-          <div> The waitlist is open, join and participate for a $2000 prize</div>
+          <div>
+            The waitlist is open, join and participate for a <b>$2000 prize</b>
+          </div>
 
           <div>
             <span className="text-white">Get early access</span> to discover everything the Volt app has to offer
