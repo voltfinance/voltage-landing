@@ -27,8 +27,6 @@ function VoltApp() {
         isOpen={open}
         onClose={() => {
           setOpen(false)
-
-          // localStorage.setItem('modal_status', 'closed')
         }}
       >
         <EarlyAccessModal />
