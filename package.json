@@ -50,6 +50,7 @@
     "react-router-dom": "^6.2.1",
     "swr": "^1.3.0",
     "the-new-css-reset": "^1.4.9",
+    "use-click-outside": "^2.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

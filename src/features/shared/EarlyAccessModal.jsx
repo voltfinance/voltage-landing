@@ -1,4 +1,4 @@
-import { isAndroid, isBrowser, isIOS, isMobile } from 'react-device-detect'
+import { isBrowser } from 'react-device-detect'
 import Arrow from '../../assets/arrow.svg'
 import RocketShip from '../../assets/rocket-ship.png'
 import Download from './download'
@@ -9,7 +9,9 @@ const EarlyAccessModal = () => {
       <div className="early-access-modal__content">
         <div className="early-access-modal__header">Join the mobile DeFi revolution</div>
         <div className="early-access-modal__body">
-          <div> The waitlist is open, join and participate for a $2000 prize</div>
+          <div>
+            The waitlist is open, join and participate for a <b>$2000 prize</b>
+          </div>
 
           <div>
             <span className="text-white">Get early access</span> to discover everything the Volt app has to offer
