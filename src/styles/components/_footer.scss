@@ -12,8 +12,8 @@
 
 @include block(links) {
   color: white;
-  //
-  @apply grid grid-cols-3 md:grid-cols-2 sm:grid-cols-2 sm:gap-y-3 md:gap-y-3 md:my-10 sm:my-10;
+  
+  @apply grid grid-cols-3 gap-1 md:grid-cols-2 sm:grid-cols-2  sm:gap-y-3 md:gap-y-3 md:my-10 sm:my-10;
 
   @include element(item) {
     @apply hover:text-green cursor-pointer;
@@ -22,7 +22,6 @@
   @include element(icon) {
     display: flex;
     align-items: center;
-    justify-content: center;
     & > img {
       width: 12px;
       margin-right: 6px;

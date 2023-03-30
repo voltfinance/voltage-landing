@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import AppBuyCrypto from '../assets/app-buy-crypto.png'
 import AppCoins from '../assets/app-coins.png'
 import AppExchange from '../assets/app-exchange.png'
@@ -8,30 +7,17 @@ import AppWallet from '../assets/coin-wallet.png'
 import FuseLogo from '../assets/fuse-logo.png'
 import VoltPhones from '../assets/phones.png'
 import Download from './shared/download'
-import EarlyAccessModal from './shared/EarlyAccessModal'
 import FadeInAnimation from './shared/FadeIn'
 import Faq from './shared/Faq'
 import Footer from './shared/Footer'
 import Image from './shared/Image'
-import Modal from './shared/Modal'
 import Navbar from './shared/Navbar'
 import Padding from './shared/Padding'
 import TextAnimation from './shared/TextAnimation'
-let title = 'DeFi For the Masses'
 
 function VoltApp() {
-  let [open, setOpen] = useState(true)
   return (
     <>
-      <Modal
-        isOpen={open}
-        onClose={() => {
-          setOpen(false)
-        }}
-      >
-        <EarlyAccessModal />
-      </Modal>
-
       <div className="h-screen w-screen max-h-page relative ">
         <FadeInAnimation>
           <img
