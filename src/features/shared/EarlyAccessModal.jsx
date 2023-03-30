@@ -1,4 +1,4 @@
-import { isAndroid, isBrowser, isIOS, isMobile } from 'react-device-detect'
+import { isBrowser } from 'react-device-detect'
 import Arrow from '../../assets/arrow.svg'
 import RocketShip from '../../assets/rocket-ship.png'
 import Download from './download'
