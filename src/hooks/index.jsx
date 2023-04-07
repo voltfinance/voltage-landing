@@ -128,6 +128,14 @@ export async function getStablecoinPrices() {
     [FUSE_UST.address]: ust,
   }
 }
+
+export async function getVoltPrice() {
+  const voltPrice = await getTokenPrice(tokenPriceQuery, {
+    id: '0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4'.toLowerCase(),
+  })
+  return voltPrice
+}
+
 export const tryFormatDecimalAmount = (amount, tokenDecimals = 18, decimals = 0) => {
   if (!amount || !tokenDecimals) return undefined
 
@@ -203,52 +211,96 @@ const GET_TOTAL_LOCKED = gql`
     }
   }
 `
+
+const GET_TOTAL_LOCKED_V2 = gql`
+  {
+    factories(first: 1) {
+      liquidityUSD
+    }
+  }
+`
+
+const GET_FUSD_TOTAL_LOCKED = gql`
+  {
+    massets(first:1){
+      totalSupply {
+        simple
+      }
+    }
+  }
+`
+
+const GET_XVOLT_TOTAL_LOCKED = gql`
+  {
+    bars(first:1){
+      totalSupply
+      ratio
+    }
+  }
+`
+
 const client = new ApolloClient({
   uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange',
   cache: new InMemoryCache(),
 })
 
-export function useStableswapTotalLiquidity(decimals = 0) {
-  let [usdPrices, setUsdPrices] = useState(null)
+const clientV2 = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange-v2',
+  cache: new InMemoryCache(),
+})
 
-  let [data, setData] = useState(null)
-  let [stableswapTotalLiquidity, setStableSwapTotalLiquidity] = useState(-1)
-  let [totalLocked, setTotalLocked] = useState(0)
+const fusdClient = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/fusd-subgraph',
+  cache: new InMemoryCache(),
+})
 
-  const getData = async () => {
-    const usdPrices = await getStablecoinPrices()
-    const { data } = await stableswapSubgraphClient.query({
-      query: stableswapTokenBalancesQuery,
-    })
-    const {
-      data: { uniswapFactories },
-    } = await client.query({ query: GET_TOTAL_LOCKED })
+const voltBarClient = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/voltbar',
+  cache: new InMemoryCache(),
+})
 
-    setTotalLocked(parseFloat(uniswapFactories[0]?.totalLiquidityUSD))
-    setUsdPrices(usdPrices)
-    setData(data?.swaps)
-  }
+export function useTVL() {
+  let [tvl, setTvl] = useState(0)
+  let [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    const getData = async () => {
+      const usdPrices = await getStablecoinPrices()
+      const voltPrice = await getVoltPrice()
+
+      const { data: staleSwapData } = await stableswapSubgraphClient.query({
+        query: stableswapTokenBalancesQuery,
+      })
+      const { data: dexData } = await clientV2.query({ 
+        query: GET_TOTAL_LOCKED_V2
+      })
+      const { data: fusdData } = await fusdClient.query({
+        query: GET_FUSD_TOTAL_LOCKED
+      })
+      const { data: voltBarData } = await voltBarClient.query({
+        query: GET_XVOLT_TOTAL_LOCKED
+      })
+
+      const dexLiquidity = dexData?.factories[0]?.liquidityUSD
+      const stableSwapLiquidity = staleSwapData?.swaps.reduce((mem, swap) => {
+        const poolAddress = ethers.utils.getAddress(swap.id)
+        return mem.add(
+          swap.balances.reduce((mem, rawBalance, i) => {
+            const token = STABLESWAP_POOLS[poolAddress].tokenList[i]
+            return mem.add(
+              new TokenAmount(token, rawBalance).multiply(((usdPrices[token.address] ?? 1) * 1e18).toString()).toFixed(0)
+            )
+          }, BigNumber.from('0'))
+        )
+      }, BigNumber.from('0'))
+      const fusdLiquidity = fusdData?.massets[0]?.totalSupply?.simple * usdPrices[FUSE_FUSD.address]
+      const xvoltLocked = voltBarData?.bars[0]?.totalSupply * voltBarData?.bars[0]?.ratio * voltPrice
+      
+      setTvl(parseFloat(dexLiquidity) + parseFloat(tryFormatDecimalAmount(stableSwapLiquidity.toString(), 18)) + fusdLiquidity + xvoltLocked)
+      setLoading(false)
+    }
+
     getData()
   }, [])
-
-  useEffect(() => {
-    if (!data || !usdPrices) return
-    const liquidity = data.reduce((mem, swap) => {
-      const poolAddress = ethers.utils.getAddress(swap.id)
-      return mem.add(
-        swap.balances.reduce((mem, rawBalance, i) => {
-          const token = STABLESWAP_POOLS[poolAddress].tokenList[i]
-          return mem.add(
-            new TokenAmount(token, rawBalance).multiply(((usdPrices[token.address] ?? 1) * 1e18).toString()).toFixed(0)
-          )
-        }, BigNumber.from('0'))
-      )
-    }, BigNumber.from('0'))
-    const totalLockedPlusSwap = totalLocked + parseFloat(tryFormatDecimalAmount(liquidity.toString(), 18, decimals))
-
-    setStableSwapTotalLiquidity(totalLockedPlusSwap)
-  }, [data, usdPrices, decimals, totalLocked])
-  return stableswapTotalLiquidity
+  return {tvl, loading}
 }
