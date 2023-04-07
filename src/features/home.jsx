@@ -36,7 +36,7 @@ import Tmt from '../assets/tmt.png'
 import Trg from '../assets/trg-s.png'
 import Valhalla from '../assets/valhalla.png'
 import Zbs from '../assets/zbs.png'
-import { useStableswapTotalLiquidity } from '../hooks'
+import { useTVL } from '../hooks'
 import Affiliates from './shared/Affiliates'
 import Banner from './shared/Banner'
 import CardList from './shared/CardList'
@@ -100,7 +100,7 @@ function Home() {
   })
   let [tokenStakeHolders, setTokenStakeHolders] = useState(-1)
 
-  let stableSwapTotalLiquiditiy = useStableswapTotalLiquidity(18)
+  let {tvl, loading: tvlLoading} = useTVL()
 
   const getLastSevenDaysStakerEarnings = async () => {
     const previousSevenDays = new Array(7).fill().map((_, index) => {
@@ -178,7 +178,7 @@ function Home() {
             loading={
               totalVolume.loading ||
               tokenHolders.loading ||
-              stableSwapTotalLiquiditiy === -1 ||
+              tvlLoading ||
               tokenStakeHolders === -1
             }
             dailVolume={
@@ -190,7 +190,7 @@ function Home() {
                 1
             }
             tokenHolders={!tokenHolders.loading && tokenHolders?.data?.systemInfos[0]?.userCount}
-            totalLocked={stableSwapTotalLiquiditiy}
+            totalLocked={tvl}
             tokenStakeHolders={tokenStakeHolders}
           />
         </div>
