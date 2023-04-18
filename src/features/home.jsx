@@ -1,6 +1,5 @@
-import { ApolloClient, gql, InMemoryCache, useQuery } from '@apollo/client'
-import { sum, sumBy } from 'lodash'
-import { useEffect } from 'react'
+import { useQuery } from '@apollo/client'
+import { sumBy } from 'lodash'
 import AngelDoa from '../assets/angeldoa.png'
 import Aria from '../assets/aria.png'
 import As from '../assets/as.png'
@@ -49,86 +48,21 @@ import Navbar from './shared/Navbar'
 import Padding from './shared/Padding'
 import TextAnimation from './shared/TextAnimation'
 
-import { useState } from 'react'
 import VoltPhones from '../assets/phones.png'
-
-const GET_TOTAL_VOLUME = gql`
-  {
-    uniswapDayDatas(first: 7, orderBy: date, orderDirection: desc) {
-      dailyVolumeUSD
-    }
-  }
-`
-
-const GET_VOLT_STAKER_EARNING = gql`
-  query getSystemInfo($id: String) {
-    servingDayDatas(where: { id: $id }) {
-      id
-      voltServed
-      voltServedUSD
-    }
-  }
-`
-
-const GET_TOKEN_HOLDERS = gql`
-  {
-    systemInfos(first: 5) {
-      id
-      userCount
-    }
-  }
-`
-const client = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange',
-  cache: new InMemoryCache(),
-})
-
-const clientVoltHolders = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/volt-holders-subgraph',
-  cache: new InMemoryCache(),
-})
-const clientVoltStakeHolders = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/makerv2-fuse',
-  cache: new InMemoryCache(),
-})
+import { voltageSubgraphClient, voltHolderSubgraphClient } from '../graphql/client'
+import { GET_TOKEN_HOLDERS, GET_TOTAL_VOLUME } from '../graphql/queries'
+import { useStakerEarnings } from '../hooks/useStakerEarnings'
 
 function Home() {
-  const totalVolume = useQuery(GET_TOTAL_VOLUME, { client })
+  const totalVolume = useQuery(GET_TOTAL_VOLUME, { client: voltageSubgraphClient })
 
   const tokenHolders = useQuery(GET_TOKEN_HOLDERS, {
-    client: clientVoltHolders,
+    client: voltHolderSubgraphClient,
   })
-  let [tokenStakeHolders, setTokenStakeHolders] = useState(-1)
 
   let stableSwapTotalLiquiditiy = useStableswapTotalLiquidity(18)
+  const stakerEarnings = useStakerEarnings()
 
-  const getLastSevenDaysStakerEarnings = async () => {
-    const previousSevenDays = new Array(7).fill().map((_, index) => {
-      let date = new Date()
-      return Math.floor(date.setDate(date.getDate() - index) / 8.64e7) + ''
-    })
-    let results = await Promise.all(
-      previousSevenDays.map(async (day) => {
-        return await clientVoltStakeHolders.query({
-          query: GET_VOLT_STAKER_EARNING,
-          variables: {
-            id: day,
-          },
-        })
-      })
-    )
-    let sumOfPreviousSevenDays = sum(
-      results
-        .map(({ data: { servingDayDatas } }) => {
-          return servingDayDatas[0]?.voltServed || 0
-        })
-        .map((item) => Math.floor(parseFloat(item)))
-    )
-    return setTokenStakeHolders(sumOfPreviousSevenDays)
-  }
-  useEffect(() => {
-    getLastSevenDaysStakerEarnings()
-  }, [])
   return (
     <>
       <div className="h-screen w-screen max-h-page relative ">
@@ -176,10 +110,7 @@ function Home() {
           </div>
           <Banner
             loading={
-              totalVolume.loading ||
-              tokenHolders.loading ||
-              stableSwapTotalLiquiditiy === -1 ||
-              tokenStakeHolders === -1
+              totalVolume.loading || tokenHolders.loading || stableSwapTotalLiquiditiy === -1 || stakerEarnings === -1
             }
             dailVolume={
               !totalVolume.loading &&
@@ -191,7 +122,7 @@ function Home() {
             }
             tokenHolders={!tokenHolders.loading && tokenHolders?.data?.systemInfos[0]?.userCount}
             totalLocked={stableSwapTotalLiquiditiy}
-            tokenStakeHolders={tokenStakeHolders}
+            tokenStakeHolders={stakerEarnings}
           />
         </div>
       </div>

@@ -1,67 +1,11 @@
-import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
-import { ChainId, Token, TokenAmount } from '@voltage-finance/sdk'
+import { TokenAmount } from '@voltage-finance/sdk'
 import BigNumberJS from 'bignumber.js'
 
 import { BigNumber, ethers } from 'ethers'
 import { useEffect, useState } from 'react'
-export const STABLESWAP_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/t0mcr8se/stableswap-subgraph' // TODO: deploy under voltfinance
-export const FUSESWAP_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/fuseio/fuseswap'
-
-export const FUSE_UST = new Token(
-  ChainId.FUSE,
-  '0x0D58a44be3dCA0aB449965dcc2c46932547Fea2f',
-  18,
-  'atUST',
-  'UST Terra on Fuse'
-)
-export const FUSE_USDT = new Token(
-  ChainId.FUSE,
-  '0xFaDbBF8Ce7D5b7041bE672561bbA99f79c532e10',
-  6,
-  'USDT',
-  'Tether USD on Fuse'
-)
-export const FUSE_USDC = new Token(
-  ChainId.FUSE,
-  '0x620fd5fa44BE6af63715Ef4E65DDFA0387aD13F5',
-  6,
-  'USDC',
-  'USD Coin on Fuse'
-)
-export const FUSE_FUSD = new Token(
-  ChainId.FUSE,
-  '0x249BE57637D8B013Ad64785404b24aeBaE9B098B',
-  18,
-  'fUSD',
-  'Fuse Dollar'
-)
-export const FUSE_BUSD = new Token(
-  ChainId.FUSE,
-  '0x6a5F6A8121592BeCd6747a38d67451B310F7f156',
-  18,
-  'BUSD',
-  'Binance USD on Fuse'
-)
-
-export const fuseswapSubgraphClient = new ApolloClient({
-  uri: FUSESWAP_SUBGRAPH_URL,
-  cache: new InMemoryCache(),
-})
-const bundleFields = gql`
-  fragment bundleFields on Bundle {
-    id
-    ethPrice
-  }
-`
-
-const fusePriceQuery = gql`
-  query ethPriceQuery($id: Int! = 1, $block: Block_height) {
-    bundles(id: $id, block: $block) {
-      ...bundleFields
-    }
-  }
-  ${bundleFields}
-`
+import { fuseswapSubgraphClient, stableswapSubgraphClient, voltageSubgraphClient } from '../graphql/client'
+import { FUSE_BUSD, FUSE_FUSD, FUSE_USDC, FUSE_USDT, FUSE_UST, STABLESWAP_POOLS } from '../graphql/constants'
+import { fusePriceQuery, GET_TOTAL_LOCKED, stableswapTokenBalancesQuery, tokenPriceQuery } from '../graphql/queries'
 
 export const getBundle = async (query = fusePriceQuery, variables = { id: 1 }) => {
   const result = await fuseswapSubgraphClient.query({
@@ -72,16 +16,10 @@ export const getBundle = async (query = fusePriceQuery, variables = { id: 1 }) =
   return result.data?.bundles ? result.data?.bundles[0]?.ethPrice : null
 }
 
-export const VOLTAGE_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange'
-
 export const getNativePrice = async (variables) => {
   const result = await getBundle(undefined, variables)
   return result
 }
-export const voltageSubgraphClient = new ApolloClient({
-  uri: VOLTAGE_SUBGRAPH_URL,
-  cache: new InMemoryCache(),
-})
 
 export const getTokenPrice = async (query, variables) => {
   const nativePrice = await getNativePrice()
@@ -92,14 +30,6 @@ export const getTokenPrice = async (query, variables) => {
 
   return nativePrice && result.data?.token ? result.data?.token?.derivedETH * nativePrice : 0
 }
-export const tokenPriceQuery = gql`
-  query tokenPriceQuery($id: String!) {
-    token(id: $id) {
-      id
-      derivedETH
-    }
-  }
-`
 
 export async function getStablecoinPrices() {
   // Stablecoin prices for the stable pool
@@ -143,22 +73,6 @@ export const tryFormatDecimalAmount = (amount, tokenDecimals = 18, decimals = 0)
   return undefined
 }
 
-export const stableswapSubgraphClient = new ApolloClient({
-  uri: STABLESWAP_SUBGRAPH_URL,
-  cache: new InMemoryCache(),
-})
-
-const stableswapTokenBalancesQuery = gql`
-  {
-    swaps {
-      id
-      balances
-      tokens {
-        id
-      }
-    }
-  }
-`
 export const getStableswapTokenBalances = async (query = stableswapTokenBalancesQuery) => {
   const result = await stableswapSubgraphClient.query({
     query: stableswapTokenBalancesQuery,
@@ -166,47 +80,6 @@ export const getStableswapTokenBalances = async (query = stableswapTokenBalances
 
   return result.data?.swaps
 }
-export const VUSD1 = new Token(
-  ChainId.FUSE,
-  '0xa3c1046290B490e629E11AcE35863CB0CAe382aB',
-  18,
-  'vUSD1',
-  'vUSD1 LP Token'
-)
-
-export const VUSD2 = new Token(
-  ChainId.FUSE,
-  '0xC71CAb88c1674A39A3e2841274E54e34D709Af91',
-  18,
-  'vUSD2',
-  'vUSD2 LP Token'
-)
-export const STABLESWAP_POOLS = {
-  '0x2a68D7C6Ea986fA06B2665d08b4D08F5e7aF960c': {
-    name: 'vUSD1',
-    address: '0x2a68D7C6Ea986fA06B2665d08b4D08F5e7aF960c',
-    lpToken: VUSD1,
-    tokenList: [FUSE_BUSD, FUSE_USDC, FUSE_USDT],
-  },
-  '0x83D158Beadbb3445AC901cFd0ca33FB30CCC8f53': {
-    name: 'vUSD2',
-    address: '0x83D158Beadbb3445AC901cFd0ca33FB30CCC8f53',
-    lpToken: VUSD2,
-    tokenList: [FUSE_FUSD, FUSE_USDT, FUSE_UST],
-  },
-}
-
-const GET_TOTAL_LOCKED = gql`
-  {
-    uniswapFactories(first: 1) {
-      totalLiquidityUSD
-    }
-  }
-`
-const client = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/voltage-exchange',
-  cache: new InMemoryCache(),
-})
 
 export function useStableswapTotalLiquidity(decimals = 0) {
   let [usdPrices, setUsdPrices] = useState(null)
@@ -222,7 +95,7 @@ export function useStableswapTotalLiquidity(decimals = 0) {
     })
     const {
       data: { uniswapFactories },
-    } = await client.query({ query: GET_TOTAL_LOCKED })
+    } = await voltageSubgraphClient.query({ query: GET_TOTAL_LOCKED })
 
     setTotalLocked(parseFloat(uniswapFactories[0]?.totalLiquidityUSD))
     setUsdPrices(usdPrices)
