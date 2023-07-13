@@ -1,6 +1,7 @@
 import { ApolloClient, gql, InMemoryCache, useQuery } from '@apollo/client'
+import axios from 'axios'
 import { sum, sumBy } from 'lodash'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import AngelDoa from '../assets/angeldoa.png'
 import Aria from '../assets/aria.png'
 import As from '../assets/as.png'
@@ -26,6 +27,7 @@ import Metavest from '../assets/metavest.png'
 import Mexc from '../assets/mexc.png'
 import Mg from '../assets/mg-s.png'
 import Node from '../assets/node.png'
+import VoltPhones from '../assets/phones.png'
 import Poolz from '../assets/poolz.png'
 import Quill from '../assets/quill-p.png'
 import Sheesha from '../assets/sheesha.png'
@@ -36,7 +38,6 @@ import Tmt from '../assets/tmt.png'
 import Trg from '../assets/trg-s.png'
 import Valhalla from '../assets/valhalla.png'
 import Zbs from '../assets/zbs.png'
-import { useStableswapTotalLiquidity } from '../hooks'
 import Affiliates from './shared/Affiliates'
 import Banner from './shared/Banner'
 import CardList from './shared/CardList'
@@ -48,9 +49,6 @@ import Image from './shared/Image'
 import Navbar from './shared/Navbar'
 import Padding from './shared/Padding'
 import TextAnimation from './shared/TextAnimation'
-
-import { useState } from 'react'
-import VoltPhones from '../assets/phones.png'
 
 const GET_TOTAL_VOLUME = gql`
   {
@@ -94,13 +92,13 @@ const clientVoltStakeHolders = new ApolloClient({
 
 function Home() {
   const totalVolume = useQuery(GET_TOTAL_VOLUME, { client })
+  const [tvl, setTvl] = useState(0)
+  const [loadingTVL, setLoadingTVL] = useState(true)
 
   const tokenHolders = useQuery(GET_TOKEN_HOLDERS, {
     client: clientVoltHolders,
   })
   let [tokenStakeHolders, setTokenStakeHolders] = useState(-1)
-
-  let stableSwapTotalLiquiditiy = useStableswapTotalLiquidity(18)
 
   const getLastSevenDaysStakerEarnings = async () => {
     const previousSevenDays = new Array(7).fill().map((_, index) => {
@@ -129,6 +127,18 @@ function Home() {
   useEffect(() => {
     getLastSevenDaysStakerEarnings()
   }, [])
+
+  useEffect(() => {
+    ;(async () => {
+      setLoadingTVL(true)
+      const result = await axios.get('https://api-staging.voltage.finance/api/info/tvl')
+      if (result.status === 200) {
+        setTvl(result?.data?.tvl)
+      }
+      setLoadingTVL(false)
+    })()
+  }, [])
+
   return (
     <>
       <div className="h-screen w-screen max-h-page relative ">
@@ -175,12 +185,7 @@ function Home() {
             </FadeInAnimation>
           </div>
           <Banner
-            loading={
-              totalVolume.loading ||
-              tokenHolders.loading ||
-              stableSwapTotalLiquiditiy === -1 ||
-              tokenStakeHolders === -1
-            }
+            loading={totalVolume.loading || tokenHolders.loading || loadingTVL || tokenStakeHolders === -1}
             dailVolume={
               !totalVolume.loading &&
               sumBy(totalVolume.data.uniswapDayDatas, ({ dailyVolumeUSD }) => {
@@ -190,7 +195,7 @@ function Home() {
                 1
             }
             tokenHolders={!tokenHolders.loading && tokenHolders?.data?.systemInfos[0]?.userCount}
-            totalLocked={stableSwapTotalLiquiditiy}
+            totalLocked={tvl}
             tokenStakeHolders={tokenStakeHolders}
           />
         </div>
