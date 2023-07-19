@@ -86,7 +86,7 @@ const clientVoltHolders = new ApolloClient({
   cache: new InMemoryCache(),
 })
 const clientVoltStakeHolders = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/t0mcr8se/makerv2-fuse',
+  uri: 'https://api.thegraph.com/subgraphs/name/voltfinance/volt-maker-v3',
   cache: new InMemoryCache(),
 })
 
