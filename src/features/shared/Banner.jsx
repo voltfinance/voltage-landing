@@ -28,7 +28,7 @@ const Item = ({ value, prefix = '$', text = '', loading }) => {
     </div>
   ) : (
     <div className="item">
-      <div className="item__header">
+      <div style={{ pointerEvents: 'none' }} className="item__header">
         {prefix}
         <NumericFormat value={parsedValue} allowLeadingZeros thousandSeparator="," />
       </div>
@@ -55,7 +55,7 @@ const Banner = ({ dailVolume = 0, tokenHolders = 0, totalLocked = 0, tokenStakeH
         <Item value={dailVolume} text="Daily Volume" loading={loading} />
         <Item value={tokenHolders} text="Token holders" prefix="" loading={loading} />
         <Item value={totalLocked} text="Total Value Locked" loading={loading} />
-        <Item value={tokenStakeHolders} text={`veVOLT Earnings (Week)`} loading={loading} prefix="" />
+        <Item value={tokenStakeHolders} text={`veVOLT Earnings (Month)`} loading={loading} prefix="" />
       </div>
     </motion.div>
   )
