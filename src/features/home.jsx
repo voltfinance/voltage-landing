@@ -101,7 +101,7 @@ function Home() {
   let [tokenStakeHolders, setTokenStakeHolders] = useState(-1)
 
   const getLastSevenDaysStakerEarnings = async () => {
-    const previousSevenDays = new Array(7).fill().map((_, index) => {
+    const previousSevenDays = new Array(30).fill().map((_, index) => {
       let date = new Date()
       return Math.floor(date.setDate(date.getDate() - index) / 8.64e7) + ''
     })
